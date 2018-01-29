@@ -4,19 +4,19 @@ using System.Text;
 
 namespace GameOfChallengers.Controllers
 {
-    class CreatureController
+    class CharacterController
     {
-        public void EquipItem(int itemLoc)
+        public void EquipItem(int id, int itemLoc)
         {
             //equip items at the end of the round to a body location
         }
 
-        public void DropItems()
+        public void DropItems(int id)
         {
             //drop all items when dead
         }
 
-        public void Attack(int id)
+        public void Attack(int id, int target)
         {
             //run the attack on the selected monster
         }
