@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GameOfChallengers.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,55 +7,40 @@ namespace GameOfChallengers.Controllers
 {
     class CharacterController
     {
-        public void EquipItem(int id, int itemLoc)
+
+        public void EquipItem(Creature creature, int itemLoc)
         {
             //equip items at the end of the round to a body location
         }
 
-        public void DropItems(int id)
+        public void DropItems(Creature creature)
         {
             //drop all items when dead
         }
 
-        public void Attack(int id, int target)
+        public int GetBaseAttack(Creature creature)
         {
-            //run the attack on the selected monster
+            int baseAttack = 0;//this will be based on the character stats
+            return baseAttack;
         }
 
-        public void Move(int id, int loc)
-        {
-            bool canMove = MoveTest(id, loc);
-            //move the character if they are allowed to move there
-        }
-        private bool MoveTest(int id, int loc)
-        {
-            //test if a character can move to the selected sqare on the board
-            return true;
-        }
-
-        public int DoDamage(int id, int baseDamage)
-        {
-            //get how much damage the character will do
-            int finalDamage = GetBaseDamage(id);
-            return finalDamage;
-        }
-
-        private int GetBaseDamage(int id)
+        public int GetBaseDamage(Creature creature)
         {
             int baseDamage = 0;//this will be based on the character stats
             return baseDamage;
         }
 
-        public void TestForLevelUp(int id, int xp)
+        public void TestForLevelUp(Creature creature, int xp)
         {
             //if character can be leveled up call private healper
         }
-        private void LevelUp(int id, int newLevel)
+
+        private void LevelUp(Creature creature, int newLevel)
         {
             //level up the character
         }
 
-        public void TakeDamage(int id, int amount)
+        public void TakeDamage(Creature creature, int amount)
         {
             //character takes damage and checks for death
         }

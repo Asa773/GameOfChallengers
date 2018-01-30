@@ -15,7 +15,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\BattleController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\CharacterController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\MonsterController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Creature.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CreatureInventory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
