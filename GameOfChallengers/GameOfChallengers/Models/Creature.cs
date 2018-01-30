@@ -11,7 +11,7 @@ namespace GameOfChallengers.Models
         public string Name { get; set; }// 25 char max
         public int Level { get; set; }// 1-20
         public int Attack { get; set; }// creature's base attack stat
-        public int Damage { get; set; }// creature's base damage stat
+        public int Defence { get; set; }// creature's base defence stat
         public int Speed { get; set; }// creature's base speed stat
         public int XP { get; set; }// 0-355000
         public int MaxHealth { get; set; }// creature's current max health
