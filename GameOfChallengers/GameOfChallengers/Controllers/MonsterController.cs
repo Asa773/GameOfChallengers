@@ -26,7 +26,7 @@ namespace GameOfChallengers.Controllers
 
         public int GiveXP(Creature monster, int damageGiven)
         {
-            //this will calculate and return the amount of XP to be transfered on a hit
+            //this will calculate and return the amount of XP to be transferred on a hit
             int XPToGive = 0;
             return XPToGive;
         }

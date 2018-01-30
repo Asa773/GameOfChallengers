@@ -11,7 +11,7 @@ namespace GameOfChallengers.Models
         public string Name { get; set; }// 25 char max
         public int Level { get; set; }// 1-20
         public int Attack { get; set; }// creature's base attack stat
-        public int Defence { get; set; }// creature's base defence stat
+        public int Defense { get; set; }// creature's base defense stat
         public int Speed { get; set; }// creature's base speed stat
         public int XP { get; set; }// 0-355000
         public int MaxHealth { get; set; }// creature's current max health
@@ -19,7 +19,7 @@ namespace GameOfChallengers.Models
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public int Loc { get; set; }// location on game board
 
-        public CreatureInventory CInventory { get; set; }// inventory of item equiped to this creature
+        public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
 
     }
 }

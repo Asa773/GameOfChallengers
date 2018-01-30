@@ -32,7 +32,7 @@ namespace GameOfChallengers.Controllers
 
         public void TestForLevelUp(Creature character, int xp)
         {
-            //if character can be leveled up call private healper
+            //if character can be leveled up call private helper
         }
 
         private void LevelUp(Creature character, int newLevel)
