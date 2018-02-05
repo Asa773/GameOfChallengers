@@ -8,7 +8,7 @@ namespace GameOfChallengers.Controllers
     class CharacterController
     {
 
-        public void EquipItem(Creature character, int itemLoc)
+        public void EquipItem(Creature character, int itemLoc, Item item)
         {
             //equip items at the end of the round to a body location
         }

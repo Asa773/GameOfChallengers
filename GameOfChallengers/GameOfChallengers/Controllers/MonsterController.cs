@@ -7,9 +7,11 @@ namespace GameOfChallengers.Controllers
 {
     class MonsterController
     {
-        public void DropItems(Creature monster)
+        public List<Item> DropItems(Creature monster)
         {
             //drop a random number of items when dead
+            List<Item> Dropped = null;
+            return Dropped;
         }
 
         public int GetBaseAttack(Creature monster)
