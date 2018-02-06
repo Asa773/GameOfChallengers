@@ -15,6 +15,9 @@ namespace GameOfChallengers.Controllers
         int TotalXP = 0;//this is to show the total xp gained by all characters on the score page
         Creature[] Gamboard;//this is the gameboard
 
+        //there will be one controller per type and the specific creature will be passed in to the controller methods
+        CharacterController Character = new CharacterController();
+        MonsterController Monster = new MonsterController();
 
         public void Move(Creature creature, int loc)
         {
@@ -56,7 +59,7 @@ namespace GameOfChallengers.Controllers
         public List<Creature> GetTurnOrder(List<Creature> team, List<Creature> monsters)
         {
             //this will get the list that will be cycled through for this round to choose whose turn it is
-            //the speed will be found by adding the Speed data from the Creature with all of the boosts from any items
+            //the speed will be found by adding the Speed data from the Creature with all of the boosts from any items (GetBaseSpeed())
             //ties in speed will be broken it the following way:
             //highest level -> highest xp -> character before monster -> alphabetic by name -> first in list order
             List<Creature> turnOrder = null;

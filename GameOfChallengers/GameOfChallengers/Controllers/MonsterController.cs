@@ -16,14 +16,26 @@ namespace GameOfChallengers.Controllers
 
         public int GetBaseAttack(Creature monster)
         {
-            int baseAttack = 0;//this will be based on the monster stats
+            int baseAttack = 0;//this will be based on the monster stats + any item boosts
             return baseAttack;
         }
 
         public int GetBaseDamage(Creature monster)
         {
-            int baseDamage = 0;//this will be based on the monster stats
+            int baseDamage = 0;//this will be based on the monster stats including item boosts
             return baseDamage;
+        }
+
+        public int GetBaseSpeed(Creature monster)
+        {
+            int baseSpeed = 0;//this will be based on the monster stats + any item boosts
+            return baseSpeed;
+        }
+
+        public int GetBaseDefense(Creature monster)
+        {
+            int baseDefense = 0;//this will be based on the monster stats including item boosts
+            return baseDefense;
         }
 
         public int GiveXP(Creature monster, int damageGiven)
