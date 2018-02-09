@@ -6,7 +6,6 @@ namespace GameOfChallengers.Models
 {
     class CreatureInventory
     {
-        //*This Item class exists but is WRONG, will be updated for the item assignment*
         public Item Head { get; set; }// item slot for head location
         public Item Body { get; set; }// item slot for body location
         public Item Feet { get; set; }// item slot for feet location

@@ -4,8 +4,10 @@ namespace GameOfChallengers.Models
 {
     public class Item
     {
-        public string Id { get; set; }
-        public string Text { get; set; }
-        public string Description { get; set; }
+        public string Name { get; set; }
+        public string Attribute { get; set; }
+        public int Value { get; set; }
+        public string Location { get; set; }
+        public bool Range { get; set; }
     }
 }
