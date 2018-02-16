@@ -10,7 +10,7 @@ namespace GameOfChallengers
 
 		public App ()
 		{
-			InitializeComponent();
+		    InitializeComponent();
 
 
             MainPage = new MainPage();
@@ -30,5 +30,20 @@ namespace GameOfChallengers
 		{
 			// Handle when your app resumes
 		}
-	}
+
+        static SQLiteAsyncConnection database;
+
+        public static SQLiteAsyncConnection Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("SQLLiteDBName.db3"));
+                }
+                return database;
+            }
+        }
+
+    }
 }

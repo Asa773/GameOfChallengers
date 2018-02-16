@@ -22,7 +22,7 @@ namespace GameOfChallengers.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = viewModel = ItemsViewModel().Instance;
         }
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)

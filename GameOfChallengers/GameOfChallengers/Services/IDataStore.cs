@@ -4,12 +4,31 @@ using System.Threading.Tasks;
 
 namespace GameOfChallengers.Services
 {
-    public interface IDataStore<T>
+    public interface IDataStore
     {
-        Task<bool> AddItemAsync(T item);
-        Task<bool> UpdateItemAsync(T item);
-        Task<bool> DeleteItemAsync(T item);
-        Task<T> GetItemAsync(string id);
-        Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false);
+        Task<bool> AddAsync_Item(Item item);
+        Task<bool> UpdateAsync_Item(Item item);
+        Task<bool> DeleteAsync_Item(Item item);
+        Task<Item> GetAsync_Item(string id);
+        Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false);
+
+        Task<bool> AddAsync_Character(Character data);
+        Task<bool> UpdateAsync_Character(Character data);
+        Task<bool> DeleteAsync_Character(Character data);
+        Task<Character> GetAsync_Character(string id);
+        Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false);
+
+        Task<bool> AddAsync_Monster(Monster data);
+        Task<bool> UpdateAsync_Monster(Monster data);
+        Task<bool> DeleteAsync_Monster(Monster data);
+        Task<Monster> GetAsync_Monster(string id);
+        Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false);
+
+        Task<bool> AddAsync_Score(Score data);
+        Task<bool> UpdateAsync_Score(Score data);
+        Task<bool> DeleteAsync_Score(Score data);
+        Task<Score> GetAsync_Score(string id);
+        Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false);
+
     }
 }

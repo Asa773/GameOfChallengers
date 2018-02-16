@@ -7,20 +7,20 @@ using GameOfChallengers.ViewModels;
 
 using GameOfChallengers.Models;
 
-[assembly: Xamarin.Forms.Dependency(typeof(GameOfChallengers.Services.MockDataStore))]
+[assembly: Xamarin.Forms.Dependency(typeof(GameOfChallengers.Services.SQLDataStore))]
 namespace GameOfChallengers.Services
 {
-    public sealed class MockDataStore : IDataStore
+    public sealed class SQLDataStore : IDataStore
     {
-        private static MockDataStore _instance;
+        private static SQLDataStore _instance;
 
-        public static MockDataStore Instance
+        public static SQLDataStore Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new MockDataStore();
+                    _instance = new SQLDataStore();
                 }
                 return _instance;
             }
@@ -31,7 +31,7 @@ namespace GameOfChallengers.Services
         List<Monster> _monsterDataset = new List<Monster>();
         List<Score> _scoreDataset = new List<Score>();
 
-        private MockDataStore()
+        private SQLDataStore()
         {
             App.Database.CreateTableAsync<Item>().Wait();
             App.Database.CreateTableAsync<Character>().Wait();
@@ -83,8 +83,8 @@ namespace GameOfChallengers.Services
         private void InitilizeSeedData()
         {
 
-
-            await AddAsync(new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description = "This is an item description." });
+           
+            await AddAsync( new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description = "This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description = "This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description = "This is an item description." });

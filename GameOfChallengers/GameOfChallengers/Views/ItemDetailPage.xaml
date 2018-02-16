@@ -10,4 +10,4 @@
         <Label Text="{Binding Item.Description}" FontSize="Small"/>
     </StackLayout>
 </ContentPage>
-    <!--//test//-->
+    

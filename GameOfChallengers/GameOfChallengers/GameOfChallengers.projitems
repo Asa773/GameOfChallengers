@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\GameScoreController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\MonsterController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\TurnController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Creature.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CreatureInventory.cs" />
@@ -27,6 +28,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Locations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SQLDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\MockDataStore.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AboutViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />

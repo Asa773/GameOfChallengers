@@ -12,6 +12,20 @@ namespace GameOfChallengers.ViewModels
 {
     public class ItemsViewModel : BaseViewModel
     {
+        private static ItemsViewModel _instance;
+
+        public static ItemsViewModel Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = new ItemsViewModel();
+                }
+                return _instance;
+            }
+        }
+
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
 
@@ -25,7 +39,7 @@ namespace GameOfChallengers.ViewModels
             {
                 var _item = item as Item;
                 Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                await DataStore.AddAsync(_item);
             });
         }
 
@@ -39,7 +53,7 @@ namespace GameOfChallengers.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                var items = await DataStore.GetAsync(true);
                 foreach (var item in items)
                 {
                     Items.Add(item);
