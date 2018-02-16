@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GameOfChallengers.Views.GameHomePage">
+    <ContentPage.ToolbarItems>
+      <StackLayout Orientation="Horizontal" Padding="16,40,16,40" Spacing="10">  
+    <ToolbarItem Text="About" Clicked="About_Clicked" />
+    <ToolbarItem Text="Help" Clicked="Help_Clicked" />
+            </StackLayout>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
+                <Label FontSize="22">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            <Button  
+                    Text="Play" 
+                    Clicked="Play_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+
+             <Button  
+                    Text="Characters" 
+                    Clicked="Characters_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+
+             <Button  
+                    Text="Monsters" 
+                    Clicked="Monsters_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+
+             <Button  
+                    Text="Items" 
+                    Clicked="Items_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+
+             <Button  
+                    Text="Scores" 
+                    Clicked="Scores_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+            </StackLayout>
+	</ContentPage.Content>
+</ContentPage>
