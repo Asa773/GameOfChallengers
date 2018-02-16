@@ -6,14 +6,14 @@ namespace GameOfChallengers.Models
 {
     class GameItem
     {
-        public string Name { get; set; }
-        
-        public int Value { get; set; }
-        
-        public bool Range { get; set; }
+        public string Name { get; set; }// 25 char max
 
-        public Attributes Att { get; set; }
+        public int Value { get; set; }// how much the attribute is increased
+        
+        public bool Range { get; set; }// if the item allows ranged attacks
 
-        public Locations Loc { get; set; }
+        public Attributes Att { get; set; }// enum for what creature attribute the item effects
+
+        public Locations Loc { get; set; }// enum for what creature location the item is attached to
     }
 }
