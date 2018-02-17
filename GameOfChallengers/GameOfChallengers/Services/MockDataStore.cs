@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GameOfChallengers.ViewModels;
+using MasterDetailsCRUDi.Models;
+using Character = MasterDetailsCRUDi.Models.Character;
 
-
-using GameOfChallengers.Models;
-
-[assembly: Xamarin.Forms.Dependency(typeof(GameOfChallengers.Services.MockDataStore))]
-namespace GameOfChallengers.Services
+namespace MasterDetailsCRUDi.Services
 {
     public sealed class MockDataStore : IDataStore
     {
+
+        // Make this a singleton so it only exist one time because holds all the data records in memory
         private static MockDataStore _instance;
 
         public static MockDataStore Instance
@@ -26,102 +25,96 @@ namespace GameOfChallengers.Services
             }
         }
 
-        List<Item> _itemDataset = new List<Item>();
-        List<Character> _characterDataset = new List<Character>();
-        List<Monster> _monsterDataset = new List<Monster>();
-        List<Score> _scoreDataset = new List<Score>();
+        private List<Item> _itemDataset = new List<Item>();
+        private List<Character> _characterDataset = new List<Character>();
+        private List<Monster> _monsterDataset = new List<Monster>();
+        private List<Score> _scoreDataset = new List<Score>();
 
         private MockDataStore()
         {
-            App.Database.CreateTableAsync<Item>().Wait();
-            App.Database.CreateTableAsync<Character>().Wait();
-            App.Database.CreateTableAsync<Monster>().Wait();
-            App.Database.CreateTableAsync<Score>().Wait();
+            var mockItems = new List<Item>
+            {
+                
+            };
+
+            foreach (var data in mockItems)
+            {
+                _itemDataset.Add(data);
+            }
+
+            var mockCreature = new List<Creature>
+            {
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
+                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"}
+            };
+
+            foreach (var data in mockCreature)
+            {
+                _creatureDataset.Add(data);
+            }
+
+            
+
+            var mockGameItem = new List<GameItem>
+            {
+               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
+               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
+               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
+               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
+               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  }
+            };
+
+            foreach (var data in mockGameItem)
+            {
+                _GameItemDataset.Add(data);
+            }
+
         }
 
-        // Create the Database Tables
-        private void CreateTables()
+        // Item
+        public async Task<bool> AddAsync_Item(Item data)
         {
-            App.Database.CreateTableAsync<Item>().Wait();
-            App.Database.CreateTableAsync<Character>().Wait();
-            App.Database.CreateTableAsync<Monster>().Wait();
-            App.Database.CreateTableAsync<Score>().Wait();
+            _itemDataset.Add(data);
 
+            return await Task.FromResult(true);
         }
 
-        // Delete the Datbase Tables by dropping them
-        private void DeleteTables()
+        public async Task<bool> UpdateAsync_Item(Item data)
         {
-            App.Database.DropTableAsync<Item>().Wait();
-            App.Database.DropTableAsync<Character>().Wait();
-            App.Database.DropTableAsync<Monster>().Wait();
-            App.Database.DropTableAsync<Score>().Wait();
+            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            if (myData == null)
+            {
+                return false;
+            }
+
+            myData.Update(data);
+
+            return await Task.FromResult(true);
         }
 
-        // Tells the View Models to update themselves.
-        private void NotifyViewModelsOfDataChange()
+        public async Task<bool> DeleteAsync_Item(Item data)
         {
-            ItemsViewModel.Instance.SetNeedsRefresh(true);
-            MonstersViewModel.Instance.SetNeedsRefresh(true);
-            CharactersViewModel.Instance.SetNeedsRefresh(true);
-            ScoresViewModel.Instance.SetNeedsRefresh(true);
+            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            _itemDataset.Remove(myData);
+
+            return await Task.FromResult(true);
         }
-        public void InitializeDatabaseNewTables()
+
+        public async Task<Item> GetAsync_Item(string id)
         {
-            // Delete the tables
-            DeleteTables();
-
-            // make them again
-            CreateTables();
-
-            // Populate them
-            InitilizeSeedData();
-
-            // Tell View Models they need to refresh
-            NotifyViewModelsOfDataChange();
+            return await Task.FromResult(_itemDataset.FirstOrDefault(s => s.Id == id));
         }
-        private void InitilizeSeedData()
+
+        public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
         {
-
-
-            await AddAsync(new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description = "This is an item description." });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description = "This is an item description." });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description = "This is an item description." });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description = "This is an item description." });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Fifth item", Description = "This is an item description." });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description = "This is an item description." });
-
-
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "First Character", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Second Character", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Third Character", Description = "This is an Character description.", Level = 2 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Fourth Character", Description = "This is an Character description.", Level = 2 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Fifth Character", Description = "This is an Character description.", Level = 3 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Sixth Character", Description = "This is an Character description.", Level = 3 });
-
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "First Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Second Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Third Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Fourth Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Fifth Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Sixth Monster", Description = "This is an Monster description." });
-
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "First Score", ScoreTotal = 111 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Second Score", ScoreTotal = 222 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Third Score", ScoreTotal = 333 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Fourth Score", ScoreTotal = 444 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Fifth Score", ScoreTotal = 555 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Sixth Score", ScoreTotal = 666 });
-
-
-
-
-
-
-
+            return await Task.FromResult(_itemDataset);
         }
-
-        public async Task<bool> AddAsync(Item item)
+        // Creature
+        public async Task<bool> AddAsync_Creature(Creature data)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -131,49 +124,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync(Item item)
-        {
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<bool> DeleteAsync(Item item)
-        {
-
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<Item> GetAsync(string id)
-        {
-            var result = await App.Database.GetAsync<Item>(id);
-            return result;
-        }
-
-        public async Task<IEnumerable<Item>> GetAllAsync(bool forceRefresh = false)
-        {
-            var result = await App.Database.Table<Item>().ToListAsync();
-            return result;
-        }
-
-        // Character
-        public async Task<bool> AddAsync_Character(Character data)
-        {
-            var result = await App.Database.InsertAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<bool> UpdateAsync_Character(Character data)
+        public async Task<bool> UpdateAsync_Creature(Creature data)
         {
             var result = await App.Database.UpdateAsync(data);
             if (result == 1)
@@ -183,7 +134,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync_Character(Character data)
+        public async Task<bool> DeleteAsync_Creature(Creature data)
         {
             var result = await App.Database.DeleteAsync(data);
             if (result == 1)
@@ -193,21 +144,24 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<Character> GetAsync_Character(string id)
+        public async Task<Creature> GetAsync_Creature(string id)
         {
-            var result = await App.Database.GetAsync<Character>(id);
+            var result = await App.Database.GetAsync<Creature>(id);
             return result;
         }
 
-        public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
+        public async Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Character>().ToListAsync();
+            var result = await App.Database.Table<Creature>().ToListAsync();
             return result;
         }
 
 
-        //Monster
-        public async Task<bool> AddAsync_Monster(Monster data)
+
+
+
+        // GameItem
+        public async Task<bool> AddAsync_GameItem(GameItem data)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -217,7 +171,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync_Monster(Monster data)
+        public async Task<bool> UpdateAsync_GameItem(GameItem data)
         {
             var result = await App.Database.UpdateAsync(data);
             if (result == 1)
@@ -227,7 +181,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync_Monster(Monster data)
+        public async Task<bool> DeleteAsync_GameItem(GameItem data)
         {
             var result = await App.Database.DeleteAsync(data);
             if (result == 1)
@@ -237,60 +191,25 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<Monster> GetAsync_Monster(string id)
+        public async Task<Score> GetAsync_GameItem(string id)
         {
-            var result = await App.Database.GetAsync<Monster>(id);
+            var result = await App.Database.GetAsync<GameItem>(id);
             return result;
         }
 
-        public async Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false)
+        public async Task<IEnumerable<GameItem>> GetAllAsync_GameItem(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Monster>().ToListAsync();
+            var result = await App.Database.Table<GameItem>().ToListAsync();
             return result;
         }
 
-        // Score
-        public async Task<bool> AddAsync_Score(Score data)
-        {
-            var result = await App.Database.InsertAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
 
-        public async Task<bool> UpdateAsync_Score(Score data)
-        {
-            var result = await App.Database.UpdateAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
 
-        public async Task<bool> DeleteAsync_Score(Score data)
-        {
-            var result = await App.Database.DeleteAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
 
-        public async Task<Score> GetAsync_Score(string id)
-        {
-            var result = await App.Database.GetAsync<Score>(id);
-            return result;
-        }
 
-        public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
-        {
-            var result = await App.Database.Table<Score>().ToListAsync();
-            return result;
-        }
+
+
+
 
     }
 }

@@ -27,25 +27,22 @@ namespace GameOfChallengers.Services
         }
 
         List<Item> _itemDataset = new List<Item>();
-        List<Character> _characterDataset = new List<Character>();
-        List<Monster> _monsterDataset = new List<Monster>();
-        List<Score> _scoreDataset = new List<Score>();
+        List<Creature> _creatureDataset = new List<Creature>();
+        List<GameItem> _gameitemDataset = new List<GameItem>();
 
         private SQLDataStore()
         {
             App.Database.CreateTableAsync<Item>().Wait();
-            App.Database.CreateTableAsync<Character>().Wait();
-            App.Database.CreateTableAsync<Monster>().Wait();
-            App.Database.CreateTableAsync<Score>().Wait();
+            App.Database.CreateTableAsync<Creature>().Wait();
+            App.Database.CreateTableAsync<GameItem>().Wait();
         }
 
         // Create the Database Tables
         private void CreateTables()
         {
             App.Database.CreateTableAsync<Item>().Wait();
-            App.Database.CreateTableAsync<Character>().Wait();
-            App.Database.CreateTableAsync<Monster>().Wait();
-            App.Database.CreateTableAsync<Score>().Wait();
+            App.Database.CreateTableAsync<Creature>().Wait();
+            App.Database.CreateTableAsync<GameItem>().Wait();
 
         }
 
@@ -53,18 +50,17 @@ namespace GameOfChallengers.Services
         private void DeleteTables()
         {
             App.Database.DropTableAsync<Item>().Wait();
-            App.Database.DropTableAsync<Character>().Wait();
-            App.Database.DropTableAsync<Monster>().Wait();
-            App.Database.DropTableAsync<Score>().Wait();
+            App.Database.DropTableAsync<Creature>().Wait();
+            App.Database.DropTableAsync<GameItem>().Wait();
+            
         }
 
         // Tells the View Models to update themselves.
         private void NotifyViewModelsOfDataChange()
         {
             ItemsViewModel.Instance.SetNeedsRefresh(true);
-            MonstersViewModel.Instance.SetNeedsRefresh(true);
-            CharactersViewModel.Instance.SetNeedsRefresh(true);
-            ScoresViewModel.Instance.SetNeedsRefresh(true);
+            CreatureViewModel.Instance.SetNeedsRefresh(true);
+            GameItemViewModel.Instance.SetNeedsRefresh(true);
         }
         public void InitializeDatabaseNewTables()
         {
@@ -84,7 +80,7 @@ namespace GameOfChallengers.Services
         {
 
            
-            await AddAsync( new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." });
+            await AddAsync_Item( new Item { Id = Guid.NewGuid().ToString(), Text = "First item", Description="This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Second item", Description = "This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Third item", Description = "This is an item description." });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Fourth item", Description = "This is an item description." });
@@ -92,31 +88,19 @@ namespace GameOfChallengers.Services
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Text = "Sixth item", Description = "This is an item description." });
 
 
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "First Character", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Second Character", Description = "This is an Character description.", Level = 1 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Third Character", Description = "This is an Character description.", Level = 2 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Fourth Character", Description = "This is an Character description.", Level = 2 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Fifth Character", Description = "This is an Character description.", Level = 3 });
-            await AddAsync_Character(new Character { Id = Guid.NewGuid().ToString(), Name = "Sixth Character", Description = "This is an Character description.", Level = 3 });
-
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "First Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Second Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Third Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Fourth Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Fifth Monster", Description = "This is an Monster description." });
-            await AddAsync_Monster(new Monster { Id = Guid.NewGuid().ToString(), Name = "Sixth Monster", Description = "This is an Monster description." });
-
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "First Score", ScoreTotal = 111 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Second Score", ScoreTotal = 222 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Third Score", ScoreTotal = 333 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Fourth Score", ScoreTotal = 444 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Fifth Score", ScoreTotal = 555 });
-            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Sixth Score", ScoreTotal = 666 });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"});
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = "Character", Name = "First Character", Level = "12", Attack = "Attack stat", Defense = "defense stat", Speed = "Speed", XP = "3", MaxHealth = "50", currHealth = "20", Alive = "Yes", Loc = "1st grid" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = "Character", Name = "First Character", Level = "12", Attack = "Attack stat", Defense = "defense stat", Speed = "Speed", XP = "3", MaxHealth = "50", currHealth = "20", Alive = "Yes", Loc = "1st grid" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = "Character", Name = "First Character", Level = "12", Attack = "Attack stat", Defense = "defense stat", Speed = "Speed", XP = "3", MaxHealth = "50", currHealth = "20", Alive = "Yes", Loc = "1st grid" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = "Character", Name = "First Character", Level = "12", Attack = "Attack stat", Defense = "defense stat", Speed = "Speed", XP = "3", MaxHealth = "50", currHealth = "20", Alive = "Yes", Loc = "1st grid" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = "Character", Name = "First Character", Level = "12", Attack = "Attack stat", Defense = "defense stat", Speed = "Speed", XP = "3", MaxHealth = "50", currHealth = "20", Alive = "Yes", Loc = "1st grid" });
 
 
-
-
-
+            await AddAsync_GameItem(new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  });
+            await AddAsync_GameItem(new GameItem { Name = "Ring", Value = "12", Range = "11", Att = "attribute", Loc = "finger" });
+            await AddAsync_GameItem(new GameItem { Name = "Ring", Value = "12", Range = "11", Att = "attribute", Loc = "finger" });
+            await AddAsync_GameItem(new GameItem { Name = "Ring", Value = "12", Range = "11", Att = "attribute", Loc = "finger" });
+            await AddAsync_GameItem(new GameItem { Name = "Ring", Value = "12", Range = "11", Att = "attribute", Loc = "finger" });
 
 
         }
@@ -162,8 +146,8 @@ namespace GameOfChallengers.Services
             return result;
         }
 
-        // Character
-        public async Task<bool> AddAsync_Character(Character data)
+        // Creature
+        public async Task<bool> AddAsync_Creature(Creature data)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -173,7 +157,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync_Character(Character data)
+        public async Task<bool> UpdateAsync_Creature(Creature data)
         {
             var result = await App.Database.UpdateAsync(data);
             if (result == 1)
@@ -183,7 +167,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync_Character(Character data)
+        public async Task<bool> DeleteAsync_Creature(Creature data)
         {
             var result = await App.Database.DeleteAsync(data);
             if (result == 1)
@@ -193,21 +177,24 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<Character> GetAsync_Character(string id)
+        public async Task<Creature> GetAsync_Creature(string id)
         {
-            var result = await App.Database.GetAsync<Character>(id);
+            var result = await App.Database.GetAsync<Creature>(id);
             return result;
         }
 
-        public async Task<IEnumerable<Character>> GetAllAsync_Character(bool forceRefresh = false)
+        public async Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Character>().ToListAsync();
+            var result = await App.Database.Table<Creature>().ToListAsync();
             return result;
         }
 
 
-        //Monster
-        public async Task<bool> AddAsync_Monster(Monster data)
+    
+
+
+        // GameItem
+        public async Task<bool> AddAsync_GameItem(GameItem data)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -217,7 +204,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync_Monster(Monster data)
+        public async Task<bool> UpdateAsync_GameItem(GameItem data)
         {
             var result = await App.Database.UpdateAsync(data);
             if (result == 1)
@@ -227,7 +214,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync_Monster(Monster data)
+        public async Task<bool> DeleteAsync_GameItem(GameItem data)
         {
             var result = await App.Database.DeleteAsync(data);
             if (result == 1)
@@ -237,58 +224,15 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<Monster> GetAsync_Monster(string id)
+        public async Task<Score> GetAsync_GameItem(string id)
         {
-            var result = await App.Database.GetAsync<Monster>(id);
+            var result = await App.Database.GetAsync<GameItem>(id);
             return result;
         }
 
-        public async Task<IEnumerable<Monster>> GetAllAsync_Monster(bool forceRefresh = false)
+        public async Task<IEnumerable<GameItem>> GetAllAsync_GameItem(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Monster>().ToListAsync();
-            return result;
-        }
-
-        // Score
-        public async Task<bool> AddAsync_Score(Score data)
-        {
-            var result = await App.Database.InsertAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<bool> UpdateAsync_Score(Score data)
-        {
-            var result = await App.Database.UpdateAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<bool> DeleteAsync_Score(Score data)
-        {
-            var result = await App.Database.DeleteAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public async Task<Score> GetAsync_Score(string id)
-        {
-            var result = await App.Database.GetAsync<Score>(id);
-            return result;
-        }
-
-        public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
-        {
-            var result = await App.Database.Table<Score>().ToListAsync();
+            var result = await App.Database.Table<GameItem>().ToListAsync();
             return result;
         }
 
