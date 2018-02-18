@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GameOfChallengers.Models;
 
 namespace GameOfChallengers.Services
 {
@@ -15,15 +16,15 @@ namespace GameOfChallengers.Services
         Task<bool> AddAsync_Creature(Creature data);
         Task<bool> UpdateAsync_Creature(Creature data);
         Task<bool> DeleteAsync_Creature(Creature data);
-        Task<Character> GetAsync_Creature(string id);
-        Task<IEnumerable<Character>> GetAllAsync_Creature(bool forceRefresh = false);
+        Task<Creature> GetAsync_Creature(string id);
+        Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false);
 
 
         Task<bool> AddAsync_GameItem(GameItem data);
         Task<bool> UpdateAsync_GameItem(GameItem data);
         Task<bool> DeleteAsync_GameItem(GameItem data);
-        Task<Score> GetAsync_GameItem(string id);
-        Task<IEnumerable<Score>> GetAllAsync_GameItem(bool forceRefresh = false);
+        Task<GameItem> GetAsync_GameItem(string id);
+        Task<IEnumerable<GameItem>> GetAllAsync_GameItem(bool forceRefresh = false);
 
     }
 }

@@ -105,7 +105,7 @@ namespace GameOfChallengers.Services
 
         }
 
-        public async Task<bool> AddAsync(Item item)
+        public async Task<bool> AddAsync_Item(Item item)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -115,7 +115,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync(Item item)
+        public async Task<bool> UpdateAsync_Item(Item item)
         {
             if (result == 1)
             {
@@ -124,7 +124,7 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync(Item item)
+        public async Task<bool> DeleteAsync_Item(Item item)
         {
 
             if (result == 1)
@@ -134,13 +134,13 @@ namespace GameOfChallengers.Services
             return false;
         }
 
-        public async Task<Item> GetAsync(string id)
+        public async Task<Item> GetAsync_Item(string id)
         {
             var result = await App.Database.GetAsync<Item>(id);
             return result;
         }
 
-        public async Task<IEnumerable<Item>> GetAllAsync(bool forceRefresh = false)
+        public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
         {
             var result = await App.Database.Table<Item>().ToListAsync();
             return result;

@@ -13,7 +13,7 @@ namespace GameOfChallengers.ViewModels
     public class BaseViewModel : INotifyPropertyChanged
     {
         //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new SQLDataStore();
+        public IDataStore DataStore => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
 
         bool isBusy = false;
         public bool IsBusy

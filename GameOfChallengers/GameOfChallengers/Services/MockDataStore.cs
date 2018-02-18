@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MasterDetailsCRUDi.Models;
-using Character = MasterDetailsCRUDi.Models.Character;
+using Creature = MasterDetailsCRUDi.Models.Creature;
 
 namespace MasterDetailsCRUDi.Services
 {
@@ -26,10 +26,9 @@ namespace MasterDetailsCRUDi.Services
         }
 
         private List<Item> _itemDataset = new List<Item>();
-        private List<Character> _characterDataset = new List<Character>();
-        private List<Monster> _monsterDataset = new List<Monster>();
-        private List<Score> _scoreDataset = new List<Score>();
-
+        private List<Creature> _creatureDataset = new List<Creature>();
+        private List<GameItem> _monsterDataset = new List<GameItem>();
+       
         private MockDataStore()
         {
             var mockItems = new List<Item>
