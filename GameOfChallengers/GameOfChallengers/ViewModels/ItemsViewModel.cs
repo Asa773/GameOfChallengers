@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using GameOfChallengers.Models;
-using GameOfChallengers.Views;
+using GameOfChallengers.Views.Items;
 using System.Linq;
 
 namespace GameOfChallengers.ViewModels
@@ -38,33 +38,33 @@ namespace GameOfChallengers.ViewModels
             Dataset = new ObservableCollection<Item>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            //MessagingCenter.Subscribe<DeleteItemPage, Item>(this, "DeleteData", async (obj, data) =>
-            //{
-            //    Dataset.Remove(data);
-            //    await DataStore.DeleteAsync_Item(data);
-            //});
+            MessagingCenter.Subscribe<DeleteItemPage, Item>(this, "DeleteData", async (obj, data) =>
+            {
+                Dataset.Remove(data);
+                await DataStore.DeleteAsync_Item(data);
+            });
 
-            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddData", async (obj, data) =>
-            //{
-            //    Dataset.Add(data);
-            //    await DataStore.AddAsync_Item(data);
-            //});
+            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddData", async (obj, data) =>
+            {
+                Dataset.Add(data);
+                await DataStore.AddAsync_Item(data);
+            });
 
-            //MessagingCenter.Subscribe<EditItemPage, Item>(this, "EditData", async (obj, data) =>
-            //{
-            //    // Find the Item, then update it
-            //    var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
-            //    if (myData == null)
-            //    {
-            //        return;
-            //    }
+            MessagingCenter.Subscribe<EditItemPage, Item>(this, "EditData", async (obj, data) =>
+            {
+                // Find the Item, then update it
+                var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
+                if (myData == null)
+                {
+                    return;
+                }
 
-            //    myData.Update(data);
-            //    await DataStore.UpdateAsync_Item(myData);
+                myData.Update(data);
+                await DataStore.UpdateAsync_Item(myData);
 
-            //    _needsRefresh = true;
+                _needsRefresh = true;
 
-            //});
+            });
         }
 
         // Return True if a refresh is needed

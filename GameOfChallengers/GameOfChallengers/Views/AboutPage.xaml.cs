@@ -2,6 +2,8 @@
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GameOfChallengers.ViewModels;
+using GameOfChallengers.Services;
 
 namespace GameOfChallengers.Views
 {
@@ -21,24 +23,24 @@ namespace GameOfChallengers.Views
 
             if (e.Value == true)
             {
-                //ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
-                //MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
-                //CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
-                //ScoresViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
+                ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
+                MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
+                CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
+                ScoresViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
             }
             else
             {
-                //ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
-                //MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
-                //CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
-                //ScoresViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
+                ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
+                MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
+                CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
+                ScoresViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
             }
 
             // Have data refresh...
-            //ItemsViewModel.Instance.SetNeedsRefresh(true);
-            //MonstersViewModel.Instance.SetNeedsRefresh(true);
-            //CharactersViewModel.Instance.SetNeedsRefresh(true);
-            //ScoresViewModel.Instance.SetNeedsRefresh(true);
+            ItemsViewModel.Instance.SetNeedsRefresh(true);
+            MonstersViewModel.Instance.SetNeedsRefresh(true);
+            CharactersViewModel.Instance.SetNeedsRefresh(true);
+            ScoresViewModel.Instance.SetNeedsRefresh(true);
         }
 
         private async void ClearDatabase_Command(object sender, EventArgs e)
@@ -47,7 +49,7 @@ namespace GameOfChallengers.Views
             if (answer)
             {
                 // Call to the SQL DataStore and have it clear the tables.
-               // SQLDataStore.Instance.InitializeDatabaseNewTables();
+                SQLDataStore.Instance.InitializeDatabaseNewTables();
             }
         }
 
