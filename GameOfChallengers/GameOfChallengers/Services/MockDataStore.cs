@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MasterDetailsCRUDi.Models;
-using Creature = MasterDetailsCRUDi.Models.Creature;
+using GameOfChallengers.Models;
 
-namespace MasterDetailsCRUDi.Services
+namespace GameOfChallengers.Services
 {
     public sealed class MockDataStore : IDataStore
     {
 
-        // Make this a singleton so it only exist one time because holds all the data records in memory
         private static MockDataStore _instance;
 
         public static MockDataStore Instance
@@ -27,13 +25,15 @@ namespace MasterDetailsCRUDi.Services
 
         private List<Item> _itemDataset = new List<Item>();
         private List<Creature> _creatureDataset = new List<Creature>();
-        private List<GameItem> _monsterDataset = new List<GameItem>();
+        private List<Score> _scoreDataset = new List<Score>();
        
         private MockDataStore()
         {
             var mockItems = new List<Item>
             {
-                
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = false, Att = 0, Loc = 0},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = false, Att = 0, Loc = 0},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = false, Att = 0, Loc = 0},
             };
 
             foreach (var data in mockItems)
@@ -43,12 +43,21 @@ namespace MasterDetailsCRUDi.Services
 
             var mockCreature = new List<Creature>
             {
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"},
-                new Creature { Id = Guid.NewGuid().ToString(),Type = "Character", Name = "First Character", Level = "12" , Attack = "Attack stat",Defense = "defense stat",Speed = "Speed" , XP = "3",MaxHealth = "50",currHealth = "20" ,Alive = "Yes" ,Loc = "1st grid"}
+                //characters
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "First Character", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Second Character", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Third Character", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fourth Character", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fifth Character", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Sixth Character", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6 },
+                
+                //monsters
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "First Monster", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Second Monster", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Third Monster", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fourth Monster", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fifth Monster", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Sixth Monster", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6 },
             };
 
             foreach (var data in mockCreature)
@@ -58,60 +67,19 @@ namespace MasterDetailsCRUDi.Services
 
             
 
-            var mockGameItem = new List<GameItem>
+            var mockScore = new List<Score>
             {
-               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
-               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
-               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
-               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  },
-               new GameItem {Name = "Ring", Value = "12" , Range = "11" , Att = "attribute" , Loc = "finger"  }
+               new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false,  Round = 0, TotalXP = 0, Turns = 0, TotalMonstersKilled = null, TotalItemsDropped = null },
+               
             };
 
-            foreach (var data in mockGameItem)
+            foreach (var data in mockScore)
             {
-                _GameItemDataset.Add(data);
+                _scoreDataset.Add(data);
             }
 
         }
 
-        // Item
-        public async Task<bool> AddAsync_Item(Item data)
-        {
-            _itemDataset.Add(data);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> UpdateAsync_Item(Item data)
-        {
-            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
-            if (myData == null)
-            {
-                return false;
-            }
-
-            myData.Update(data);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<bool> DeleteAsync_Item(Item data)
-        {
-            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
-            _itemDataset.Remove(myData);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<Item> GetAsync_Item(string id)
-        {
-            return await Task.FromResult(_itemDataset.FirstOrDefault(s => s.Id == id));
-        }
-
-        public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
-        {
-            return await Task.FromResult(_itemDataset);
-        }
         // Creature
         public async Task<bool> AddAsync_Creature(Creature data)
         {
@@ -156,11 +124,48 @@ namespace MasterDetailsCRUDi.Services
         }
 
 
+        // Item
+        public async Task<bool> AddAsync_Item(Item data)
+        {
+            _itemDataset.Add(data);
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<bool> UpdateAsync_Item(Item data)
+        {
+            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            if (myData == null)
+            {
+                return false;
+            }
+
+            myData.Update(data);
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<bool> DeleteAsync_Item(Item data)
+        {
+            var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            _itemDataset.Remove(myData);
+
+            return await Task.FromResult(true);
+        }
+
+        public async Task<Item> GetAsync_Item(string id)
+        {
+            return await Task.FromResult(_itemDataset.FirstOrDefault(s => s.Id == id));
+        }
+
+        public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
+        {
+            return await Task.FromResult(_itemDataset);
+        }
 
 
-
-        // GameItem
-        public async Task<bool> AddAsync_GameItem(GameItem data)
+        // Score
+        public async Task<bool> AddAsync_Score(Score data)
         {
             var result = await App.Database.InsertAsync(data);
             if (result == 1)
@@ -170,7 +175,7 @@ namespace MasterDetailsCRUDi.Services
             return false;
         }
 
-        public async Task<bool> UpdateAsync_GameItem(GameItem data)
+        public async Task<bool> UpdateAsync_Score(Score data)
         {
             var result = await App.Database.UpdateAsync(data);
             if (result == 1)
@@ -180,7 +185,7 @@ namespace MasterDetailsCRUDi.Services
             return false;
         }
 
-        public async Task<bool> DeleteAsync_GameItem(GameItem data)
+        public async Task<bool> DeleteAsync_Score(Score data)
         {
             var result = await App.Database.DeleteAsync(data);
             if (result == 1)
@@ -190,25 +195,17 @@ namespace MasterDetailsCRUDi.Services
             return false;
         }
 
-        public async Task<Score> GetAsync_GameItem(string id)
+        public async Task<Score> GetAsync_Score(string id)
         {
-            var result = await App.Database.GetAsync<GameItem>(id);
+            var result = await App.Database.GetAsync<Score>(id);
             return result;
         }
 
-        public async Task<IEnumerable<GameItem>> GetAllAsync_GameItem(bool forceRefresh = false)
+        public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<GameItem>().ToListAsync();
+            var result = await App.Database.Table<Score>().ToListAsync();
             return result;
         }
-
-
-
-
-
-
-
-
 
     }
 }

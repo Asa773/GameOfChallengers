@@ -5,21 +5,45 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using GameOfChallengers.Models;
 using GameOfChallengers.Services;
 
 namespace GameOfChallengers.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
-        public IDataStore DataStore => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
+        private IDataStore DataStoreMock => DependencyService.Get<IDataStore>() ?? MockDataStore.Instance;
+        private IDataStore DataStoreSql => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
 
-        bool isBusy = false;
+        public IDataStore DataStore;
+
+        public BaseViewModel()
+        {
+            SetDataStore(DataStoreEnum.Mock);
+        }
+
+        public enum DataStoreEnum { Unknown = 0, Sql = 1, Mock = 2 }
+
+        public void SetDataStore(DataStoreEnum data)
+        {
+            switch (data)
+            {
+                case DataStoreEnum.Mock:
+                    DataStore = DataStoreMock;
+                    break;
+
+                case DataStoreEnum.Sql:
+                case DataStoreEnum.Unknown:
+                default:
+                    DataStore = DataStoreSql;
+                    break;
+            }
+        }
+
+        private bool _isBusy = false;
         public bool IsBusy
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
         }
 
         string title = string.Empty;

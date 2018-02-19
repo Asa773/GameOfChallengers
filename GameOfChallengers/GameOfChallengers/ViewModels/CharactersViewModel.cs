@@ -11,46 +11,46 @@ using System.Linq;
 
 namespace GameOfChallengers.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class CharactersViewModel : BaseViewModel
     {
-        private static ItemsViewModel _instance;
+        private static CharactersViewModel _instance;
 
-        public static ItemsViewModel Instance
+        public static CharactersViewModel Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ItemsViewModel();
+                    _instance = new CharactersViewModel();
                 }
                 return _instance;
             }
         }
 
-        public ObservableCollection<Item> Dataset { get; set; }
+        public ObservableCollection<Creature> Dataset { get; set; }
         public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
 
-        public ItemsViewModel()
+        public CharactersViewModel()
         {
-            Title = "Item List";
-            Dataset = new ObservableCollection<Item>();
+            Title = "Characters List";
+            Dataset = new ObservableCollection<Creature>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            //MessagingCenter.Subscribe<DeleteItemPage, Item>(this, "DeleteData", async (obj, data) =>
+            //MessagingCenter.Subscribe<DeleteCharacterPage, Creature>(this, "DeleteData", async (obj, data) =>
             //{
             //    Dataset.Remove(data);
-            //    await DataStore.DeleteAsync_Item(data);
+            //    await DataStore.DeleteAsync_Creature(data);
             //});
 
-            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddData", async (obj, data) =>
+            //MessagingCenter.Subscribe<NewCharacterPage, Creature>(this, "AddData", async (obj, data) =>
             //{
             //    Dataset.Add(data);
-            //    await DataStore.AddAsync_Item(data);
+            //    await DataStore.AddAsync_Creature(data);
             //});
 
-            //MessagingCenter.Subscribe<EditItemPage, Item>(this, "EditData", async (obj, data) =>
+            //MessagingCenter.Subscribe<EditCharacterPage, Creature>(this, "EditData", async (obj, data) =>
             //{
             //    // Find the Item, then update it
             //    var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -60,7 +60,7 @@ namespace GameOfChallengers.ViewModels
             //    }
 
             //    myData.Update(data);
-            //    await DataStore.UpdateAsync_Item(myData);
+            //    await DataStore.UpdateAsync_Creature(myData);
 
             //    _needsRefresh = true;
 
@@ -96,10 +96,13 @@ namespace GameOfChallengers.ViewModels
             try
             {
                 Dataset.Clear();
-                var dataset = await DataStore.GetAllAsync_Item(true);
+                var dataset = await DataStore.GetAllAsync_Creature(true);
                 foreach (var data in dataset)
                 {
-                    Dataset.Add(data);
+                    if(data.Type == 0)// just Characters
+                    {
+                        Dataset.Add(data);
+                    }
                 }
             }
 

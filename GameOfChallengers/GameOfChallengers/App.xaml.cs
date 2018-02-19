@@ -1,6 +1,7 @@
 ﻿using System;
 
 using GameOfChallengers.Views;
+using SQLite;
 using Xamarin.Forms;
 
 namespace GameOfChallengers

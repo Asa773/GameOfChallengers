@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GameOfChallengers.Models
 {
-    class CreatureInventory
+    public class CreatureInventory
     {
         public Item Head { get; set; }// item slot for head location
         public Item Body { get; set; }// item slot for body location

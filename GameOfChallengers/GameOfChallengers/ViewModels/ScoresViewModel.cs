@@ -11,46 +11,46 @@ using System.Linq;
 
 namespace GameOfChallengers.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ScoresViewModel : BaseViewModel
     {
-        private static ItemsViewModel _instance;
+        private static ScoresViewModel _instance;
 
-        public static ItemsViewModel Instance
+        public static ScoresViewModel Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = new ItemsViewModel();
+                    _instance = new ScoresViewModel();
                 }
                 return _instance;
             }
         }
 
-        public ObservableCollection<Item> Dataset { get; set; }
+        public ObservableCollection<Score> Dataset { get; set; }
         public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
 
-        public ItemsViewModel()
+        public ScoresViewModel()
         {
-            Title = "Item List";
-            Dataset = new ObservableCollection<Item>();
+            Title = "Scores List";
+            Dataset = new ObservableCollection<Score>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            //MessagingCenter.Subscribe<DeleteItemPage, Item>(this, "DeleteData", async (obj, data) =>
+            //MessagingCenter.Subscribe<DeleteScorePage, Score>(this, "DeleteData", async (obj, data) =>
             //{
             //    Dataset.Remove(data);
-            //    await DataStore.DeleteAsync_Item(data);
+            //    await DataStore.DeleteAsync_Score(data);
             //});
 
-            //MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddData", async (obj, data) =>
+            //MessagingCenter.Subscribe<NewScorePage, Score>(this, "AddData", async (obj, data) =>
             //{
             //    Dataset.Add(data);
-            //    await DataStore.AddAsync_Item(data);
+            //    await DataStore.AddAsync_Score(data);
             //});
 
-            //MessagingCenter.Subscribe<EditItemPage, Item>(this, "EditData", async (obj, data) =>
+            //MessagingCenter.Subscribe<EditScorePage, Score>(this, "EditData", async (obj, data) =>
             //{
             //    // Find the Item, then update it
             //    var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
@@ -60,7 +60,7 @@ namespace GameOfChallengers.ViewModels
             //    }
 
             //    myData.Update(data);
-            //    await DataStore.UpdateAsync_Item(myData);
+            //    await DataStore.UpdateAsync_Score(myData);
 
             //    _needsRefresh = true;
 
@@ -96,7 +96,7 @@ namespace GameOfChallengers.ViewModels
             try
             {
                 Dataset.Clear();
-                var dataset = await DataStore.GetAllAsync_Item(true);
+                var dataset = await DataStore.GetAllAsync_Score(true);
                 foreach (var data in dataset)
                 {
                     Dataset.Add(data);

@@ -20,11 +20,11 @@ namespace GameOfChallengers.Services
         Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false);
 
 
-        Task<bool> AddAsync_GameItem(GameItem data);
-        Task<bool> UpdateAsync_GameItem(GameItem data);
-        Task<bool> DeleteAsync_GameItem(GameItem data);
-        Task<GameItem> GetAsync_GameItem(string id);
-        Task<IEnumerable<GameItem>> GetAllAsync_GameItem(bool forceRefresh = false);
+        Task<bool> AddAsync_Score(Score data);
+        Task<bool> UpdateAsync_Score(Score data);
+        Task<bool> DeleteAsync_Score(Score data);
+        Task<Score> GetAsync_Score(string id);
+        Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false);
 
     }
 }

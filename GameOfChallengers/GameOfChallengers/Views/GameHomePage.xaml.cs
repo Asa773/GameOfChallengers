@@ -29,7 +29,7 @@ namespace GameOfChallengers.Views
 
         private async void Items_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ItemsPage());
+            //await Navigation.PushAsync(new ItemsPage());
         }
 
         private async void Scores_Command(object sender, EventArgs e)

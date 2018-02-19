@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using SQLite;
 
 namespace GameOfChallengers.Models
 {
-    class Creature
+    public class Creature
     {
-        public int Id { get; set; }// unique id for each character and monster
-        public int Type { get; set; }// character or monster
+        [PrimaryKey]
+        public string Id { get; set; }// unique id for each character and monster
+        public int Type { get; set; }// character(0) or monster(1)
         public string Name { get; set; }// 25 char max
         public int Level { get; set; }// 1-20
         public int Attack { get; set; }// creature's base attack stat
@@ -21,5 +21,26 @@ namespace GameOfChallengers.Models
 
         public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
 
+        public void Update(Creature newData)
+        {
+            if (newData == null)
+            {
+                return;
+            }
+
+            // Update all the fields in the Data, except for the Id
+            Type = newData.Type;
+            Name = newData.Name;
+            Level = newData.Level;
+            Attack = newData.Attack;
+            Defense = newData.Defense;
+            Speed = newData.Speed;
+            XP = newData.XP;
+            MaxHealth = newData.MaxHealth;
+            CurrHealth = newData.CurrHealth;
+            Alive = newData.Alive;
+            Loc = newData.Loc;
+            CInventory = newData.CInventory;
+        }
     }
 }
