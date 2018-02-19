@@ -10,7 +10,7 @@
 
           <StackLayout Orientation="Horizontal" Padding="16,40,16,40" Spacing="10">
             <Label Text="Name :" FontSize="Medium" />
-            <Entry Text="{Binding Data.Name}" FontSize="Small" />
+            <Editor Text="{Binding Data.Name}" FontSize="Small" />
         </StackLayout>
             <Button  
                     Text="Save" 

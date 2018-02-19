@@ -18,7 +18,7 @@ namespace GameOfChallengers.Views.Items
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-
+           
             BindingContext = _viewModel = viewModel;
         }
 
@@ -28,8 +28,13 @@ namespace GameOfChallengers.Views.Items
 
             var data = new Item
             {
-                Name = "Item1",
-                //Description = "This is an item description."
+              Name = "Item1",
+              Value = 10,
+              Range = 5,
+              Loc = Locations.unknown,
+             Att = Attributes.unknown
+             
+            //Description = "This is an item description."
             };
 
             _viewModel = new ItemDetailViewModel(data);
@@ -44,16 +49,14 @@ namespace GameOfChallengers.Views.Items
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
-            var answer = await DisplayAlert("Delete", "Are You sure, you want to Delete this?", "Yes", "No");
-            if (answer)
-            {
-                MessagingCenter.Send(this, "DeleteData", Data);
 
-                // Remove Item Details Page manualy
-                //Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+            await Navigation.PushAsync(new DeleteItemPage(_viewModel));
+           
+        }
 
-                await Navigation.PopAsync();
-            }
+        private async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
         }
 
     }
