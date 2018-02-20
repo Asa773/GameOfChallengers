@@ -13,9 +13,11 @@ namespace GameOfChallengers.Views
 {
     public partial class GameHomePage : ContentPage
     {
+        private AboutPage aboutPageinstance;
         public GameHomePage()
         {
             InitializeComponent();
+
         }
 
 
@@ -26,7 +28,11 @@ namespace GameOfChallengers.Views
 
         private async void About_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AboutPage());
+            if(aboutPageinstance == null)
+            {
+                aboutPageinstance = new AboutPage();
+            }
+            await Navigation.PushAsync(aboutPageinstance);
         }
 
         private async void Play_Command(object sender, EventArgs e)
