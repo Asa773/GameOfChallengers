@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using GameOfChallengers.Views.Items;
 using GameOfChallengers.Views.Monsters;
+using GameOfChallengers.Views.Character;
+using GameOfChallengers.Views.Scores;
+
 
 namespace GameOfChallengers.Views
 {
@@ -17,7 +20,7 @@ namespace GameOfChallengers.Views
 
         private async void Help_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new NewItemPage());
+            //await Navigation.PushAsync(new HelpPage());
         }
 
         private async void About_Clicked(object sender, EventArgs e)
@@ -32,7 +35,7 @@ namespace GameOfChallengers.Views
 
         private async void Characters_Command(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new CharactersPage());
         }
 
         private async void Monsters_Command(object sender, EventArgs e)
@@ -47,7 +50,7 @@ namespace GameOfChallengers.Views
 
         private async void Scores_Command(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new ScorePage());
         }
 
     }

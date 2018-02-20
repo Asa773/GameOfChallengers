@@ -3,9 +3,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="GameOfChallengers.Views.GameHomePage"
     Title="Game">
-    <ContentPage.ToolbarItems>      
-    <ToolbarItem Text="About" Clicked="About_Clicked" />
-    <ToolbarItem Text="Help" Clicked="Help_Clicked" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Help" Clicked="Help_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
@@ -19,33 +18,38 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-            <Button  
+                <Button  
                     Text="Play" 
                     Clicked="Play_Command" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
 
-             <Button  
+                <Button  
                     Text="Characters" 
                     Clicked="Characters_Command" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
 
-             <Button  
+                <Button  
                     Text="Monsters" 
                     Clicked="Monsters_Command" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
 
-             <Button  
+                <Button  
                     Text="Items" 
                     Clicked="Items_Command" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
 
-             <Button  
+                <Button  
                     Text="Scores" 
                     Clicked="Scores_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+                <Button  
+                    Text="About" 
+                    Clicked="About_Clicked" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
             </StackLayout>
