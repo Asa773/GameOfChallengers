@@ -26,7 +26,7 @@ namespace GameOfChallengers.Services
         private List<Item> _itemDataset = new List<Item>();
         private List<Creature> _creatureDataset = new List<Creature>();
         private List<Score> _scoreDataset = new List<Score>();
-       
+
         private MockDataStore()
         {
             var mockItems = new List<Item>
@@ -44,20 +44,20 @@ namespace GameOfChallengers.Services
             var mockCreature = new List<Creature>
             {
                 //characters
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "First Character", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Second Character", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Third Character", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fourth Character", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fifth Character", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Sixth Character", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "First Character", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Second Character", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Third Character", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fourth Character", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fifth Character", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Sixth Character", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6/*, CInventory = null*/ },
                 
                 //monsters
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "First Monster", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Second Monster", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Third Monster", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fourth Monster", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fifth Monster", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5 },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Sixth Monster", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6 },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "First Monster", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Second Monster", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Third Monster", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fourth Monster", Level = 4, Attack = 40, Defense = 40, Speed = 4, XP = 400, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 4/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Fifth Monster", Level = 5, Attack = 50, Defense = 50, Speed = 5, XP = 500, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 5/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Sixth Monster", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6/*, CInventory = null*/ },
             };
 
             foreach (var data in mockCreature)
@@ -65,12 +65,12 @@ namespace GameOfChallengers.Services
                 _creatureDataset.Add(data);
             }
 
-            
+
 
             var mockScore = new List<Score>
             {
-               new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false,  Round = 0, TotalXP = 0, Turns = 0, TotalMonstersKilled = null, TotalItemsDropped = null },
-               
+               new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false,  Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ },
+
             };
 
             foreach (var data in mockScore)
