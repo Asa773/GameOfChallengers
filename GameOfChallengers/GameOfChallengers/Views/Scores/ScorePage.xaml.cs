@@ -6,6 +6,7 @@ using Xamarin.Forms.Xaml;
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Scores;
+using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Views.Scores
 {

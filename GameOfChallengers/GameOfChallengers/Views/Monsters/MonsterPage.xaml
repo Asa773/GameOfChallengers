@@ -4,7 +4,8 @@
              x:Class="GameOfChallengers.Views.Monsters.MonsterPage"
               Title="{Binding Title}">
     <ContentPage.Content>
-        <StackLayout>
+        <ScrollView>
+            <StackLayout>
             <Label Text="Monsters"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
@@ -15,7 +16,7 @@
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
-                 RefreshCommand="{Binding LoadItemsCommand}"
+                 RefreshCommand="{Binding LoadDataCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  CachingStrategy="RecycleElement"
@@ -34,5 +35,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

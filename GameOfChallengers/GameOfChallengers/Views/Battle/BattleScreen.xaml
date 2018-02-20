@@ -9,7 +9,13 @@
                    VerticalOptions ="CenterAndExpand"
                    HorizontalOptions =" CenterAndExpand"/>
             <Entry Text="{Binding Data.Battle}" FontSize="Small" />
-            
+            <Grid BackgroundColor="White" >
+                <BoxView BackgroundColor="Pink"  />
+                <Grid BackgroundColor="White" Margin="5">
+
+                </Grid>
+            </Grid>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
