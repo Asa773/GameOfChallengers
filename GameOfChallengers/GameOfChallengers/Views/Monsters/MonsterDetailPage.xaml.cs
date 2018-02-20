@@ -29,18 +29,20 @@ namespace GameOfChallengers.Views.Monsters
         {
             InitializeComponent();
 
-            var data = new Creature
+            Data = new Creature
             {
-                Name = "Item1",
-                Level = 0,
-                Speed = 0,
-                Attack = 0
-                
+                Name = "Monster name",
+                Id = Guid.NewGuid().ToString(),
+                Type = 0,
+                Level = 1,
+                XP = 0,
+                MaxHealth = 10,
+                CurrHealth = 10,
+                Alive = true,
 
-                
             };
 
-            _viewModel = new CreatureDetailViewModel(data);
+            _viewModel = new CreatureDetailViewModel(Data);
             BindingContext = _viewModel;
         }
 

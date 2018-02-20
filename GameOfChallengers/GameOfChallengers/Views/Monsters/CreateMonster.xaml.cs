@@ -21,20 +21,24 @@ namespace GameOfChallengers.Views.Monsters
 			InitializeComponent ();
             Data = new Creature
             {
-                Name = "Monster",
-                CurrHealth = 0,
-                Speed = 0,
-                Attack = 0,
-                Defense = 0,
-                XP = 0
+                Name = "Monster name",
+                Id = Guid.NewGuid().ToString(),
+                Type = 1,
+                Level = 1,
+                XP = 0,
+                MaxHealth = 10,
+                CurrHealth = 10,
+                Alive = true,
+
             };
-		}
+
+            BindingContext = this;
+        }
 
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddData", Data);
-            await
-                Navigation.PopAsync();
+            await Navigation.PopAsync();
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
