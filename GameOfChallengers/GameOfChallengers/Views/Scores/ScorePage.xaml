@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Scores.ScorePage"
+             Title="{Binding Title}" >
+
+    <ScrollView>
+
+        <StackLayout Spacing="20" Padding="15">
+
+            <Label Text="Score Page" FontSize="Small" />
+
+            <Label Text="Name:" FontSize="Medium" />
+            <Label Text="{Binding Data.Name}" FontSize="Small"/>
+
+            <Label Text="Score:" FontSize="Medium" />
+            <Label Text="{Binding Data.FinalScore}" FontSize="Small"/>
+
+            <Label Text="Game Date:" FontSize="Medium" />
+            <Label Text="{Binding Data.Date}" FontSize="Small"/>
+
+            <Label Text="Round:" FontSize="Medium" />
+            <Label Text="{Binding Data.Round}" FontSize="Small"/>
+
+            <Label Text="Number of Turns:" FontSize="Medium" />
+            <Label Text="{Binding Data.Turns}" FontSize="Small"/>
+
+            <Label Text="AutoBattle:" FontSize="Medium" />
+            <Label Text="{Binding Data.Auto}" FontSize="Small"/>
+
+            <Label Text="Total XP:" FontSize="Medium" />
+            <Label Text="{Binding Data.TotalXP}" FontSize="Small"/>
+
+            <Label Text="Monsters Killed:" FontSize="Medium" />
+            <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small"/>
+
+            <Label Text="Items Dropped:" FontSize="Medium" />
+            <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small"/>
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -44,6 +44,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\CreatureDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ItemsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonsterDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
@@ -53,6 +54,30 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\AboutPage.xaml.cs">
       <DependentUpon>AboutPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Monsters\CreateMonster.xaml.cs">
+      <DependentUpon>CreateMonster.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Monsters\DeleteMonsterPage.xaml.cs">
+      <DependentUpon>DeleteMonsterPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Monsters\EditMonsterPage.xaml.cs">
+      <DependentUpon>EditMonsterPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Monsters\MonsterDetailPage.xaml.cs">
+      <DependentUpon>MonsterDetailPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Monsters\MonsterPage.xaml.cs">
+      <DependentUpon>MonsterPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Scores\ScorePage.xaml.cs">
+      <DependentUpon>ScorePage.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\SignInPage.xaml.cs">
       <DependentUpon>SignInPage.xaml</DependentUpon>
@@ -73,9 +98,37 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\Item\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Character\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\Monster\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Battle\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\Score\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\MonsterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\CreateMonster.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\EditMonsterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\DeleteMonsterPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Scores\ScorePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\MonsterDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <!--#if (CreateBackendProject)
     <Compile Include="$(MSBuildThisFileDirectory)Services\AzureDataStore.cs" />

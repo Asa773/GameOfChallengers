@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using GameOfChallengers.Models;
-using GameOfChallengers.Views;
+using GameOfChallengers.ViewModels;
+using GameOfChallengers.Views.Monsters;
 using System.Linq;
 
 namespace GameOfChallengers.ViewModels
@@ -31,7 +32,16 @@ namespace GameOfChallengers.ViewModels
         public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
+        public bool NeedsRefresh()
+        {
+            if (_needsRefresh)
+            {
+                _needsRefresh = false;
+                return true;
+            }
 
+            return false;
+        }
         public MonstersViewModel()
         {
             Title = "Monsters List";
@@ -68,17 +78,7 @@ namespace GameOfChallengers.ViewModels
         }
 
         // Return True if a refresh is needed
-        // It sets the refresh flag to false
-        public bool NeedsRefresh()
-        {
-            if (_needsRefresh)
-            {
-                _needsRefresh = false;
-                return true;
-            }
-
-            return false;
-        }
+       
 
         // Sets the need to refresh
         public void SetNeedsRefresh(bool value)
