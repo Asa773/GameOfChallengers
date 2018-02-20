@@ -10,7 +10,7 @@ using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Monsters;
 
-namespace GameOfChallengers.Views.Monster
+namespace GameOfChallengers.Views.Monsters
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MonsterPage : ContentPage
@@ -31,12 +31,12 @@ namespace GameOfChallengers.Views.Monster
                 return;
             }
 
-            await Navigation.PushAsync(new MonsterDetailPage(new MonsterDetailViewModel (data)));
+            await Navigation.PushAsync(new MonsterDetailPage(new CreatureDetailViewModel (data)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+            MonstersListView.SelectedItem = null;
         }
-        private async void AddItem_Clicked(object sender, EventArgs e)
+        private async void AddMonster_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new CreateMonster());
         }
@@ -66,10 +66,6 @@ namespace GameOfChallengers.Views.Monster
             BindingContext = _viewModel;
         }
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

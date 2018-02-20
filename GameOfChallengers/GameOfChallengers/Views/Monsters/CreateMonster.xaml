@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameOfChallengers.Views.Monster.CreateMonster"
+             x:Class="GameOfChallengers.Views.Monsters.CreateMonster"
              Title="Add New Monster">
     <ContentPage.ToolbarItems>
         
@@ -9,28 +9,27 @@
     </ContentPage.ToolbarItems>
     
     <ContentPage.Content>
-        
-        <StackLayout Spacing=" 20" Padding="15">
-            <ListView>
+        <ScrollView>
+            <StackLayout Spacing=" 20" Padding="15">
                 <Label Text="New Monster" FontSize= "Medium"/>
                 <Label Text="Enter Name" FontSize="Medium" />
-            <Entry Text="{Binding Data.Name}" FontSize="Small" />
-            <Label Text="Enter Health" FontSize="Medium" />
-            <Editor Text="{Binding Data.MaxHealth}" FontSize="Small" Margin="0" />
-            <Label Text="Enter Speed" FontSize="Medium" />
-            <Editor Text="{Binding Data.Speed}" FontSize="Small" Margin="0" />
-            <Label Text="Enter Attack" FontSize="Medium" />
-            <Editor Text="{Binding Data.Attack}" FontSize="Small" Margin="0" />
-            <Label Text="Enter Defense" FontSize="Medium" />
-            <Editor Text="{Binding Data.Defense}" FontSize="Small" Margin="0" />
-            <Label Text="Enter Experience" FontSize="Medium" />
-            <Editor Text="{Binding Data.XP}" FontSize="Small" Margin="0" />
+                <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                <Label Text="Enter Health" FontSize="Medium" />
+                <Editor Text="{Binding Data.MaxHealth}" FontSize="Small" Margin="0" />
+                <Label Text="Enter Speed" FontSize="Medium" />
+                <Editor Text="{Binding Data.Speed}" FontSize="Small" Margin="0" />
+                <Label Text="Enter Attack" FontSize="Medium" />
+                <Editor Text="{Binding Data.Attack}" FontSize="Small" Margin="0" />
+                <Label Text="Enter Defense" FontSize="Medium" />
+                <Editor Text="{Binding Data.Defense}" FontSize="Small" Margin="0" />
+                <Label Text="Enter Experience" FontSize="Medium" />
+                <Editor Text="{Binding Data.XP}" FontSize="Small" Margin="0" />
                 <Button Text="Create"
                     HorizontalOptions="Center"
                     VerticalOptions="Center" 
-                    Clicked="Create_Clicked" />
-
-            </ListView>
-        </StackLayout>
+                    Clicked="Save_Clicked" />
+            </StackLayout>
+        </ScrollView>
+        
     </ContentPage.Content>
 </ContentPage>

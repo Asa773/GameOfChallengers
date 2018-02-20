@@ -11,16 +11,16 @@ using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Monster;
 using GameOfChallengers.Models;
 
-namespace GameOfChallengers.Views.Monster
+namespace GameOfChallengers.Views.Monsters
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DeleteMonsterPage : ContentPage
 	{
-        private MonsterDetailViewModel _viewModel;
+        private CreatureDetailViewModel _viewModel;
 
         public Creature Data{ get; set; }
 
-        public DeleteMonsterPage (MonsterDetailViewModel viewModel)
+        public DeleteMonsterPage (CreatureDetailViewModel viewModel)
 		{
             Data = viewModel.Data;
             viewModel.Title = "Delete " + viewModel.Title;

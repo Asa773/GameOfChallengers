@@ -1,16 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameOfChallengers.Views.Monster.MonsterMainPage"
+             x:Class="GameOfChallengers.Views.Monsters.MonsterPage"
               Title="{Binding Title}">
-      <ContentPage.Content>
+    <ContentPage.Content>
         <StackLayout>
-           
-            <ListView x:Name="ItemsListView" 
+            <Label Text="Monsters"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" Clicked="AddMonster_Clicked"></Button>
+            </StackLayout>
+            <ListView x:Name="MonstersListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
-                 RefreshCommand="{Binding LoadDataCommand}"
+                 RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  CachingStrategy="RecycleElement"
@@ -18,22 +23,12 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <ScrollView>
                             <StackLayout Padding="10">
-                                <Button Text="Add Monster"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center"
-                                        Clicked="Add Monster Clicked">
-
-                                </Button>
-
                                 <Label Text="{Binding Name}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="13" />
-
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
                             </StackLayout>
-                            </ScrollView>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

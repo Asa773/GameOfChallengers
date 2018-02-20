@@ -15,8 +15,8 @@ namespace GameOfChallengers.Views.Monsters
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditMonsterPage : ContentPage
 	{
-         MonsterDetailViewModel _viewModel;
-        private MonsterDetailViewModel viewModel;
+        CreatureDetailViewModel _viewModel;
+        private CreatureDetailViewModel viewModel;
 
  //       public EditMonsterPage(MonsterDetailViewModel viewModel)
  //       {
@@ -26,7 +26,7 @@ namespace GameOfChallengers.Views.Monsters
 
         public Creature Data { get; set; }
        
-        public EditMonsterPage(MonsterDetailViewModel viewModel)
+        public EditMonsterPage(CreatureDetailViewModel viewModel)
         {
            Data = viewModel.Data;
             viewModel.Title = "Edit" + viewModel.Title;

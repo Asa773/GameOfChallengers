@@ -9,17 +9,16 @@ using Xamarin.Forms.Xaml;
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Monsters;
-using GameOfChallengers.Views.Monster;
 
 namespace GameOfChallengers.Views.Monsters
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MonsterDetailPage : ContentPage
 	{
-        private MonsterDetailViewModel _viewModel;
+        private CreatureDetailViewModel _viewModel;
         public Creature Data { get; set; }
 
-        public MonsterDetailPage(MonsterDetailViewModel viewModel)
+        public MonsterDetailPage(CreatureDetailViewModel viewModel)
         {
             InitializeComponent();
 
@@ -41,7 +40,7 @@ namespace GameOfChallengers.Views.Monsters
                 
             };
 
-            _viewModel = new MonsterDetailViewModel(data);
+            _viewModel = new CreatureDetailViewModel(data);
             BindingContext = _viewModel;
         }
 

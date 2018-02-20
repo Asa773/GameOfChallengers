@@ -30,11 +30,6 @@ namespace GameOfChallengers.Views.Monsters
             };
 		}
 
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
-
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddData", Data);
