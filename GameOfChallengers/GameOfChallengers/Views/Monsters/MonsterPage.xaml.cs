@@ -31,7 +31,7 @@ namespace GameOfChallengers.Views.Monster
                 return;
             }
 
-            await Navigation.PushAsync(new MonsterDetailPage(new MonsterDetailViewModel (data));
+            await Navigation.PushAsync(new MonsterDetailPage(new MonsterDetailViewModel (data)));
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;

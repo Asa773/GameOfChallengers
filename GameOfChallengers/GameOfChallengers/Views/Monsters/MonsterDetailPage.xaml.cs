@@ -16,17 +16,14 @@ namespace GameOfChallengers.Views.Monsters
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class MonsterDetailPage : ContentPage
 	{
-        MonsterDetailViewModel _viewModel;
+        private MonsterDetailViewModel _viewModel;
+        public Creature Data { get; set; }
 
         public MonsterDetailPage(MonsterDetailViewModel viewModel)
         {
             InitializeComponent();
 
             BindingContext = _viewModel = viewModel;
-        }
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
 
         public MonsterDetailPage()
@@ -35,11 +32,11 @@ namespace GameOfChallengers.Views.Monsters
 
             var data = new Creature
             {
-                Name = "New Monster",
-                CurrHealth = 0,
-                Attack = 0,
+                Name = "Item1",
                 Level = 0,
-                Speed = 0
+                Speed = 0,
+                Attack = 0
+                
 
                 
             };
@@ -48,20 +45,23 @@ namespace GameOfChallengers.Views.Monsters
             BindingContext = _viewModel;
         }
 
-        async void Edit_Clicked(object sender, EventArgs e)
+
+        private async void Edit_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new EditMonsterPage(_viewModel));
         }
 
-        async void Delete_Clicked(object sender, EventArgs e)
+        private async void Delete_Clicked(object sender, EventArgs e)
         {
+
             await Navigation.PushAsync(new DeleteMonsterPage(_viewModel));
+
         }
-        async void Cancel_Clicked(object sender, EventArgs e)
+
+        private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
-
 
     }
 
