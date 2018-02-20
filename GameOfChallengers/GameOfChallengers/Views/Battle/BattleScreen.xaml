@@ -1,21 +1,176 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Battle.BattleScreen">
     <ContentPage.Content>
+         <ScrollView>
+            <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
         <StackLayout>
           
             <Label Text ="Battle updates"
                    VerticalOptions ="CenterAndExpand"
                    HorizontalOptions =" CenterAndExpand"/>
-            <Entry Text="{Binding Data.Battle}" FontSize="Small" />
-            <Grid BackgroundColor="White" >
-                <BoxView BackgroundColor="Pink"  />
-                <Grid BackgroundColor="White" Margin="5">
+            <Label Text="Battle Messages" FontSize="Large" />
+
+                </StackLayout>
+          
+            <StackLayout Spacing="20" Padding="15">
+                     
+                <Grid
+                    RowSpacing="2"
+                    ColumnSpacing="2"
+                    VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="2">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="3">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="4">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="5">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                       
+                        
+                   <StackLayout Grid.Row="1" Grid.Column="0">
+                        <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="2">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="3">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="4">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="5">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                       
+
+                        <StackLayout Grid.Row="2" Grid.Column="0">
+                        <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="1">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="2">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="2" Grid.Column="3">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+                        <StackLayout Grid.Row="2" Grid.Column="4">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="5">
+                         <BoxView Color="CornflowerBlue"
+                              WidthRequest="30"
+                              HeightRequest="30"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" />
+                    </StackLayout>
 
                 </Grid>
-            </Grid>
 
-        </StackLayout>
+            </StackLayout>
+       </StackLayout>
+             </ScrollView>
     </ContentPage.Content>
 </ContentPage>
