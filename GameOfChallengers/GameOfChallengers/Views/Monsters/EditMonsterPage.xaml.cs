@@ -15,32 +15,32 @@ namespace GameOfChallengers.Views.Monsters
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditMonsterPage : ContentPage
 	{
-        CreatureDetailViewModel _viewModel;
-        private CreatureDetailViewModel viewModel;
-
- //       public EditMonsterPage(MonsterDetailViewModel viewModel)
- //       {
- //BindingContext =  this.viewModel = viewModel;
- //       }
-        private bool _NeedsRefresh;
+        private CreatureDetailViewModel _viewModel;
 
         public Creature Data { get; set; }
        
         public EditMonsterPage(CreatureDetailViewModel viewModel)
         {
-           Data = viewModel.Data;
+            Data = viewModel.Data;
             viewModel.Title = "Edit" + viewModel.Title;
 
             InitializeComponent();
 
-            BindingContext = this._viewModel = viewModel;
+            BindingContext = _viewModel = viewModel;
         }
-        
-        async void Save_Clicked(object sender, EventArgs e)
+
+        private async void Save_Clicked(object sender, EventArgs e)
         {
-            MessagingCenter.Send(this, "UpdateMonster", _viewModel.Data);
-            _NeedsRefresh = true;
-            await Navigation.PopToRootAsync();
+            MessagingCenter.Send(this, "EditData", Data);
+
+            // removing the old ItemDetails page, 2 up counting this page
+            Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+
+            // Add a new items details page, with the new Item data on it
+            await Navigation.PushAsync(new MonsterDetailPage(new CreatureDetailViewModel(Data)));
+
+            // Last, remove this page
+            Navigation.RemovePage(this);
         }
         async void Cancel_Clicked(object sender, EventArgs e)
         {

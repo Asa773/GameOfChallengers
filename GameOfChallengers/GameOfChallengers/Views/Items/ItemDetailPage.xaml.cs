@@ -11,7 +11,6 @@ namespace GameOfChallengers.Views.Items
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemDetailPage : ContentPage
     {
-        // ReSharper disable once PrivateFieldCanBeConvertedToLocalVariable
         private ItemDetailViewModel _viewModel;
         public Item Data { get; set; }
 
@@ -34,7 +33,6 @@ namespace GameOfChallengers.Views.Items
               Loc = Locations.unknown,
              Att = Attributes.unknown
              
-            //Description = "This is an item description."
             };
 
             _viewModel = new ItemDetailViewModel(data);
