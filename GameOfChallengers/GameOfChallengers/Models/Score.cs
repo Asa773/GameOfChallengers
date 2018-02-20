@@ -16,15 +16,15 @@ namespace GameOfChallengers.Models
         public int Turns { get; set; }//this will count the # of turns for the end game score
         public bool Auto { get; set; }//this is so that the score can show if the game was turn based or on auto mode
         public int TotalXP { get; set; }//this is to show the total xp gained by all characters on the score page
-        //public List<Creature> TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
-        //public List<Item> TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
+        public List<Creature> TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
+        public List<Item> TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
 
         public Score()
         {
             Date = DateTime.Now;
             Auto = false;
-            //TotalMonstersKilled = null;
-            //TotalItemsDropped = null;
+            TotalMonstersKilled = null;
+            TotalItemsDropped = null;
         }
 
         public void Update(Score newData)
@@ -41,8 +41,8 @@ namespace GameOfChallengers.Models
             Turns = newData.Turns;
             Auto = newData.Auto;
             TotalXP = newData.TotalXP;
-            //TotalMonstersKilled = newData.TotalMonstersKilled;
-            //TotalItemsDropped = newData.TotalItemsDropped;
+            TotalMonstersKilled = newData.TotalMonstersKilled;
+            TotalItemsDropped = newData.TotalItemsDropped;
         }
     }
 }

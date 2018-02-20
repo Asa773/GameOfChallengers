@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameOfChallengers.ViewModels
 {
-    public class CreatureDetailViewModel : BaseViewModel
+    class CreatureDetailViewModel : BaseViewModel
     {
         public Creature Data { get; set; }
         public CreatureDetailViewModel(Creature data = null)
