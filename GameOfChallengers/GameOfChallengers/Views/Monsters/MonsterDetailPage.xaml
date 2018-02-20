@@ -3,6 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Monster.MonsterDetailPage"
              Title="{Binding Title}" >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" Clicked="Edit_Clicked"/>
+        <ToolbarItem Text="Delete" Clicked="Delete_Clicked"/>
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
 
@@ -57,23 +62,7 @@
                     HorizontalOptions="Center"/>
                 </StackLayout>
 
-                <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                    <Button Text="Edit"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Clicked="Edit_Clicked"/>
-                </StackLayout>
-
-                <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                    <Button Text="Delete"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Clicked="Delete_CLicked"/>
-                </StackLayout>
+               
 
             </StackLayout>
         </ScrollView>

@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace GameOfChallengers.Views.Monster
         }
 
        
-        async void Delete_CLicked(object sender,EventArgs e)
+        async void Yes_CLicked(object sender,EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
 
@@ -39,6 +39,10 @@ namespace GameOfChallengers.Views.Monster
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
             await Navigation.PopAsync();
+        }
+        async void No_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopToRootAsync();
         }
 
 

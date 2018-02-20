@@ -59,13 +59,21 @@
             <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-                <Button Text="Delete"
+                <Button Text="Yes"
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
-                       Clicked="Delete_CLicked"/>
+                       Clicked="Yes_CLicked"/>
             </StackLayout>
+                <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Start">
+                    <Button Text="No"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       Clicked="No_CLicked"/>
+                </StackLayout>
 
-        </StackLayout>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

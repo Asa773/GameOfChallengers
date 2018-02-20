@@ -57,7 +57,10 @@ namespace GameOfChallengers.Views.Monsters
         {
             await Navigation.PushAsync(new DeleteMonsterPage(_viewModel));
         }
-
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
 
 
     }

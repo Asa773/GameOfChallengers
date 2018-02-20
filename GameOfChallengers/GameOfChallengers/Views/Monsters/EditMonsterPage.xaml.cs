@@ -45,6 +45,10 @@ namespace GameOfChallengers.Views.Monsters
             _NeedsRefresh = true;
             await Navigation.PopToRootAsync();
         }
+        async void Cancel_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 
 
