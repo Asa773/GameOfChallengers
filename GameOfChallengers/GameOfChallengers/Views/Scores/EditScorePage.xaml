@@ -2,11 +2,18 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Scores.EditScorePage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Edit Score" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Name" FontSize="Small" />
+                <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                <Button Text="Save" Clicked="Save_Clicked" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

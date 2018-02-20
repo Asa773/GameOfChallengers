@@ -21,6 +21,8 @@ namespace GameOfChallengers.Models
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
 
+        //The CreatureInventory was causing problems with the database and may need to be refactord or moved out of the model
+
         public Creature()
         {
             Alive = true;

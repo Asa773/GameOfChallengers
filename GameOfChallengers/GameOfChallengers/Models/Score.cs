@@ -18,6 +18,8 @@ namespace GameOfChallengers.Models
         public int TotalXP { get; set; }//this is to show the total xp gained by all characters on the score page
         //public List<Creature> TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
         //public List<Item> TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
+        
+        //The lists were causing problems with the database and may need to be refactord or moved out of the model
 
         public Score()
         {

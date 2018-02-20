@@ -3,52 +3,38 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Scores.ScorePage"
              Title="{Binding Title}" >
-    <ContentPage.ToolbarItems>
-
-        <ToolbarItem Text="Exit" Clicked="Exit_Clicked" />
-    </ContentPage.ToolbarItems>
-    <ScrollView>
-
-        <StackLayout Spacing="20" Padding="15">
-
-            <Label Text="Score Page" FontSize="Small" />
-
-            <Label Text="Name:" FontSize="Medium" />
-            <Label Text="{Binding Data.Name}" FontSize="Small"/>
-
-            <Label Text="Score:" FontSize="Medium" />
-            <Label Text="{Binding Data.FinalScore}" FontSize="Small"/>
-
-            <Label Text="Game Date:" FontSize="Medium" />
-            <Label Text="{Binding Data.Date}" FontSize="Small"/>
-
-            <Label Text="Round:" FontSize="Medium" />
-            <Label Text="{Binding Data.Round}" FontSize="Small"/>
-
-            <Label Text="Number of Turns:" FontSize="Medium" />
-            <Label Text="{Binding Data.Turns}" FontSize="Small"/>
-
-            <Label Text="AutoBattle:" FontSize="Medium" />
-            <Label Text="{Binding Data.Auto}" FontSize="Small"/>
-
-            <Label Text="Total XP:" FontSize="Medium" />
-            <Label Text="{Binding Data.TotalXP}" FontSize="Small"/>
-
-            <Label Text="Monsters Killed:" FontSize="Medium" />
-            <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small"/>
-
-            <Label Text="Items Dropped:" FontSize="Medium" />
-            <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small"/>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="High Scores"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            
+            <ListView x:Name="ScoresListView" 
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                                <Label Text="{Binding FinalScore}" 
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="16" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
-         
-        <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-            <Button Text="Try Again"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Clicked="TryAgain_Clicked"/>
-        </StackLayout>
-        
-    </ScrollView>
+    </ContentPage.Content>
 </ContentPage>

@@ -6,39 +6,55 @@ using Xamarin.Forms.Xaml;
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Scores;
-//using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Views.Scores
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScorePage : ContentPage
     {
-        ScoreDetailViewModel _viewModel;
-        
-
+        private ScoresViewModel _viewModel;
         public ScorePage()
         {
             InitializeComponent();
+            BindingContext = _viewModel = ScoresViewModel.Instance;
+        }
 
-            var data = new Score
+        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        {
+            var data = args.SelectedItem as Score;
+            if (data == null)
+                return;
+
+            await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(data)));
+
+            // Manually deselect item.
+            ScoresListView.SelectedItem = null;
+        }
+
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            BindingContext = null;
+
+            if (ToolbarItems.Count > 0)
             {
-                Name = "Score name",
-                FinalScore = 0
-            };
+                ToolbarItems.RemoveAt(0);
+            }
 
-            _viewModel = new ScoreDetailViewModel(data);
+            InitializeComponent();
+
+            if (_viewModel.Dataset.Count == 0)
+            {
+                _viewModel.LoadDataCommand.Execute(null);
+            }
+            else if (_viewModel.NeedsRefresh())
+            {
+                _viewModel.LoadDataCommand.Execute(null);
+            }
+
             BindingContext = _viewModel;
-        }
-
-        async void TryAgain_Clicked(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new BattleScreen());
-        }
-
-
-        async void Exit_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
         }
     }
 }

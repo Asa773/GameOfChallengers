@@ -5,7 +5,7 @@ using System.Text;
 
 namespace GameOfChallengers.ViewModels
 {
-    class ScoreDetailViewModel : BaseViewModel
+    public class ScoreDetailViewModel : BaseViewModel
     {
         public Score Data { get; set; }
         public ScoreDetailViewModel(Score data = null)
