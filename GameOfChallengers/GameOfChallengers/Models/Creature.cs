@@ -19,13 +19,7 @@ namespace GameOfChallengers.Models
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public int Loc { get; set; }// location on game board
 
-        //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
-
-        public Creature()
-        {
-            Alive = true;
-            //CInventory = null;
-        }
+        public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
 
         public void Update(Creature newData)
         {
@@ -46,7 +40,7 @@ namespace GameOfChallengers.Models
             CurrHealth = newData.CurrHealth;
             Alive = newData.Alive;
             Loc = newData.Loc;
-            //CInventory = newData.CInventory;
+            CInventory = newData.CInventory;
         }
     }
 }
