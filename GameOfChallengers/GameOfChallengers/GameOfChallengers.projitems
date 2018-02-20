@@ -75,6 +75,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml.cs">
+      <DependentUpon>BuildTeamPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml.cs">
       <DependentUpon>CharacterDetail.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -224,6 +228,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

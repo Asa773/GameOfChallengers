@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GameOfChallengers.ViewModels;
-using GameOfChallengers.Views.Monster;
 using GameOfChallengers.Models;
 
 namespace GameOfChallengers.Views.Monsters

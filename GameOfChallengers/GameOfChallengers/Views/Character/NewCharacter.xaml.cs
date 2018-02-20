@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using GameOfChallengers.Models;
+using GameOfChallengers.Views.Items;
 
 namespace GameOfChallengers.Views.Character
 {
@@ -49,6 +50,11 @@ namespace GameOfChallengers.Views.Character
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
+        }
+
+        private async void AddItems_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new AssignItemPage());
         }
     }
 }
