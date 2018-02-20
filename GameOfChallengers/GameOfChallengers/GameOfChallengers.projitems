@@ -46,6 +46,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -154,6 +160,12 @@
       <DependentUpon>AssignItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Converter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">

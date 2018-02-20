@@ -54,7 +54,7 @@ namespace GameOfChallengers.Views.Character
 
         private async void AddItems_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AssignItemPage());
+            await Navigation.PushAsync(new InventoryPage());
         }
     }
 }

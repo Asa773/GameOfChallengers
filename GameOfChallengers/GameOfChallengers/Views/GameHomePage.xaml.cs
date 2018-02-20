@@ -6,6 +6,7 @@ using GameOfChallengers.Views.Items;
 using GameOfChallengers.Views.Monsters;
 using GameOfChallengers.Views.Character;
 using GameOfChallengers.Views.Scores;
+using GameOfChallengers.Views.Battle;
 
 
 namespace GameOfChallengers.Views
@@ -31,6 +32,7 @@ namespace GameOfChallengers.Views
         private async void Play_Command(object sender, EventArgs e)
         {            
 
+            await Navigation.PushAsync(new BattleScreen());
         }
 
         private async void Characters_Command(object sender, EventArgs e)
