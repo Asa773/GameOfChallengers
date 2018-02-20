@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    x:Class="GameOfChallengers.Views.GameHomePage">
+    x:Class="GameOfChallengers.Views.GameHomePage"
+    Title="Game">
     <ContentPage.ToolbarItems>      
     <ToolbarItem Text="About" Clicked="About_Clicked" />
     <ToolbarItem Text="Help" Clicked="Help_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
+        <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10" VerticalOptions="CenterAndExpand">
+                <Label FontSize="22" VerticalOptions="CenterAndExpand">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30" />
+                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30"  />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>

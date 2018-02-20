@@ -6,11 +6,14 @@ namespace GameOfChallengers.ViewModels
 {
     public class ItemDetailViewModel : BaseViewModel
     {
-        public Item Item { get; set; }
+
+        public string LocationString => Data.Loc.ToString();
+
+        public Item Data { get; set; }
         public ItemDetailViewModel(Item item = null)
         {
             Title = item?.Name;
-            Item = item;
+            Data = item;
         }
     }
 }

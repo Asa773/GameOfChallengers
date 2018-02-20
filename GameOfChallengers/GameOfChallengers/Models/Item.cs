@@ -12,11 +12,43 @@ namespace GameOfChallengers.Models
 
         public int Value { get; set; }// how much the attribute is increased
         
-        public bool Range { get; set; }// if the item allows ranged attacks
+        public int Range { get; set; }// if the item allows ranged attacks
 
         public Attributes Att { get; set; }// enum for what creature attribute the item effects
 
         public Locations Loc { get; set; }// enum for what creature location the item is attached to
+
+
+
+        public Item()
+        {
+            Name = "unknown";
+            Id = null;
+           // ImageURI = null;
+
+            Range = 0;
+            Value = 0;
+
+            Loc = Locations.unknown;
+            Att = Attributes.unknown;
+
+            //ImageURI = null;
+
+        }
+
+        public Item(string name, string guid, int range, int value, Locations location, Attributes attribute)
+        {
+            Name = name;
+            Id = guid;
+           // ImageURI = imageuri;
+
+            Range = range;
+            Value = value;
+
+            Loc = location;
+            Att = attribute;
+        }
+
 
         public void Update(Item newData)
         {

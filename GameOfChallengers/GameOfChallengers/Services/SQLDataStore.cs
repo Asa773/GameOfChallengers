@@ -74,9 +74,9 @@ namespace GameOfChallengers.Services
         private async void InitilizeSeedData()
         {
            
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = false, Att = 0, Loc = 0 });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = false, Att = 0, Loc = 0 });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = false, Att = 0, Loc = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Att = 0, Loc = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Att = 0, Loc = 0 });
             
             //characters
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "First Character", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 });
