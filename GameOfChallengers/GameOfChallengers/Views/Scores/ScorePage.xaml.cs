@@ -6,7 +6,11 @@ using Xamarin.Forms.Xaml;
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Scores;
+<<<<<<< HEAD
 using GameOfChallengers.Views.Battle;
+=======
+//using GameOfChallengers.Views.Battle;
+>>>>>>> 1a1ab93749068028de6b97fd9958c98f59c8f4bf
 
 namespace GameOfChallengers.Views.Scores
 {
@@ -33,7 +37,7 @@ namespace GameOfChallengers.Views.Scores
 
         async void TryAgain_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattleScreen());
+            //await Navigation.PushAsync(new BattleScreen());
         }
 
 

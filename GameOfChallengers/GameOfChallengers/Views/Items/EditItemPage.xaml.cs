@@ -10,7 +10,6 @@ namespace GameOfChallengers.Views.Items
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditItemPage : ContentPage
     {
-        // ReSharper disable once NotAccessedField.Local
         private ItemDetailViewModel _viewModel;
 
         public Item Data { get; set; }

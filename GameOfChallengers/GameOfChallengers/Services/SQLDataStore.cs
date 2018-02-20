@@ -95,6 +95,8 @@ namespace GameOfChallengers.Services
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Sixth Monster", Level = 6, Attack = 60, Defense = 60, Speed = 6, XP = 600, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 6/*, CInventory = null*/ });
 
             await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false, Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ });
+            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Player 2", Date = DateTime.Now, FinalScore = 200, Auto = false, Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ });
+            await AddAsync_Score(new Score { Id = Guid.NewGuid().ToString(), Name = "Player 3", Date = DateTime.Now, FinalScore = 300, Auto = false, Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ });
 
         }
 
