@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using GameOfChallengers.Models;
-using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Monsters;
 using System.Linq;
 
@@ -48,33 +47,33 @@ namespace GameOfChallengers.ViewModels
             Dataset = new ObservableCollection<Creature>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
-            //MessagingCenter.Subscribe<DeleteMonsterPage, Creature>(this, "DeleteData", async (obj, data) =>
-            //{
-            //    Dataset.Remove(data);
-            //    await DataStore.DeleteAsync_Creature(data);
-            //});
+            MessagingCenter.Subscribe<DeleteMonsterPage, Creature>(this, "DeleteData", async (obj, data) =>
+            {
+                Dataset.Remove(data);
+                await DataStore.DeleteAsync_Creature(data);
+            });
 
-            //MessagingCenter.Subscribe<NewMonsterPage, Creature>(this, "AddData", async (obj, data) =>
-            //{
-            //    Dataset.Add(data);
-            //    await DataStore.AddAsync_Creature(data);
-            //});
+            MessagingCenter.Subscribe<CreateMonster, Creature>(this, "AddData", async (obj, data) =>
+            {
+                Dataset.Add(data);
+                await DataStore.AddAsync_Creature(data);
+            });
 
-            //MessagingCenter.Subscribe<EditMonsterPage, Creature>(this, "EditData", async (obj, data) =>
-            //{
-            //    // Find the Item, then update it
-            //    var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
-            //    if (myData == null)
-            //    {
-            //        return;
-            //    }
+            MessagingCenter.Subscribe<EditMonsterPage, Creature>(this, "EditData", async (obj, data) =>
+            {
+                // Find the Item, then update it
+                var myData = Dataset.FirstOrDefault(arg => arg.Id == data.Id);
+                if (myData == null)
+                {
+                    return;
+                }
 
-            //    myData.Update(data);
-            //    await DataStore.UpdateAsync_Creature(myData);
+                myData.Update(data);
+                await DataStore.UpdateAsync_Creature(myData);
 
-            //    _needsRefresh = true;
+                _needsRefresh = true;
 
-            //});
+            });
         }
 
         // Return True if a refresh is needed

@@ -50,9 +50,5 @@
                        Clicked="TryAgain_Clicked"/>
         </StackLayout>
         
-<<<<<<< HEAD
-        
-=======
->>>>>>> 1a1ab93749068028de6b97fd9958c98f59c8f4bf
     </ScrollView>
 </ContentPage>
