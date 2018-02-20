@@ -35,10 +35,7 @@ namespace GameOfChallengers.Views.Monsters
 
             BindingContext = this._viewModel = viewModel;
         }
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
-        }
+        
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "UpdateMonster", _viewModel.Data);

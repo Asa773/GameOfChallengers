@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 using GameOfChallengers.Views.Items;
+using GameOfChallengers.Views.Monsters;
 
 namespace GameOfChallengers.Views
 {
@@ -36,7 +37,7 @@ namespace GameOfChallengers.Views
 
         private async void Monsters_Command(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new MonsterPage());
         }
 
         private async void Items_Command(object sender, EventArgs e)
