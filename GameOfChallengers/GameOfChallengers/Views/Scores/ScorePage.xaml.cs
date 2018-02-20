@@ -29,5 +29,16 @@ namespace GameOfChallengers.Views.Scores
             _viewModel = new ScoreDetailViewModel(data);
             BindingContext = _viewModel;
         }
+
+        async void TryAgain_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new BattleScreen());
+        }
+
+
+        async void Exit_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
     }
 }

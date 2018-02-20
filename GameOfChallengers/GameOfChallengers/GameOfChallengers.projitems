@@ -75,28 +75,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml.cs">
-      <DependentUpon>BuildTeamPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml.cs">
-      <DependentUpon>CharacterDetail.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml.cs">
-      <DependentUpon>CharactersPage.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml.cs">
-      <DependentUpon>DeleteCharacter.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml.cs">
-      <DependentUpon>EditCharacter.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml.cs">
-      <DependentUpon>NewCharacter.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\BattleScreen.xaml.cs">
+      <DependentUpon>BattleScreen.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
@@ -170,7 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\Items\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\Battle\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Character\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Monsters\MonsterPage.xaml">
@@ -203,37 +183,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle\BattleScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
