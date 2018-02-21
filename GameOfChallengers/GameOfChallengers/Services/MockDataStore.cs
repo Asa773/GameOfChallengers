@@ -78,44 +78,40 @@ namespace GameOfChallengers.Services
         // Creature
         public async Task<bool> AddAsync_Creature(Creature data)
         {
-            var result = await App.Database.InsertAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
+            _creatureDataset.Add(data);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateAsync_Creature(Creature data)
         {
-            var result = await App.Database.UpdateAsync(data);
-            if (result == 1)
+            var myData = _creatureDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            if (myData == null)
             {
-                return true;
+                return false;
             }
-            return false;
+
+            myData.Update(data);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteAsync_Creature(Creature data)
         {
-            var result = await App.Database.DeleteAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
+            var myData = _creatureDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            _creatureDataset.Remove(myData);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<Creature> GetAsync_Creature(string id)
         {
-            var result = await App.Database.GetAsync<Creature>(id);
-            return result;
+            return await Task.FromResult(_creatureDataset.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Creature>().ToListAsync();
-            return result;
+            return await Task.FromResult(_creatureDataset);
         }
 
 
@@ -162,44 +158,40 @@ namespace GameOfChallengers.Services
         // Score
         public async Task<bool> AddAsync_Score(Score data)
         {
-            var result = await App.Database.InsertAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
+            _scoreDataset.Add(data);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> UpdateAsync_Score(Score data)
         {
-            var result = await App.Database.UpdateAsync(data);
-            if (result == 1)
+            var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            if (myData == null)
             {
-                return true;
+                return false;
             }
-            return false;
+
+            myData.Update(data);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<bool> DeleteAsync_Score(Score data)
         {
-            var result = await App.Database.DeleteAsync(data);
-            if (result == 1)
-            {
-                return true;
-            }
-            return false;
+            var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
+            _scoreDataset.Remove(myData);
+
+            return await Task.FromResult(true);
         }
 
         public async Task<Score> GetAsync_Score(string id)
         {
-            var result = await App.Database.GetAsync<Score>(id);
-            return result;
+            return await Task.FromResult(_scoreDataset.FirstOrDefault(s => s.Id == id));
         }
 
         public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Score>().ToListAsync();
-            return result;
+            return await Task.FromResult(_scoreDataset);
         }
 
     }
