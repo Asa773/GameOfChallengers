@@ -35,5 +35,10 @@ namespace GameOfChallengers.Controllers
             int finalDamage = 0;
             return finalDamage;
         }
+
+        public void AutoTarget()
+        {
+
+        }
     }
 }

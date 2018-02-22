@@ -20,6 +20,7 @@ namespace GameOfChallengers.Models
         public int Loc { get; set; }// location on game board
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
+        //public string headItemID { get; set; }
 
         //The CreatureInventory was causing problems with the database and may need to be refactord or moved out of the model
 

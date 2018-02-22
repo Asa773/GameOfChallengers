@@ -25,6 +25,11 @@ namespace GameOfChallengers.Controllers
             return turnOrder;
         }
 
+        public void AssignItems()
+        {
+
+        }
+
         public void Battle(List<Creature> team, List<Creature> monsters, List<Creature> turnOrder)
         {
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
