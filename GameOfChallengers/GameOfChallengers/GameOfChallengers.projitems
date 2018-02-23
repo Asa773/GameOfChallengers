@@ -82,7 +82,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MonstersViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
+<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TeamViewModel.cs" />
+=======
+>>>>>>> 6705bac706f155da22d9b263c04dac6e50974584
     <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\BattleOver.xaml.cs">
       <DependentUpon>BattleOver.xaml</DependentUpon>
       <SubType>Code</SubType>

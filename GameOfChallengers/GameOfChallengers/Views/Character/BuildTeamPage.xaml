@@ -15,6 +15,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
+<<<<<<< HEAD
                     <StackLayout Grid.Row="0" Grid.Column="5">
                         <BoxView Color="CornflowerBlue"
                                  VerticalOptions="Center" 
@@ -32,6 +33,17 @@
                         
                     </StackLayout>
 
+=======
+                    <!--<Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />-->
+                    <StackLayout Grid.Row="0" Grid.Column="0">
+                        <Image Source="icon.png"  />
+                        
+                    </StackLayout>
+
+>>>>>>> 6705bac706f155da22d9b263c04dac6e50974584
                     <StackLayout  Grid.Row="0" Grid.Column="1">
                         <Image Source="icon.png"/>
                     </StackLayout>
@@ -41,9 +53,15 @@
                     <StackLayout  Grid.Row="1" Grid.Column="1">
                         <Image Source="icon.png"/>
                     </StackLayout>
+<<<<<<< HEAD
                     <Image Source="icon.png"  Grid.Row="0" Grid.Column="1" />
                     <Image Source="icon.png" Grid.Row="1" Grid.Column="0" />
                     <Image Source="icon.png" Grid.Row="1" Grid.Column="1" />
+=======
+                    <!--<Image Source="icon.png"  Grid.Row="0" Grid.Column="1" />
+                    <Image Source="icon.png" Grid.Row="1" Grid.Column="0" />
+                    <Image Source="icon.png" Grid.Row="1" Grid.Column="1" />-->
+>>>>>>> 6705bac706f155da22d9b263c04dac6e50974584
                 </Grid>
                 <Button Text="Save Selected Characters as the Team" Clicked="SaveTeam_Clicked" />
                 <Button Text="Auto Select" Clicked="AutoSelect_Clicked" />
