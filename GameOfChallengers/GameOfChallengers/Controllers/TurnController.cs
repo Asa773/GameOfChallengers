@@ -7,10 +7,11 @@ namespace GameOfChallengers.Controllers
 {
     class TurnController
     {
-        public void Move(Creature creature, int loc)
+        public Creature[,] Move(Creature creature, int loc, Creature[,] gameBoard)
         {
             bool canMove = MoveTest(creature, loc);
             //move the character if they are allowed to move there(loc)
+            return gameBoard;
         }
 
         private bool MoveTest(Creature creature, int loc)
@@ -36,9 +37,10 @@ namespace GameOfChallengers.Controllers
             return finalDamage;
         }
 
-        public void AutoTarget()
+        public Creature AutoTarget(int side)
         {
-
+            Creature c = new Creature();
+            return c;
         }
     }
 }
