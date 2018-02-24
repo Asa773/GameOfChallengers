@@ -7,17 +7,14 @@ namespace GameOfChallengers.Controllers
 {
     class TurnController
     {
-        public void Move(Creature creature, int loc)
+        public Creature[,] Move(Creature creature, int loc, Creature[,] gameBoard)
         {
             bool canMove = MoveTest(creature, loc);
             //move the character if they are allowed to move there(loc)
+            return gameBoard;
         }
 
-        private bool MoveTest(Creature creature, int loc)
-        {
-            //test if a character can move to the selected sqare on the board based on speed
-            return true;
-        }
+        
 
         public bool Attack(Creature creature1, Creature creature2)
         {
@@ -36,9 +33,10 @@ namespace GameOfChallengers.Controllers
             return finalDamage;
         }
 
-        public void AutoTarget()
+        public Creature AutoTarget(int side)
         {
-
+            Creature c = new Creature();
+            return c;
         }
     }
 }

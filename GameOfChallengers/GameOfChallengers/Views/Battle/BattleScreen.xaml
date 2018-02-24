@@ -10,11 +10,22 @@
             <Label Text ="Battle updates"
                    VerticalOptions ="CenterAndExpand"
                    HorizontalOptions =" CenterAndExpand"/>
-            <Label Text="Battle Messages" FontSize="Large" />
-
+                    <Label Text="Battle Messages" 
+                           HorizontalOptions="Center"
+                           FontSize="Large" />
+                    <ScrollView >
+                        <Frame BackgroundColor="LightBlue">
+                            
+                            <Label Text="messages displayed here"
+                                   TextColor="Black"
+                              HorizontalTextAlignment="Center"
+                              VerticalOptions="Center"/>
+                        </Frame>
+                    </ScrollView>
                 </StackLayout>
           
             <StackLayout Spacing="20" Padding="15">
+                    <Frame OutlineColor="Black" >
                      
                 <Grid
                     RowSpacing="2"
@@ -168,8 +179,9 @@
                     </StackLayout>
 
                 </Grid>
+                    </Frame>
 
-            </StackLayout>
+                </StackLayout>
        </StackLayout>
              </ScrollView>
     </ContentPage.Content>
