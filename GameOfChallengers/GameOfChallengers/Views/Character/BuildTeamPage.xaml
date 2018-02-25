@@ -15,23 +15,26 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="0" Grid.Column="5">
-                        <BoxView Color="CornflowerBlue"
-                                 VerticalOptions="Center" 
-                             HorizontalOptions="Center"/>
-                        <!--<Image Source="icon.png"></Image>-->
-
-
-                    </StackLayout>
+                    
                     <!--<Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
                     <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
                     <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
                     <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />-->
                     <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Image Source="icon.png"  />
-                        
-                    </StackLayout>
+                       
 
+                    </StackLayout>
+                    <!--<StackLayout Grid.Row="0" Grid.Column="1">
+                        <Frame OutlineColor="Bisque">
+
+                            <Image Source= "icon.png"/>
+
+                        </Frame>
+
+
+
+                    </StackLayout-->>
+                    
                     <StackLayout  Grid.Row="0" Grid.Column="1">
                         <Image Source="icon.png"/>
                     </StackLayout>
