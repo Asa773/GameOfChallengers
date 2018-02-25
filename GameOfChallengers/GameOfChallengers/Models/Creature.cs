@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using SQLite;
 
 namespace GameOfChallengers.Models
@@ -20,14 +21,25 @@ namespace GameOfChallengers.Models
         public int Loc { get; set; }// location on game board
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
-        //public string headItemID { get; set; }
+        public string HeadItemID { get; set; }
+        public string BodyItemID { get; set; }
+        public string FeetItemID { get; set; }
+        public string LHandItemID { get; set; }
+        public string RHandItemID { get; set; }
+        public string LFingerItemID { get; set; }
+        public string RFingerItemID { get; set; }
 
-        //The CreatureInventory was causing problems with the database and may need to be refactord or moved out of the model
 
         public Creature()
         {
             Alive = true;
-            //CInventory = null;
+            HeadItemID = null;
+            BodyItemID = null;
+            FeetItemID = null;
+            LHandItemID = null;
+            RHandItemID = null;
+            LFingerItemID = null;
+            RFingerItemID = null;
         }
 
         public void Update(Creature newData)
@@ -49,7 +61,47 @@ namespace GameOfChallengers.Models
             CurrHealth = newData.CurrHealth;
             Alive = newData.Alive;
             Loc = newData.Loc;
-            //CInventory = newData.CInventory;
+            HeadItemID = newData.HeadItemID;
+            BodyItemID = newData.BodyItemID;
+            FeetItemID = newData.FeetItemID;
+            LHandItemID = newData.LHandItemID;
+            RHandItemID = newData.RHandItemID;
+            LFingerItemID = newData.LFingerItemID;
+            RFingerItemID = newData.RFingerItemID;
+        }
+
+        public List<string> GetItemIDs()
+        {
+            List<string> itemIds = new List<string>();
+            if (HeadItemID != null)
+            {
+                itemIds.Add(HeadItemID);
+            }
+            if (BodyItemID != null)
+            {
+                itemIds.Add(BodyItemID);
+            }
+            if (FeetItemID != null)
+            {
+                itemIds.Add(FeetItemID);
+            }
+            if (LHandItemID != null)
+            {
+                itemIds.Add(LHandItemID);
+            }
+            if (RHandItemID != null)
+            {
+                itemIds.Add(RHandItemID);
+            }
+            if (LFingerItemID != null)
+            {
+                itemIds.Add(LFingerItemID);
+            }
+            if (RFingerItemID != null)
+            {
+                itemIds.Add(RFingerItemID);
+            }
+            return itemIds;
         }
     }
 }
