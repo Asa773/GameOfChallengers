@@ -6,15 +6,33 @@ using System.Threading.Tasks;
 //using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using GameOfChallengers.ViewModels;
+using GameOfChallengers.Models;
 
 namespace GameOfChallengers.Views.Character
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuildTeamPage : ContentPage
     {
+        public Creature Data { get; set; }
+
         public BuildTeamPage()
         {
             InitializeComponent();
+            Data = new Creature
+            {
+                Name = "Character name",
+                Id = Guid.NewGuid().ToString(),
+                Type = 0,
+                Level = 1,
+                XP = 0,
+                MaxHealth = 10,
+                CurrHealth = 10,
+                Alive = true,
+
+            };
+
+            BindingContext = this;
         }
 
         public class LabelGridCode : ContentPage
@@ -53,5 +71,15 @@ namespace GameOfChallengers.Views.Character
         {
 
         }
+
+        private async void AddTeamMember(object sender, EventArgs e)
+        {
+            MessagingCenter.Send(this, "AddData", Data);
+            await Navigation.PopAsync();
+
+        }
+
+
+
     }
 }

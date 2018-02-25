@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Models;
 
-//[assembly: Xamarin.Forms.Dependency(typeof(GameOfChallengers.Services.SQLDataStore))]
 namespace GameOfChallengers.Services
 {
     public sealed class SQLDataStore : IDataStore
@@ -78,6 +77,7 @@ namespace GameOfChallengers.Services
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Att = 0, Loc = 0 });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Att = 0, Loc = 0 });
 
+            /*NEED TO ADD  each item ID set to null on each creature*/
             //characters
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "First Character", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1 });
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Second Character", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2 });

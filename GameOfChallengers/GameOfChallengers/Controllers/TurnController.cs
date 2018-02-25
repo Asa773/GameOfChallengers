@@ -9,7 +9,7 @@ namespace GameOfChallengers.Controllers
     {
         public Creature[,] Move(Creature creature, int loc, Creature[,] gameBoard)
         {
-            bool canMove = MoveTest(creature, loc);
+            //bool canMove = MoveTest(creature, loc);
             //move the character if they are allowed to move there(loc)
             return gameBoard;
         }
