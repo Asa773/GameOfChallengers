@@ -8,7 +8,7 @@
             <Label Text="High Scores"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            
+            <Button Text="Add" Clicked="AddScore_Clicked"></Button>
             <ListView x:Name="ScoresListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"

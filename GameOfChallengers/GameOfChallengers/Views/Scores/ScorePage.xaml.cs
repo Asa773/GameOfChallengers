@@ -31,6 +31,10 @@ namespace GameOfChallengers.Views.Scores
             ScoresListView.SelectedItem = null;
         }
 
+        private async void AddScore_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NewScorePage());
+        }
 
         protected override void OnAppearing()
         {
