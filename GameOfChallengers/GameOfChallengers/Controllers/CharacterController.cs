@@ -45,11 +45,16 @@ namespace GameOfChallengers.Controllers
 
         public int GetBaseDamage(Creature character)
         {
-
-            int baseDamage = 0;//this will be based on the character stats including item boosts
-
-            //How does damage work?
-
+            List<string> itemIds = character.GetDamageIDs();
+            int baseDamage = 0;//this will be based on the weapon stats
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                if (item.Att == Attributes.Attack)
+                {
+                    baseDamage += item.Value;
+                }
+            }
             return baseDamage;
         }
 
@@ -85,10 +90,19 @@ namespace GameOfChallengers.Controllers
             return baseDefense;
         }
 
-        public void TestForLevelUp(Creature character, int xp)
+        public bool TestForLevelUp(Creature character, int xp)
         {
             //if character can be leveled up call private helper
             //this method will test the character's xp against a data table with the xp numbers stored
+            character.XP += xp;
+            bool DidLevelUp = false;
+            int NewLevel = 0;//should equal a method that will check for the current level based on xp   *******
+            if (character.Level < NewLevel)
+            {
+                LevelUp(character, NewLevel);
+                DidLevelUp = true;
+            }
+            return DidLevelUp;
         }
 
         private void LevelUp(Creature character, int newLevel)
@@ -98,7 +112,7 @@ namespace GameOfChallengers.Controllers
             //the characters stats will be reset based on a data table with the base stats stored
         }
 
-        public void TakeDamage(Creature character, int amount)
+        public bool TakeDamage(Creature character, int amount)
         {
             //character takes damage and checks for death
             character.CurrHealth -= amount;
@@ -106,9 +120,7 @@ namespace GameOfChallengers.Controllers
             {
                 character.Alive = false;
             }
-
-            //need to do more
-            //return bool monster.Alive ?
+            return character.Alive;
         }
 
         

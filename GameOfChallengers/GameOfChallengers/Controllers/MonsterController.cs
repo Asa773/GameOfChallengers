@@ -43,11 +43,16 @@ namespace GameOfChallengers.Controllers
 
         public int GetBaseDamage(Creature monster)
         {
-            
-            int baseDamage = 0;//this will be based on the monster stats including item boosts
-            
-            //How does damage work?
-
+            List<string> itemIds = monster.GetDamageIDs();
+            int baseDamage = 0;//this will be based on the weapon stats
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                if (item.Att == Attributes.Attack)
+                {
+                    baseDamage += item.Value;
+                }
+            }
             return baseDamage;
         }
 
@@ -85,12 +90,14 @@ namespace GameOfChallengers.Controllers
 
         public int GiveXP(Creature monster, int damageGiven)
         {
-            //this will calculate and return the amount of XP to be transferred on a hit
-            int XPToGive = 0;
+            //this will calculate and return the amount of XP to be transferred on a hit and -= that much from the monster
+            double percentToGive = (damageGiven / monster.CurrHealth);
+            int XPToGive = (int)(monster.XP * percentToGive);
+            monster.XP -= XPToGive;
             return XPToGive;
         }
 
-        public void TakeDamage(Creature monster, int amount)
+        public bool TakeDamage(Creature monster, int amount)
         {
             //monster takes damage and checks for death
             monster.CurrHealth -= amount;
@@ -98,9 +105,7 @@ namespace GameOfChallengers.Controllers
             {
                 monster.Alive = false;
             }
-
-            //need to do more
-            //return bool monster.Alive ?
+            return monster.Alive;
         }
 
         
