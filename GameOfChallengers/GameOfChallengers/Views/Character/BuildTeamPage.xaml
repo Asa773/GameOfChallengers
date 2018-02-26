@@ -1,30 +1,65 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           
              x:Class="GameOfChallengers.Views.Character.BuildTeamPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <Label Text="Character Team" HorizontalOptions="CenterAndExpand"></Label>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
+                <ListView x:Name="ItemsListView" 
+                 ItemSelected="OnItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                    <Label Text="Character 1" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="Character 2" Grid.Row="0" Grid.Column="1" />
+                    <Label Text="Character 3" Grid.Row="0" Grid.Column="2" />
+                    <Label Text="Character 4" Grid.Row="1" Grid.Column="0" />
+                    <Label Text="Character 5" Grid.Row="2" Grid.Column="0" />
+                    <Label Text="Character 6" Grid.Row="1" Grid.Column="1" />
+                    <Label Text="Character 7" Grid.Row="1" Grid.Column="2" />
+                    <Label Text="Character 8" Grid.Row="2" Grid.Column="1" />
+                    <Label Text="Character 9" Grid.Row="2" Grid.Column="2" />
+                    <Label Text="Character 10" Grid.Row="3" Grid.Column="1" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
                     
-                    <!--<Label Text="Top Left" Grid.Row="0" Grid.Column="0" />
-                    <Label Text="Top Right" Grid.Row="0" Grid.Column="1" />
-                    <Label Text="Bottom Left" Grid.Row="1" Grid.Column="0" />
-                    <Label Text="Bottom Right" Grid.Row="1" Grid.Column="1" />-->
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                       
-
+                        <Button Text="Save Selected Characters as the Team" Clicked="SaveTeam_Clicked" />
+                <Button Text="Auto Select" Clicked="AutoSelect_Clicked" />
+            
                     </StackLayout>
-                    <!--<StackLayout Grid.Row="0" Grid.Column="1">
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+
+<!--</ContentView>
+
+                -->
+<!--<StackLayout Grid.Row="0" Grid.Column="0">-->
+<!--
+                    <StackLayout>
+
+                        -->
+<!--<CheckBox DefaultText="Character 1" HorizontalOptions="FillAndExpand"  />-->
+<!--<controls:CheckBox DefaultText="Character 1" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Character 1" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Character 1" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Animation" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Suspense" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Horror" HorizontalOptions="FillAndExpand" />
+                        <controls:CheckBox DefaultText="Drama" HorizontalOptions="FillAndExpand" />-->
+<!--
+                    </StackLayout>
+
+                    -->
+<!--</StackLayout>-->
+<!--<StackLayout Grid.Row="0" Grid.Column="1">
                         <Frame OutlineColor="Bisque">
 
                             <Image Source= "icon.png"/>
@@ -33,7 +68,8 @@
 
 
 
-                    </StackLayout-->>
+                    </StackLayout-->
+<!-->
                     
                     <StackLayout  Grid.Row="0" Grid.Column="1">
                         <Image Source="icon.png"/>
@@ -46,11 +82,5 @@
                     </StackLayout>
                     <Image Source="icon.png"  Grid.Row="0" Grid.Column="1" />
                     <Image Source="icon.png" Grid.Row="1" Grid.Column="0" />
-                    <Image Source="icon.png" Grid.Row="1" Grid.Column="1" />
-                </Grid>
-                <Button Text="Save Selected Characters as the Team" Clicked="SaveTeam_Clicked" />
-                <Button Text="Auto Select" Clicked="AutoSelect_Clicked" />
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
-</ContentPage>
+                    <Image Source="icon.png" Grid.Row="1" Grid.Column="1" />-->
+<!--</Grid>-->

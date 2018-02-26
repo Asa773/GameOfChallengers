@@ -14,5 +14,6 @@
                 <views:SignInPage />
             </x:Arguments>
         </NavigationPage>
+        
     </TabbedPage.Children>
 </TabbedPage>

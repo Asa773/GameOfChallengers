@@ -60,7 +60,7 @@ namespace GameOfChallengers.Views.Character
 
         }
        }
-
+       
 
         private async void SaveTeam_Clicked(object sender, EventArgs e)
         {
