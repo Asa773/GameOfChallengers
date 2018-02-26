@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GameOfChallengers.Views.Battle.AutoBattleScreen">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="GameOfChallengers.Views.Battle.AutoBattleScreen">
 	<ContentPage.Content>
         <StackLayout>
-            <Label Text="AutoBattle Screen" 
+            <Label Text="Auto Battle Screen" 
                   FontAttributes="Bold" 
                   FontSize="Medium"  
                   HorizontalOptions="CenterAndExpand"
@@ -20,7 +22,7 @@
                         BackgroundColor="Crimson"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Clicked="Scor_CLicked"/>
+                        Clicked="Score_CLicked"/>
             </Label>
         </StackLayout>
 	</ContentPage.Content>

@@ -43,8 +43,7 @@ namespace GameOfChallengers.Views
 
         private async void AutoBattle_Command(object sender, EventArgs e)
         {
-
-            await Navigation.PushAsync(new AutoBattleScreen());
+            //await Navigation.PushAsync(new AutoBattleScreen());
         }
 
         private async void Characters_Command(object sender, EventArgs e)
