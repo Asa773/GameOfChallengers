@@ -7,12 +7,11 @@ namespace GameOfChallengers.Controllers
 {
     class TurnController
     {
-<<<<<<< HEAD
+
         MonsterController mc = new MonsterController() ;
         CharacterController cc = new CharacterController(); 
 
-=======
->>>>>>> parent of 41cce9f... build
+
         public Creature[,] Move(Creature creature, int loc, Creature[,] gameBoard)
         {
             //bool canMove = MoveTest(creature, loc);
@@ -20,12 +19,12 @@ namespace GameOfChallengers.Controllers
             return gameBoard;
         }
 
-        
+
 
         public bool Attack(Creature creature1, Creature creature2)
         {
-<<<<<<< HEAD
-            int score1 ,score2 = 0;
+
+            int score1, score2 = 0;
             bool attack = false;
 
             //run the attack of creature1 on creature2, return if it succeeded or not
@@ -45,8 +44,8 @@ namespace GameOfChallengers.Controllers
 
                 if (score1 > score2)
                 {
-                     attack = true;
-                    
+                    attack = true;
+
                 }
                 return attack;
                 //creature1 score = roll(1-20) + level + (base attack + attack boosts)
@@ -54,24 +53,12 @@ namespace GameOfChallengers.Controllers
                 //attack is successful(true) if creature1 score > creature2 score
             }
             return attack;
-=======
-            
-            //run the attack of creature1 on creature2, return if it succeeded or not
-            //for (roll =1; roll <= 20; roll++)
-            //{
-            //    creature1 score = roll + level    
-            //}
-
-            //creature1 score = roll(1-20) + level + (base attack + attack boosts)
-            //creature2 score = (base defense + defense boosts) + level
-            //attack is successful(true) if creature1 score > creature2 score
-            return true;
->>>>>>> parent of 41cce9f... build
         }
-
+            
+           
         public int DoDamage(Creature creature, int baseDamage)
         {
-<<<<<<< HEAD
+
             mc.GetBaseDamage(creature);
             cc.GetBaseDamage(creature);
             //getBaseDamage(creature)
@@ -84,12 +71,10 @@ namespace GameOfChallengers.Controllers
             //    {
             //        finalDamage = GetBaseDamage.creature.weapondamage + (1 / 4) * creature.Level * baseDamage + roll;
             //    }
-=======
-            //getBaseDamage(creature)
-                //get how much damage the character/monster will do, use getBaseDamage(creature) and a random value
-            //final damage done will be weapon damage + 1/4 level, baseDamage, + a roll(1-20)
-            int finalDamage = 0;
->>>>>>> parent of 41cce9f... build
+
+            
+        
+
             return finalDamage;
         }
 

@@ -60,30 +60,26 @@ namespace GameOfChallengers.Views.Character
 
             }
         }
-<<<<<<< HEAD
-=======
-       }
->>>>>>> parent of 41cce9f... build
 
+    
 
-        private async void SaveTeam_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void AutoSelect_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private async void AddTeamMember(object sender, EventArgs e)
-        {
-            MessagingCenter.Send(this, "AddData", Data);
-            await Navigation.PopAsync();
-
-        }
-
-
+    private async void SaveTeam_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
 
     }
+
+
+
+    private async void AutoSelect_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopAsync();
+        }
+
+
 }
+
+
+}
+ 
+
