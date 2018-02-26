@@ -10,10 +10,12 @@ namespace GameOfChallengers.Views
         public SignInPage()
         {
             InitializeComponent();
+            BindingContext = name;
         }
 
         private async void StartGame_Command(object sender, EventArgs e)
         {
+            App.currName = name.ToString();
             await Navigation.PushAsync(new GameHomePage());
 
         }

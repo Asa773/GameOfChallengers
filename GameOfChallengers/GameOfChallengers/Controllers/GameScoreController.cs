@@ -25,7 +25,7 @@ namespace GameOfChallengers.Controllers
         {
             //fill team
             BattleController battle = new BattleController(Team);
-            while (true) //Team.Instance.Dataset.Count() > 0)
+            while (Team.Dataset.Count > 0)
             {
                 if (auto)
                 {
@@ -44,8 +44,10 @@ namespace GameOfChallengers.Controllers
             //the final score will be total XP + # of turns + # of monsters killed
             //this method will report the final score as well as the "Battle History" metadata
             //the metadata is the variables at the top of the page as well as the characters' stats
-            
+
             //load GameScore
+            GameScore.Name = App.currName;
+
         }
     }
 }

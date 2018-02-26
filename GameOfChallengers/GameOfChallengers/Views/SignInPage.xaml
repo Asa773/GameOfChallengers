@@ -11,7 +11,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-             <Entry Text="Enter Your Name" FontSize="Medium" />
+             <Entry x:Name="name"  Text="Enter Your Name" FontSize="Medium" />
             <Button  
                     Text="Start" 
                     Clicked="StartGame_Command" 
