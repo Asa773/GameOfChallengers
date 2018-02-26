@@ -36,11 +36,11 @@ namespace GameOfChallengers.Views.Character
         }
 
         public class LabelGridCode : ContentPage
-            {
+        {
             public LabelGridCode()
 
-        {
-            var grid = new Xamarin.Forms.Grid();
+            {
+                var grid = new Xamarin.Forms.Grid();
                 var topLeft = new Xamarin.Forms.Image { Source = "icon.png" };
                 var topRight = new Xamarin.Forms.Image { Source = "icon.png" };
                 var bottomLeft = new Xamarin.Forms.Image { Source = "icon.png" };
@@ -58,9 +58,9 @@ namespace GameOfChallengers.Views.Character
                 Content = grid;
 
 
+            }
         }
-       }
-       
+
 
         private async void SaveTeam_Clicked(object sender, EventArgs e)
         {
