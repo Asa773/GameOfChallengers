@@ -14,27 +14,23 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
 
-                <Label Text="Monster Detail Page" FontSize="Medium" />
-
-
                 <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                     <Label Text="Name : " 
                    FontSize="Medium" 
-                   HorizontalOptions="Start"/>
+                   HorizontalOptions="Start" FontAttributes="Bold" />
                     <Label Text="{Binding Data.Name}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
                 </StackLayout>
-
 
                 <StackLayout 
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
                     <Label Text="Attack : " 
                    FontSize="Medium" 
-                   HorizontalOptions="Start"/>
+                   HorizontalOptions="Start" FontAttributes="Bold" />
                     <Label Text="{Binding Data.Attack}" 
                    FontSize="Medium" 
                    HorizontalOptions="Center"/>
@@ -45,7 +41,7 @@
                 HorizontalOptions="Start">
                     <Label Text="Defense : " 
                    FontSize="Medium" 
-                   HorizontalOptions="Start"/>
+                   HorizontalOptions="Start" FontAttributes="Bold" />
                     <Label Text="{Binding Data.Defense}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
@@ -56,14 +52,13 @@
                 HorizontalOptions="Start">
                     <Label Text="Speed : " 
                    FontSize="Medium" 
-                   HorizontalOptions="Start"/>
+                   HorizontalOptions="Start" FontAttributes="Bold" />
                     <Label Text="{Binding Data.Speed}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
                 </StackLayout>
-
-               
-
+                <Button Text="Edit" Clicked="Edit_Clicked" />
+                <Button Text="Delete" Clicked="Delete_Clicked" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

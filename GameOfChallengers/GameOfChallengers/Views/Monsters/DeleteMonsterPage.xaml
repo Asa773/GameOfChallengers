@@ -8,10 +8,9 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
 
-            <Label Text="Monster Detail Page" FontSize="Medium" />
-
-
-            <StackLayout
+                <Label Text="Delete Monster?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                
+                <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Name : " 
@@ -63,15 +62,11 @@
                        HorizontalOptions="Center"
                        VerticalOptions="Center"
                        Clicked="Yes_CLicked"/>
-            </StackLayout>
-                <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                    <Button Text="No"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Clicked="No_Clicked"/>
-                </StackLayout>
+                <Button Text="No"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Clicked="No_Clicked"/>
+              </StackLayout>
 
             </StackLayout>
         </ScrollView>

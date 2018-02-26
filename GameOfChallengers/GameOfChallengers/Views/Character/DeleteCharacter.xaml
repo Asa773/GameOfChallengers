@@ -6,23 +6,25 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Delete Character?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
-                <ScrollView>
-                    <Label Text="Name" FontSize="Small" />
-                    <Label Text="{Binding Data.Name}" FontSize="Small" />
-                    <Label Text="Attack" FontSize="Small" />
-                    <Label Text="{Binding Data.Attack}" FontSize="Small" />
-                    <Label Text="Defense" FontSize="Small" />
-                    <Label Text="{Binding Data.Defense}" FontSize="Small" />
-                    <Label Text="Speed" FontSize="Small" />
-                    <Label Text="{Binding Data.Speed}" FontSize="Small" />
-                    <Label Text="Level" FontSize="Small" />
-                    <Label Text="{Binding Data.Level}" FontSize="Small" />
-                    <Label Text="XP" FontSize="Small" />
-                    <Label Text="{Binding Data.XP}" FontSize="Small" />
-                    <Label Text="MaxHealth" FontSize="Small" />
-                    <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
-                    <Label Text="CurrHealth" FontSize="Small" />
-                    <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                <ScrollView VerticalOptions="StartAndExpand">
+                    <StackLayout>
+                        <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Name}" FontSize="Small" />
+                        <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                        <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                        <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                        <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.Level}" FontSize="Small" />
+                        <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.XP}" FontSize="Small" />
+                        <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                        <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                    </StackLayout>
                 </ScrollView>
                 <StackLayout Orientation="Horizontal">
                     <Button Text="Yes" Clicked="Delete_Clicked" />

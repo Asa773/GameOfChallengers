@@ -11,12 +11,9 @@
     
 	<ContentPage.Content>
     <ScrollView>
-    <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
-
-         <Label Text="Items Delete Page" FontSize="Medium" />
-
-
-            <StackLayout
+            <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
+                <Label Text="Delete Item?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Name : " 
@@ -71,7 +68,10 @@
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
             </StackLayout>
-                
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Yes" Clicked="Delete_Clicked" />
+                    <Button Text="No" Clicked="Cancel_Clicked" />
+                </StackLayout>
         </StackLayout>                            
         </ScrollView>
 

@@ -2,21 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="GameOfChallengers.Views.Items.EditItemPage">
-	 <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-
-            <Label Text="Item Edit Page" FontSize="Small" />
-
-
-          <StackLayout Orientation="Horizontal" Padding="16,40,16,40" Spacing="10">
-            <Label Text="Name :" FontSize="Medium" />
-            <Editor Text="{Binding Data.Name}" FontSize="Small" />
-        </StackLayout>
-            <Button  
-                    Text="Save" 
-                    Clicked="Save_Clicked" 
-                    HorizontalOptions="Center"
-                    TextColor="Black" />
-        </StackLayout>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Edit Item" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                <Button Text="Save" Clicked="Save_Clicked" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

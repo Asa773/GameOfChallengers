@@ -10,7 +10,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" />
-                <Label Text="Name" FontSize="Small" />
+                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 <Button Text="Add Inventory Items" Clicked="AddItems_Clicked" />
                 <Button Text="Save" Clicked="Save_Clicked" />

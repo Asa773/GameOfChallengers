@@ -14,8 +14,6 @@
     <ScrollView>
     <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
 
-         <Label Text="Items Detail Page" FontSize="Medium" />
-
 
             <StackLayout
                 Orientation="Horizontal"
@@ -72,7 +70,8 @@
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
             </StackLayout>
-                
+                <Button Text="Edit" Clicked="Edit_Clicked" />
+                <Button Text="Delete" Clicked="Delete_Clicked" />
         </StackLayout>                            
         </ScrollView>
 

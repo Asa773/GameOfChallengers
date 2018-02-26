@@ -21,8 +21,7 @@
 
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-
-                <Label Text="Item Create Page" FontSize="Small" />
+                <Label Text="Create Item" FontSize="Small" HorizontalOptions="CenterAndExpand" />
 
                 <Grid
                     RowSpacing="1"
@@ -130,7 +129,7 @@
                     </StackLayout>
 
                 </Grid>
-
+                <Button Text="Create" Clicked="Save_Clicked" />
             </StackLayout>
         </ScrollView>
 
