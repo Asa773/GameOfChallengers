@@ -38,7 +38,13 @@ namespace GameOfChallengers.Views
         private async void Play_Command(object sender, EventArgs e)
         {            
 
-            await Navigation.PushAsync(new BattleScreen());
+            await Navigation.PushAsync(new BuildTeamPage());
+        }
+
+        private async void AutoBattle_Command(object sender, EventArgs e)
+        {
+
+            await Navigation.PushAsync(new AutoBattleScreen());
         }
 
         private async void Characters_Command(object sender, EventArgs e)

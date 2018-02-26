@@ -8,6 +8,8 @@ namespace GameOfChallengers.Controllers
 {
     class CharacterController
     {
+       
+        List<LevelingUp> lp = new List<LevelingUp>();
 
         public void EquipItem(Creature character, int itemLoc, Item item)//change to string itemID?
         {
@@ -122,6 +124,6 @@ namespace GameOfChallengers.Controllers
             return character.Alive;
         }
 
-        
+
     }
 }

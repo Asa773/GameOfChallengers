@@ -25,6 +25,12 @@
                     TextColor="Black" />
 
                 <Button  
+                    Text="Auto Battle" 
+                    Clicked="AutoBattle_Command" 
+                    HorizontalOptions="Center"
+                    TextColor="Black" />
+                
+                <Button  
                     Text="Characters" 
                     Clicked="Characters_Command" 
                     HorizontalOptions="Center"
