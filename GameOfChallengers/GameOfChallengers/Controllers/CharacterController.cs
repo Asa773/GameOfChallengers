@@ -8,7 +8,6 @@ namespace GameOfChallengers.Controllers
 {
     class CharacterController
     {
-        public static string ImageURI = "icon.png";
 
         public void EquipItem(Creature character, int itemLoc, Item item)//change to string itemID?
         {

@@ -60,6 +60,10 @@ namespace GameOfChallengers.Views.Character
 
             }
         }
+<<<<<<< HEAD
+=======
+       }
+>>>>>>> parent of 41cce9f... build
 
 
         private async void SaveTeam_Clicked(object sender, EventArgs e)
