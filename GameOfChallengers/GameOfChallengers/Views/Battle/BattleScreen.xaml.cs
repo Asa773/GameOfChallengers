@@ -14,6 +14,7 @@ namespace GameOfChallengers.Views.Battle
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattleScreen : ContentPage
 	{
+        private TeamViewModel _viewModel;
         public Creature Data { get; set; }
 
 		public BattleScreen ()
@@ -31,6 +32,8 @@ namespace GameOfChallengers.Views.Battle
                 Alive = true,
 
             };
+            _viewModel = new TeamViewModel();
+            BindingContext = _viewModel;
 		}
 
         private async void DeleteTeamMember(object sender, EventArgs e)
