@@ -103,5 +103,19 @@ namespace GameOfChallengers.Models
             }
             return itemIds;
         }
+
+        public List<string> GetDamageIDs()
+        {
+            List<string> itemIds = new List<string>();
+            if (LHandItemID != null)
+            {
+                itemIds.Add(LHandItemID);
+            }
+            if (RHandItemID != null)
+            {
+                itemIds.Add(RHandItemID);
+            }
+            return itemIds;
+        }
     }
 }
