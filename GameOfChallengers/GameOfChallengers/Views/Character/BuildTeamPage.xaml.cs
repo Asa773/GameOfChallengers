@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Models;
+using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Views.Character
 {
@@ -65,15 +66,16 @@ namespace GameOfChallengers.Views.Character
 
     private async void SaveTeam_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopAsync();
-
+       // await Navigation.PopAsync();
+            await Navigation.PushAsync(new BattleScreen());
     }
 
 
 
     private async void AutoSelect_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            //await Navigation.PopAsync();
+            await Navigation.PushAsync(new BattleScreen());
         }
 
 
