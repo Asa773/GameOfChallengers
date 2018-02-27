@@ -8,7 +8,7 @@ namespace GameOfChallengers.Controllers
 {
     class GameScoreController
     {
-        
+        int round = 0;
         Score GameScore;//this is the Score for this game
 
         //there will be one controller per type and the specific creature will be passed in to the controller methods
@@ -23,8 +23,9 @@ namespace GameOfChallengers.Controllers
 
         public void Start(bool auto)
         {
+            round++;
             //fill team
-            BattleController battle = new BattleController(Team);
+            BattleController battle = new BattleController(Team, round);
             while (Team.Dataset.Count > 0)
             {
                 if (auto)
