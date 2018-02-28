@@ -1,4 +1,5 @@
 ﻿using GameOfChallengers.Models;
+using GameOfChallengers.Services;
 using GameOfChallengers.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -70,11 +71,15 @@ namespace GameOfChallengers.Controllers
                         Creature character = TurnOrder[i];
                         int loc = GetNewLoc(character, GameBoard);
                         GameBoard = turn.Move(character, loc, GameBoard);
-                        Creature target = turn.AutoTarget(1);//get a monster target for the character
+                        Creature target = AutoTarget(1);//get a monster target for the character
+                        if (!CanHit(character, target))
+                        {
+                            continue;
+                        }
                         bool hit = turn.Attack(character, target);
                         if (hit)
                         {
-                            int damageToDo = turn.DamageToDo(target, CC.GetBaseDamage(character));
+                            int damageToDo = turn.DamageToDo(character);
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
                             CC.TestForLevelUp(character, xpToGive);
@@ -94,11 +99,15 @@ namespace GameOfChallengers.Controllers
                         Creature monster = TurnOrder[i];
                         int loc = GetNewLoc(monster, GameBoard);
                         GameBoard = turn.Move(monster, loc, GameBoard);
-                        Creature target = turn.AutoTarget(0);//get a character target for the monster
+                        Creature target = AutoTarget(0);//get a character target for the monster
+                        if (!CanHit(monster, target))
+                        {
+                            continue;
+                        }
                         bool hit = turn.Attack(monster, target);
                         if (hit)
                         {
-                            int damageToDo = turn.DamageToDo(target, MC.GetBaseDamage(monster));
+                            int damageToDo = turn.DamageToDo(monster);
                             bool characterDie = CC.TakeDamage(target, damageToDo);
                             if (characterDie)
                             {
@@ -112,6 +121,35 @@ namespace GameOfChallengers.Controllers
             score.Turns += turns;
             score.TotalXP += totalXP;
             return score;
+        }
+
+        public Creature AutoTarget(int targetType)//***needs to get the closest enemy(targetType)***
+        {
+            Creature c = new Creature();
+            return c;//return a creature with c.Type == targetType
+        }
+
+        public bool CanHit(Creature creature1, Creature creature2)
+        {
+            int dist = GetDistance(creature1, creature2);
+            List<string> itemIds = creature1.GetHandIDs();
+            int range = 0;
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                if (item.Range > range)
+                {
+                    range = item.Range;
+                }
+            }
+            if (range >= dist)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void AssignItems()
@@ -177,7 +215,7 @@ namespace GameOfChallengers.Controllers
 
         private CreatureLocInfo GetEnemy(CreatureLocInfo info)
         {
-            //enemy away distance is defined as: how many column away + how many row away
+            //enemy away distance is defined as: how many column away + how many row away       ***maybe use distance formula?***
             CreatureLocInfo EnemyInfo = new CreatureLocInfo();
             int distance = 0,minDist = 50;
             // List<CreatureLocInfo> distance = new List<CreatureLocInfo>();
@@ -204,7 +242,11 @@ namespace GameOfChallengers.Controllers
             return EnemyInfo;
         }
 
-
+        public int GetDistance(Creature creature1, Creature creature2)
+        {
+            //needs to return the distance between creature1 and creature2 and ensure that if they are in neighboring squares it will be one
+            return 1;
+        }
     }
 
     public class CreatureLocInfo 

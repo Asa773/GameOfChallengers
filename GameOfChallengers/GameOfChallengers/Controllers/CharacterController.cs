@@ -68,7 +68,7 @@ namespace GameOfChallengers.Controllers
 
         public int GetBaseDamage(Creature character)
         {
-            List<string> itemIds = character.GetDamageIDs();
+            List<string> itemIds = character.GetHandIDs();
             int baseDamage = 0;//this will be based on the weapon stats
             for (int i = 0; i < itemIds.Count; i++)
             {

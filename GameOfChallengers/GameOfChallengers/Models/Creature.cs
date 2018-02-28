@@ -104,7 +104,7 @@ namespace GameOfChallengers.Models
             return itemIds;
         }
 
-        public List<string> GetDamageIDs()
+        public List<string> GetHandIDs()
         {
             List<string> itemIds = new List<string>();
             if (LHandItemID != null)
