@@ -13,17 +13,12 @@ namespace GameOfChallengers.Controllers
         public Creature[,] GameBoard = new Creature[2, 5];
 
 
-        public BattleController(TeamViewModel team)
+        public BattleController(TeamViewModel team, int round)
         {
-            GetMonsters();
+            CurrMonsters = new MonstersListViewModel(round);
             GetTurnOrder(team);
             InitializeGameBoard(team, CurrMonsters);
 
-        }
-
-        public void GetMonsters()
-        {
-            CurrMonsters = new MonstersListViewModel();
         }
 
         public List<Creature> GetTurnOrder(TeamViewModel team)
@@ -51,112 +46,105 @@ namespace GameOfChallengers.Controllers
 
         }
 
-    public void AssignItems()
-    {
-
-    }
-
-    public void Battle(TeamViewModel team)
-    {
-
-
-
-
-
-
-        //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
-    }
-
-    public void InitializeGameBoard(TeamViewModel team, MonstersListViewModel CurrMonsters)
-    {
-        GameBoard[0, 0] = team.Dataset[5];
-        GameBoard[1, 0] = team.Dataset[4];
-        GameBoard[2, 0] = team.Dataset[3];
-        GameBoard[1, 1] = team.Dataset[2];
-        GameBoard[0, 2] = team.Dataset[1];
-        GameBoard[2, 2] = team.Dataset[0];
-        GameBoard[0, 3] = CurrMonsters.Dataset[0];
-        GameBoard[1, 3] = CurrMonsters.Dataset[1];
-        GameBoard[2, 3] = CurrMonsters.Dataset[2];
-        GameBoard[0, 4] = CurrMonsters.Dataset[3];
-        GameBoard[1, 5] = CurrMonsters.Dataset[4];
-        GameBoard[2, 5] = CurrMonsters.Dataset[5];
-
-    }
-    public void AutoBattle(TeamViewModel team)
-    {
-        //without asking the player for input
-        //this will run the turns in a loop until either all the team is dead or all the monsters are
-
-        while (true) //CurrMonsters.Instance.Dataset.Count() > 0)
+        public void AssignItems()
         {
-            for (int i = 0; i < TurnOrder.Count; i++)//don't forget about if one dies, turnorder[i] == null
-            {
-                TurnController turn = new TurnController();
-                if (TurnOrder[i].Type == 0)
-                {
-                    int loc = GetNewLoc(TurnOrder[i], GameBoard);
-                    GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
-                    Creature target = turn.AutoTarget(1);//get a monster target for the character
 
-                }
-                else
-                {
-                    int loc = GetNewLoc(TurnOrder[i], GameBoard);
-                    GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
-                    Creature target = turn.AutoTarget(0);//get a character target for the monster
-                }
-            }
         }
 
-    }
+        public void Battle(TeamViewModel team)
+        {
+            //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
+        }
+
+        public void InitializeGameBoard(TeamViewModel team, MonstersListViewModel CurrMonsters)
+        {
+            GameBoard[0, 0] = team.Dataset[5];
+            GameBoard[1, 0] = team.Dataset[4];
+            GameBoard[2, 0] = team.Dataset[3];
+            GameBoard[1, 1] = team.Dataset[2];
+            GameBoard[0, 2] = team.Dataset[1];
+            GameBoard[2, 2] = team.Dataset[0];
+            GameBoard[0, 3] = CurrMonsters.Dataset[0];
+            GameBoard[1, 3] = CurrMonsters.Dataset[1];
+            GameBoard[2, 3] = CurrMonsters.Dataset[2];
+            GameBoard[0, 4] = CurrMonsters.Dataset[3];
+            GameBoard[1, 5] = CurrMonsters.Dataset[4];
+            GameBoard[2, 5] = CurrMonsters.Dataset[5];
+
+        }
+        public void AutoBattle(TeamViewModel team)
+        {
+            //without asking the player for input
+            //this will run the turns in a loop until either all the team is dead or all the monsters are
+
+            while (true) //CurrMonsters.Instance.Dataset.Count() > 0)
+            {
+                for (int i = 0; i < TurnOrder.Count; i++)//don't forget about if one dies, turnorder[i] == null
+                {
+                    TurnController turn = new TurnController();
+                    if (TurnOrder[i].Type == 0)
+                    {
+                        int loc = GetNewLoc(TurnOrder[i], GameBoard);
+                        GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
+                        Creature target = turn.AutoTarget(1);//get a monster target for the character
+
+                    }
+                    else
+                    {
+                        int loc = GetNewLoc(TurnOrder[i], GameBoard);
+                        GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
+                        Creature target = turn.AutoTarget(0);//get a character target for the monster
+                    }
+                }
+            }
+
+        }
 
         //Check if this is required
         public int GetNewLoc(Creature creature,Creature[,] GameBoard)
-      {
-        //find the creature move it one place(or more) closer to the first monster/character found
-        int newloc = 0;
-        if (creature.Type == 0)
         {
+            //find the creature move it one place(or more) closer to the first monster/character found
+            int newloc = 0;
+            if (creature.Type == 0)
+            {
 
 
+            }
+            else
+            {
+
+            }
+            return newloc;
         }
-        else
+
+        //this will return the closest enemy creature to the creature passed in
+        private CreatureLocInfo GetClosest(Creature creature)
         {
-
-        }
-        return newloc;
-    }
-
-    //this will return the closest enemy creature to the creature passed in
-       private CreatureLocInfo GetClosest(Creature creature)
-     {
-
             CreatureLocInfo info = new CreatureLocInfo();
             CreatureLocInfo EnemyInfo = null;
             for (int i = 0; i < 3; i++)
             {
-            for (int j = 0; j < 6; j++)
-              {
-                if (GameBoard[i, j].Id == creature.Id)
+                for (int j = 0; j < 6; j++)
                 {
+                    if (GameBoard[i, j].Id == creature.Id)
+                    {
                         info.ID = creature.Id;
                         info.row = i;
                         info.col = j;
                         info.type = creature.Type;
+                    }
                 }
-              }
             }
             EnemyInfo = GetEnemy(info);
             return EnemyInfo;
-       }
+        }
 
         private CreatureLocInfo GetEnemy(CreatureLocInfo info)
         {
             //enemy away distance is defined as: how many column away + how many row away
             CreatureLocInfo EnemyInfo = new CreatureLocInfo();
             int distance = 0,minDist = 50;
-           // List<CreatureLocInfo> distance = new List<CreatureLocInfo>();
+            // List<CreatureLocInfo> distance = new List<CreatureLocInfo>();
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 6; j++)

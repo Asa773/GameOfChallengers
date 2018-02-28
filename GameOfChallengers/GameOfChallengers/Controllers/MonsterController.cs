@@ -9,7 +9,6 @@ namespace GameOfChallengers.Controllers
 {
     class MonsterController
     {
-        ItemsViewModel IViewModel = new ItemsViewModel();
         public List<Item> DropItems(Creature monster)
         {
             //drop a random number of items when dead
