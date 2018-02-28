@@ -11,6 +11,7 @@ namespace GameOfChallengers.Models
         public int Type { get; set; }// character(0) or monster(1)
         public string Name { get; set; }// 25 char max
         public int Level { get; set; }// 1-20
+        public bool OnTeam { get; set; }// if it is a character, is it on the team
         public int Attack { get; set; }// creature's base attack stat
         public int Defense { get; set; }// creature's base defense stat
         public int Speed { get; set; }// creature's base speed stat
@@ -32,7 +33,11 @@ namespace GameOfChallengers.Models
 
         public Creature()
         {
+            //                      ***need id preset?***
             Alive = true;
+            Level = 1;
+            XP = 0;
+            OnTeam = false;
             HeadItemID = null;
             BodyItemID = null;
             FeetItemID = null;

@@ -61,6 +61,15 @@ namespace GameOfChallengers.ViewModels
 
         private bool _needsRefresh;
 
+        public MonstersListViewModel(int roundNum)
+        {
+            round = roundNum;
+            
+            Title = "Current Monsters";
+            Dataset = new ObservableCollection<Creature>();
+            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+        }
+
         public bool NeedsRefresh()
         {
             if (_needsRefresh)
@@ -70,15 +79,6 @@ namespace GameOfChallengers.ViewModels
             }
 
             return false;
-        }
-
-        public MonstersListViewModel(int roundNum)
-        {
-            round = roundNum;
-            
-            Title = "Current Monsters";
-            Dataset = new ObservableCollection<Creature>();
-            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
         }
 
         public void SetNeedsRefresh(bool value)

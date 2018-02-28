@@ -51,6 +51,7 @@ namespace GameOfChallengers.Controllers
             GameScore.Date = DateTime.Now;//to set the time to when the game was finished
             GameScore.Round = round;
             //GameScore.Team.AddRange(Team);
+            //GameScore.FinalScore = ;
 
             return await SQLDataStore.Instance.AddAsync_Score(GameScore);
         }
