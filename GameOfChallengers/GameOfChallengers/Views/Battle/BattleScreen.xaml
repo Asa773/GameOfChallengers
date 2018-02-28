@@ -11,7 +11,7 @@
                     
                         <Frame BackgroundColor="LightBlue">
                            <ScrollView > 
-                            <Label Text="messages displayed here"
+                            <Label x:Name = "L1" Text="messages displayed here"
                                    TextColor="Black"
                               HorizontalTextAlignment="Center"
                               VerticalOptions="Center"/>
@@ -179,6 +179,16 @@
                 </Grid>
                     </Frame>
 
+                </StackLayout>
+                <StackLayout>
+                    <Button Text="Start"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                    Clicked="Start_clicked"/>
+                    <Button Text="End"
+                             VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                    Clicked="End_clicked"/>
                 </StackLayout>
        </StackLayout>
              </ScrollView>
