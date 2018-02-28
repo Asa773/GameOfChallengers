@@ -1,8 +1,10 @@
 ﻿using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
+using GameOfChallengers.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace GameOfChallengers.Controllers
 {
@@ -10,45 +12,47 @@ namespace GameOfChallengers.Controllers
     {
         int round = 0;
         Score GameScore;//this is the Score for this game
+        TeamViewModel Team;//this is the team of six characters for this game
 
-        //there will be one controller per type and the specific creature will be passed in to the controller methods
-        CharacterController Character = new CharacterController();
-        MonsterController Monster = new MonsterController();
+        GameScoreController()
+        {
+            Score GameScore = new Score();
+            TeamViewModel Team = new TeamViewModel();
+        }
 
-        TeamViewModel Team;
-
-        /*
-         * there should probably be some kind of Start() method to call the battle controller
-        */
-
-        public void Start(bool auto)
+        public async Task<bool> Start(bool auto)
         {
             round++;
-            //fill team
             BattleController battle = new BattleController(Team, round);
             while (Team.Dataset.Count > 0)
             {
                 if (auto)
                 {
-                    battle.AutoBattle(Team);
+                    GameScore.Auto = true;
+                    GameScore = battle.AutoBattle(Team, GameScore);
                 }
                 else
                 {
+                    GameScore.Auto = false;
                     battle.Battle(Team);
                 }
             }
-            ReportScore(Team);
+            return await ReportScore();
         }
         
-        public void ReportScore(TeamViewModel team)
+        public async Task<bool> ReportScore()
         {
             //the final score will be total XP + # of turns + # of monsters killed
             //this method will report the final score as well as the "Battle History" metadata
             //the metadata is the variables at the top of the page as well as the characters' stats
 
             //load GameScore
-            GameScore.Name = App.currName;
+            GameScore.Name = App.currName;//***NOT working right now***
+            GameScore.Date = DateTime.Now;//to set the time to when the game was finished
+            GameScore.Round = round;
+            //GameScore.Team.AddRange(Team);
 
+            return await SQLDataStore.Instance.AddAsync_Score(GameScore);
         }
     }
 }

@@ -56,24 +56,23 @@ namespace GameOfChallengers.Controllers
         }
             
            
-        public int DoDamage(Creature creature, int baseDamage)
+        public int DamageToDo(Creature creature, int baseDamage)
         {
-
-            mc.GetBaseDamage(creature);
-            cc.GetBaseDamage(creature);
-            //getBaseDamage(creature)
+            //no
             //get how much damage the character/monster will do, use getBaseDamage(creature) and a random value
+            //mc.GetBaseDamage(creature);
+            //cc.GetBaseDamage(creature);
+            //getBaseDamage(creature)
             //    int TotalDamage = GetBaseDamage(creature) + baseDamage;
 
             //    //final damage done will be weapon damage + 1/4 level, baseDamage, + a roll(1-20)
-            int finalDamage = 0;
+
             //    for (int roll =1; roll >=20; roll ++)
             //    {
             //        finalDamage = GetBaseDamage.creature.weapondamage + (1 / 4) * creature.Level * baseDamage + roll;
             //    }
 
-            
-        
+            int finalDamage = 0;
 
             return finalDamage;
         }

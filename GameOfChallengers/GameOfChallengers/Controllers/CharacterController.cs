@@ -137,6 +137,9 @@ namespace GameOfChallengers.Controllers
 
         private void LevelUp(Creature character, int newLevel)
         {
+            //level up the character
+            //TestForLevelUp will call this method with a new level to change the character to
+            //the characters stats will be reset based on a data table with the base stats stored
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
             int rolld = rand.Next(11);
@@ -147,9 +150,7 @@ namespace GameOfChallengers.Controllers
             int offset = character.MaxHealth - character.CurrHealth;
             character.MaxHealth = rolld * newLevel;
             character.CurrHealth = character.MaxHealth - offset;
-            //level up the character
-            //TestForLevelUp will call this method with a new level to change the character to
-            //the characters stats will be reset based on a data table with the base stats stored
+            
         }
 
         public bool TakeDamage(Creature character, int amount)

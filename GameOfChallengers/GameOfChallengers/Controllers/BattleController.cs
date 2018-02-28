@@ -10,8 +10,13 @@ namespace GameOfChallengers.Controllers
     {
         MonstersListViewModel CurrMonsters;
         public List<Creature> TurnOrder = new List<Creature>();
+        public List<Item> ItemPool = new List<Item>();
         public Creature[,] GameBoard = new Creature[2, 5];
-
+        //there will be one controller per type and the specific creature will be passed in to the controller methods
+        CharacterController CC = new CharacterController();
+        MonsterController MC = new MonsterController();
+        int turns = 0;
+        int totalXP = 0;
 
         public BattleController(TeamViewModel team, int round)
         {
@@ -23,8 +28,11 @@ namespace GameOfChallengers.Controllers
 
         public List<Creature> GetTurnOrder(TeamViewModel team)
         {
+            //this will get the list that will be cycled through for this round to choose whose turn it is
+            //the speed will be found by adding the Speed data from the Creature with all of the boosts from any items (GetBaseSpeed())
+            //ties in speed will be broken it the following way:
+            //highest level -> highest xp -> character before monster -> alphabetic by name -> first in list order
             List<Creature> turnOrder = new List<Creature>();
-            // int count = team.Dataset.Count;
             for (int i = 0; i < team.Dataset.Count; i++)
             {
                 turnOrder.Add(team.Dataset[i]);
@@ -37,23 +45,78 @@ namespace GameOfChallengers.Controllers
 
             CompareByAllCriteria listComparer = new CompareByAllCriteria();
             turnOrder.Sort(listComparer);
-           
-            //this will get the list that will be cycled through for this round to choose whose turn it is
-            //the speed will be found by adding the Speed data from the Creature with all of the boosts from any items (GetBaseSpeed())
-            //ties in speed will be broken it the following way:
-            //highest level -> highest xp -> character before monster -> alphabetic by name -> first in list order
             return turnOrder;
-
-        }
-
-        public void AssignItems()
-        {
 
         }
 
         public void Battle(TeamViewModel team)
         {
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
+        }
+
+        public Score AutoBattle(TeamViewModel team, Score score)
+        {
+            //without asking the player for input
+            //this will run the turns in a loop until either all the team is dead or all the monsters are
+
+            while (CurrMonsters.Dataset.Count > 0)
+            {
+                for (int i = 0; i < TurnOrder.Count; i++)
+                {
+                    TurnController turn = new TurnController();
+                    turns++;
+                    if (TurnOrder[i].Type == 0)
+                    {
+                        Creature character = TurnOrder[i];
+                        int loc = GetNewLoc(character, GameBoard);
+                        GameBoard = turn.Move(character, loc, GameBoard);
+                        Creature target = turn.AutoTarget(1);//get a monster target for the character
+                        bool hit = turn.Attack(character, target);
+                        if (hit)
+                        {
+                            int damageToDo = turn.DamageToDo(target, CC.GetBaseDamage(character));
+                            int xpToGive = MC.GiveXP(target, damageToDo);
+                            totalXP += xpToGive;
+                            CC.TestForLevelUp(character, xpToGive);
+                            bool monsterDie = MC.TakeDamage(target, damageToDo);
+                            if (monsterDie)
+                            {
+                                ItemPool.AddRange(MC.DropItems(target));
+                                TurnOrder.Remove(target);
+                                //score.TotalMonstersKilled.Add(target);
+                                CurrMonsters.Dataset.Remove(target);
+                            }
+                        }
+
+                    }
+                    else
+                    {
+                        Creature monster = TurnOrder[i];
+                        int loc = GetNewLoc(monster, GameBoard);
+                        GameBoard = turn.Move(monster, loc, GameBoard);
+                        Creature target = turn.AutoTarget(0);//get a character target for the monster
+                        bool hit = turn.Attack(monster, target);
+                        if (hit)
+                        {
+                            int damageToDo = turn.DamageToDo(target, MC.GetBaseDamage(monster));
+                            bool characterDie = CC.TakeDamage(target, damageToDo);
+                            if (characterDie)
+                            {
+                                ItemPool.AddRange(CC.DropItems(target));
+                                TurnOrder.Remove(target);
+                            }
+                        }
+                    }
+                }
+            }
+            score.Turns += turns;
+            score.TotalXP += totalXP;
+            return score;
+        }
+
+        public void AssignItems()
+        {
+
         }
 
         public void InitializeGameBoard(TeamViewModel team, MonstersListViewModel CurrMonsters)
@@ -72,36 +135,9 @@ namespace GameOfChallengers.Controllers
             GameBoard[2, 5] = CurrMonsters.Dataset[5];
 
         }
-        public void AutoBattle(TeamViewModel team)
-        {
-            //without asking the player for input
-            //this will run the turns in a loop until either all the team is dead or all the monsters are
-
-            while (true) //CurrMonsters.Instance.Dataset.Count() > 0)
-            {
-                for (int i = 0; i < TurnOrder.Count; i++)//don't forget about if one dies, turnorder[i] == null
-                {
-                    TurnController turn = new TurnController();
-                    if (TurnOrder[i].Type == 0)
-                    {
-                        int loc = GetNewLoc(TurnOrder[i], GameBoard);
-                        GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
-                        Creature target = turn.AutoTarget(1);//get a monster target for the character
-
-                    }
-                    else
-                    {
-                        int loc = GetNewLoc(TurnOrder[i], GameBoard);
-                        GameBoard = turn.Move(TurnOrder[i], loc, GameBoard);
-                        Creature target = turn.AutoTarget(0);//get a character target for the monster
-                    }
-                }
-            }
-
-        }
 
         //Check if this is required
-        public int GetNewLoc(Creature creature,Creature[,] GameBoard)
+        public int GetNewLoc(Creature creature, Creature[,] GameBoard)
         {
             //find the creature move it one place(or more) closer to the first monster/character found
             int newloc = 0;
