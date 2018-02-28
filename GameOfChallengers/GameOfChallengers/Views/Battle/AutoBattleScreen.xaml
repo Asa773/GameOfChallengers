@@ -11,21 +11,6 @@
                    VerticalTextAlignment="Center"/>
             <ScrollView >
                 <Frame BackgroundColor="LightBlue">
-
-<<<<<<< HEAD
-                        <Label Text="messages displayed here"
-                                   TextColor="Blue"
-                              HorizontalTextAlignment="Center"
-                              VerticalOptions="Center"/>
-                    </Frame>
-                </ScrollView>
-                <Button Text="Score" 
-                        BackgroundColor="Crimson"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Clicked="Scor_CLicked"/>
-            </Label>
-=======
                     <Label Text="messages displayed here"
                            TextColor="Blue"
                            HorizontalTextAlignment="Center"
@@ -37,7 +22,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     Clicked="Score_Clicked"/>
->>>>>>> 5f6c676d063eaa7ef8d3424a0a2f4a2be3e7a72f
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
