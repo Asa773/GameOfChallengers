@@ -57,12 +57,6 @@
     <PackageReference Include="Xamarin.Android.Support.v4" Version="26.1.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="26.1.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="26.1.0.1" />
-    <PackageReference Include="XLabs.Core">
-      <Version>2.0.5782</Version>
-    </PackageReference>
-    <PackageReference Include="XLabs.Forms">
-      <Version>2.0.5782</Version>
-    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FileHelper.cs" />
