@@ -71,7 +71,7 @@ namespace GameOfChallengers.Controllers
                         Creature character = TurnOrder[i];
                         int loc = GetNewLoc(character, GameBoard);
                         GameBoard = turn.Move(character, loc, GameBoard);
-                        Creature target = AutoTarget(1);//get a monster target for the character
+                        Creature target = AutoTarget(character);//get a monster target for the character
                         if (!CanHit(character, target))
                         {
                             continue;
@@ -99,7 +99,7 @@ namespace GameOfChallengers.Controllers
                         Creature monster = TurnOrder[i];
                         int loc = GetNewLoc(monster, GameBoard);
                         GameBoard = turn.Move(monster, loc, GameBoard);
-                        Creature target = AutoTarget(0);//get a character target for the monster
+                        Creature target = AutoTarget(monster);//get a character target for the monster
                         if (!CanHit(monster, target))
                         {
                             continue;
@@ -123,10 +123,11 @@ namespace GameOfChallengers.Controllers
             return score;
         }
 
-        public Creature AutoTarget(int targetType)//***needs to get the closest enemy(targetType)***
+        public Creature AutoTarget(Creature self)//***needs to get the closest enemy(targetType)***
         {
-            Creature c = new Creature();
-            return c;//return a creature with c.Type == targetType
+           
+            return GetClosestEnemy(self);
+            //return c;//return a creature with c.Type == targetType
         }
 
         public bool CanHit(Creature creature1, Creature creature2)
@@ -192,10 +193,16 @@ namespace GameOfChallengers.Controllers
         }
 
         //this will return the closest enemy creature to the creature passed in
-        private CreatureLocInfo GetClosest(Creature creature)
+        private Creature GetClosestEnemy(Creature creature)
+        {
+            CreatureLocInfo info = GetLocInfo(creature);
+          
+            return GetClosestEnemy(info);
+        }
+
+        private CreatureLocInfo GetLocInfo(Creature creature)
         {
             CreatureLocInfo info = new CreatureLocInfo();
-            CreatureLocInfo EnemyInfo = null;
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 6; j++)
@@ -206,17 +213,18 @@ namespace GameOfChallengers.Controllers
                         info.row = i;
                         info.col = j;
                         info.type = creature.Type;
+
                     }
                 }
             }
-            EnemyInfo = GetEnemy(info);
-            return EnemyInfo;
+            return info;
         }
 
-        private CreatureLocInfo GetEnemy(CreatureLocInfo info)
+        private Creature GetClosestEnemy(CreatureLocInfo info)
         {
+            Creature foundEnemy = null;
             //enemy away distance is defined as: how many column away + how many row away       ***maybe use distance formula?***
-            CreatureLocInfo EnemyInfo = new CreatureLocInfo();
+
             int distance = 0,minDist = 50;
             // List<CreatureLocInfo> distance = new List<CreatureLocInfo>();
             for (int i = 0; i < 3; i++)
@@ -229,23 +237,25 @@ namespace GameOfChallengers.Controllers
                         if (minDist >= distance)
                         {
                             minDist = distance;
-                            EnemyInfo.ID = GameBoard[i,j].Id;
-                            EnemyInfo.type = GameBoard[i, j].Type;
-                            EnemyInfo.col = j;
-                            EnemyInfo.row = i;
+                            foundEnemy = GameBoard[i, j];
                         }
                     }
                 }
 
             }
 
-            return EnemyInfo;
+            return foundEnemy;
         }
 
         public int GetDistance(Creature creature1, Creature creature2)
         {
+            
+            CreatureLocInfo info1 = GetLocInfo(creature1);
+            CreatureLocInfo info2 = GetLocInfo(creature2);
+
+            return (Math.Abs(info1.row - info2.row) + (Math.Abs(info1.col - info2.col)));
             //needs to return the distance between creature1 and creature2 and ensure that if they are in neighboring squares it will be one
-            return 1;
+
         }
     }
 

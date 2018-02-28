@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Models;
+using GameOfChallengers.Controllers;
 
 namespace GameOfChallengers.Views.Battle
 {
@@ -16,9 +17,12 @@ namespace GameOfChallengers.Views.Battle
 	{
         private TeamViewModel _viewModel;
         public Creature Data { get; set; }
-
+        public string a = "MM";
+        Button b;
 		public BattleScreen ()
 		{
+            
+            //BattleController bc = new BattleController(_viewModel,a);
 			InitializeComponent ();
             Data = new Creature
             {
@@ -32,8 +36,9 @@ namespace GameOfChallengers.Views.Battle
                 Alive = true,
 
             };
+           
             _viewModel = new TeamViewModel();
-            BindingContext = _viewModel;
+            BindingContext = a;
 		}
 
         private async void DeleteTeamMember(object sender, EventArgs e)
@@ -43,6 +48,11 @@ namespace GameOfChallengers.Views.Battle
             await Navigation.PopAsync();
 
         }
+        private void ClickedZeroZero(object sender, EventArgs e)
+        {
+            zero.Text = "D"; 
+        }
+
 
 	}
 }
