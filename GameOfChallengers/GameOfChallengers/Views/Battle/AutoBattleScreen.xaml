@@ -20,7 +20,7 @@
                         BackgroundColor="Crimson"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Clicked="Scor_CLicked"/>
+                        Clicked="Score_CLicked"/>
             </Label>
         </StackLayout>
 	</ContentPage.Content>
