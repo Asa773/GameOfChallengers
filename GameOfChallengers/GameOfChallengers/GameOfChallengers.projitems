@@ -46,30 +46,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml">
-	  <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml" />
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle\AutoBattleScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -192,24 +174,12 @@
       <DependentUpon>AssignItemPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Converter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml.cs">
-	  <DependentUpon>BuildTeamPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml.cs">
-	  <DependentUpon>CharacterDetail.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml.cs">
-	  <DependentUpon>CharactersPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml.cs">
-	  <DependentUpon>DeleteCharacter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml.cs">
-	  <DependentUpon>EditCharacter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml.cs">
-	  <DependentUpon>NewCharacter.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\BuildTeamPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharacterDetail.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\CharactersPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\DeleteCharacter.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\EditCharacter.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\AutoBattleScreen.xaml.cs">
       <DependentUpon>AutoBattleScreen.xaml</DependentUpon>
     </Compile>
