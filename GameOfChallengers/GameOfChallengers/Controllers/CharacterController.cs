@@ -8,9 +8,9 @@ namespace GameOfChallengers.Controllers
 {
     class CharacterController
     {
-        
+        //should probably refactor into a model or something because it is used in more than one place
         List<LevelingUp> lp = new List<LevelingUp>
-         {
+        {
             new LevelingUp{XP = 0,     Level = 1,Attack = 1,Defense = 1, Speed = 1},
             new LevelingUp{XP = 300,   Level = 2,Attack = 1,Defense = 2, Speed = 1},
             new LevelingUp{XP = 900,   Level = 3,Attack = 2,Defense = 3, Speed = 1},
@@ -119,7 +119,7 @@ namespace GameOfChallengers.Controllers
             //this method will test the character's xp against a data table with the xp numbers stored
             character.XP += xp;
             bool DidLevelUp = false;
-            int NewLevel = 0;//should equal a method that will check for the current level based on xp   *******
+            int NewLevel = 0;
             for (int i = 0; i < lp.Count; i++)
             {
                 if(character.XP >= lp[i].XP )
@@ -139,7 +139,7 @@ namespace GameOfChallengers.Controllers
         {
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
-            int rolld = rand.Next(11);//drop 0, 1, 2, or 3(all) of its items
+            int rolld = rand.Next(11);
             character.Level = newLevel;
             character.Attack = lp[newLevel - 1].Attack;
             character.Defense = lp[newLevel - 1].Defense;
