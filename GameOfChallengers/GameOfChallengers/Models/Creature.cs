@@ -20,6 +20,7 @@ namespace GameOfChallengers.Models
         public int CurrHealth { get; set; }// creature's current health
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public int Loc { get; set; }// location on game board
+        public string ImageURI { get; set; }// image to be inserted
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
         public string HeadItemID { get; set; }
@@ -73,6 +74,7 @@ namespace GameOfChallengers.Models
             RHandItemID = newData.RHandItemID;
             LFingerItemID = newData.LFingerItemID;
             RFingerItemID = newData.RFingerItemID;
+            ImageURI = newData.ImageURI;
         }
 
         public List<string> GetItemIDs()

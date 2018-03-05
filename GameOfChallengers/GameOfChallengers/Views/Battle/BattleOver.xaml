@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Battle.BattleOver">
     <ContentPage.Content>
-         <ScrollView>
+        <ScrollView>
         <StackLayout>
             <Label Text="All Monsters are Dead...   You have Won"
                    HorizontalOptions="Center"
@@ -179,6 +179,6 @@
 
 
         </StackLayout>
-             </ScrollView>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -8,16 +8,17 @@ using System.Threading.Tasks;
 
 namespace GameOfChallengers.Controllers
 {
-    class GameScoreController
+    public class GameScoreController
     {
         int round = 0;
         Score GameScore;//this is the Score for this game
         TeamViewModel Team;//this is the team of six characters for this game
 
-        GameScoreController()
+        public GameScoreController()
         {
             Score GameScore = new Score();
-            TeamViewModel Team = new TeamViewModel();
+            TeamViewModel Team = TeamViewModel.Instance;
+            TeamViewModel.Instance.LoadData();
         }
 
         public async Task<bool> Start(bool auto)
@@ -51,7 +52,7 @@ namespace GameOfChallengers.Controllers
             GameScore.Date = DateTime.Now;//to set the time to when the game was finished
             GameScore.Round = round;
             //GameScore.Team.AddRange(Team);
-            //GameScore.FinalScore = ;
+            GameScore.FinalScore = GameScore.TotalXP;
 
             return await SQLDataStore.Instance.AddAsync_Score(GameScore);
         }

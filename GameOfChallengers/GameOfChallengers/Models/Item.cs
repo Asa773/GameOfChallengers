@@ -18,14 +18,12 @@ namespace GameOfChallengers.Models
 
         public Locations Loc { get; set; }// enum for what creature location the item is attached to
 
-
+        public string ImageURI { get; set; }// image to be inserted
 
         public Item()
         {
             Name = "unknown";
             Id = null;
-           // ImageURI = null;
-
             Range = 0;
             Value = 0;
 
@@ -36,11 +34,11 @@ namespace GameOfChallengers.Models
 
         }
 
-        public Item(string name, string guid, int range, int value, Locations location, Attributes attribute)
+        public Item(string name, string guid, int range, int value, Locations location, Attributes attribute, string imageuri)
         {
             Name = name;
             Id = guid;
-           // ImageURI = imageuri;
+            ImageURI = imageuri;
 
             Range = range;
             Value = value;
@@ -63,6 +61,7 @@ namespace GameOfChallengers.Models
             Range = newData.Range;
             Att = newData.Att;
             Loc = newData.Loc;
+            ImageURI = newData.ImageURI;
         }
     }
 }

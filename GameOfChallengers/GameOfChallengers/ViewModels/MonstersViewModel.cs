@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using GameOfChallengers.Models;
 using GameOfChallengers.Views.Monsters;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GameOfChallengers.ViewModels
 {
@@ -76,8 +77,18 @@ namespace GameOfChallengers.ViewModels
             });
         }
 
+        public List<Creature> GetAllCreatures()
+        {
+            var myReturn = new List<Creature>();
+            foreach (var item in Dataset)
+            {
+                myReturn.Add(item);
+            }
+
+            return myReturn;
+        }
+
         // Return True if a refresh is needed
-       
 
         // Sets the need to refresh
         public void SetNeedsRefresh(bool value)

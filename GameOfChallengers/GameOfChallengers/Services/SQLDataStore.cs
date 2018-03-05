@@ -35,6 +35,7 @@ namespace GameOfChallengers.Services
             App.Database.CreateTableAsync<Item>().Wait();
             App.Database.CreateTableAsync<Creature>().Wait();
             App.Database.CreateTableAsync<Score>().Wait();
+            App.Database.CreateTableAsync<Entry>().Wait();
 
         }
 
@@ -44,6 +45,7 @@ namespace GameOfChallengers.Services
             App.Database.DropTableAsync<Item>().Wait();
             App.Database.DropTableAsync<Creature>().Wait();
             App.Database.DropTableAsync<Score>().Wait();
+            App.Database.CreateTableAsync<Entry>().Wait();
 
         }
 
@@ -76,6 +78,7 @@ namespace GameOfChallengers.Services
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0 });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Att = 0, Loc = 0 });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Att = 0, Loc = 0 });
+            await AddAsync_Item(new Item { Id = "bow", Name = "Bow", Value = 3, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand });
 
             /*NEED TO ADD  each item ID set to null on each creature*/
             //characters

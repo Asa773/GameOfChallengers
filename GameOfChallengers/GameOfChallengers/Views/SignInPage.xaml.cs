@@ -13,6 +13,12 @@ namespace GameOfChallengers.Views
             BindingContext = name;
         }
 
+        void Signin_done(object sender, EventArgs e)
+        {
+            //cast sender to access the properties of the Entry
+            var text = ((Entry)sender).Text;
+        }
+
         private async void StartGame_Command(object sender, EventArgs e)
         {
             App.currName = name.ToString();

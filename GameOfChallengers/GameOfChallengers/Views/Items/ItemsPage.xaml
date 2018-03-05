@@ -24,10 +24,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
+                                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                                 <Label Text="{Binding Name}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="16" />
+                                       LineBreakMode="NoWrap" 
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       FontSize="16" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

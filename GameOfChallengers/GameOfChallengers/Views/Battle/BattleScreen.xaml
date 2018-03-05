@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Battle.BattleScreen">
     <ContentPage.Content>
-   
-         <ScrollView>
+
+        <ScrollView>
             <StackLayout Orientation="Vertical">
-        <StackLayout>
+                <StackLayout>
           
                     
                         <Frame BackgroundColor="LightBlue">
@@ -20,7 +20,7 @@
                    
                 </StackLayout>
           
-            <StackLayout >
+                <StackLayout >
                     <Frame OutlineColor="Black" >
                      
                 <Grid
@@ -190,7 +190,7 @@
                               HorizontalOptions="Center"
                     Clicked="End_clicked"/>
                 </StackLayout>
-       </StackLayout>
-             </ScrollView>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

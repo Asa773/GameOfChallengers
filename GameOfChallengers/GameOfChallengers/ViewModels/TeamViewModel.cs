@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 using GameOfChallengers.Models;
+using GameOfChallengers.Services;
 
 namespace GameOfChallengers.ViewModels
 {
@@ -57,7 +58,20 @@ namespace GameOfChallengers.ViewModels
         {
             _needsRefresh = value;
         }
-
+        
+        public void LoadData()
+        {
+            var dataset = CharactersViewModel.Instance.GetAllCreatures();
+            int teamCount = 0;
+            foreach (var data in dataset)
+            {
+                if ((data.Type == 0) && (teamCount < 6) && data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
+                {
+                    teamCount++;
+                    Dataset.Add(data);
+                }
+            }
+        }
         async Task ExecuteLoadDataCommand()
         {
             if (IsBusy)
@@ -68,7 +82,9 @@ namespace GameOfChallengers.ViewModels
             try
             {
                 Dataset.Clear();
-                var dataset = await DataStore.GetAllAsync_Creature(true);
+                //var dataset = await SQLDataStore.GetAllAsync_Creature(true);
+
+                var dataset = CharactersViewModel.Instance.GetAllCreatures();
                 int teamCount = 0;
                 foreach (var data in dataset)
                 {
@@ -108,6 +124,11 @@ namespace GameOfChallengers.ViewModels
                         Dataset.Add(character);
                         await DataStore.AddAsync_Creature(character);
                     }
+                }
+                //                      ***temp for demo***
+                foreach (var data in Dataset)
+                {
+                    data.RHandItemID = "bow";
                 }
             }
 

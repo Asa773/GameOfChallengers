@@ -15,7 +15,7 @@ namespace GameOfChallengers.ViewModels
 {
     class MonstersListViewModel : BaseViewModel
     {
-        private static int round;
+        private static int round = 0;
 
         //should probably refactor into a model or something because it is used in more than one place
         List<LevelingUp> lp = new List<LevelingUp>
@@ -50,7 +50,7 @@ namespace GameOfChallengers.ViewModels
             {
                 if (_instance == null)
                 {
-                    _instance = new MonstersListViewModel(round);//will this work??***
+                    _instance = new MonstersListViewModel();
                 }
                 return _instance;
             }
@@ -61,12 +61,21 @@ namespace GameOfChallengers.ViewModels
 
         private bool _needsRefresh;
 
-        public MonstersListViewModel(int roundNum)
+        public MonstersListViewModel()
         {
-            round = roundNum;
             
             Title = "Current Monsters";
             Dataset = new ObservableCollection<Creature>();
+            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+        }
+
+        public void setRound(int roundNum)
+        {
+            round = roundNum;
+        }
+
+        public void setMonsters()
+        {
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
         }
 
@@ -96,7 +105,8 @@ namespace GameOfChallengers.ViewModels
             try
             {
                 Dataset.Clear();
-                var dataset = await DataStore.GetAllAsync_Creature(true);
+                //var dataset = await DataStore.GetAllAsync_Creature(true);
+                var dataset = MonstersViewModel.Instance.GetAllCreatures();
                 var tempDataset = new List<Creature>();
                 int dateSeed = DateTime.Now.Millisecond;
                 Random rand = new Random(dateSeed);
@@ -120,6 +130,7 @@ namespace GameOfChallengers.ViewModels
                     monster.Speed = lp[round].Speed;
                     monster.MaxHealth = rand.Next(11) * round;
                     monster.CurrHealth = monster.MaxHealth;
+                    monster.RHandItemID = "bow";//              ***temp for demo***
                     Dataset.Add(monster);
                 }
             }

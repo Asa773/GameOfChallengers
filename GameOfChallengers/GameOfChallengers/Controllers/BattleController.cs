@@ -21,7 +21,9 @@ namespace GameOfChallengers.Controllers
 
         public BattleController(TeamViewModel team, int round)
         {
-            CurrMonsters = new MonstersListViewModel(round);
+            CurrMonsters = MonstersListViewModel.Instance;
+            CurrMonsters.setRound(round);
+            CurrMonsters.setMonsters();
             GetTurnOrder(team);
             InitializeGameBoard(team, CurrMonsters);
 
@@ -34,7 +36,7 @@ namespace GameOfChallengers.Controllers
             //ties in speed will be broken it the following way:
             //highest level -> highest xp -> character before monster -> alphabetic by name -> first in list order
             List<Creature> turnOrder = new List<Creature>();
-            for (int i = 0; i < team.Dataset.Count; i++)
+            for (int i = 0; i < TeamViewModel.Instance.Dataset.Count; i++)
             {
                 turnOrder.Add(team.Dataset[i]);
             }
