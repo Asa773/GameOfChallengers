@@ -17,25 +17,28 @@ namespace GameOfChallengers.Controllers
         public GameScoreController()
         {
             Score GameScore = new Score();
-            TeamViewModel Team = TeamViewModel.Instance;
+           
             TeamViewModel.Instance.LoadData();
+            TeamViewModel Team = TeamViewModel.Instance;
         }
 
         public async Task<bool> Start(bool auto)
         {
+            TeamViewModel Team = TeamViewModel.Instance;
             round++;
-            BattleController battle = new BattleController(Team, round);
+            BattleController battle = new BattleController(round);
             while (Team.Dataset.Count > 0)
             {
                 if (auto)
                 {
+                    
+                    GameScore = battle.AutoBattle(GameScore);
                     GameScore.Auto = true;
-                    GameScore = battle.AutoBattle(Team, GameScore);
                 }
                 else
                 {
                     GameScore.Auto = false;
-                    battle.Battle(Team);
+                    battle.Battle();
                 }
             }
             return await ReportScore();

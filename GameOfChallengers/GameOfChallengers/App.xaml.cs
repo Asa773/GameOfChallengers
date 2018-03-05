@@ -42,7 +42,7 @@ namespace GameOfChallengers
             {
                 if (database == null)
                 {
-                    database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("SQLLiteDBName.db3"));
+                    database = new SQLiteAsyncConnection(DependencyService.Get<IFileHelper>().GetLocalFilePath("SQLLiteDBName2.db3"));
                 }
                 return database;
             }

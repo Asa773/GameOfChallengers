@@ -3,6 +3,7 @@ using GameOfChallengers.Services;
 using GameOfChallengers.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameOfChallengers.Controllers
@@ -10,26 +11,28 @@ namespace GameOfChallengers.Controllers
     class BattleController
     {
         MonstersListViewModel CurrMonsters;
+        TeamViewModel team;
         public List<Creature> TurnOrder = new List<Creature>();
         public List<Item> ItemPool = new List<Item>();
-        public Creature[,] GameBoard = new Creature[2, 5];
+        public Creature[,] GameBoard = new Creature[3, 6];
         //there will be one controller per type and the specific creature will be passed in to the controller methods
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
         int turns = 0;
         int totalXP = 0;
 
-        public BattleController(TeamViewModel team, int round)
+        public BattleController(int round)
         {
             CurrMonsters = MonstersListViewModel.Instance;
+            team = TeamViewModel.Instance;
             CurrMonsters.setRound(round);
             CurrMonsters.setMonsters();
-            GetTurnOrder(team);
-            InitializeGameBoard(team, CurrMonsters);
+            TurnOrder = GetTurnOrder();
+            InitializeGameBoard();
 
         }
 
-        public List<Creature> GetTurnOrder(TeamViewModel team)
+        public List<Creature> GetTurnOrder()
         {
             //this will get the list that will be cycled through for this round to choose whose turn it is
             //the speed will be found by adding the Speed data from the Creature with all of the boosts from any items (GetBaseSpeed())
@@ -52,12 +55,12 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        public void Battle(TeamViewModel team)
+        public void Battle()
         {
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
         }
 
-        public Score AutoBattle(TeamViewModel team, Score score)
+        public Score AutoBattle(Score score)
         {
             //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
@@ -85,8 +88,8 @@ namespace GameOfChallengers.Controllers
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
                             CC.TestForLevelUp(character, xpToGive);
-                            bool monsterDie = MC.TakeDamage(target, damageToDo);
-                            if (monsterDie)
+                            bool monsterAlive = MC.TakeDamage(target, damageToDo);
+                            if (!monsterAlive)
                             {
                                 ItemPool.AddRange(MC.DropItems(target));
                                 TurnOrder.Remove(target);
@@ -110,8 +113,8 @@ namespace GameOfChallengers.Controllers
                         if (hit)
                         {
                             int damageToDo = turn.DamageToDo(monster);
-                            bool characterDie = CC.TakeDamage(target, damageToDo);
-                            if (characterDie)
+                            bool characterAlive = CC.TakeDamage(target, damageToDo);
+                            if (!characterAlive)
                             {
                                 ItemPool.AddRange(CC.DropItems(target));
                                 TurnOrder.Remove(target);
@@ -139,7 +142,8 @@ namespace GameOfChallengers.Controllers
             int range = 0;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                var items = ItemsViewModel.Instance.Dataset;
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Range > range)
                 {
                     range = item.Range;
@@ -160,7 +164,7 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        public void InitializeGameBoard(TeamViewModel team, MonstersListViewModel CurrMonsters)
+        public void InitializeGameBoard()
         {
             GameBoard[0, 0] = team.Dataset[5];
             GameBoard[1, 0] = team.Dataset[4];
@@ -209,13 +213,16 @@ namespace GameOfChallengers.Controllers
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    if (GameBoard[i, j].Id == creature.Id)
+                    if(GameBoard[i, j] != null)
                     {
-                        info.ID = creature.Id;
-                        info.row = i;
-                        info.col = j;
-                        info.type = creature.Type;
+                        if (GameBoard[i, j].Id == creature.Id)
+                        {
+                            info.ID = creature.Id;
+                            info.row = i;
+                            info.col = j;
+                            info.type = creature.Type;
 
+                        }
                     }
                 }
             }
@@ -233,7 +240,7 @@ namespace GameOfChallengers.Controllers
             {
                 for (int j = 0; j < 6; j++)
                 {
-                    if(((info.type)== (1- info.type)) && GameBoard[i,j].Id != null)
+                    if(GameBoard[i, j] != null && ((GameBoard[i, j].Type) == (1- info.type)))
                     {
                         distance = (Math.Abs(info.row - i) + (Math.Abs(info.col - j)));
                         if (minDist >= distance)

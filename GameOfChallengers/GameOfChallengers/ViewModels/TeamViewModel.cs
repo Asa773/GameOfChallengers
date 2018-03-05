@@ -61,6 +61,7 @@ namespace GameOfChallengers.ViewModels
         
         public void LoadData()
         {
+            Dataset.Clear();
             var dataset = CharactersViewModel.Instance.GetAllCreatures();
             int teamCount = 0;
             foreach (var data in dataset)

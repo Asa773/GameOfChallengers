@@ -1,7 +1,9 @@
 ﻿using GameOfChallengers.Models;
 using GameOfChallengers.Services;
+using GameOfChallengers.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GameOfChallengers.Controllers
@@ -57,7 +59,8 @@ namespace GameOfChallengers.Controllers
             baseAttack += character.Attack;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                var items = ItemsViewModel.Instance.Dataset;
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Att == Attributes.Attack)
                 {
                     baseAttack += item.Value;
@@ -72,7 +75,8 @@ namespace GameOfChallengers.Controllers
             int baseDamage = 0;//this will be based on the weapon stats
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                var items = ItemsViewModel.Instance.Dataset;
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Att == Attributes.Attack)
                 {
                     baseDamage += item.Value;
@@ -88,7 +92,8 @@ namespace GameOfChallengers.Controllers
             baseSpeed += character.Speed;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                var items = ItemsViewModel.Instance.Dataset;
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Att == Attributes.Speed)
                 {
                     baseSpeed += item.Value;
@@ -104,7 +109,8 @@ namespace GameOfChallengers.Controllers
             baseDefense += character.Defense;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Item item = SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result;
+                var items = ItemsViewModel.Instance.Dataset;
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Att == Attributes.Defence)
                 {
                     baseDefense += item.Value;

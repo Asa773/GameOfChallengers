@@ -43,7 +43,7 @@ namespace GameOfChallengers.Models
             BodyItemID = null;
             FeetItemID = null;
             LHandItemID = null;
-            RHandItemID = null;
+            RHandItemID = "bow";//              ***TEMP***
             LFingerItemID = null;
             RFingerItemID = null;
         }

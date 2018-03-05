@@ -76,7 +76,36 @@ namespace GameOfChallengers.ViewModels
 
         public void setMonsters()
         {
-            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+            Dataset.Clear();
+            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+            var dataset = MonstersViewModel.Instance.GetAllCreatures();
+            var tempDataset = new List<Creature>();
+            int dateSeed = DateTime.Now.Millisecond;
+            Random rand = new Random(dateSeed);
+            foreach (var data in dataset)
+            {
+                if (data.Type == 1)// just Monsters
+                {
+                    tempDataset.Add(data);
+
+                }
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                int index = rand.Next(tempDataset.Count);
+                Creature monster = tempDataset[index];//get a random monster type
+                monster.Alive = true;
+                monster.Level = round;
+                monster.XP = lp[round].XP;
+                monster.Attack = lp[round].Attack;
+                monster.Defense = lp[round].Defense;
+                monster.Speed = lp[round].Speed;
+                monster.MaxHealth = rand.Next(11) * round;
+                monster.CurrHealth = monster.MaxHealth;
+                monster.RHandItemID = "bow";//              ***temp for demo***
+                Dataset.Add(monster);
+            }
+
         }
 
         public bool NeedsRefresh()
