@@ -18,9 +18,11 @@ namespace GameOfChallengers.Controllers
             Random rand = new Random(dateSeed);
             int numOfItems = rand.Next(4);//drop 0, 1, 2, or 3(all) of its items
             List<string> itemIds = monster.GetItemIDs();
+            var items = ItemsViewModel.Instance.Dataset;
             for (int i=0; i<numOfItems; i++)
             {
-                Dropped.Add(SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result);//*** Check this, not 100% sure what it is actually doing ***
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                Dropped.Add(item);
             }
             return Dropped;
         }

@@ -78,7 +78,7 @@ namespace GameOfChallengers.Services
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0 });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Att = 0, Loc = 0 });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Att = 0, Loc = 0 });
-            await AddAsync_Item(new Item { Id = "bow", Name = "Longbow", Value = 3, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand });
+            
 
             /*NEED TO ADD  each item ID set to null on each creature*/
             //characters

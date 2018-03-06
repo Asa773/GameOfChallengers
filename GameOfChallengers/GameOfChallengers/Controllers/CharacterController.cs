@@ -43,11 +43,13 @@ namespace GameOfChallengers.Controllers
         public List<Item> DropItems(Creature character)
         {
             //drop all items when dead
-            List<Item> Dropped = null;
+            List<Item> Dropped = new List<Item>();
             List<string> itemIds = character.GetItemIDs();
+            var items = ItemsViewModel.Instance.Dataset;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                Dropped.Add(SQLDataStore.Instance.GetAsync_Item(itemIds[i]).Result);//*** Check this, not 100% sure what it is actually doing ***
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                Dropped.Add(item);
             }
             return Dropped;
         }

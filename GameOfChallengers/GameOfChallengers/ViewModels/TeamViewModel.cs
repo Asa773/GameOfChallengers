@@ -66,7 +66,7 @@ namespace GameOfChallengers.ViewModels
             int teamCount = 0;
             foreach (var data in dataset)
             {
-                if ((data.Type == 0) && (teamCount < 6) && data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
+                if ((data.Type == 0) && (teamCount < 6))//&& data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
                 {
                     teamCount++;
                     Dataset.Add(data);
