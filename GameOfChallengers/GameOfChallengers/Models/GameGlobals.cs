@@ -4,8 +4,8 @@ using System.Text;
 
 namespace GameOfChallengers.Models
 {
-    class Entry
+    public static class GameGlobals
     {
-        public string name;
+        public static string PlayerName = "Enter Your Name";
     }
 }

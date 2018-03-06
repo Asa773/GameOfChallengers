@@ -9,8 +9,6 @@ namespace GameOfChallengers
 	public partial class App : Application
 	{
 
-        public static string currName;
-
 		public App ()
 		{
 		    InitializeComponent();

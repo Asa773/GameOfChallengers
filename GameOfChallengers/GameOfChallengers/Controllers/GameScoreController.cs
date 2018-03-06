@@ -51,7 +51,7 @@ namespace GameOfChallengers.Controllers
             //the metadata is the variables at the top of the page as well as the characters' stats
 
             //load GameScore
-            GameScore.Name = App.currName;//***NOT working right now***
+            GameScore.Name = GameGlobals.PlayerName;
             GameScore.Date = DateTime.Now;//to set the time to when the game was finished
             GameScore.Round = round;
             //GameScore.Team.AddRange(Team);
