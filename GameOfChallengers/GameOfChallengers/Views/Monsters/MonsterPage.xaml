@@ -25,7 +25,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                    <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                    <Image Source="{Binding ImageURI}"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
                                     <Label Text="{Binding Name}" 
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 

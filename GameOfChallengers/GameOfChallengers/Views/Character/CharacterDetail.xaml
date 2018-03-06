@@ -8,33 +8,209 @@
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
+       
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Character Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
                 <ScrollView VerticalOptions="StartAndExpand">
                     <StackLayout>
-                        <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
-                        <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.Name}" FontSize="Small" />
-                        <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.Attack}" FontSize="Small" />
-                        <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.Defense}" FontSize="Small" />
-                        <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.Speed}" FontSize="Small" />
-                        <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.Level}" FontSize="Small" />
-                        <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.XP}" FontSize="Small" />
-                        <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
-                        <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
-                        <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                        <Image Source="{Binding Data.ImageURI}"
+                WidthRequest="150"
+                HeightRequest="150" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+                        <StackLayout>
+                            <Label.Text>
+                                Name {Binding Data.Name}
+                            </Label.Text> <!--<Label Text="Name" FontSize="Small" FontAttributes="Bold"   />
+                            <Label Text="{Binding Data.Name}" FontSize="Small"  />-->
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.Level}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.XP}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                            <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                        </StackLayout>
+                        <!--<Image Source="batman.jpeg"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Name}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Level}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.XP}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <Image Source="ironman.jpeg"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Name}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Level}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.XP}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <Image Source="Captain-America.jpeg"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Name}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Level}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.XP}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <Image Source="hulk.jpeg"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            <StackLayout>
+                                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Name}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.Level}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.XP}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                            </StackLayout>
+                            <StackLayout>
+                                <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                                <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                            </StackLayout>-->
+
                     </StackLayout>
+
                 </ScrollView>
-                <Button Text="Edit" Clicked="Edit_Clicked" />
-                <Button Text="Delete" Clicked="Delete_Clicked" />
+                <Button Text="Edit" Clicked="Edit_Clicked" TextColor="Crimson" />
+                <Button Text="Delete" Clicked="Delete_Clicked" TextColor="Crimson" />
             </StackLayout>
+            
         </ScrollView>
+      
     </ContentPage.Content>
 </ContentPage>

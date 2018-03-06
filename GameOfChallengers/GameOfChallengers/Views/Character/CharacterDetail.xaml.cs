@@ -38,7 +38,7 @@ namespace GameOfChallengers.Views.Character
                 MaxHealth = 10,
                 CurrHealth = 10,
                 Alive = true,
-                ImageURI = "batman.jpeg",
+                ImageURI = "batman.jpeg"
 
             };
 

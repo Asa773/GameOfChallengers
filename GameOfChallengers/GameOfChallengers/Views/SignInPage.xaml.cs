@@ -1,5 +1,4 @@
-﻿using GameOfChallengers.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 using Xamarin.Forms;
@@ -11,16 +10,16 @@ namespace GameOfChallengers.Views
         public SignInPage()
         {
             InitializeComponent();
-
-            name.Text = GameGlobals.PlayerName;
-            BindingContext = name;
-
-
+           // BindingContext = name;
         }
-
+        void signin_done (object sender, EventArgs e)
+        {
+            var text = ((Entry)sender).Text;
+            //cast sender to access the properties of the Entry
+        }
         private async void StartGame_Command(object sender, EventArgs e)
         {
-            GameGlobals.PlayerName = name.Text;
+           // App.currName = name.ToString();
             await Navigation.PushAsync(new GameHomePage());
 
         }

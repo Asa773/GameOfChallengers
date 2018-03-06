@@ -31,8 +31,10 @@ namespace GameOfChallengers.Views.Items
               Value = 10,
               Range = 5,
               Loc = Locations.unknown,
-             Att = Attributes.unknown
-             
+             Att = Attributes.unknown,
+             ImageURI = "bow.jpeg"
+
+
             };
 
             _viewModel = new ItemDetailViewModel(data);

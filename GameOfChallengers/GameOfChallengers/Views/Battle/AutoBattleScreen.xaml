@@ -11,7 +11,7 @@
                    VerticalTextAlignment="Center"/>
             <ScrollView >
                 <Frame BackgroundColor="LightBlue">
-                    <Label Text="Messages displayed here"
+                    <Label Text="messages displayed here"
                            TextColor="Blue"
                            HorizontalTextAlignment="Center"
                            VerticalOptions="Center"/>

@@ -10,10 +10,16 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         
+
         <ScrollView>
             <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
-                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
-
+              
+                  <Image Source="{Binding ImageURI}"
+                                       WidthRequest="100"
+                                       HeightRequest="50" 
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                
                 <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">

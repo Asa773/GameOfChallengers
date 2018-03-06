@@ -23,7 +23,7 @@
                         <Label Text="{Binding Data.Round}" FontSize="Small" />
                         <Label Text="Turns" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.Turns}" FontSize="Small" />
-                        <Label Text="Auto mode" FontAttributes="Bold" FontSize="Small" />
+                        <Label Text="Auto mode"  FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.Auto}" FontSize="Small" />
                         <Label Text="TotalXP" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
