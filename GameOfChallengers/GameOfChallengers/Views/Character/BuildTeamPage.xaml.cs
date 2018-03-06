@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Models;
 using GameOfChallengers.Views.Battle;
-using System.ComponentModel;
 using System.Collections.ObjectModel;
 
 namespace GameOfChallengers.Views.Character
@@ -25,8 +24,6 @@ namespace GameOfChallengers.Views.Character
         public BuildTeamPage()
         {
             InitializeComponent();
-            // characterselect.IsToggled = true;
-
             Data = new Creature
             {
                 Name = "Character name",
@@ -40,52 +37,61 @@ namespace GameOfChallengers.Views.Character
 
             };
 
-            string Mike = string.Empty;
-
             _viewModel = new CreatureDetailViewModel(Data);
-           // BindingContext = _viewModel;
             BindingContext = viewModel = CharactersViewModel.Instance;
-            CharacterPicker1.SelectedIndex = 0;
-                CharacterPicker2.SelectedIndex = 0;
-            CharacterPicker3.SelectedIndex = 0;
-            CharacterPicker4.SelectedIndex = 0;
-            CharacterPicker5.SelectedIndex = 0;
-            CharacterPicker6.SelectedIndex = 0;
+            //CharacterPicker1.SelectedIndex = 0;
         }
 
-       
-
-
-    private async void SaveTeam_Clicked(object sender, EventArgs e)
-    {
-       // await Navigation.PopAsync();
-            await Navigation.PushAsync(new BattleScreen());
-    }
-
-
-
-    private async void AutoSelect_Clicked(object sender, EventArgs e)
+        public class LabelGridCode : ContentPage
         {
+            //public LabelGridCode()
 
-            var myTest = CharacterPicker1.SelectedItem;
-            var myTest1 = CharacterPicker2.SelectedItem;
-            var myTest2 = CharacterPicker3.SelectedItem;
-            var myTest3 = CharacterPicker4.SelectedItem;
-            var myTest4 = CharacterPicker5.SelectedItem;
-            var myTest5 = CharacterPicker6.SelectedItem;
+            //{
+            //    var grid = new Xamarin.Forms.Grid();
+            //    var topLeft = new Xamarin.Forms.Image { Source = "icon.png" };
+            //    var topRight = new Xamarin.Forms.Image { Source = "icon.png" };
+            //    var bottomLeft = new Xamarin.Forms.Image { Source = "icon.png" };
+            //    var bottomRight = new Xamarin.Forms.Image { Source = "icon.png" };
+            //    //var topLeft = new Label { Text = "Top Left" };
+            //    //var topRight = new Label { Text = "Top Right" };
+            //    //var bottomLeft = new Label { Text = "Bottom Left" };
+            //    //var bottomRight = new Label { Text = "Bottom Right" };
+
+            //    grid.RowDefinitions.Add(new Xamarin.Forms.RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+            //    grid.RowDefinitions.Add(new Xamarin.Forms.RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+            //    grid.ColumnDefinitions.Add(new Xamarin.Forms.ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            //    grid.ColumnDefinitions.Add(new Xamarin.Forms.ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+            //    Content = grid;
 
 
-            //await Navigation.PopAsync();
+            //}
+        }
+
+    
+
+        private async void SaveTeam_Clicked(object sender, EventArgs e)
+        {
+            // await Navigation.PopAsync();
             await Navigation.PushAsync(new BattleScreen());
         }
 
-        //private void select_toggled(object sender, ToggledEventArgs e)
-        //{
-        //    MessagingCenter.Send(this, "AddData", Data);
-        //     Navigation.PopAsync();
-        //}
 
-}
+
+        private async void AutoSelect_Clicked(object sender, EventArgs e)
+        {
+            //var myTest = CharacterPicker1.SelectedItem;
+            //var myTest1 = CharacterPicker2.SelectedItem;
+            //var myTest2 = CharacterPicker3.SelectedItem;
+            //var myTest3 = CharacterPicker4.SelectedItem;
+            //var myTest4 = CharacterPicker5.SelectedItem;
+            //var myTest5 = CharacterPicker6.SelectedItem;
+
+            await Navigation.PushAsync(new BattleScreen());
+        }
+
+
+    }
 
 
 }

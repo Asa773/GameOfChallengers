@@ -12,16 +12,16 @@ using GameOfChallengers.Controllers;
 
 namespace GameOfChallengers.Views.Battle
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BattleScreen : ContentPage
-    {
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class BattleScreen : ContentPage
+	{
         private TeamViewModel _viewModel;
         public Creature Data { get; set; }
-        public BattleScreen()
-        {
-
+		public BattleScreen ()
+		{
+            
             //BattleController bc = new BattleController(_viewModel,a);
-            InitializeComponent();
+			InitializeComponent ();
             Data = new Creature
             {
                 Name = "Character name",
@@ -34,10 +34,10 @@ namespace GameOfChallengers.Views.Battle
                 Alive = true,
 
             };
-
+           
             _viewModel = new TeamViewModel();
-            // BindingContext = a;
-        }
+           // BindingContext = a;
+		}
 
         private async void DeleteTeamMember(object sender, EventArgs e)
         {
@@ -48,7 +48,7 @@ namespace GameOfChallengers.Views.Battle
         }
         private void ClickedZeroZero(object sender, EventArgs e)
         {
-            zero.Text = "M1";
+            zero.Text = "M1"; 
         }
 
         private void Start_clicked(object sender, EventArgs e)
@@ -58,8 +58,8 @@ namespace GameOfChallengers.Views.Battle
 
         private async void End_clicked(object sender, EventArgs e)
         {
-            // L1.Text = "End the Game";
+           // L1.Text = "End the Game";
             await Navigation.PushAsync(new BattleOver());
         }
-    }
+	}
 }

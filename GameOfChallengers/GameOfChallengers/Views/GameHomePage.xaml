@@ -9,68 +9,61 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10" VerticalOptions="CenterAndExpand">
-                
-                <Image 
-            Source="logo.jpeg" 
-            VerticalOptions="Center" 
-            HeightRequest="150"
-            HorizontalOptions="Fill"/>
-
-                <Button  HeightRequest="40"
-                         WidthRequest="100"
+                <!--<Label FontSize="22" VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30"  />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+                <Image Source="logo.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
+                <Button  
                     Text="Play" 
                     Clicked="Play_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson" 
-                    />
+                    TextColor="Black" />
 
-                <Button   HeightRequest="40"
-                         WidthRequest="100"
+                <Button  
                     Text="Auto Battle" 
                     Clicked="AutoBattle_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson"
-                           />
-
-                <Button   HeightRequest="40"
-                         WidthRequest="100"
+                    TextColor="Black" />
+                
+                <Button  
                     Text="Characters" 
                     Clicked="Characters_Command" 
                     HorizontalOptions="Center"
+<<<<<<< HEAD
                     TextColor="Crimson"
                           />
+=======
+                    TextColor="Black" />
+>>>>>>> parent of 1800f4c... my changes
 
-                <Button   HeightRequest="40"
-                         WidthRequest="100"
+                <Button  
                     Text="Monsters" 
                     Clicked="Monsters_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson"
-                          />
+                    TextColor="Black" />
 
-                <Button   HeightRequest="40"
-                         WidthRequest="100"
+                <Button  
                     Text="Items" 
                     Clicked="Items_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson"
-                          />
+                    TextColor="Black" />
 
-                <Button   HeightRequest="40"
-                         WidthRequest="100"
+                <Button  
                     Text="Scores" 
                     Clicked="Scores_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson"
-                           />
+                    TextColor="Black" />
                 <Button  
-                    HeightRequest="40"
-                    WidthRequest="100"
                     Text="About" 
                     Clicked="About_Clicked" 
                     HorizontalOptions="Center"
-                    TextColor="Crimson"
-                    />
+                    TextColor="Black" />
             </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

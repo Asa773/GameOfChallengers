@@ -3,5 +3,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="GameOfChallengers.Views.Items.AssignItemPage">
 	<ContentPage.Content>
+
+    <StackLayout>
+            <ScrollView>
+
+             <Label Text="Assign Item"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center" />
+
+                
+            </ScrollView>
+        </StackLayout>
+        
 	</ContentPage.Content>
 </ContentPage>

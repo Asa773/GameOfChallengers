@@ -9,13 +9,13 @@ using Xamarin.Forms.Xaml;
 
 namespace GameOfChallengers.Views.Battle
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BattleOver : ContentPage
-    {
-        public BattleOver()
-        {
-            InitializeComponent();
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class BattleOver : ContentPage
+	{
+		public BattleOver ()
+		{
+			InitializeComponent ();
+		}
 
         private async void NextBattle_Clicked(object sender, EventArgs e)
         {
