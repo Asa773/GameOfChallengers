@@ -30,17 +30,12 @@
                     Clicked="AutoBattle_Command" 
                     HorizontalOptions="Center"
                     TextColor="Black" />
-                
+
                 <Button  
                     Text="Characters" 
                     Clicked="Characters_Command" 
                     HorizontalOptions="Center"
-<<<<<<< HEAD
-                    TextColor="Crimson"
-                          />
-=======
                     TextColor="Black" />
->>>>>>> parent of 1800f4c... my changes
 
                 <Button  
                     Text="Monsters" 
