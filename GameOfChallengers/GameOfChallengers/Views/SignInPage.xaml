@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="GameOfChallengers.Views.SignInPage">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
                 <!--<Label FontSize="22">
                     <Label.FormattedText>
@@ -16,5 +17,6 @@
             <Label BindingContext="{x:Reference name}" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
             <Button Text="Start" Clicked="StartGame_Command" HorizontalOptions="Center" TextColor="Black"></Button>
         </StackLayout>
+            </ScrollView>
 	</ContentPage.Content>
 </ContentPage>
