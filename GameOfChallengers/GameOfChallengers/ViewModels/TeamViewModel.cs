@@ -33,6 +33,11 @@ namespace GameOfChallengers.ViewModels
 
         public TeamViewModel()
         {
+            //a list of the characters on the team
+            //a list of actuall characters to use in the current game
+            //the second list will reload from the first at the start of each game
+            //the first list will be reset by the build team actions
+
             Title = "Current Team";
             Dataset = new ObservableCollection<Creature>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());

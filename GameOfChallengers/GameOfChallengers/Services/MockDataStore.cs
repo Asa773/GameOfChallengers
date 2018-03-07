@@ -31,7 +31,9 @@ namespace GameOfChallengers.Services
         {
             var mockItems = new List<Item>
             {
-                new Item { Id = "bow", Name = "Longbow", Value = 3, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand, ImageURI="bow.jpeg"},
+                new Item { Id = "bow", Name = "Longbow", Value = 30, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand, ImageURI="bow.jpeg"},
+                new Item { Id = "armor", Name = "Steel Armor", Value = 10, Range = 0, Att = Attributes.Defence, Loc = Locations.Body},
+                new Item { Id = "boots", Name = "Running Boots", Value = 1, Range = 0, Att = Attributes.Speed, Loc = Locations.Feet},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="gun.jpeg"},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="sword.jpeg"},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="trident.jpeg"},

@@ -67,6 +67,10 @@ namespace GameOfChallengers.Controllers
 
             while (CurrMonsters.Dataset.Count > 0)
             {
+                if(team.Dataset.Count <= 0)
+                {
+                    break;
+                }
                 for (int i = 0; i < TurnOrder.Count; i++)
                 {
                     TurnController turn = new TurnController();
@@ -95,6 +99,7 @@ namespace GameOfChallengers.Controllers
                                 TurnOrder.Remove(target);
                                 //score.TotalMonstersKilled.Add(target);
                                 CurrMonsters.Dataset.Remove(target);
+                                GameBoardRemove(target);
                             }
                         }
 
@@ -118,6 +123,9 @@ namespace GameOfChallengers.Controllers
                             {
                                 ItemPool.AddRange(CC.DropItems(target));
                                 TurnOrder.Remove(target);
+                                //add dead character to the score list
+                                team.Dataset.Remove(target);
+                                GameBoardRemove(target);
                             }
                         }
                     }
@@ -166,6 +174,13 @@ namespace GameOfChallengers.Controllers
 
         public void InitializeGameBoard()
         {
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    GameBoard[i, j] = null;
+                }
+            }
             GameBoard[0, 0] = team.Dataset[5];
             GameBoard[1, 0] = team.Dataset[4];
             GameBoard[2, 0] = team.Dataset[3];
@@ -178,7 +193,6 @@ namespace GameOfChallengers.Controllers
             GameBoard[0, 4] = CurrMonsters.Dataset[3];
             GameBoard[1, 5] = CurrMonsters.Dataset[4];
             GameBoard[2, 5] = CurrMonsters.Dataset[5];
-
         }
 
         //Check if this is required
@@ -206,6 +220,11 @@ namespace GameOfChallengers.Controllers
             return GetClosestEnemy(info);
         }
 
+        private void GameBoardRemove(Creature creature)
+        {
+            CreatureLocInfo info = GetLocInfo(creature);
+            GameBoard[info.row, info.col] = null;
+        }
         private CreatureLocInfo GetLocInfo(Creature creature)
         {
             CreatureLocInfo info = new CreatureLocInfo();

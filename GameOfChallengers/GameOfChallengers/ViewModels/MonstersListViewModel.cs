@@ -103,6 +103,8 @@ namespace GameOfChallengers.ViewModels
                 monster.MaxHealth = rand.Next(11) * round;
                 monster.CurrHealth = monster.MaxHealth;
                 monster.RHandItemID = "bow";//              ***temp for demo***
+                monster.BodyItemID = "armor";
+                monster.FeetItemID = "boots";
                 Dataset.Add(monster);
             }
 

@@ -13,7 +13,7 @@ namespace GameOfChallengers.Controllers
         public List<Item> DropItems(Creature monster)
         {
             //drop a random number of items when dead
-            List<Item> Dropped = null;
+            List<Item> Dropped = new List<Item>();
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
             int numOfItems = rand.Next(4);//drop 0, 1, 2, or 3(all) of its items
@@ -97,7 +97,11 @@ namespace GameOfChallengers.Controllers
         public int GiveXP(Creature monster, int damageGiven)
         {
             //this will calculate and return the amount of XP to be transferred on a hit and -= that much from the monster
-            double percentToGive = (damageGiven / monster.CurrHealth);
+            double percentToGive = ((double)damageGiven / (double)monster.CurrHealth);
+            if(percentToGive > 1.0)
+            {
+                percentToGive = 1.0;
+            }
             int XPToGive = (int)(monster.XP * percentToGive);
             monster.XP -= XPToGive;
             return XPToGive;
