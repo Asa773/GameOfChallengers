@@ -9,15 +9,7 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10" VerticalOptions="CenterAndExpand">
-                <!--<Label FontSize="22" VerticalOptions="CenterAndExpand">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30"  />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>-->
+           
                 <Image Source="logo.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
                 <Button  
                     Text="Play" 

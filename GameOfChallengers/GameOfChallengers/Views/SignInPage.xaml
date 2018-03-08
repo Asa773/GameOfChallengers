@@ -12,7 +12,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>-->
-            <Image Source="logo.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
+            <Image Source="WarOfAges.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
             <Entry x:Name="name" Text="Enter Your Name" FontSize="Medium" />
             <Label BindingContext="{x:Reference name}" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
             <Button Text="Start" Clicked="StartGame_Command" HorizontalOptions="Center" TextColor="Black"></Button>

@@ -109,6 +109,12 @@
     <AndroidResource Include="icon.png" />
     <Content Include="batman.jpeg" />
     <Content Include="Captain-America.jpeg" />
+    <Content Include="fighter1.jpg" />
+    <Content Include="fighter2.jpeg" />
+    <Content Include="fighter3.jpeg" />
+    <Content Include="fighter4.jpg" />
+    <Content Include="fighter5.jpeg" />
+    <Content Include="fighter6.jpeg" />
     <Content Include="Hulk.jpeg" />
     <Content Include="images.png" />
     <Content Include="ironman.jpeg" />
@@ -153,6 +159,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="spiderman.jpeg" />
     <Content Include="superman.jpeg" />
+    <Content Include="WarOfAges.jpeg" />
     <Content Include="xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
