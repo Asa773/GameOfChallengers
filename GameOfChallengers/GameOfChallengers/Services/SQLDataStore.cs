@@ -35,8 +35,7 @@ namespace GameOfChallengers.Services
             App.Database.CreateTableAsync<Item>().Wait();
             App.Database.CreateTableAsync<Creature>().Wait();
             App.Database.CreateTableAsync<Score>().Wait();
-            //App.Database.CreateTableAsync<Entry>().Wait();
-
+            
         }
 
         // Delete the Datbase Tables by dropping them
@@ -45,8 +44,7 @@ namespace GameOfChallengers.Services
             App.Database.DropTableAsync<Item>().Wait();
             App.Database.DropTableAsync<Creature>().Wait();
             App.Database.DropTableAsync<Score>().Wait();
-            //App.Database.CreateTableAsync<Entry>().Wait();
-
+            
         }
 
         // Tells the View Models to update themselves.

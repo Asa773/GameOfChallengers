@@ -41,6 +41,10 @@ namespace GameOfChallengers.Views
             MonstersViewModel.Instance.SetNeedsRefresh(true);
             CharactersViewModel.Instance.SetNeedsRefresh(true);
             ScoresViewModel.Instance.SetNeedsRefresh(true);
+            CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+            MonstersViewModel.Instance.LoadDataCommand.Execute(null);
+            ScoresViewModel.Instance.LoadDataCommand.Execute(null);
+            ItemsViewModel.Instance.LoadDataCommand.Execute(null);
         }
 
         private async void ClearDatabase_Command(object sender, EventArgs e)

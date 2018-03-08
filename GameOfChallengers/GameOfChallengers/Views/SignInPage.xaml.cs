@@ -31,7 +31,6 @@ namespace GameOfChallengers.Views
             ScoresViewModel.Instance.LoadDataCommand.Execute(null);
             ItemsViewModel.Instance.LoadDataCommand.Execute(null);
             
-
         }
 
 

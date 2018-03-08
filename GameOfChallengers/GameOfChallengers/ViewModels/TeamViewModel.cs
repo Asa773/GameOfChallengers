@@ -67,6 +67,14 @@ namespace GameOfChallengers.ViewModels
         public void LoadData()
         {
             Dataset.Clear();
+            if (CharactersViewModel.Instance.Dataset.Count == 0)
+            {
+                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
+            else if (CharactersViewModel.Instance.NeedsRefresh())
+            {
+                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
             var dataset = CharactersViewModel.Instance.GetAllCreatures();
             int teamCount = 0;
             foreach (var data in dataset)
@@ -74,7 +82,9 @@ namespace GameOfChallengers.ViewModels
                 if ((data.Type == 0) && (teamCount < 6))//&& data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
                 {
                     teamCount++;
-                    Dataset.Add(data);
+                    Creature newOne = new Creature();
+                    newOne.Update(data);
+                    Dataset.Add(newOne);
                 }
             }
         }
@@ -89,7 +99,14 @@ namespace GameOfChallengers.ViewModels
             {
                 Dataset.Clear();
                 //var dataset = await SQLDataStore.GetAllAsync_Creature(true);
-
+                if (CharactersViewModel.Instance.Dataset.Count == 0)
+                {
+                    CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+                }
+                else if (CharactersViewModel.Instance.NeedsRefresh())
+                {
+                    CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+                }
                 var dataset = CharactersViewModel.Instance.GetAllCreatures();
                 int teamCount = 0;
                 foreach (var data in dataset)

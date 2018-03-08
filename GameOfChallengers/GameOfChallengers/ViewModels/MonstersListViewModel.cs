@@ -78,6 +78,14 @@ namespace GameOfChallengers.ViewModels
         {
             Dataset.Clear();
             //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+            if (MonstersViewModel.Instance.Dataset.Count == 0)
+            {
+                MonstersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
+            else if (MonstersViewModel.Instance.NeedsRefresh())
+            {
+                MonstersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
             var dataset = MonstersViewModel.Instance.GetAllCreatures();
             var tempDataset = new List<Creature>();
             int dateSeed = DateTime.Now.Millisecond;
@@ -86,7 +94,10 @@ namespace GameOfChallengers.ViewModels
             {
                 if (data.Type == 1)// just Monsters
                 {
-                    tempDataset.Add(data);
+                    Creature newOne = new Creature();
+                    newOne.Update(data);
+                    
+                    tempDataset.Add(newOne);
 
                 }
             }
