@@ -11,7 +11,37 @@
                    HorizontalOptions="Center"
                    VerticalOptions="Center" />
 
-                
+                <StackLayout>
+               
+                    <ListView x:Name="TeamCharacterListView" 
+                ItemsSource="{Binding Dataset}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true"
+                 RefreshCommand="{Binding LoadItemsCommand}"
+                 IsPullToRefreshEnabled="true"
+                 IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                 CachingStrategy="RecycleElement">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10"  HorizontalOptions="Center">
+                                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                <Label Text="{Binding Name}" 
+                                       LineBreakMode="NoWrap" 
+                                       Style="{DynamicResource ListItemTextStyle}" 
+                                       FontSize="16" />
+                               <Picker Title="Assign Dropped Items" 
+                                       ItemsSource="{Binding Dataset}"
+                                       x:Name="DroppedItemPicker"
+                                       ItemDisplayBinding="{Binding Name}"
+                                       SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
+                           </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>   
+                    
+                </StackLayout>
             </ScrollView>
         </StackLayout>
         
