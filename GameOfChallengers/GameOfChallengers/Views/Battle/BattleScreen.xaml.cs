@@ -39,6 +39,11 @@ namespace GameOfChallengers.Views.Battle
            // BindingContext = a;
 		}
 
+        public void BattleMessages(string message)
+        {
+            //add message to some kind of list that can be displayed on the view
+        }
+
         private async void DeleteTeamMember(object sender, EventArgs e)
         {
 

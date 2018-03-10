@@ -37,8 +37,8 @@ namespace GameOfChallengers.Services
         
             var mockItems = new List<Item>
             {
-                new Item { Id = "bow", Name = "Longbow", Value = 30, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand, ImageURI="bow.jpeg"},
-                new Item { Id = "armor", Name = "Steel Armor", Value = 10, Range = 0, Att = Attributes.Defence, Loc = Locations.Body},
+                new Item { Id = "bow", Name = "Longbow", Value = 3, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand, ImageURI="bow.jpeg"},
+                new Item { Id = "armor", Name = "Steel Armor", Value = 3, Range = 0, Att = Attributes.Defence, Loc = Locations.Body},
                 new Item { Id = "boots", Name = "Running Boots", Value = 1, Range = 0, Att = Attributes.Speed, Loc = Locations.Feet},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="gun.jpeg"},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="sword.jpeg"},
@@ -55,12 +55,12 @@ namespace GameOfChallengers.Services
             var mockCreature = new List<Creature>
             {
                 //characters
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 1", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1,ImageURI = "fighter1.jpg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", Level = 2, Attack = 20, Defense = 20, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2,ImageURI = "fighter2.jpeg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", Level = 3, Attack = 30, Defense = 30, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 15, Alive = true, Loc = 3,ImageURI = "fighter3.jpeg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", Level = 2, Attack = 30, Defense = 40, Speed = 4, XP = 300, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 3,ImageURI = "fighter4.jpg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 5", Level = 5, Attack = 40, Defense = 50, Speed = 3, XP = 300, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 3,ImageURI = "fighter5.jpeg"/*, CInventory = null*/ },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 6", Level = 6, Attack = 30, Defense = 30, Speed = 5, XP = 300, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 3,ImageURI = "fighter6.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 1", Level = 1, Attack = 1, Defense = 1, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1,ImageURI = "fighter1.jpg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", Level = 2, Attack = 2, Defense = 2, Speed = 2, XP = 200, MaxHealth = 20, CurrHealth = 10, Alive = true, Loc = 2,ImageURI = "fighter2.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", Level = 3, Attack = 3, Defense = 3, Speed = 3, XP = 300, MaxHealth = 30, CurrHealth = 300, Alive = true, Loc = 3,ImageURI = "fighter3.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", Level = 2, Attack = 3, Defense = 4, Speed = 4, XP = 300, MaxHealth = 40, CurrHealth = 20, Alive = true, Loc = 3,ImageURI = "fighter4.jpg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 5", Level = 5, Attack = 4, Defense = 5, Speed = 3, XP = 300, MaxHealth = 50, CurrHealth = 25, Alive = true, Loc = 3,ImageURI = "fighter5.jpeg"/*, CInventory = null*/ },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 6", Level = 6, Attack = 3, Defense = 3, Speed = 5, XP = 300, MaxHealth = 60, CurrHealth = 30, Alive = true, Loc = 3,ImageURI = "fighter6.jpeg"/*, CInventory = null*/ },
                 
                 //monsters
                 new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Monster 1", Level = 1, Attack = 10, Defense = 10, Speed = 1, XP = 100, MaxHealth = 10, CurrHealth = 5, Alive = true, Loc = 1,ImageURI = "Monster1.jpeg"/*, CInventory = null*/ },

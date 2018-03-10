@@ -1,6 +1,7 @@
 ﻿using GameOfChallengers.Models;
 using GameOfChallengers.Services;
 using GameOfChallengers.ViewModels;
+using GameOfChallengers.Views.Battle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,15 +22,18 @@ namespace GameOfChallengers.Controllers
         int turns = 0;
         int totalXP = 0;
 
-        public BattleController(int round)
+        public BattleController()
         {
             CurrMonsters = MonstersListViewModel.Instance;
             team = TeamViewModel.Instance;
+        }
+
+        public void SetBattleController(int round)
+        {
             CurrMonsters.setRound(round);
             CurrMonsters.setMonsters();
             TurnOrder = GetTurnOrder();
             InitializeGameBoard();
-
         }
 
         public List<Creature> GetTurnOrder()
@@ -77,10 +81,15 @@ namespace GameOfChallengers.Controllers
                     turns++;
                     if (TurnOrder[i].Type == 0)
                     {
+                        
                         Creature character = TurnOrder[i];
-                        int loc = GetNewLoc(character, GameBoard);
-                        GameBoard = turn.Move(character, loc, GameBoard);
+                        //int loc = GetNewLoc(character, GameBoard);
+                        //GameBoard = turn.Move(character, loc, GameBoard);
                         Creature target = AutoTarget(character);//get a monster target for the character
+                        if(target == null)
+                        {
+                            break;
+                        }
                         if (!CanHit(character, target))
                         {
                             continue;
@@ -92,8 +101,10 @@ namespace GameOfChallengers.Controllers
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
                             CC.TestForLevelUp(character, xpToGive);
-                            bool monsterAlive = MC.TakeDamage(target, damageToDo);
-                            if (!monsterAlive)
+                            bool monsterAlive;
+                            MC.TakeDamage(target, damageToDo);
+                            monsterAlive = target.Alive;
+                            if (monsterAlive == false)
                             {
                                 ItemPool.AddRange(MC.DropItems(target));
                                 TurnOrder.Remove(target);
@@ -107,9 +118,13 @@ namespace GameOfChallengers.Controllers
                     else
                     {
                         Creature monster = TurnOrder[i];
-                        int loc = GetNewLoc(monster, GameBoard);
-                        GameBoard = turn.Move(monster, loc, GameBoard);
+                        //int loc = GetNewLoc(monster, GameBoard);
+                        //GameBoard = turn.Move(monster, loc, GameBoard);
                         Creature target = AutoTarget(monster);//get a character target for the monster
+                        if (target == null)
+                        {
+                            break;
+                        }
                         if (!CanHit(monster, target))
                         {
                             continue;
@@ -181,19 +196,17 @@ namespace GameOfChallengers.Controllers
                     GameBoard[i, j] = null;
                 }
             }
-            GameBoard[0, 0] = team.Dataset[5];
-            GameBoard[1, 0] = team.Dataset[4];
-            GameBoard[2, 0] = team.Dataset[3];
-            GameBoard[1, 1] = team.Dataset[2];
-            GameBoard[0, 2] = team.Dataset[1];
-            GameBoard[2, 2] = team.Dataset[0];
-            GameBoard[0, 3] = CurrMonsters.Dataset[0];
-            GameBoard[1, 3] = CurrMonsters.Dataset[1];
-            GameBoard[2, 3] = CurrMonsters.Dataset[2];
-            GameBoard[0, 4] = CurrMonsters.Dataset[3];
-            GameBoard[1, 5] = CurrMonsters.Dataset[4];
-            GameBoard[2, 5] = CurrMonsters.Dataset[5];
+            for (int i = 0; i < CurrMonsters.Dataset.Count(); i++)
+            {
+                GameBoard[0, i] = CurrMonsters.Dataset[i];
+            }
+            for(int i=0; i<team.Dataset.Count(); i++)
+            {
+                GameBoard[2, i] = team.Dataset[i];
+            }
         }
+
+        
 
         //Check if this is required
         public int GetNewLoc(Creature creature, Creature[,] GameBoard)

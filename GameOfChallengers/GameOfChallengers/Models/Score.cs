@@ -24,6 +24,7 @@ namespace GameOfChallengers.Models
 
         public Score()
         {
+            Id = Guid.NewGuid().ToString();
             Date = DateTime.Now;
             Auto = false;
             //TotalMonstersKilled = null;

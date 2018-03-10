@@ -7,7 +7,8 @@ using GameOfChallengers.Views.Monsters;
 using GameOfChallengers.Views.Character;
 using GameOfChallengers.Views.Scores;
 using GameOfChallengers.Views.Battle;
-
+using GameOfChallengers.Controllers;
+using GameOfChallengers.ViewModels;
 
 namespace GameOfChallengers.Views
 {
@@ -43,7 +44,8 @@ namespace GameOfChallengers.Views
 
         private async void AutoBattle_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AutoBattleScreen());
+            GameScoreController game = new GameScoreController();
+            await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(true))));
         }
 
         private async void Characters_Command(object sender, EventArgs e)

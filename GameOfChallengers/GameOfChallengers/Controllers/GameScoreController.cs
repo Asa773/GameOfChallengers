@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace GameOfChallengers.Controllers
 {
@@ -16,22 +17,22 @@ namespace GameOfChallengers.Controllers
 
         public GameScoreController()
         {
-            Score GameScore = new Score();
+            GameScore = new Score();
            
             TeamViewModel.Instance.LoadData();
             TeamViewModel Team = TeamViewModel.Instance;
         }
 
-        public async Task<bool> Start(bool auto)
+        public Score Start(bool auto)
         {
             TeamViewModel Team = TeamViewModel.Instance;
-            round++;
-            BattleController battle = new BattleController(round);
+            BattleController battle = new BattleController();
             while (Team.Dataset.Count > 0)
             {
+                round++;
                 if (auto)
                 {
-                    
+                    battle.SetBattleController(round);
                     GameScore = battle.AutoBattle(GameScore);
                     GameScore.Auto = true;
                 }
@@ -41,10 +42,10 @@ namespace GameOfChallengers.Controllers
                     battle.Battle();
                 }
             }
-            return await ReportScore();
+            return ReportScore();
         }
         
-        public async Task<bool> ReportScore()
+        public Score ReportScore()
         {
             //the final score will be total XP + # of turns + # of monsters killed
             //this method will report the final score as well as the "Battle History" metadata
@@ -56,8 +57,8 @@ namespace GameOfChallengers.Controllers
             GameScore.Round = round;
             //GameScore.Team.AddRange(Team);
             GameScore.FinalScore = GameScore.TotalXP;
-
-            return await SQLDataStore.Instance.AddAsync_Score(GameScore);
+            MessagingCenter.Send(this, "AddData", GameScore);
+            return GameScore;
         }
     }
 }

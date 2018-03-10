@@ -104,7 +104,9 @@ namespace GameOfChallengers.ViewModels
             for (int i = 0; i < 6; i++)
             {
                 int index = rand.Next(tempDataset.Count);
-                Creature monster = tempDataset[index];//get a random monster type
+                Creature monster = new Creature();
+                monster.Update(tempDataset[index]);//get a random monster type
+                monster.Id = "monster" + i.ToString();//Guid.NewGuid().ToString();
                 monster.Alive = true;
                 monster.Level = round;
                 monster.XP = lp[round].XP;

@@ -84,6 +84,7 @@ namespace GameOfChallengers.ViewModels
                     teamCount++;
                     Creature newOne = new Creature();
                     newOne.Update(data);
+                    newOne.Id = Guid.NewGuid().ToString();
                     Dataset.Add(newOne);
                 }
             }
