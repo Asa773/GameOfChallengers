@@ -73,9 +73,9 @@ namespace GameOfChallengers.Services
         private async void InitilizeSeedData()
         {
 
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0 });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Att = 0, Loc = 0 });
-            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Att = 0, Loc = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Attribute = 0, Location = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Boots", Value = 3, Range = 0, Attribute = 0, Location = 0 });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Ring", Value = 3, Range = 0, Attribute = 0, Location = 0 });
             
 
             /*NEED TO ADD  each item ID set to null on each creature*/
@@ -102,6 +102,32 @@ namespace GameOfChallengers.Services
         }
 
         // Item
+        public async Task<bool> InsertUpdateAsync_Item(Item data)
+        {
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Item(data.Id);
+            if (oldData == null)
+            {
+                // If it does not exist, add it to the DB
+                var InsertResult = await AddAsync_Item(data);
+                if (InsertResult)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Item(data);
+            if (UpdateResult)
+            {
+                return true;
+            }
+
+            return false;
+        }
         public async Task<bool> AddAsync_Item(Item data)
         {
             var result = await App.Database.InsertAsync(data);
@@ -137,8 +163,21 @@ namespace GameOfChallengers.Services
 
         public async Task<Item> GetAsync_Item(string id)
         {
-            var result = await App.Database.GetAsync<Item>(id);
-            return result;
+            if (string.IsNullOrEmpty(id))
+            {
+                return null;
+            }
+
+            // Need to add a try catch here, to catch when looking for something that does not exist in the db...
+            try
+            {
+                var result = await App.Database.GetAsync<Item>(id);
+                return result;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)

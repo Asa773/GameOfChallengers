@@ -1,17 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:GameOfChallengers.Models;"
-    x:Class="GameOfChallengers.Views.Items.NewItemPage">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GameOfChallengers.Views.Items.NewItemPage"
+		     Title="Add New Item"
+             xmlns:local="using:GameOfChallengers.Models">
 
-
-    
-	<ContentPage.ToolbarItems>
+    <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
 
-   <ContentPage.Resources>
+    <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringEnumConverter x:Key="StringEnum"/>
         </ResourceDictionary>
@@ -21,7 +20,8 @@
 
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Create Item" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+
+                <Label Text="Item Create Page" FontSize="Small" />
 
                 <Grid
                     RowSpacing="1"
@@ -52,16 +52,16 @@
 
                     <StackLayout Grid.Row="1" Grid.Column="0">
                         <Label 
-                            Text="Attribute" 
+                            Text="Description" 
                             FontSize="Medium" 
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="1" Grid.Column="1">
-                        <Picker 
-                            ItemsSource="{x:Static local:AttributeList.GetListItem}" 
-                            SelectedItem="{Binding Data.Attributes, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
-                            x:Name="AttributePicker"
+                        <Entry 
+                            Text="{Binding Data.Description}" 
+                            FontSize="Small" 
+                            Margin="0" 
                             VerticalOptions="Center"/>
                     </StackLayout>
 
@@ -123,15 +123,71 @@
                     <StackLayout Grid.Row="4" Grid.Column="1">
                         <Picker 
                             ItemsSource="{x:Static local:ItemLocationList.GetListItem}" 
-                            SelectedItem="{Binding Data.Locations, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                            SelectedItem="{Binding Data.Location, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
                             x:Name="LocationPicker" 
                             VerticalOptions="Center"/>
                     </StackLayout>
 
+                    <StackLayout Grid.Row="5" Grid.Column="0">
+                        <Label 
+                            Text="Attribute" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="5" Grid.Column="1">
+                        <Picker 
+                            ItemsSource="{x:Static local:AttributeList.GetListItem}" 
+                            SelectedItem="{Binding Data.Attribute, Converter={StaticResource StringEnum}, Mode=TwoWay}" 
+                            x:Name="AttributePicker"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="6" Grid.Column="0">
+                        <Label 
+                            Text="Image" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="6" Grid.Column="1">
+                        <Entry 
+                            Text="{Binding Data.ImageURI}" 
+                            FontSize="Small" 
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="0">
+                        <Label 
+                            Text="Damage" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"/>
+                    </StackLayout>
+
+                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                        <Label 
+                            Text="{Binding Data.Damage}" 
+                            FontSize="Medium" 
+                            HorizontalOptions="Start"
+                            x:Name="DamageValue"
+                            VerticalOptions="Center"/>
+
+                        <Stepper 
+                            Value="{Binding Data.Damage, Mode=TwoWay}"
+                            Minimum="0"
+                            Maximum="20"
+                            Increment="1"
+                            ValueChanged="Damage_OnStepperValueChanged"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"/>
+                    </StackLayout>
+
                 </Grid>
-                <Button Text="Create" Clicked="Save_Clicked" />
+
             </StackLayout>
         </ScrollView>
 
     </ContentPage.Content>
+
 </ContentPage>

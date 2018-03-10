@@ -37,12 +37,12 @@ namespace GameOfChallengers.Services
         
             var mockItems = new List<Item>
             {
-                new Item { Id = "bow", Name = "Longbow", Value = 3, Range = 10, Att = Attributes.Attack, Loc = Locations.RHand, ImageURI="bow.jpeg"},
-                new Item { Id = "armor", Name = "Steel Armor", Value = 3, Range = 0, Att = Attributes.Defence, Loc = Locations.Body},
-                new Item { Id = "boots", Name = "Running Boots", Value = 1, Range = 0, Att = Attributes.Speed, Loc = Locations.Feet},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="gun.jpeg"},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="sword.jpeg"},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Value = 3, Range = 0, Att = 0, Loc = 0, ImageURI="trident.jpeg"},
+                new Item { Id = "bow", Name = "Longbow", Value = 3, Range = 10, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="bow.jpeg"},
+                new Item { Id = "helmet", Name = "Steel Helmet", Value = 3, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head},
+                new Item { Id = "boots", Name = "Running Boots", Value = 1, Range = 0, Attribute = AttributeEnum.Speed, Location = ItemLocationEnum.Feet},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Value = 3, Range = 0, Attribute = 0, Location = 0, ImageURI="gun.jpeg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Value = 3, Range = 0, Attribute = 0, Location = 0, ImageURI="sword.jpeg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Value = 3, Range = 0, Attribute = 0, Location = 0, ImageURI="trident.jpeg"},
                 
             };
 
@@ -134,6 +134,27 @@ namespace GameOfChallengers.Services
 
 
         // Item
+        public async Task<bool> InsertUpdateAsync_Item(Item data)
+        {
+
+            // Check to see if the item exist
+            var oldData = await GetAsync_Item(data.Id);
+            if (oldData == null)
+            {
+                _itemDataset.Add(data);
+                return true;
+            }
+
+            // Compare it, if different update in the DB
+            var UpdateResult = await UpdateAsync_Item(data);
+            if (UpdateResult)
+            {
+                await AddAsync_Item(data);
+                return true;
+            }
+
+            return false;
+        }
         public async Task<bool> AddAsync_Item(Item data)
         {
             _itemDataset.Add(data);

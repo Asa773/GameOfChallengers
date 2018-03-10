@@ -5,7 +5,6 @@ using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-
 namespace GameOfChallengers.Views.Items
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -26,8 +25,6 @@ namespace GameOfChallengers.Views.Items
 
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
-
-
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
@@ -38,7 +35,6 @@ namespace GameOfChallengers.Views.Items
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
                 await Navigation.PopAsync();
-          
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
@@ -47,7 +43,3 @@ namespace GameOfChallengers.Views.Items
         }
     }
 }
-
-
-
-

@@ -20,16 +20,17 @@ namespace GameOfChallengers.Views.Items
             Data = new Item
             {
                 Name = "Item name",
+                Description = "This is an item description.",
                 Id = Guid.NewGuid().ToString(),
                 Range = 0,
                 Value = 1,
-
+                ImageURI = ItemsController.DefaultImageURI
             };
 
             BindingContext = this;
             //Need to make the SelectedItem a string, so it can select the correct item.
-            LocationPicker.SelectedItem = Data.Loc.ToString();
-            AttributePicker.SelectedItem = Data.Att.ToString();
+            LocationPicker.SelectedItem = Data.Location.ToString();
+            AttributePicker.SelectedItem = Data.Attribute.ToString();
         }
 
         // Respond to the Save click
@@ -37,10 +38,10 @@ namespace GameOfChallengers.Views.Items
         private async void Save_Clicked(object sender, EventArgs e)
         {
             // If the image in teh data box is empty, use the default one..
-            //if (string.IsNullOrEmpty(Data.ImageURI))
-            //{
-            //    Data.ImageURI = ItemsController.DefaultImageURI;
-            //}
+            if (string.IsNullOrEmpty(Data.ImageURI))
+            {
+                Data.ImageURI = ItemsController.DefaultImageURI;
+            }
 
             MessagingCenter.Send(this, "AddData", Data);
             await Navigation.PopAsync();
@@ -63,5 +64,12 @@ namespace GameOfChallengers.Views.Items
         {
             ValueValue.Text = String.Format("{0}", e.NewValue);
         }
+
+        // The stepper function for Damage
+        void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            DamageValue.Text = String.Format("{0}", e.NewValue);
+        }
+
     }
 }

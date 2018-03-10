@@ -7,7 +7,7 @@ namespace GameOfChallengers.ViewModels
     public class ItemDetailViewModel : BaseViewModel
     {
 
-        public string LocationString => Data.Loc.ToString();
+        public string LocationString => Data.Location.ToString();
 
         public Item Data { get; set; }
         public ItemDetailViewModel(Item item = null)

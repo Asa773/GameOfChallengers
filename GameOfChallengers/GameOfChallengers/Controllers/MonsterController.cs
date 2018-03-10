@@ -36,7 +36,7 @@ namespace GameOfChallengers.Controllers
             {
                 var items = ItemsViewModel.Instance.Dataset;
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                if (item.Att == Attributes.Attack)
+                if (item.Attribute == AttributeEnum.Attack)
                 {
                     baseAttack += item.Value;
                 }
@@ -52,7 +52,7 @@ namespace GameOfChallengers.Controllers
             {
                 var items = ItemsViewModel.Instance.Dataset;
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                if (item.Att == Attributes.Attack)
+                if (item.Attribute == AttributeEnum.Attack)
                 {
                     baseDamage += item.Value;
                 }
@@ -69,7 +69,7 @@ namespace GameOfChallengers.Controllers
             {
                 var items = ItemsViewModel.Instance.Dataset;
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                if (item.Att == Attributes.Speed)
+                if (item.Attribute == AttributeEnum.Speed)
                 {
                     baseSpeed += item.Value;
                 }
@@ -86,7 +86,7 @@ namespace GameOfChallengers.Controllers
             {
                 var items = ItemsViewModel.Instance.Dataset;
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                if (item.Att == Attributes.Defence)
+                if (item.Attribute == AttributeEnum.Defense)
                 {
                     baseDefense += item.Value;
                 }

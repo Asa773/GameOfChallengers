@@ -12,12 +12,11 @@ namespace GameOfChallengers.Views.Items
     public partial class ItemDetailPage : ContentPage
     {
         private ItemDetailViewModel _viewModel;
-        public Item Data { get; set; }
 
         public ItemDetailPage(ItemDetailViewModel viewModel)
         {
             InitializeComponent();
-           
+
             BindingContext = _viewModel = viewModel;
         }
 
@@ -25,15 +24,7 @@ namespace GameOfChallengers.Views.Items
         {
             InitializeComponent();
 
-            var data = new Item
-            {
-              Name = "Item1",
-              Value = 10,
-              Range = 5,
-              Loc = Locations.unknown,
-             Att = Attributes.unknown
-             
-            };
+            var data = new Item();
 
             _viewModel = new ItemDetailViewModel(data);
             BindingContext = _viewModel;
@@ -47,15 +38,12 @@ namespace GameOfChallengers.Views.Items
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
-
             await Navigation.PushAsync(new DeleteItemPage(_viewModel));
-           
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
-
     }
 }

@@ -7,6 +7,7 @@ namespace GameOfChallengers.Services
 {
     public interface IDataStore
     {
+        Task<bool> InsertUpdateAsync_Item(Item data);
         Task<bool> AddAsync_Item(Item item);
         Task<bool> UpdateAsync_Item(Item item);
         Task<bool> DeleteAsync_Item(Item item);

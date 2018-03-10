@@ -5,18 +5,28 @@ using System.Text;
 
 namespace GameOfChallengers.Models
 {
-    public enum Attributes
+    public enum AttributeEnum
     {
-        //for if something goes wrong
-        unknown = 0,
-        //the attack attribute
-        Attack = 3,
-        //the defence attribute
-        Defence = 5,
-        //the speed attribute
-        Speed = 7,
+        // Not specified
+        Unknown = 0,    
+
+        // The speed of the character, impacts movement, and initiative
+        Speed = 10,
+
+        // The defense score, to be used for defending against attacks
+        Defense = 12,
+
+        // The Attack score to be used when attacking
+        Attack = 14,
+
+        // Current Health which is always at or below MaxHealth
+        CurrentHealth = 16,
+
+        // The highest value health can go
+        MaxHealth = 18,
     }
 
+    // Helper functions for the AttribureList
     public static class AttributeList
     {
 
@@ -26,32 +36,33 @@ namespace GameOfChallengers.Models
         {
             get
             {
-                var myList = Enum.GetNames(typeof(Attributes)).ToList();
+                var myList = Enum.GetNames(typeof(AttributeEnum)).ToList();
                 var myReturn = myList.Where(a => 
-                                            a.ToString() != Attributes.unknown.ToString()
+                                                a.ToString() != AttributeEnum.Unknown.ToString() && 
+                                                a.ToString() != AttributeEnum.MaxHealth.ToString()
                                             ).ToList();
                 return myReturn;
             }
         }
 
-        //// Returns a list of strings of the enum for Attribute
-        //// Removes the unknown
-        //public static List<string> GetListCharacter
-        //{
-        //    get
-        //    {
-        //        var myList = Enum.GetNames(typeof(Attribute)).ToList();
-        //        var myReturn = myList.Where(a => 
-        //                                    a.ToString() != Attributes.Unknown.ToString()
-        //                                    ).ToList();
-        //        return myReturn;
-        //    }
-        //}
+        // Returns a list of strings of the enum for Attribute
+        // Removes the unknown
+        public static List<string> GetListCharacter
+        {
+            get
+            {
+                var myList = Enum.GetNames(typeof(AttributeEnum)).ToList();
+                var myReturn = myList.Where(a => 
+                                                a.ToString() != AttributeEnum.Unknown.ToString()
+                                            ).ToList();
+                return myReturn;
+            }
+        }
 
         // Given the String for an enum, return its value.  That allows for the enums to be numbered 2,4,6 rather than 1,2,3
-        public static Attributes ConvertStringToEnum(string value)
+        public static AttributeEnum ConvertStringToEnum(string value)
         {
-            return (Attributes)Enum.Parse(typeof(Attributes), value);
+            return (AttributeEnum)Enum.Parse(typeof(AttributeEnum), value);
         }
     }
 }
