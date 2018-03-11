@@ -41,6 +41,7 @@ namespace GameOfChallengers.Views.Battle
 
         public void BattleMessages(string message)
         {
+            L1.Text = message ;
             //add message to some kind of list that can be displayed on the view
         }
 

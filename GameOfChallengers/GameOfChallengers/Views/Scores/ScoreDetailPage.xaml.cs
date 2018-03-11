@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
+using GameOfChallengers.Controllers;
 
 namespace GameOfChallengers.Views.Scores
 {
@@ -28,6 +29,7 @@ namespace GameOfChallengers.Views.Scores
         public ScoreDetailPage()
         {
             InitializeComponent();
+            
             Data = new Score
             {
                 Name = "Player name",
@@ -38,7 +40,9 @@ namespace GameOfChallengers.Views.Scores
                 TotalXP = 10,
                 Turns = 10,
                 Auto = true,
+                
 
+                
             };
 
             _viewModel = new ScoreDetailViewModel(Data);

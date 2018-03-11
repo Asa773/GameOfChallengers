@@ -4,12 +4,14 @@ using GameOfChallengers.ViewModels;
 using GameOfChallengers.Views.Battle;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Controllers
 {
-    class BattleController
+   public class BattleController
     {
         MonstersListViewModel CurrMonsters;
         TeamViewModel team;
@@ -21,7 +23,7 @@ namespace GameOfChallengers.Controllers
         MonsterController MC = new MonsterController();
         int turns = 0;
         int totalXP = 0;
-
+        //string Text = null;
         public BattleController()
         {
             CurrMonsters = MonstersListViewModel.Instance;
@@ -68,7 +70,8 @@ namespace GameOfChallengers.Controllers
         {
             //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
-
+            BattleScreen screen = new BattleScreen();
+            string message;
             while (CurrMonsters.Dataset.Count > 0)
             {
                 if(team.Dataset.Count <= 0)
@@ -77,6 +80,18 @@ namespace GameOfChallengers.Controllers
                 }
                 for (int i = 0; i < TurnOrder.Count; i++)
                 {
+                   
+
+                    message = "Battle Start" + " Characters :" + team.Dataset.Count;
+                    Debug.WriteLine(message);
+                    screen.BattleMessages(message);
+
+                    //.WriteLine(Text);
+                    message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.Count;
+                    Debug.WriteLine(message);
+                    screen.BattleMessages(message);
+
+
                     TurnController turn = new TurnController();
                     turns++;
                     if (TurnOrder[i].Type == 0)
@@ -85,10 +100,16 @@ namespace GameOfChallengers.Controllers
                         Creature character = TurnOrder[i];
                         //int loc = GetNewLoc(character, GameBoard);
                         //GameBoard = turn.Move(character, loc, GameBoard);
+                        message = "New Turn :" + TurnOrder[i];
+                        Debug.WriteLine(message);
+                        screen.BattleMessages(message);
+
                         Creature target = AutoTarget(character);//get a monster target for the character
                         if(target == null)
                         {
+                            
                             break;
+                           
                         }
                         if (!CanHit(character, target))
                         {
@@ -104,13 +125,27 @@ namespace GameOfChallengers.Controllers
                             bool monsterAlive;
                             MC.TakeDamage(target, damageToDo);
                             monsterAlive = target.Alive;
+
                             if (monsterAlive == false)
                             {
+                                message = "Monster dead ";
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
+
                                 ItemPool.AddRange(MC.DropItems(target));
+                                message = "Items Dropped :" + MC.DropItems(target);
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
+
                                 TurnOrder.Remove(target);
                                 //score.TotalMonstersKilled.Add(target);
                                 CurrMonsters.Dataset.Remove(target);
                                 GameBoardRemove(target);
+
+                                message = "Monster Removed :" + CurrMonsters.Dataset.Remove(target);
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
+
                             }
                         }
 
@@ -136,11 +171,23 @@ namespace GameOfChallengers.Controllers
                             bool characterAlive = CC.TakeDamage(target, damageToDo);
                             if (!characterAlive)
                             {
+                                message = "Character dead ";
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
+
                                 ItemPool.AddRange(CC.DropItems(target));
+                                message = "Items Dropped :" + CC.DropItems(target);
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
+
                                 TurnOrder.Remove(target);
                                 //add dead character to the score list
                                 team.Dataset.Remove(target);
                                 GameBoardRemove(target);
+
+                                message = "Character Removed :" + team.Dataset.Remove(target);
+                                Debug.WriteLine(message);
+                                screen.BattleMessages(message);
                             }
                         }
                     }
@@ -148,6 +195,15 @@ namespace GameOfChallengers.Controllers
             }
             score.Turns += turns;
             score.TotalXP += totalXP;
+            message =
+                "Battle Ended" +
+                " Total Experience :" + totalXP +
+
+                " Turns :" + turns +
+                " Monster Kills :" + CurrMonsters;
+            Debug.WriteLine(message);
+            screen.BattleMessages(message);
+
             return score;
         }
 
