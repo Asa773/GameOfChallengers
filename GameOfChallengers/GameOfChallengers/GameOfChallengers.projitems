@@ -220,6 +220,7 @@
       <DependentUpon>AutoBattleScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\LevelingUp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DroppedItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">

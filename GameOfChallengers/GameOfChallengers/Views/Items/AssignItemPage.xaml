@@ -13,7 +13,7 @@
 
                 <StackLayout>
                
-                    <ListView x:Name="TeamCharacterListView" 
+                    <ListView x:Name="TeamListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
@@ -30,9 +30,9 @@
                                        LineBreakMode="NoWrap" 
                                        Style="{DynamicResource ListItemTextStyle}" 
                                        FontSize="16" />
-                               <Picker Title="Assign Dropped Items" 
+                               <Picker Title="Assign Items to Character" 
                                        ItemsSource="{Binding Dataset}"
-                                       x:Name="DroppedItemPicker"
+                                       x:Name="TeamPicker"
                                        ItemDisplayBinding="{Binding Name}"
                                        SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
                            </StackLayout>
