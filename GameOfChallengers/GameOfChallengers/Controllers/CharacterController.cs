@@ -172,6 +172,6 @@ namespace GameOfChallengers.Controllers
             return character.Alive;
         }
 
-
+        
     }
 }

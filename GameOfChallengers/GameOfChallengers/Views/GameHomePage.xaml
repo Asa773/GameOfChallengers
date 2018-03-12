@@ -10,47 +10,75 @@
         <ScrollView>
         <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10" VerticalOptions="CenterAndExpand">
            
-                <Image Source="logo.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
+                <Image Source="WarOfAges.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
                 <Button  
                     Text="Play" 
+                    FontAttributes="Bold"
                     Clicked="Play_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
 
                 <Button  
-                    Text="Auto Battle" 
+                    Text="Auto Battle"
+                    FontAttributes="Bold"
                     Clicked="AutoBattle_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
 
                 <Button  
                     Text="Characters" 
+                    FontAttributes="Bold"
                     Clicked="Characters_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
 
                 <Button  
                     Text="Monsters" 
+                    FontAttributes="Bold"
                     Clicked="Monsters_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
 
                 <Button  
                     Text="Items" 
+                    FontAttributes="Bold"
                     Clicked="Items_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
 
                 <Button  
                     Text="Scores" 
+                    FontAttributes="Bold"
                     Clicked="Scores_Command" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    TextColor="Black" 
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
                 <Button  
                     Text="About" 
+                    FontAttributes="Bold"
                     Clicked="About_Clicked" 
                     HorizontalOptions="Center"
-                    TextColor="Black" />
+                    BackgroundColor="DarkTurquoise"
+                    TextColor="Black" 
+                    HeightRequest="40"
+                         WidthRequest="100"/>
             </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

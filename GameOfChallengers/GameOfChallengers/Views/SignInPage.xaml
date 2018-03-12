@@ -3,19 +3,14 @@
     <ContentPage.Content>
         <ScrollView>
         <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <!--<Label FontSize="22">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="War Of Ages" FontAttributes="Bold" FontSize="30" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>-->
+               
             <Image Source="WarOfAges.jpeg" VerticalOptions="Center" HeightRequest="150" HorizontalOptions="Fill"></Image>
             <Entry x:Name="name" Text="Enter Your Name" FontSize="Medium" />
             <Label BindingContext="{x:Reference name}" FontAttributes="Bold" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
-            <Button Text="Start" Clicked="StartGame_Command" HorizontalOptions="Center" TextColor="Black"></Button>
+                <Button Text="Start"
+                        FontAttributes="Bold" Clicked="StartGame_Command" HorizontalOptions="Center" TextColor="Black" BackgroundColor="DarkTurquoise"
+                    HeightRequest="50"
+                         WidthRequest="100"></Button>
         </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

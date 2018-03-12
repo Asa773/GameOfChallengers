@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using SQLite;
+using GameOfChallengers.Controllers;
+using GameOfChallengers.Models;
+using Newtonsoft.Json;
+using GameOfChallengers.ViewModels;
+
 
 namespace GameOfChallengers.Models
 {
@@ -21,6 +26,11 @@ namespace GameOfChallengers.Models
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public int Loc { get; set; }// location on game board
         public string ImageURI { get; set; }// image to be inserted
+        public AttributeBase Attribute { get; set; }
+        public string AttributeString { get; set; }
+        public string UniqueItem { get; set; }
+        public int Damage { get; set; }
+
 
         //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
         public string HeadItemID { get; set; }
@@ -46,6 +56,8 @@ namespace GameOfChallengers.Models
             RHandItemID = "bow";//              ***TEMP***
             LFingerItemID = null;
             RFingerItemID = null;
+            Attribute = new AttributeBase();
+
         }
 
         public void Update(Creature newData)
@@ -75,6 +87,9 @@ namespace GameOfChallengers.Models
             LFingerItemID = newData.LFingerItemID;
             RFingerItemID = newData.RFingerItemID;
             ImageURI = newData.ImageURI;
+            AttributeString = newData.AttributeString;
+            Attribute = new AttributeBase(newData.AttributeString);
+
         }
 
         public List<string> GetItemIDs()
@@ -124,5 +139,122 @@ namespace GameOfChallengers.Models
             }
             return itemIds;
         }
+
+
+        
+   
+
+        public string FormatOutput()
+        {
+            var myReturn = string.Empty;
+            var UniqueOutput = "None";
+            var myUnique = ItemsViewModel.Instance.GetItem(UniqueItem);
+            if (myUnique != null)
+            {
+                UniqueOutput = myUnique.FormatOutput();
+            }
+
+            myReturn += Name;
+            myReturn += " , " + Type;
+            myReturn += " , Level : " + Level;
+            myReturn += " , Total Experience : " + XP;
+           myReturn += " , " + Attribute.FormatOutput();
+            //myReturn += " , Items : " + ItemSlotsFormatOutput();
+            //myReturn += " Damage : " + GetBaseDamage();
+            myReturn += " , Unique Item : " + UniqueOutput;
+            return myReturn;
+        }
+        #region GetAttributes
+        // Get Attributes
+
+        // Get Attack
+        public int GetAttack()
+        {
+            // Base Attack
+            var myReturn = Attribute.Attack;
+
+            return myReturn;
+        }
+
+        // Get Speed
+        public int GetSpeed()
+        {
+            // Base value
+            var myReturn = Attribute.Speed;
+
+            return myReturn;
+        }
+
+        // Get Defense
+        public int GetDefense()
+        {
+            // Base value
+            var myReturn = Attribute.Defense;
+
+            return myReturn;
+        }
+
+        // Get Max Health
+        public int GetHealthMax()
+        {
+            // Base value
+            var myReturn = Attribute.MaxHealth;
+
+            return myReturn;
+        }
+
+        // Get Current Health
+        public int GetHealthCurrent()
+        {
+            // Base value
+            var myReturn = Attribute.CurrentHealth;
+
+            return myReturn;
+        }
+
+        // Get the Level based damage
+        // Then add in the monster damage
+        public int GetDamage()
+        {
+            var myReturn = 0; // = GetLevelBasedDamage();  BaseDamage Already calculated in
+            myReturn += Damage;
+
+            return myReturn;
+        }
+
+        // Get the Level based damage
+        // Then add the damage for the primary hand item as a Dice Roll
+        public int GetDamageRollValue()
+        {
+            return GetDamage();
+        }
+        #endregion GetAttributes
+        #region Items
+        // Gets the unique item (if any) from this monster when it dies...
+        public Item GetUniqueItem()
+        {
+            var myReturn = ItemsViewModel.Instance.GetItem(UniqueItem);
+
+            return myReturn;
+        }
+
+        // Drop all the items the monster has
+        public List<Item> DropAllItems()
+        {
+            var myReturn = new List<Item>();
+
+            // Drop all Items
+            Item myItem;
+
+            myItem = ItemsViewModel.Instance.GetItem(UniqueItem);
+            if (myItem != null)
+            {
+                myReturn.Add(myItem);
+            }
+            return myReturn;
+        }
+
+        #endregion Items
+
     }
 }
