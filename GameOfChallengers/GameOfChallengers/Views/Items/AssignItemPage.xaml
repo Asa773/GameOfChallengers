@@ -17,7 +17,7 @@
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"
                  HasUnevenRows="true"
-                 RefreshCommand="{Binding LoadItemsCommand}"
+                 RefreshCommand="{Binding LoadDataCommand}"
                  IsPullToRefreshEnabled="true"
                  IsRefreshing="{Binding IsBusy, Mode=OneWay}"
                  CachingStrategy="RecycleElement">
@@ -25,8 +25,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10"  HorizontalOptions="Center">
-                                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
-                                <Label Text="{Binding Name}" 
+                                <Image Source="{Binding Data.ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                                <Label Text="{Binding Data.Name}" 
                                        LineBreakMode="NoWrap" 
                                        Style="{DynamicResource ListItemTextStyle}" 
                                        FontSize="16" />
@@ -34,7 +34,7 @@
                                        ItemsSource="{Binding Dataset}"
                                        x:Name="TeamPicker"
                                        ItemDisplayBinding="{Binding Name}"
-                                       SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
+                                       SelectedItem="{Binding Name, Mode=TwoWay}" />
                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>

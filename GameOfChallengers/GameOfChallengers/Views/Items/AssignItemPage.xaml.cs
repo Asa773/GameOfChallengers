@@ -12,9 +12,9 @@ namespace GameOfChallengers.Views.Items
     {
         private TeamViewModel _viewModel;
         private DroppedItemViewModel _viewModel1;
-        public ObservableCollection<Item> Dataset { get; set; }
+        public ObservableCollection<Item> _Dataset { get; set; }
         public Creature Data { get; set; }
-        public ObservableCollection<Creature> Dataset1 { get; set; }
+        public ObservableCollection<Creature> Dataset { get; set; }
 
         public AssignItemPage()
         {
