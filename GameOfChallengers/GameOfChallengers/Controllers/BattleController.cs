@@ -72,6 +72,14 @@ namespace GameOfChallengers.Controllers
             //this will run the turns in a loop until either all the team is dead or all the monsters are
             BattleScreen screen = new BattleScreen();
             string message;
+            message = "Battle Start" + " Characters :" + team.Dataset.ToList();
+            Debug.WriteLine(message);
+           
+
+            //.WriteLine(Text);
+            message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.ToList();
+            Debug.WriteLine(message);
+           
             while (CurrMonsters.Dataset.Count > 0)
             {
                 if(team.Dataset.Count <= 0)
@@ -80,30 +88,17 @@ namespace GameOfChallengers.Controllers
                 }
                 for (int i = 0; i < TurnOrder.Count; i++)
                 {
-                   
-
-                    message = "Battle Start" + " Characters :" + team.Dataset.Count;
-                    Debug.WriteLine(message);
-                    screen.BattleMessages(message);
-
-                    //.WriteLine(Text);
-                    message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.Count;
-                    Debug.WriteLine(message);
-                    screen.BattleMessages(message);
-
 
                     TurnController turn = new TurnController();
                     turns++;
+                    message = "New Turn :" + turns;
+                    Debug.WriteLine(message);
+                    
                     if (TurnOrder[i].Type == 0)
                     {
-                        
                         Creature character = TurnOrder[i];
                         //int loc = GetNewLoc(character, GameBoard);
                         //GameBoard = turn.Move(character, loc, GameBoard);
-                        message = "New Turn :" + TurnOrder[i];
-                        Debug.WriteLine(message);
-                        screen.BattleMessages(message);
-
                         Creature target = AutoTarget(character);//get a monster target for the character
                         if(target == null)
                         {
@@ -118,6 +113,9 @@ namespace GameOfChallengers.Controllers
                         bool hit = turn.Attack(character, target);
                         if (hit)
                         {
+                            message = "Character " + character.Name + " attacks " + target.Name;
+                            Debug.WriteLine(message);
+                            screen.BattleMessages(message);
                             int damageToDo = turn.DamageToDo(character);
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
@@ -125,27 +123,24 @@ namespace GameOfChallengers.Controllers
                             bool monsterAlive;
                             MC.TakeDamage(target, damageToDo);
                             monsterAlive = target.Alive;
-
                             if (monsterAlive == false)
                             {
-                                message = "Monster dead ";
+                                message = "Monster is dead ";
                                 Debug.WriteLine(message);
-                                screen.BattleMessages(message);
 
+                               
                                 ItemPool.AddRange(MC.DropItems(target));
-                                message = "Items Dropped :" + MC.DropItems(target);
+                                message = "Items Dropped by monster " ;
                                 Debug.WriteLine(message);
-                                screen.BattleMessages(message);
-
+                               
                                 TurnOrder.Remove(target);
                                 //score.TotalMonstersKilled.Add(target);
                                 CurrMonsters.Dataset.Remove(target);
                                 GameBoardRemove(target);
 
-                                message = "Monster Removed :" + CurrMonsters.Dataset.Remove(target);
+                                message = "Monster Removed :" + target.Name;
                                 Debug.WriteLine(message);
-                                screen.BattleMessages(message);
-
+                                
                             }
                         }
 
@@ -167,16 +162,19 @@ namespace GameOfChallengers.Controllers
                         bool hit = turn.Attack(monster, target);
                         if (hit)
                         {
+                            message = "Monster " + monster.Name + " attacks " + target.Name;
+                            Debug.WriteLine(message);
+                            screen.BattleMessages(message);
                             int damageToDo = turn.DamageToDo(monster);
                             bool characterAlive = CC.TakeDamage(target, damageToDo);
                             if (!characterAlive)
                             {
-                                message = "Character dead ";
+                                message = "Character is dead ";
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
                                 ItemPool.AddRange(CC.DropItems(target));
-                                message = "Items Dropped :" + CC.DropItems(target);
+                                message = "Items Dropped by character " ;
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
@@ -185,7 +183,7 @@ namespace GameOfChallengers.Controllers
                                 team.Dataset.Remove(target);
                                 GameBoardRemove(target);
 
-                                message = "Character Removed :" + team.Dataset.Remove(target);
+                                message = "Character Removed :" + target.Name;
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
                             }
@@ -197,12 +195,11 @@ namespace GameOfChallengers.Controllers
             score.TotalXP += totalXP;
             message =
                 "Battle Ended" +
-                " Total Experience :" + totalXP +
-
-                " Turns :" + turns +
-                " Monster Kills :" + CurrMonsters;
+                " Total Experience :" + totalXP + 
+                 " Turns :" + turns 
+                 ;
             Debug.WriteLine(message);
-            screen.BattleMessages(message);
+            
 
             return score;
         }
