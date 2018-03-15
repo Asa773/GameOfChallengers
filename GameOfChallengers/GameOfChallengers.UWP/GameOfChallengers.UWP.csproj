@@ -103,6 +103,7 @@
       <SubType>Designer</SubType>
     </AppxManifest>
     <None Include="GameOfChallengers.UWP_TemporaryKey.pfx" />
+    <None Include="BlankImage.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="imgthing.jpeg" />

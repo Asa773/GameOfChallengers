@@ -6,181 +6,16 @@
 
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <StackLayout>
-          
-                    
+  
                         <Frame BackgroundColor="LightBlue">
                            <ScrollView > 
                             <Label x:Name = "L1" Text="messages displayed here"
                                    TextColor="Black"
                               HorizontalTextAlignment="Center"
-                              VerticalOptions="Center"/>
+                              VerticalOptions="CenterAndExpand"/>
                              </ScrollView>
                         </Frame>
                    
-                </StackLayout>
-          
-                <StackLayout >
-                    <Frame OutlineColor="Black" >
-                     
-                <Grid
-                    RowSpacing="0.5"
-                    ColumnSpacing="0.5"
-                    VerticalOptions="Center">
-
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <StackLayout Grid.Row="0" Grid.Column="0" BackgroundColor="Red" >
-                        <Button x:Name = "zero" 
-                                    Text="M1"  
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center"
-                              Clicked="ClickedZeroZero"/>
-                                
-                    </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="1" BackgroundColor="Red">
-                         <Button Text="M2"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="0" Grid.Column="2" BackgroundColor="Red">
-                         <Button Text="M3"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="0" Grid.Column="3" BackgroundColor="Red">
-                         <Button Text="M4"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="0" Grid.Column="4" BackgroundColor="Red">
-                         <Button Text="M5"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="0" Grid.Column="5" BackgroundColor="Red">
-                         <Button Text="M6"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                       
-                        
-                   <StackLayout Grid.Row="1" Grid.Column="0">
-                        <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout Grid.Row="1" Grid.Column="1">
-                         <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="1" Grid.Column="2">
-                         <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="1" Grid.Column="3">
-                         <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="1" Grid.Column="4">
-                         <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="1" Grid.Column="5">
-                         <Button
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-
-                        <StackLayout Grid.Row="2" Grid.Column="0" BackgroundColor="Green">
-                        <Button Text="C1"
-                              WidthRequest="60" 
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout Grid.Row="2" Grid.Column="1" BackgroundColor="Green">
-                         <Button Text="C2"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="2" Grid.Column="2" BackgroundColor="Green">
-                         <Button Text="C3"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="2" Grid.Column="3" BackgroundColor="Green">
-                         <Button Text="C4"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-                        <StackLayout Grid.Row="2" Grid.Column="4" BackgroundColor="Green">
-                         <Button Text="C5"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                        <StackLayout Grid.Row="2" Grid.Column="5" BackgroundColor="Green">
-                         <Button Text="C6"
-                              WidthRequest="60"
-                              HeightRequest="60"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center" />
-                    </StackLayout>
-
-                </Grid>
-                    </Frame>
-
-                </StackLayout>
-                <StackLayout>
                     <Button Text="Start"
                               VerticalOptions="Center" 
                               HorizontalOptions="Center"
@@ -189,7 +24,203 @@
                              VerticalOptions="Center" 
                               HorizontalOptions="Center"
                     Clicked="End_clicked"/>
-                </StackLayout>
+               
+          
+                    <Frame OutlineColor="Black" >
+                     
+                <Grid
+                    RowSpacing="0.5"
+                    ColumnSpacing="0.5"
+                    VerticalOptions="EndAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0"  >
+                        <Button 
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                x:Name = "cell00"
+                              Clicked="Clicked00"/>
+                                
+                    </StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" >
+                         <Button 
+                               Text="M2"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                                x:Name = "cell01"
+                            Clicked="Clicked01" BorderWidth="2"/>
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="2"  >
+                         <Button 
+                            Text="M3"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                             x:Name = "cell02"
+                            Clicked="Clicked02"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="3" >
+                         <Button Text="M4"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                                  x:Name = "cell03"
+                                 Clicked="Clicked03"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="0" Grid.Column="4">
+                         <Button Text="M5"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                              x:Name = "cell04"
+                                 Clicked="Clicked04"  />
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="0" Grid.Column="5" >
+                         <Button Text="M6"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                                 x:Name = "cell05"
+                                 Clicked="Clicked05"/>
+                    </StackLayout>
+
+                   <StackLayout Grid.Row="1" Grid.Column="0">
+                        <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                            x:Name = "cell10"
+                                 Clicked="Clicked10"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="1">
+                         <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                            x:Name = "cell11"
+                                 Clicked="Clicked11"/>
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="2">
+                         <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                            x:Name = "cell12"
+                                 Clicked="Clicked12"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="3">
+                         <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                            x:Name = "cell13"
+                                 Clicked="Clicked13"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="1" Grid.Column="4">
+                         <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center" 
+                            x:Name = "cell14"
+                                 Clicked="Clicked14"/>
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="1" Grid.Column="5">
+                         <Button
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                            x:Name = "cell15"
+                                 Clicked="Clicked15"/>
+                    </StackLayout>
+
+
+                        <StackLayout Grid.Row="2" Grid.Column="0" >
+                        <Button Text="C1"
+                              WidthRequest="60" 
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                x:Name = "cell20"
+                                 Clicked="Clicked20"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Grid.Column="1" >
+                         <Button Text="C2"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                 x:Name = "cell21"
+                                 Clicked="Clicked21"/>
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="2" >
+                         <Button Text="C3"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                 x:Name = "cell22"
+                                 Clicked="Clicked22"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="2" Grid.Column="3" >
+                         <Button Text="C4"
+                                 
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                 x:Name = "cell23"
+                                 Clicked="Clicked23"/>
+                    </StackLayout>
+                        <StackLayout Grid.Row="2" Grid.Column="4" >
+                         <Button Text="C5"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                 x:Name = "cell24"
+                                 Clicked="Clicked24"/>
+                    </StackLayout>
+
+                        <StackLayout Grid.Row="2" Grid.Column="5" >
+                         <Button Text="C6"
+                              WidthRequest="60"
+                              HeightRequest="60"
+                              VerticalOptions="Center" 
+                              HorizontalOptions="Center"
+                                 x:Name = "cell25"
+                                 Clicked="Clicked25"/>
+                    </StackLayout>
+
+                </Grid>
+                    </Frame>
+
+               
+               
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
