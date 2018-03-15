@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using GameOfChallengers.Controllers;
 
 namespace GameOfChallengers.Models
 {
@@ -19,7 +20,7 @@ namespace GameOfChallengers.Models
         public string TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
         public string TotalCharactersKilled { get; set; }//this is so the score can show the characters' final stats
         public string TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
-        public AttributeBase Attribute { get; set; }
+        
         public string AttributeString { get; set; }
         //The lists were causing problems with the database and may need to be refactord or moved out of the model
 
@@ -53,33 +54,31 @@ namespace GameOfChallengers.Models
             TotalCharactersKilled = newData.TotalCharactersKilled;
 
             AttributeString = newData.AttributeString;
-
-            Attribute = new AttributeBase(newData.AttributeString);
             TotalMonstersKilled = newData.TotalMonstersKilled;
             TotalItemsDropped = newData.TotalItemsDropped;
         }
 
 
-        public bool AddCharacterToList(Creature data)
+        public bool AddCharacterToList(Creature character)
         {
-            if (data == null)
+            if (character == null)
             {
                 return false;
             }
 
-            TotalCharactersKilled += data.FormatOutput() + "\n";
+            TotalCharactersKilled += character.FormatOutputc(character) + "\n";
             return true;
         }
 
         // All a monster to the list of monsters and their stats
-        public bool AddMonsterToList(Creature data)
+        public bool AddMonsterToList(Creature monster)
         {
-            if (data == null)
+            if (monster == null)
             {
                 return false;
             }
 
-            TotalMonstersKilled += data.FormatOutput() + "\n";
+            TotalMonstersKilled += monster.FormatOutputm(monster) + "\n";
             return true;
         }
 

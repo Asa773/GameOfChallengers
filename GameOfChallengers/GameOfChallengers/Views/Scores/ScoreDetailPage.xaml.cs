@@ -40,6 +40,9 @@ namespace GameOfChallengers.Views.Scores
                 TotalXP = 10,
                 Turns = 10,
                 Auto = true,
+               
+                
+                
                 
 
                 

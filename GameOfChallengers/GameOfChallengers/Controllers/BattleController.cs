@@ -18,6 +18,7 @@ namespace GameOfChallengers.Controllers
         public List<Creature> TurnOrder = new List<Creature>();
         public List<Item> ItemPool = new List<Item>();
         public Creature[,] GameBoard = new Creature[3, 6];
+        public Score score = new Score();
         //there will be one controller per type and the specific creature will be passed in to the controller methods
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
@@ -64,11 +65,16 @@ namespace GameOfChallengers.Controllers
         public void Battle()
         {
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
+
+
+
+
+
         }
+
 
         public Score AutoBattle(Score score)
         {
-            //without asking the player for input
             //this will run the turns in a loop until either all the team is dead or all the monsters are
             BattleScreen screen = new BattleScreen();
             string message;
@@ -116,6 +122,10 @@ namespace GameOfChallengers.Controllers
                             message = "Character " + character.Name + " attacks " + target.Name;
                             Debug.WriteLine(message);
                             screen.BattleMessages(message);
+                            if (team.Dataset.Count == 2)
+                            {
+                                
+                            }
                             int damageToDo = turn.DamageToDo(character);
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
@@ -123,20 +133,29 @@ namespace GameOfChallengers.Controllers
                             bool monsterAlive;
                             MC.TakeDamage(target, damageToDo);
                             monsterAlive = target.Alive;
+
                             if (monsterAlive == false)
                             {
                                 message = "Monster is dead ";
                                 Debug.WriteLine(message);
 
-                               
+                                // Drop Items to item Pool
+                                var myItemList = MC.DropItems(target);
+                                //Add Items to the Score List
+                                foreach (var item in myItemList)
+                                {
+                                    score.TotalItemsDropped += item.FormatOutput() + "\n";
+                                    message += " Item " + item.Name + " dropped by monster";
+                                }
                                 ItemPool.AddRange(MC.DropItems(target));
-                                message = "Items Dropped by monster " ;
+                               
                                 Debug.WriteLine(message);
                                
                                 TurnOrder.Remove(target);
                                 //score.TotalMonstersKilled.Add(target);
                                 CurrMonsters.Dataset.Remove(target);
                                 GameBoardRemove(target);
+                                score.TotalMonstersKilled += target.FormatOutputm(target) + "\n";
 
                                 message = "Monster Removed :" + target.Name;
                                 Debug.WriteLine(message);
@@ -173,15 +192,25 @@ namespace GameOfChallengers.Controllers
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
 
+                                // Drop Items to item Pool
+                                var myItemList = CC.DropItems(target);
+                                //Add Items to the Score List
+                                foreach (var item in myItemList)
+                                {
+                                    score.TotalItemsDropped += item.FormatOutput() + "\n";
+                                    message += " Item " + item.Name + " dropped by character";
+                                }
                                 ItemPool.AddRange(CC.DropItems(target));
-                                message = "Items Dropped by character " ;
                                 Debug.WriteLine(message);
                                 screen.BattleMessages(message);
+                               
 
                                 TurnOrder.Remove(target);
-                                //add dead character to the score list
+                               
                                 team.Dataset.Remove(target);
                                 GameBoardRemove(target);
+                                //Add dead characters to the score list
+                                score.TotalCharactersKilled += target.FormatOutputc(target) + "\n";
 
                                 message = "Character Removed :" + target.Name;
                                 Debug.WriteLine(message);

@@ -32,6 +32,7 @@ namespace GameOfChallengers.Views.Items
             };
                        
             BindingContext = _viewModel = TeamViewModel.Instance;
+
         }
     }
 }

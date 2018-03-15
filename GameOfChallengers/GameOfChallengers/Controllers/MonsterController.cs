@@ -118,6 +118,31 @@ namespace GameOfChallengers.Controllers
             return monster.Alive;
         }
 
-        
+        public string FormatOutput(Creature monster)
+        {
+            var myReturn = string.Empty;
+
+
+            Creature c = new Creature();
+
+           
+
+
+            myReturn += monster.Name;
+            myReturn += " , " + monster.Type;
+            myReturn += " , Level : " + monster.Level;
+            myReturn += " , Total Experience : " + monster.XP;
+            //myReturn += " , Items : " + ItemSlotsFormatOutput();
+
+            myReturn += " Damage : " + GetBaseDamage(monster);
+            myReturn += "Speed : " + monster.Speed;
+            myReturn += " , Defense : " + monster.Defense;
+            myReturn += " , Attack : " + monster.Attack;
+            myReturn += " , CurrentHealth : " + monster.CurrHealth;
+            myReturn += " , MaxHealth : " + monster.MaxHealth;
+            return myReturn;
+        }
+
+
     }
 }

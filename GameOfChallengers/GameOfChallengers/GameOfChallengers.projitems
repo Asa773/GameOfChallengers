@@ -85,7 +85,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ItemsController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\MonsterController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\TurnController.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\AttributeBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\GameGlobals.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Score.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\VersionGlobals.cs" />

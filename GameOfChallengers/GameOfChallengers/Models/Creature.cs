@@ -26,7 +26,6 @@ namespace GameOfChallengers.Models
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public int Loc { get; set; }// location on game board
         public string ImageURI { get; set; }// image to be inserted
-        public AttributeBase Attribute { get; set; }
         public string AttributeString { get; set; }
         public string UniqueItem { get; set; }
         public int Damage { get; set; }
@@ -56,7 +55,7 @@ namespace GameOfChallengers.Models
             RHandItemID = "bow";//              ***TEMP***
             LFingerItemID = null;
             RFingerItemID = null;
-            Attribute = new AttributeBase();
+           
 
         }
 
@@ -88,7 +87,7 @@ namespace GameOfChallengers.Models
             RFingerItemID = newData.RFingerItemID;
             ImageURI = newData.ImageURI;
             AttributeString = newData.AttributeString;
-            Attribute = new AttributeBase(newData.AttributeString);
+           
 
         }
 
@@ -141,94 +140,11 @@ namespace GameOfChallengers.Models
         }
 
 
-        
-   
 
-        public string FormatOutput()
-        {
-            var myReturn = string.Empty;
-            var UniqueOutput = "None";
-            var myUnique = ItemsViewModel.Instance.GetItem(UniqueItem);
-            if (myUnique != null)
-            {
-                UniqueOutput = myUnique.FormatOutput();
-            }
 
-            myReturn += Name;
-            myReturn += " , " + Type;
-            myReturn += " , Level : " + Level;
-            myReturn += " , Total Experience : " + XP;
-           myReturn += " , " + Attribute.FormatOutput();
-            //myReturn += " , Items : " + ItemSlotsFormatOutput();
-            //myReturn += " Damage : " + GetBaseDamage();
-            myReturn += " , Unique Item : " + UniqueOutput;
-            return myReturn;
-        }
-        #region GetAttributes
-        // Get Attributes
 
-        // Get Attack
-        public int GetAttack()
-        {
-            // Base Attack
-            var myReturn = Attribute.Attack;
 
-            return myReturn;
-        }
 
-        // Get Speed
-        public int GetSpeed()
-        {
-            // Base value
-            var myReturn = Attribute.Speed;
-
-            return myReturn;
-        }
-
-        // Get Defense
-        public int GetDefense()
-        {
-            // Base value
-            var myReturn = Attribute.Defense;
-
-            return myReturn;
-        }
-
-        // Get Max Health
-        public int GetHealthMax()
-        {
-            // Base value
-            var myReturn = Attribute.MaxHealth;
-
-            return myReturn;
-        }
-
-        // Get Current Health
-        public int GetHealthCurrent()
-        {
-            // Base value
-            var myReturn = Attribute.CurrentHealth;
-
-            return myReturn;
-        }
-
-        // Get the Level based damage
-        // Then add in the monster damage
-        public int GetDamage()
-        {
-            var myReturn = 0; // = GetLevelBasedDamage();  BaseDamage Already calculated in
-            myReturn += Damage;
-
-            return myReturn;
-        }
-
-        // Get the Level based damage
-        // Then add the damage for the primary hand item as a Dice Roll
-        public int GetDamageRollValue()
-        {
-            return GetDamage();
-        }
-        #endregion GetAttributes
         #region Items
         // Gets the unique item (if any) from this monster when it dies...
         public Item GetUniqueItem()
@@ -255,6 +171,70 @@ namespace GameOfChallengers.Models
         }
 
         #endregion Items
+
+        public string FormatOutputc(Creature creature)
+        {
+            var myReturn = string.Empty;
+
+
+            Creature c = new Creature();
+            CharacterController cc = new CharacterController();
+            
+
+
+
+
+            myReturn += creature.Name;
+            myReturn += " , " + creature.Type;
+            myReturn += " , Level : " + creature.Level;
+            myReturn += " , Total Experience : " + creature.XP;
+            //myReturn += " , Items : " + ItemSlotsFormatOutput();
+
+            myReturn += " Damage : " + cc.GetBaseDamage(creature);
+           
+
+            myReturn += "Speed : " + creature.Speed;
+            myReturn += " , Defense : " + creature.Defense;
+            myReturn += " , Attack : " + creature.Attack;
+            myReturn += " , CurrentHealth : " + creature.CurrHealth;
+            myReturn += " , MaxHealth : " + creature.MaxHealth;
+            return myReturn;
+        }
+        public string FormatOutputm(Creature creature)
+        {
+            var myReturn = string.Empty;
+
+
+            Creature c = new Creature();
+            
+            MonsterController mc = new MonsterController();
+
+
+
+
+            myReturn += creature.Name;
+            myReturn += " , " + creature.Type;
+            myReturn += " , Level : " + creature.Level;
+            myReturn += " , Total Experience : " + creature.XP;
+            //myReturn += " , Items : " + ItemSlotsFormatOutput();
+
+          
+            myReturn += " Damage : " + mc.GetBaseDamage(creature);
+
+            myReturn += "Speed : " + creature.Speed;
+            myReturn += " , Defense : " + creature.Defense;
+            myReturn += " , Attack : " + creature.Attack;
+            myReturn += " , CurrentHealth : " + creature.CurrHealth;
+            myReturn += " , MaxHealth : " + creature.MaxHealth;
+            return myReturn;
+        }
+
+
+
+
+
+
+
 
     }
 }

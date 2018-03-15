@@ -27,6 +27,15 @@
                         <Label Text="{Binding Data.Auto}" FontSize="Small" />
                         <Label Text="TotalXP" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
+                        <StackLayout>
+                        <Label Text="Characters Killed" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="{Binding Data.TotalCharactersKilled}" FontSize="Small" />
+                        <Label Text="Monsters Killed" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small" />
+                        <Label Text="Items Dropped" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small" />
+                        </StackLayout>
+
                         <!--<Label Text="Text" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.Text}" FontSize="Small" />-->
                         

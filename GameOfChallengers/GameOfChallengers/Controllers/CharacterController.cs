@@ -38,6 +38,7 @@ namespace GameOfChallengers.Controllers
         public void EquipItem(Creature character, int itemLoc, Item item)//change to string itemID?
         {
             //equip items at the end of the round to a body location
+            
         }
 
         public List<Item> DropItems(Creature character)
@@ -50,6 +51,7 @@ namespace GameOfChallengers.Controllers
             {
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 Dropped.Add(item);
+
             }
             return Dropped;
         }
@@ -171,7 +173,30 @@ namespace GameOfChallengers.Controllers
             }
             return character.Alive;
         }
+        public string FormatOutput(Creature creature)
+        {
+            var myReturn = string.Empty;
 
-        
+
+            Creature c = new Creature();
+
+            
+
+
+            myReturn += creature.Name;
+            myReturn += " , " + creature.Type;
+            myReturn += " , Level : " + creature.Level;
+            myReturn += " , Total Experience : " + creature.XP;
+            //myReturn += " , Items : " + ItemSlotsFormatOutput();
+
+            myReturn += " Damage : " + GetBaseDamage(creature);
+            myReturn += "Speed : " + creature.Speed;
+            myReturn += " , Defense : " + creature.Defense;
+            myReturn += " , Attack : " + creature.Attack;
+            myReturn += " , CurrentHealth : " + creature.CurrHealth;
+            myReturn += " , MaxHealth : " + creature.MaxHealth;
+            return myReturn;
+        }
+
     }
 }
