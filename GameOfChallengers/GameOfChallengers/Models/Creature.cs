@@ -230,11 +230,88 @@ namespace GameOfChallengers.Models
             return myReturn;
         }
 
+        public Item AddItem(ItemLocationEnum itemlocation, string itemID)
+        {
+            Item myReturn;
 
+            switch (itemlocation)
+            {
+                case ItemLocationEnum.Feet:
+                    myReturn = GetItem(Feet);
+                    Feet = itemID;
+                    break;
 
+                case ItemLocationEnum.Head:
+                    myReturn = GetItem(Head);
+                    Head = itemID;
+                    break;
 
+                case ItemLocationEnum.Necklass:
+                    myReturn = GetItem(Necklass);
+                    Necklass = itemID;
+                    break;
 
+                case ItemLocationEnum.PrimaryHand:
+                    myReturn = GetItem(PrimaryHand);
+                    PrimaryHand = itemID;
+                    break;
 
+                case ItemLocationEnum.OffHand:
+                    myReturn = GetItem(OffHand);
+                    OffHand = itemID;
+                    break;
+
+                case ItemLocationEnum.RightFinger:
+                    myReturn = GetItem(RightFinger);
+                    RightFinger = itemID;
+                    break;
+
+                case ItemLocationEnum.LeftFinger:
+                    myReturn = GetItem(LeftFinger);
+                    LeftFinger = itemID;
+                    break;
+
+                default:
+                    myReturn = null;
+                    break;
+            }
+
+            return myReturn;
+        }
+
+        public Item GetItem(string itemString)
+        {
+            return ItemsViewModel.Instance.GetItem(itemString);
+        }
+
+        public Item GetItemByLocation(ItemLocationEnum itemLocation)
+        {
+            switch (itemLocation)
+            {
+                case ItemLocationEnum.Head:
+                    return GetItem(Head);
+
+                case ItemLocationEnum.Necklass:
+                    return GetItem(Necklass);
+
+                case ItemLocationEnum.PrimaryHand:
+                    return GetItem(PrimaryHand);
+
+                case ItemLocationEnum.OffHand:
+                    return GetItem(OffHand);
+
+                case ItemLocationEnum.RightFinger:
+                    return GetItem(RightFinger);
+
+                case ItemLocationEnum.LeftFinger:
+                    return GetItem(LeftFinger);
+
+                case ItemLocationEnum.Feet:
+                    return GetItem(Feet);
+            }
+
+            return null;
+        }
 
 
     }

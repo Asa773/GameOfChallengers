@@ -113,7 +113,7 @@ namespace GameOfChallengers.ViewModels
                 monster.Attack = lp[round].Attack;
                 monster.Defense = lp[round].Defense;
                 monster.Speed = lp[round].Speed;
-                monster.MaxHealth = rand.Next(11) * round;
+                monster.MaxHealth = rand.Next(1, 11) * round;
                 monster.CurrHealth = monster.MaxHealth;
                 monster.PrimaryHand = "bow";//              ***temp for demo***
                 monster.Necklass = "helmet";

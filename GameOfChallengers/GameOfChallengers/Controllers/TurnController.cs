@@ -12,14 +12,6 @@ namespace GameOfChallengers.Controllers
         CharacterController cc = new CharacterController(); 
 
 
-        public Creature[,] Move(Creature creature, int loc, Creature[,] gameBoard)
-        {
-            //move the creature to a new spot on the game board
-            return gameBoard;
-        }
-
-
-
         public bool Attack(Creature creature1, Creature creature2)
         {
             int score1, score2 = 0;

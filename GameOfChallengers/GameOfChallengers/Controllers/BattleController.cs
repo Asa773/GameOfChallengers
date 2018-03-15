@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Controllers
 {
@@ -17,12 +16,12 @@ namespace GameOfChallengers.Controllers
         TeamViewModel team;
         public List<Creature> TurnOrder = new List<Creature>();
         public List<Item> ItemPool = new List<Item>();
+        public List<Creature> originalMonsters = new List<Creature>();
         public Creature[,] GameBoard = new Creature[3, 6];
         public Score score = new Score();
         //there will be one controller per type and the specific creature will be passed in to the controller methods
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
-        string message;
         int turns = 0;
         int totalXP = 0;
         public int SelectedGridCellI;
@@ -37,6 +36,14 @@ namespace GameOfChallengers.Controllers
         {
             CurrMonsters.setRound(round);
             CurrMonsters.setMonsters();
+            originalMonsters.RemoveRange(0, originalMonsters.Count);
+            foreach(Creature monster in CurrMonsters.Dataset)
+            {
+                Creature tempMonster = new Creature();
+                tempMonster.Update(monster);
+                tempMonster.Id = monster.Id;
+                originalMonsters.Add(tempMonster);
+            }
             TurnOrder = GetTurnOrder();
             InitializeGameBoard();
         }
@@ -77,16 +84,22 @@ namespace GameOfChallengers.Controllers
         public Score AutoBattle(Score score)
         {
             //this will run the turns in a loop until either all the team is dead or all the monsters are
-            BattleScreen screen = new BattleScreen();
            
-            message = "Battle Start" + " Characters :" + team.Dataset.ToList();
+            string message = "Battle Start" + " Characters :\n";
+            foreach(Creature character in team.Dataset)
+            {
+                message += character.FormatOutputc(character) + "\n";
+            }
             Debug.WriteLine(message);
-           
 
-            //.WriteLine(Text);
-            message = "Battle Start" + " Monsters :" + CurrMonsters.Dataset.ToList();
+            message = "Battle Start" + " Monsters :\n";
+            foreach (Creature monster in CurrMonsters.Dataset)
+            {
+                message += monster.FormatOutputc(monster) + "\n";
+            }
             Debug.WriteLine(message);
-           
+            message = string.Empty;
+
             while (CurrMonsters.Dataset.Count > 0)
             {
                 if(team.Dataset.Count <= 0)
@@ -104,14 +117,12 @@ namespace GameOfChallengers.Controllers
                     if (TurnOrder[i].Type == 0)
                     {
                         Creature character = TurnOrder[i];
-                        //int loc = GetNewLoc(character, GameBoard);
+                        GetNewLoc(character);
                         //GameBoard = turn.Move(character, loc, GameBoard);
                         Creature target = AutoTarget(character);//get a monster target for the character
                         if(target == null)
                         {
-                            
                             break;
-                           
                         }
                         if (!CanHit(character, target))
                         {
@@ -122,11 +133,7 @@ namespace GameOfChallengers.Controllers
                         {
                             message = "Character " + character.Name + " attacks " + target.Name;
                             Debug.WriteLine(message);
-                            screen.BattleMessages(message);
-                            if (team.Dataset.Count == 2)
-                            {
-                                
-                            }
+                            
                             int damageToDo = turn.DamageToDo(character);
                             int xpToGive = MC.GiveXP(target, damageToDo);
                             totalXP += xpToGive;
@@ -137,26 +144,27 @@ namespace GameOfChallengers.Controllers
 
                             if (monsterAlive == false)
                             {
-                                message = "Monster is dead ";
-                                Debug.WriteLine(message);
+                                message = string.Empty;
+                                Debug.WriteLine("Monster is dead");
 
                                 // Drop Items to item Pool
                                 var myItemList = MC.DropItems(target);
                                 //Add Items to the Score List
+                                message = "Dropped Items";
                                 foreach (var item in myItemList)
                                 {
                                     score.TotalItemsDropped += item.FormatOutput() + "\n";
-                                    message += " Item " + item.Name + " dropped by monster";
+                                    message += "\n" + item.Name;
                                 }
                                 ItemPool.AddRange(MC.DropItems(target));
                                
                                 Debug.WriteLine(message);
                                
                                 TurnOrder.Remove(target);
-                                //score.TotalMonstersKilled.Add(target);
                                 CurrMonsters.Dataset.Remove(target);
                                 GameBoardRemove(target);
-                                score.TotalMonstersKilled += target.FormatOutputm(target) + "\n";
+                                Creature tempMonster = originalMonsters.Where(a => a.Id == target.Id).FirstOrDefault();
+                                score.TotalMonstersKilled += tempMonster.FormatOutputm(tempMonster) + "\n";
 
                                 message = "Monster Removed :" + target.Name;
                                 Debug.WriteLine(message);
@@ -168,7 +176,7 @@ namespace GameOfChallengers.Controllers
                     else
                     {
                         Creature monster = TurnOrder[i];
-                        //int loc = GetNewLoc(monster, GameBoard);
+                        GetNewLoc(monster);
                         //GameBoard = turn.Move(monster, loc, GameBoard);
                         Creature target = AutoTarget(monster);//get a character target for the monster
                         if (target == null)
@@ -184,28 +192,27 @@ namespace GameOfChallengers.Controllers
                         {
                             message = "Monster " + monster.Name + " attacks " + target.Name;
                             Debug.WriteLine(message);
-                            screen.BattleMessages(message);
+                            
                             int damageToDo = turn.DamageToDo(monster);
                             bool characterAlive = CC.TakeDamage(target, damageToDo);
                             if (!characterAlive)
                             {
-                                message = "Character is dead ";
-                                Debug.WriteLine(message);
-                                screen.BattleMessages(message);
+                                message = string.Empty;
+                                Debug.WriteLine("Character is dead");
+                                
 
                                 // Drop Items to item Pool
                                 var myItemList = CC.DropItems(target);
                                 //Add Items to the Score List
+                                message = "Dropped Items";
                                 foreach (var item in myItemList)
                                 {
                                     score.TotalItemsDropped += item.FormatOutput() + "\n";
-                                    message += " Item " + item.Name + " dropped by character";
+                                    message += "\n" + item.Name;
                                 }
                                 ItemPool.AddRange(CC.DropItems(target));
                                 Debug.WriteLine(message);
-                                screen.BattleMessages(message);
-                               
-
+                                
                                 TurnOrder.Remove(target);
                                
                                 team.Dataset.Remove(target);
@@ -215,12 +222,13 @@ namespace GameOfChallengers.Controllers
 
                                 message = "Character Removed :" + target.Name;
                                 Debug.WriteLine(message);
-                                screen.BattleMessages(message);
+                                
                             }
                         }
                     }
                 }
             }
+            AssignItems();
             score.Turns += turns;
             score.TotalXP += totalXP;
             message =
@@ -229,12 +237,11 @@ namespace GameOfChallengers.Controllers
                  " Turns :" + turns 
                  ;
             Debug.WriteLine(message);
-            
 
             return score;
         }
 
-        public Creature AutoTarget(Creature self)//***needs to get the closest enemy(targetType)***
+        public Creature AutoTarget(Creature self)
         {
            
             return GetClosestEnemy(self);
@@ -267,7 +274,68 @@ namespace GameOfChallengers.Controllers
 
         public void AssignItems()
         {
+            foreach(Creature character in team.Dataset)
+            {
+                PickupItemsFromPool(character);
+            }
+        }
 
+        public void PickupItemsFromPool(Creature character)
+        {
+            // Have the character, walk the items in the pool, and decide if any are better than current one.
+
+            // No items in the pool...
+            if (ItemPool.Count < 1)
+            {
+                return;
+            }
+
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Head);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Necklass);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.PrimaryHand);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.OffHand);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.RightFinger);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.LeftFinger);
+            GetItemFromPoolIfBetter(character, ItemLocationEnum.Feet);
+        }
+
+        public void GetItemFromPoolIfBetter(Creature character, ItemLocationEnum setLocation)
+        {
+            var myList = ItemPool.Where(a => a.Location == setLocation)
+                .OrderByDescending(a => a.Value)
+                .ToList();
+
+            // If no items in the list, return...
+            if (!myList.Any())
+            {
+                return;
+            }
+
+            var currentItem = character.GetItemByLocation(setLocation);
+            if (currentItem == null)
+            {
+                // If no item in the slot then put on the first in the list
+                character.AddItem(setLocation, myList.FirstOrDefault().Id);
+                return;
+            }
+
+            foreach (var item in myList)
+            {
+                if (item.Value > currentItem.Value)
+                {
+                    // Put on the new item, which drops the one back to the pool
+                    var droppedItem = character.AddItem(setLocation, item.Id);
+
+                    // Remove the item just put on from the pool
+                    ItemPool.Remove(item);
+
+                    if (droppedItem != null)
+                    {
+                        // Add the dropped item to the pool
+                        ItemPool.Add(droppedItem);
+                    }
+                }
+            }
         }
 
         public void InitializeGameBoard()
@@ -289,23 +357,23 @@ namespace GameOfChallengers.Controllers
             }
         }
 
-        
-
-        //Check if this is required
-        public int GetNewLoc(Creature creature, Creature[,] GameBoard)
+        public void GetNewLoc(Creature creature)
         {
             //find the creature move it one place(or more) closer to the first monster/character found
-            int newloc = 0;
-            if (creature.Type == 0)
+            Creature enemy = GetClosestEnemy(creature);
+            CreatureLocInfo creatureInfo = GetLocInfo(creature);
+            CreatureLocInfo enemyInfo = GetLocInfo(enemy);
+            int distToMove = creature.Speed;
+            for(int i=0; i<distToMove; i++)
             {
-
-
+                //in the end we will need SelectedGridCellI and SlectedGridCellJ set to the right values
             }
-            else
-            {
+        }
 
-            }
-            return newloc;
+        public void Move(Creature creature)
+        {
+            //move the creature to a new spot on the game board
+            
         }
 
         //this will return the closest enemy creature to the creature passed in

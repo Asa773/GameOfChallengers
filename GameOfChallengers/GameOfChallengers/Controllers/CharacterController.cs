@@ -35,12 +35,7 @@ namespace GameOfChallengers.Controllers
             new LevelingUp{XP = 355000,Level = 20,Attack = 8,Defense = 10, Speed = 5},
         };
 
-        public void EquipItem(Creature character, int itemLoc, Item item)//change to string itemID?
-        {
-            //equip items at the end of the round to a body location
-            
-        }
-
+        
         public List<Item> DropItems(Creature character)
         {
             //drop all items when dead
@@ -179,10 +174,7 @@ namespace GameOfChallengers.Controllers
 
 
             Creature c = new Creature();
-
             
-
-
             myReturn += creature.Name;
             myReturn += " , " + creature.Type;
             myReturn += " , Level : " + creature.Level;
