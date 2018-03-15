@@ -22,6 +22,7 @@ namespace GameOfChallengers.Controllers
         //there will be one controller per type and the specific creature will be passed in to the controller methods
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
+        string message;
         int turns = 0;
         int totalXP = 0;
         //string Text = null;
@@ -72,12 +73,33 @@ namespace GameOfChallengers.Controllers
 
         }
 
+        internal void MoveOrHit(int i, int j)
+        {
+            //if(GameBoard[i,j] == null)
+            //{
+            ////check if he can move to this distance
+            //bool ans = CanHit(TurnOrder[0], GameBoard[i, j]);
+            //    if(ans)
+            //    {
+            //        GameBoard[i, j] = TurnOrder[0];
+            //    }
+            //    message = "Sorry You miss the turn";
+            //}
+            //else
+            //{
+            //    bool ans = CanHit(TurnOrder[0], GameBoard[i, j]);
+            //    //check if he can attack the monster
+            //} 
+
+
+
+        }
 
         public Score AutoBattle(Score score)
         {
             //this will run the turns in a loop until either all the team is dead or all the monsters are
             BattleScreen screen = new BattleScreen();
-            string message;
+           
             message = "Battle Start" + " Characters :" + team.Dataset.ToList();
             Debug.WriteLine(message);
            

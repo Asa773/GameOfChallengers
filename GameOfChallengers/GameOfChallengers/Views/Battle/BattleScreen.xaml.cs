@@ -72,7 +72,7 @@ namespace GameOfChallengers.Views.Battle
 
         public void MoveAndAttack(int i, int j)
         {
-
+            bc.MoveOrHit(i, j);
             RefreshBattleScreen();
         }
 
