@@ -31,7 +31,8 @@ namespace GameOfChallengers.Models
         public int Damage { get; set; }
 
 
-        //public CreatureInventory CInventory { get; set; }// inventory of items equipped to this creature
+        public string CInventory { get; set; }// inventory of items equipped to this creature
+
         public string HeadItemID { get; set; }
         public string BodyItemID { get; set; }
         public string FeetItemID { get; set; }

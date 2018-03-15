@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using GameOfChallengers.Models;
 using GameOfChallengers.Views.Scores;
 using System.Linq;
+using GameOfChallengers.Controllers;
 
 namespace GameOfChallengers.ViewModels
 {
@@ -45,6 +46,12 @@ namespace GameOfChallengers.ViewModels
             });
 
             MessagingCenter.Subscribe<NewScorePage, Score>(this, "AddData", async (obj, data) =>
+            {
+                Dataset.Add(data);
+                await DataStore.AddAsync_Score(data);
+            });
+
+            MessagingCenter.Subscribe<GameScoreController, Score>(this, "AddData", async (obj, data) =>
             {
                 Dataset.Add(data);
                 await DataStore.AddAsync_Score(data);
