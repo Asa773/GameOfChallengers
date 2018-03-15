@@ -33,13 +33,13 @@ namespace GameOfChallengers.Models
 
         public string CInventory { get; set; }// inventory of items equipped to this creature
 
-        public string HeadItemID { get; set; }
-        public string BodyItemID { get; set; }
-        public string FeetItemID { get; set; }
-        public string LHandItemID { get; set; }
-        public string RHandItemID { get; set; }
-        public string LFingerItemID { get; set; }
-        public string RFingerItemID { get; set; }
+        public string Head { get; set; }
+        public string Necklass { get; set; }
+        public string Feet { get; set; }
+        public string OffHand { get; set; }
+        public string PrimaryHand { get; set; }
+        public string LeftFinger { get; set; }
+        public string RightFinger { get; set; }
 
 
         public Creature()
@@ -49,13 +49,13 @@ namespace GameOfChallengers.Models
             Level = 1;
             XP = 0;
             OnTeam = false;
-            HeadItemID = null;
-            BodyItemID = null;
-            FeetItemID = null;
-            LHandItemID = null;
-            RHandItemID = "bow";//              ***TEMP***
-            LFingerItemID = null;
-            RFingerItemID = null;
+            Head = null;
+            Necklass = null;
+            Feet = null;
+            OffHand = null;
+            PrimaryHand = "bow";//              ***TEMP***
+            LeftFinger = null;
+            RightFinger = null;
            
 
         }
@@ -79,13 +79,13 @@ namespace GameOfChallengers.Models
             CurrHealth = newData.CurrHealth;
             Alive = newData.Alive;
             Loc = newData.Loc;
-            HeadItemID = newData.HeadItemID;
-            BodyItemID = newData.BodyItemID;
-            FeetItemID = newData.FeetItemID;
-            LHandItemID = newData.LHandItemID;
-            RHandItemID = newData.RHandItemID;
-            LFingerItemID = newData.LFingerItemID;
-            RFingerItemID = newData.RFingerItemID;
+            Head = newData.Head;
+            Necklass = newData.Necklass;
+            Feet = newData.Feet;
+            OffHand = newData.OffHand;
+            PrimaryHand = newData.PrimaryHand;
+            LeftFinger = newData.LeftFinger;
+            RightFinger = newData.RightFinger;
             ImageURI = newData.ImageURI;
             AttributeString = newData.AttributeString;
            
@@ -95,33 +95,33 @@ namespace GameOfChallengers.Models
         public List<string> GetItemIDs()
         {
             List<string> itemIds = new List<string>();
-            if (HeadItemID != null)
+            if (Head != null)
             {
-                itemIds.Add(HeadItemID);
+                itemIds.Add(Head);
             }
-            if (BodyItemID != null)
+            if (Necklass != null)
             {
-                itemIds.Add(BodyItemID);
+                itemIds.Add(Necklass);
             }
-            if (FeetItemID != null)
+            if (Feet != null)
             {
-                itemIds.Add(FeetItemID);
+                itemIds.Add(Feet);
             }
-            if (LHandItemID != null)
+            if (OffHand != null)
             {
-                itemIds.Add(LHandItemID);
+                itemIds.Add(OffHand);
             }
-            if (RHandItemID != null)
+            if (PrimaryHand != null)
             {
-                itemIds.Add(RHandItemID);
+                itemIds.Add(PrimaryHand);
             }
-            if (LFingerItemID != null)
+            if (LeftFinger != null)
             {
-                itemIds.Add(LFingerItemID);
+                itemIds.Add(LeftFinger);
             }
-            if (RFingerItemID != null)
+            if (RightFinger != null)
             {
-                itemIds.Add(RFingerItemID);
+                itemIds.Add(RightFinger);
             }
             return itemIds;
         }
@@ -129,13 +129,13 @@ namespace GameOfChallengers.Models
         public List<string> GetHandIDs()
         {
             List<string> itemIds = new List<string>();
-            if (LHandItemID != null)
+            if (OffHand != null)
             {
-                itemIds.Add(LHandItemID);
+                itemIds.Add(OffHand);
             }
-            if (RHandItemID != null)
+            if (PrimaryHand != null)
             {
-                itemIds.Add(RHandItemID);
+                itemIds.Add(PrimaryHand);
             }
             return itemIds;
         }

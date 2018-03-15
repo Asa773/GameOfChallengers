@@ -115,9 +115,9 @@ namespace GameOfChallengers.ViewModels
                 monster.Speed = lp[round].Speed;
                 monster.MaxHealth = rand.Next(11) * round;
                 monster.CurrHealth = monster.MaxHealth;
-                monster.RHandItemID = "bow";//              ***temp for demo***
-                monster.BodyItemID = "helmet";
-                monster.FeetItemID = "boots";
+                monster.PrimaryHand = "bow";//              ***temp for demo***
+                monster.Necklass = "helmet";
+                monster.Feet = "boots";
                 Dataset.Add(monster);
             }
 
@@ -174,7 +174,7 @@ namespace GameOfChallengers.ViewModels
                     monster.Speed = lp[round].Speed;
                     monster.MaxHealth = rand.Next(11) * round;
                     monster.CurrHealth = monster.MaxHealth;
-                    monster.RHandItemID = "bow";//              ***temp for demo***
+                    monster.PrimaryHand = "bow";//              ***temp for demo***
                     Dataset.Add(monster);
                 }
             }

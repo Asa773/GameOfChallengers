@@ -69,17 +69,19 @@ namespace GameOfChallengers.Views.Battle
         }
 
        
+
+        public void MoveAndAttack(int i, int j)
+        {
+
+            RefreshBattleScreen();
+        }
+
+
         private void Clicked00(object sender, EventArgs e)
         {
             
             MoveAndAttack(0, 0);
            
-        }
-
-        public void MoveAndAttack(int i,int j)
-        {
-            
-            RefreshBattleScreen();
         }
 
         private void Clicked01(object sender, EventArgs e)
