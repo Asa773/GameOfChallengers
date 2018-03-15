@@ -24,7 +24,6 @@ namespace GameOfChallengers.Views.Battle
             _viewModel.LoadData();
            
 			InitializeComponent ();
-            bc.SetBattleController(1);
             RefreshBattleScreen();
 		}
 
@@ -72,7 +71,8 @@ namespace GameOfChallengers.Views.Battle
 
         public void MoveAndAttack(int i, int j)
         {
-            bc.MoveOrHit(i, j);
+            bc.SelectedGridCellI = i;
+            bc.SelectedGridCellJ = j;
             RefreshBattleScreen();
         }
 

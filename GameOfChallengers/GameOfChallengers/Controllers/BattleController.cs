@@ -25,7 +25,8 @@ namespace GameOfChallengers.Controllers
         string message;
         int turns = 0;
         int totalXP = 0;
-        //string Text = null;
+        public int SelectedGridCellI;
+        public int SelectedGridCellJ;
         public BattleController()
         {
             CurrMonsters = MonstersListViewModel.Instance;
@@ -68,28 +69,6 @@ namespace GameOfChallengers.Controllers
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
 
 
-
-
-
-        }
-
-        internal void MoveOrHit(int i, int j)
-        {
-            //if(GameBoard[i,j] == null)
-            //{
-            ////check if he can move to this distance
-            //bool ans = CanHit(TurnOrder[0], GameBoard[i, j]);
-            //    if(ans)
-            //    {
-            //        GameBoard[i, j] = TurnOrder[0];
-            //    }
-            //    message = "Sorry You miss the turn";
-            //}
-            //else
-            //{
-            //    bool ans = CanHit(TurnOrder[0], GameBoard[i, j]);
-            //    //check if he can attack the monster
-            //} 
 
 
 
