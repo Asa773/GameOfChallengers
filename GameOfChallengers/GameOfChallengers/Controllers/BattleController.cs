@@ -117,13 +117,14 @@ namespace GameOfChallengers.Controllers
                     if (TurnOrder[i].Type == 0)
                     {
                         Creature character = TurnOrder[i];
-                        GetNewLoc(character);
-                        //GameBoard = turn.Move(character, loc, GameBoard);
                         Creature target = AutoTarget(character);//get a monster target for the character
-                        if(target == null)
+                        if (target == null)
                         {
                             break;
                         }
+                        GetNewLoc(character);
+                        Move(character);
+
                         if (!CanHit(character, target))
                         {
                             continue;
@@ -176,13 +177,14 @@ namespace GameOfChallengers.Controllers
                     else
                     {
                         Creature monster = TurnOrder[i];
-                        GetNewLoc(monster);
-                        //GameBoard = turn.Move(monster, loc, GameBoard);
                         Creature target = AutoTarget(monster);//get a character target for the monster
                         if (target == null)
                         {
                             break;
                         }
+                        GetNewLoc(monster);
+                        Move(monster);
+                        
                         if (!CanHit(monster, target))
                         {
                             continue;
@@ -363,17 +365,99 @@ namespace GameOfChallengers.Controllers
             Creature enemy = GetClosestEnemy(creature);
             CreatureLocInfo creatureInfo = GetLocInfo(creature);
             CreatureLocInfo enemyInfo = GetLocInfo(enemy);
+            SelectedGridCellI = creatureInfo.row;
+            SelectedGridCellJ = creatureInfo.col;
             int distToMove = creature.Speed;
-            for(int i=0; i<distToMove; i++)
+            //get to the right row
+            while (distToMove > 0)
             {
-                //in the end we will need SelectedGridCellI and SlectedGridCellJ set to the right values
+                if (GetDistanceFromLoc(SelectedGridCellI, SelectedGridCellJ, enemyInfo.row, enemyInfo.col) == 1)//creature is already there
+                {
+                    break;
+                }
+                if (SelectedGridCellI > enemyInfo.row)//creature needs to move down
+                {
+                    //check if there is a creature in the way
+                    if (GameBoard[SelectedGridCellI - 1, SelectedGridCellJ] == null)
+                    {
+                        SelectedGridCellI--;
+                        distToMove--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else if (SelectedGridCellI < enemyInfo.row)//creature needs to move up
+                {
+                    //check if there is a creature in the way
+                    if (GameBoard[SelectedGridCellI + 1, SelectedGridCellJ] == null)
+                    {
+                        SelectedGridCellI++;
+                        distToMove--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
+            //get to the right colum
+            while (distToMove > 0)
+            {
+                if (GetDistanceFromLoc(SelectedGridCellI, SelectedGridCellJ, enemyInfo.row, enemyInfo.col) == 1)//creature is already there
+                {
+                    break;
+                }
+                if (SelectedGridCellJ > enemyInfo.col)//creature needs to move down
+                {
+                    //check if there is a creature in the way
+                    if (GameBoard[SelectedGridCellI, SelectedGridCellJ - 1] == null)
+                    {
+                        SelectedGridCellJ--;
+                        distToMove--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else if (SelectedGridCellJ < enemyInfo.col)//creature needs to move up
+                {
+                    //check if there is a creature in the way
+                    if (GameBoard[SelectedGridCellI, SelectedGridCellJ + 1] == null)
+                    {
+                        SelectedGridCellJ++;
+                        distToMove--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+
         }
 
         public void Move(Creature creature)
         {
-            //move the creature to a new spot on the game board
-            
+            CreatureLocInfo currLoc = GetLocInfo(creature);
+            int distToMove = GetDistanceFromLoc(SelectedGridCellI, SelectedGridCellJ, currLoc.row, currLoc.col);
+            //verfy that the creature can move to the current location
+            if ((GameBoard[SelectedGridCellI, SelectedGridCellJ] == null) && distToMove <= creature.Speed)
+            {
+                //move the creature to a new spot on the game board
+                GameBoard[SelectedGridCellI, SelectedGridCellJ] = creature;
+                GameBoard[currLoc.row, currLoc.col] = null;
+            }
         }
 
         //this will return the closest enemy creature to the creature passed in
@@ -415,7 +499,7 @@ namespace GameOfChallengers.Controllers
         private Creature GetClosestEnemy(CreatureLocInfo info)
         {
             Creature foundEnemy = null;
-            //enemy away distance is defined as: how many column away + how many row away       ***maybe use distance formula?***
+            //enemy away distance is defined as: how many column away + how many row away
 
             int distance = 0,minDist = 50;
             // List<CreatureLocInfo> distance = new List<CreatureLocInfo>();
@@ -441,13 +525,17 @@ namespace GameOfChallengers.Controllers
 
         public int GetDistance(Creature creature1, Creature creature2)
         {
-            
+            //will return the distance between creature1 and creature2 and ensure that if they are in neighboring squares it will return 1
             CreatureLocInfo info1 = GetLocInfo(creature1);
             CreatureLocInfo info2 = GetLocInfo(creature2);
 
             return (Math.Abs(info1.row - info2.row) + (Math.Abs(info1.col - info2.col)));
-            //needs to return the distance between creature1 and creature2 and ensure that if they are in neighboring squares it will be one
+        }
 
+        public int GetDistanceFromLoc(int r1, int c1, int r2, int c2)
+        {
+            int dist = (Math.Abs(r1 - r2) + (Math.Abs(c1 - c2)));
+            return dist;
         }
     }
 
