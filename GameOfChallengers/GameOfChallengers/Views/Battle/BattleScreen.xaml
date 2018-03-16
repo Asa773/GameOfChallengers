@@ -42,6 +42,7 @@
 
                     <StackLayout Grid.Row="0" Grid.Column="0"  >
                         <Button 
+                            Text="M1"
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
