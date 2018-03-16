@@ -111,16 +111,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoreDetailViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ScoresViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TeamViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\BattleOver.xaml.cs">
-      <DependentUpon>BattleOver.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\BattleScreen.xaml.cs">
       <DependentUpon>BattleScreen.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\GameOver.xaml.cs">
-      <DependentUpon>GameOver.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml.cs">
@@ -295,19 +287,4 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle\GameOver.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle\BattleOver.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <!--#if (CreateBackendProject)
-    <Compile Include="$(MSBuildThisFileDirectory)Services\AzureDataStore.cs" />
-  #endif-->
 </Project>

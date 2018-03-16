@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Windows.UI.Xaml.Controls;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using GameOfChallengers.ViewModels;
 using GameOfChallengers.Models;
 using GameOfChallengers.Controllers;
+using GameOfChallengers.Views.Scores;
+using GameOfChallengers.Views.Items;
 
 namespace GameOfChallengers.Views.Battle
 {
@@ -25,6 +26,7 @@ namespace GameOfChallengers.Views.Battle
            
 			InitializeComponent ();
             RefreshBattleScreen();
+
 		}
 
 
@@ -79,13 +81,14 @@ namespace GameOfChallengers.Views.Battle
 
         private void Clicked00(object sender, EventArgs e)
         {
-            
+            BattleOver();
             MoveAndAttack(0, 0);
            
         }
 
         private void Clicked01(object sender, EventArgs e)
         {
+            GameOver();
             MoveAndAttack(0,1);
         }
         private void Clicked02(object sender, EventArgs e)
@@ -154,7 +157,41 @@ namespace GameOfChallengers.Views.Battle
         }
 
 
+        private async void BattleOver()
+        {
+            GameScoreController game = new GameScoreController();
 
+            var outputString = "Battle Over! Score " + bc.score.TotalXP;
+            var action = await DisplayActionSheet(outputString,
+                "Cancel",
+                null,
+                "View Score","Assign Dropped Items");
+            if (action == "View Score")
+            {
+                await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(false))));
+            }
+            if (action == "Assign Dropped Items")
+            {
+                await Navigation.PushAsync(new AssignItemPage());
+            }
+
+        }
+
+
+        private async void GameOver()
+        {
+            GameScoreController game = new GameScoreController();
+
+            var outputString = "Game Over! Score " + bc.score.TotalXP;
+            var action = await DisplayActionSheet(outputString,
+                "Cancel",
+                null,
+                "View Score");
+            if (action == "View Score")
+            {
+                await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(false))));
+            }
+        }
 
         private void Start_clicked(object sender, EventArgs e)
         {
