@@ -24,6 +24,12 @@ namespace GameOfChallengers.Controllers
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 Dropped.Add(item);
             }
+            int chance = rand.Next(10);
+            if(chance == 1)
+            {
+                var item = items.Where(a => a.Id == monster.UniqueItem).FirstOrDefault();
+                Dropped.Add(item);
+            }
             return Dropped;
         }
         

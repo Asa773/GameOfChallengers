@@ -133,6 +133,9 @@ namespace GameOfChallengers.ViewModels
                         itemCount++;
                     }
                 }
+                //load unique drop
+                var uItem = items[rand.Next(items.Count)];
+                monster.UniqueItem = uItem.Id;
                 Dataset.Add(monster);
             }
         }
