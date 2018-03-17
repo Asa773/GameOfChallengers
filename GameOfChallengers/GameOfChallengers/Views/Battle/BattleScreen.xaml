@@ -15,7 +15,18 @@
                               VerticalOptions="CenterAndExpand"/>
                              </ScrollView>
                         </Frame>
-                   
+                          
+                         <Image 
+                            x:Name ="TurnImage"
+                            VerticalOptions="Center" 
+                            HeightRequest="150"
+                            HorizontalOptions="Fill"/>
+                
+                            <Label x:Name = "L2" Text="Creature Turn"
+                                   TextColor="Black"
+                              HorizontalTextAlignment="Center"
+                              VerticalOptions="CenterAndExpand"/>
+                
                     <Button Text="Start"
                               VerticalOptions="Center" 
                               HorizontalOptions="Center"

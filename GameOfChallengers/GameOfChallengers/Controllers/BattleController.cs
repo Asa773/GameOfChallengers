@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace GameOfChallengers.Controllers
 {
@@ -22,6 +23,14 @@ namespace GameOfChallengers.Controllers
         //there will be one controller per type and the specific creature will be passed in to the controller methods
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
+        String img = "BlankImage.jpeg";
+       
+
+        internal ImageSource GetCreatureTurnImage()
+        {
+            return img;
+        }
+
         int turns = 0;
         int totalXP = 0;
         public int SelectedGridCellI;

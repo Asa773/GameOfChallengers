@@ -32,6 +32,7 @@ namespace GameOfChallengers.Views.Battle
 
         public void RefreshBattleScreen()
         {
+            TurnImage.Source = bc.GetCreatureTurnImage();
             cell00.Image = GetImage(bc.GameBoard[0, 0]);
             cell01.Image = GetImage(bc.GameBoard[0, 1]);
             cell02.Image = GetImage(bc.GameBoard[0, 2]);
@@ -201,7 +202,7 @@ namespace GameOfChallengers.Views.Battle
         private async void End_clicked(object sender, EventArgs e)
         {
            // L1.Text = "End the Game";
-            await Navigation.PushAsync(new BattleOver());
+            //await Navigation.PushAsync(new BattleOver());
         }
 	}
 }
