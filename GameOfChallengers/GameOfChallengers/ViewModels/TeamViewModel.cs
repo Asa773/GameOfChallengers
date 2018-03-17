@@ -40,7 +40,7 @@ namespace GameOfChallengers.ViewModels
 
             Title = "Current Team";
             Dataset = new ObservableCollection<Creature>();
-            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
         }
 
 
@@ -64,7 +64,7 @@ namespace GameOfChallengers.ViewModels
             _needsRefresh = value;
         }
         
-        public void LoadData()
+        public void LoadTeam()
         {
             Dataset.Clear();
             if (CharactersViewModel.Instance.Dataset.Count == 0)
@@ -79,13 +79,49 @@ namespace GameOfChallengers.ViewModels
             int teamCount = 0;
             foreach (var data in dataset)
             {
-                if ((data.Type == 0) && (teamCount < 6))//&& data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
+                if ((data.Type == 0) && (teamCount < 6) && (data.OnTeam))//the creature is a character, the team is not full, and it is on the current team
                 {
                     teamCount++;
                     Creature newOne = new Creature();
                     newOne.Update(data);
                     newOne.Id = Guid.NewGuid().ToString();
                     Dataset.Add(newOne);
+                }
+            }
+            if (teamCount < 6)
+            {
+                foreach (var data in dataset)//if the team is not full more characters must be added
+                {
+                    if ((data.Type == 0) && (teamCount < 6) && (!data.OnTeam))//the creature is a character, the team is not full, and the character is not in the team
+                    {
+                        teamCount++;
+                        data.OnTeam = true;
+                        Creature newOne = new Creature();
+                        newOne.Update(data);
+                        newOne.Id = Guid.NewGuid().ToString();
+                        Dataset.Add(newOne);
+                    }
+                }
+            }
+            if (teamCount < 6)//if you didn't make enough characters you get some sucky ones
+            {
+                int numOfSuckyCharacters = 0;
+                for (int i = teamCount; i < 6; i++)
+                {
+                    numOfSuckyCharacters++;
+                    Creature character = new Creature();
+                    character.Id = Guid.NewGuid().ToString();
+                    character.Type = 0;
+                    character.OnTeam = true;
+                    character.Name = "Sucky Character " + numOfSuckyCharacters.ToString();
+                    character.Attack = 1;
+                    character.Defense = 1;
+                    character.Speed = 1;
+                    character.MaxHealth = 1;
+                    character.CurrHealth = character.MaxHealth;
+                    //character.ImageURI = "newfighter.jpeg";
+                    Dataset.Add(character);
+                    MessagingCenter.Send(this, "AddData", character);
                 }
             }
         }

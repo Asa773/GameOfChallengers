@@ -5,7 +5,7 @@ using GameOfChallengers.Controllers;
 using GameOfChallengers.Models;
 using Newtonsoft.Json;
 using GameOfChallengers.ViewModels;
-
+using System.Linq;
 
 namespace GameOfChallengers.Models
 {
@@ -24,14 +24,9 @@ namespace GameOfChallengers.Models
         public int MaxHealth { get; set; }// creature's current max health
         public int CurrHealth { get; set; }// creature's current health
         public bool Alive { get; set; }// 1 is alive, 0 is dead
-        public int Loc { get; set; }// location on game board
         public string ImageURI { get; set; }// image to be inserted
-        public string AttributeString { get; set; }
-        public string UniqueItem { get; set; }
+        public string UniqueItem { get; set; }// unique item for monsters
         public int Damage { get; set; }
-
-
-        public string CInventory { get; set; }// inventory of items equipped to this creature
 
         public string Head { get; set; }
         public string Necklass { get; set; }
@@ -44,20 +39,18 @@ namespace GameOfChallengers.Models
 
         public Creature()
         {
-            //                      ***need id preset?***
             Alive = true;
             Level = 1;
             XP = 0;
             OnTeam = false;
+            ImageURI = "icon.png";
             Head = null;
             Necklass = null;
             Feet = null;
             OffHand = null;
-            PrimaryHand = "bow";//              ***TEMP***
+            PrimaryHand = null;
             LeftFinger = null;
             RightFinger = null;
-           
-
         }
 
         public void Update(Creature newData)
@@ -78,7 +71,6 @@ namespace GameOfChallengers.Models
             MaxHealth = newData.MaxHealth;
             CurrHealth = newData.CurrHealth;
             Alive = newData.Alive;
-            Loc = newData.Loc;
             Head = newData.Head;
             Necklass = newData.Necklass;
             Feet = newData.Feet;
@@ -87,9 +79,6 @@ namespace GameOfChallengers.Models
             LeftFinger = newData.LeftFinger;
             RightFinger = newData.RightFinger;
             ImageURI = newData.ImageURI;
-            AttributeString = newData.AttributeString;
-           
-
         }
 
         public List<string> GetItemIDs()
@@ -140,12 +129,6 @@ namespace GameOfChallengers.Models
             return itemIds;
         }
 
-
-
-
-
-
-
         #region Items
         // Gets the unique item (if any) from this monster when it dies...
         public Item GetUniqueItem()
@@ -173,60 +156,27 @@ namespace GameOfChallengers.Models
 
         #endregion Items
 
-        public string FormatOutputc(Creature creature)
+        public string FormatOutput(Creature creature)
         {
             var myReturn = string.Empty;
 
-
-            Creature c = new Creature();
-            CharacterController cc = new CharacterController();
-            
-
-
-
-
             myReturn += creature.Name;
-            myReturn += " , " + creature.Type;
-            myReturn += " , Level : " + creature.Level;
-            myReturn += " , Total Experience : " + creature.XP;
-            //myReturn += " , Items : " + ItemSlotsFormatOutput();
 
-            myReturn += " Damage : " + cc.GetBaseDamage(creature);
-           
+            myReturn += " Level: " + creature.Level;
+            myReturn += " Total Experience: " + creature.XP;
+            myReturn += " Speed: " + creature.Speed;
+            myReturn += " Defense: " + creature.Defense;
+            myReturn += " Attack: " + creature.Attack;
+            myReturn += " MaxHealth: " + creature.MaxHealth;
+            myReturn += " Items:\n";
+            List<string> itemIds = creature.GetItemIDs();
+            var items = ItemsViewModel.Instance.Dataset;
+            for (int i = 0; i < itemIds.Count; i++)
+            {
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                myReturn += item.FormatOutput() + "\n";
+            }
 
-            myReturn += "Speed : " + creature.Speed;
-            myReturn += " , Defense : " + creature.Defense;
-            myReturn += " , Attack : " + creature.Attack;
-            myReturn += " , CurrentHealth : " + creature.CurrHealth;
-            myReturn += " , MaxHealth : " + creature.MaxHealth;
-            return myReturn;
-        }
-        public string FormatOutputm(Creature creature)
-        {
-            var myReturn = string.Empty;
-
-
-            Creature c = new Creature();
-            
-            MonsterController mc = new MonsterController();
-
-
-
-
-            myReturn += creature.Name;
-            myReturn += " , " + creature.Type;
-            myReturn += " , Level : " + creature.Level;
-            myReturn += " , Total Experience : " + creature.XP;
-            //myReturn += " , Items : " + ItemSlotsFormatOutput();
-
-          
-            myReturn += " Damage : " + mc.GetBaseDamage(creature);
-
-            myReturn += "Speed : " + creature.Speed;
-            myReturn += " , Defense : " + creature.Defense;
-            myReturn += " , Attack : " + creature.Attack;
-            myReturn += " , CurrentHealth : " + creature.CurrHealth;
-            myReturn += " , MaxHealth : " + creature.MaxHealth;
             return myReturn;
         }
 
@@ -312,7 +262,5 @@ namespace GameOfChallengers.Models
 
             return null;
         }
-
-
     }
 }

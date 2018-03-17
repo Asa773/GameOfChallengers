@@ -17,12 +17,9 @@ namespace GameOfChallengers.Views.Battle
 	public partial class BattleScreen : ContentPage
 	{
         BattleController bc = new BattleController();
-        private TeamViewModel _viewModel;
         public Creature Data { get; set; }
 		public BattleScreen ()
 		{
-            _viewModel = TeamViewModel.Instance;
-            _viewModel.LoadData();
            
 			InitializeComponent ();
             RefreshBattleScreen();
@@ -162,7 +159,7 @@ namespace GameOfChallengers.Views.Battle
         {
             GameScoreController game = new GameScoreController();
 
-            var outputString = "Battle Over! Score " + bc.score.TotalXP;
+            var outputString = "Battle Over! Score ";// + bc.gameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,
                 "Cancel",
                 null,
@@ -183,7 +180,7 @@ namespace GameOfChallengers.Views.Battle
         {
             GameScoreController game = new GameScoreController();
 
-            var outputString = "Game Over! Score " + bc.score.TotalXP;
+            var outputString = "Game Over! Score ";// + bc.gameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,
                 "Cancel",
                 null,

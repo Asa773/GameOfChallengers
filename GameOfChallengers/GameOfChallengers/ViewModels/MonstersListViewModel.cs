@@ -57,7 +57,6 @@ namespace GameOfChallengers.ViewModels
         }
 
         public ObservableCollection<Creature> Dataset { get; set; }
-        public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
 
@@ -66,7 +65,6 @@ namespace GameOfChallengers.ViewModels
             
             Title = "Current Monsters";
             Dataset = new ObservableCollection<Creature>();
-            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
         }
 
         public void setRound(int roundNum)
@@ -77,7 +75,6 @@ namespace GameOfChallengers.ViewModels
         public void setMonsters()
         {
             Dataset.Clear();
-            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
             if (MonstersViewModel.Instance.Dataset.Count == 0)
             {
                 MonstersViewModel.Instance.LoadDataCommand.Execute(null);
@@ -114,13 +111,30 @@ namespace GameOfChallengers.ViewModels
                 monster.Defense = lp[round].Defense;
                 monster.Speed = lp[round].Speed;
                 monster.MaxHealth = rand.Next(1, 11) * round;
+                if(round == 1)
+                {
+                    monster.MaxHealth = 1;
+                }
                 monster.CurrHealth = monster.MaxHealth;
-                monster.PrimaryHand = "bow";//              ***temp for demo***
-                monster.Necklass = "helmet";
-                monster.Feet = "boots";
+
+                var items = ItemsViewModel.Instance.Dataset;
+                int itemCount = 0;
+                while(itemCount < 3)
+                {
+                    var item = items[rand.Next(items.Count)];
+                    var itemLocation = item.Location;
+                    if (item.Location == ItemLocationEnum.Finger)
+                    {
+                        itemLocation = ItemLocationEnum.RightFinger;
+                    }
+                    if(monster.GetItemByLocation(itemLocation) == null)
+                    {
+                        monster.AddItem(itemLocation, item.Id);
+                        itemCount++;
+                    }
+                }
                 Dataset.Add(monster);
             }
-
         }
 
         public bool NeedsRefresh()
@@ -137,57 +151,6 @@ namespace GameOfChallengers.ViewModels
         public void SetNeedsRefresh(bool value)
         {
             _needsRefresh = value;
-        }
-
-        async Task ExecuteLoadDataCommand()
-        {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                Dataset.Clear();
-                //var dataset = await DataStore.GetAllAsync_Creature(true);
-                var dataset = MonstersViewModel.Instance.GetAllCreatures();
-                var tempDataset = new List<Creature>();
-                int dateSeed = DateTime.Now.Millisecond;
-                Random rand = new Random(dateSeed);
-                foreach (var data in dataset)
-                {
-                    if (data.Type == 1)// just Monsters
-                    {
-                        tempDataset.Add(data);
-
-                    }
-                }
-                for(int i=0; i<6; i++)
-                {
-                    int index = rand.Next(tempDataset.Count);
-                    Creature monster = tempDataset[index];//get a random monster type
-                    monster.Alive = true;
-                    monster.Level = round;
-                    monster.XP = lp[round].XP;
-                    monster.Attack = lp[round].Attack;
-                    monster.Defense = lp[round].Defense;
-                    monster.Speed = lp[round].Speed;
-                    monster.MaxHealth = rand.Next(11) * round;
-                    monster.CurrHealth = monster.MaxHealth;
-                    monster.PrimaryHand = "bow";//              ***temp for demo***
-                    Dataset.Add(monster);
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-
-            finally
-            {
-                IsBusy = false;
-            }
         }
     }
 }

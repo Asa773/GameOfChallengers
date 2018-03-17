@@ -51,6 +51,12 @@ namespace GameOfChallengers.ViewModels
                 await DataStore.AddAsync_Creature(data);
             });
 
+            MessagingCenter.Subscribe<TeamViewModel, Creature>(this, "AddData", async (obj, data) =>
+            {
+                Dataset.Add(data);
+                await DataStore.AddAsync_Creature(data);
+            });
+
             MessagingCenter.Subscribe<EditCharacter, Creature>(this, "EditData", async (obj, data) =>
             {
                 // Find the Item, then update it

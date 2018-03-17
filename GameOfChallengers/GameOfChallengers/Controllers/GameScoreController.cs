@@ -19,7 +19,7 @@ namespace GameOfChallengers.Controllers
         {
             GameScore = new Score();
            
-            TeamViewModel.Instance.LoadData();
+            TeamViewModel.Instance.LoadTeam();
             TeamViewModel Team = TeamViewModel.Instance;
         }
 

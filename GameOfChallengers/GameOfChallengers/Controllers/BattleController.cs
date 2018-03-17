@@ -19,18 +19,11 @@ namespace GameOfChallengers.Controllers
         public List<Item> ItemPool = new List<Item>();
         public List<Creature> originalMonsters = new List<Creature>();
         public Creature[,] GameBoard = new Creature[3, 6];
-        public Score score = new Score();
         //there will be one controller per type and the specific creature will be passed in to the controller methods
+        TurnController turn = new TurnController();
         CharacterController CC = new CharacterController();
         MonsterController MC = new MonsterController();
         String img = "BlankImage.jpeg";
-       
-
-        internal ImageSource GetCreatureTurnImage()
-        {
-            return img;
-        }
-
         int turns = 0;
         int totalXP = 0;
         public int SelectedGridCellI;
@@ -55,6 +48,11 @@ namespace GameOfChallengers.Controllers
             }
             TurnOrder = GetTurnOrder();
             InitializeGameBoard();
+        }
+
+        internal ImageSource GetCreatureTurnImage()
+        {
+            return img;
         }
 
         public List<Creature> GetTurnOrder()
@@ -90,21 +88,21 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        public Score AutoBattle(Score score)
+        public Score AutoBattle(Score gameScore)
         {
             //this will run the turns in a loop until either all the team is dead or all the monsters are
            
             string message = "Battle Start" + " Characters :\n";
             foreach(Creature character in team.Dataset)
             {
-                message += character.FormatOutputc(character) + "\n";
+                message += character.FormatOutput(character) + "\n";
             }
             Debug.WriteLine(message);
 
             message = "Battle Start" + " Monsters :\n";
             foreach (Creature monster in CurrMonsters.Dataset)
             {
-                message += monster.FormatOutputc(monster) + "\n";
+                message += monster.FormatOutput(monster) + "\n";
             }
             Debug.WriteLine(message);
             message = string.Empty;
@@ -118,7 +116,7 @@ namespace GameOfChallengers.Controllers
                 for (int i = 0; i < TurnOrder.Count; i++)
                 {
 
-                    TurnController turn = new TurnController();
+                    
                     turns++;
                     message = "New Turn :" + turns;
                     Debug.WriteLine(message);
@@ -131,57 +129,8 @@ namespace GameOfChallengers.Controllers
                         {
                             break;
                         }
-                        GetNewLoc(character);
-                        Move(character);
 
-                        if (!CanHit(character, target))
-                        {
-                            continue;
-                        }
-                        bool hit = turn.Attack(character, target);
-                        if (hit)
-                        {
-                            message = "Character " + character.Name + " attacks " + target.Name;
-                            Debug.WriteLine(message);
-                            
-                            int damageToDo = turn.DamageToDo(character);
-                            int xpToGive = MC.GiveXP(target, damageToDo);
-                            totalXP += xpToGive;
-                            CC.TestForLevelUp(character, xpToGive);
-                            bool monsterAlive;
-                            MC.TakeDamage(target, damageToDo);
-                            monsterAlive = target.Alive;
-
-                            if (monsterAlive == false)
-                            {
-                                message = string.Empty;
-                                Debug.WriteLine("Monster is dead");
-
-                                // Drop Items to item Pool
-                                var myItemList = MC.DropItems(target);
-                                //Add Items to the Score List
-                                message = "Dropped Items";
-                                foreach (var item in myItemList)
-                                {
-                                    score.TotalItemsDropped += item.FormatOutput() + "\n";
-                                    message += "\n" + item.Name;
-                                }
-                                ItemPool.AddRange(MC.DropItems(target));
-                               
-                                Debug.WriteLine(message);
-                               
-                                TurnOrder.Remove(target);
-                                CurrMonsters.Dataset.Remove(target);
-                                GameBoardRemove(target);
-                                Creature tempMonster = originalMonsters.Where(a => a.Id == target.Id).FirstOrDefault();
-                                score.TotalMonstersKilled += tempMonster.FormatOutputm(tempMonster) + "\n";
-
-                                message = "Monster Removed :" + target.Name;
-                                Debug.WriteLine(message);
-                                
-                            }
-                        }
-
+                        CharacterAutoTurn(character, target, gameScore);
                     }
                     else
                     {
@@ -191,57 +140,14 @@ namespace GameOfChallengers.Controllers
                         {
                             break;
                         }
-                        GetNewLoc(monster);
-                        Move(monster);
-                        
-                        if (!CanHit(monster, target))
-                        {
-                            continue;
-                        }
-                        bool hit = turn.Attack(monster, target);
-                        if (hit)
-                        {
-                            message = "Monster " + monster.Name + " attacks " + target.Name;
-                            Debug.WriteLine(message);
-                            
-                            int damageToDo = turn.DamageToDo(monster);
-                            bool characterAlive = CC.TakeDamage(target, damageToDo);
-                            if (!characterAlive)
-                            {
-                                message = string.Empty;
-                                Debug.WriteLine("Character is dead");
-                                
 
-                                // Drop Items to item Pool
-                                var myItemList = CC.DropItems(target);
-                                //Add Items to the Score List
-                                message = "Dropped Items";
-                                foreach (var item in myItemList)
-                                {
-                                    score.TotalItemsDropped += item.FormatOutput() + "\n";
-                                    message += "\n" + item.Name;
-                                }
-                                ItemPool.AddRange(CC.DropItems(target));
-                                Debug.WriteLine(message);
-                                
-                                TurnOrder.Remove(target);
-                               
-                                team.Dataset.Remove(target);
-                                GameBoardRemove(target);
-                                //Add dead characters to the score list
-                                score.TotalCharactersKilled += target.FormatOutputc(target) + "\n";
-
-                                message = "Character Removed :" + target.Name;
-                                Debug.WriteLine(message);
-                                
-                            }
-                        }
+                        MonsterAutoTurn(monster, target, gameScore);
                     }
                 }
             }
             AssignItems();
-            score.Turns += turns;
-            score.TotalXP += totalXP;
+            gameScore.Turns += turns;
+            gameScore.TotalXP += totalXP;
             message =
                 "Battle Ended" +
                 " Total Experience :" + totalXP + 
@@ -249,7 +155,110 @@ namespace GameOfChallengers.Controllers
                  ;
             Debug.WriteLine(message);
 
-            return score;
+            return gameScore;
+        }
+
+        public void CharacterAutoTurn(Creature character, Creature target, Score score)
+        {
+            string message = string.Empty;
+            GetNewLoc(character);
+            Move(character);
+            if (!CanHit(character, target))
+            {
+                return;
+            }
+            bool hit = turn.Attack(character, target);
+            if (hit)
+            {
+                message = "Character " + character.Name + " attacks " + target.Name;
+                Debug.WriteLine(message);
+
+                int damageToDo = turn.DamageToDo(character);
+                int xpToGive = MC.GiveXP(target, damageToDo);
+                totalXP += xpToGive;
+                CC.TestForLevelUp(character, xpToGive);
+                bool monsterAlive;
+                MC.TakeDamage(target, damageToDo);
+                monsterAlive = target.Alive;
+
+                if (monsterAlive == false)
+                {
+                    message = string.Empty;
+                    Debug.WriteLine("Monster is dead");
+
+                    // Drop Items to item Pool
+                    var myItemList = MC.DropItems(target);
+                    //Add Items to the Score List
+                    message = "Dropped Items";
+                    foreach (var item in myItemList)
+                    {
+                        score.TotalItemsDropped += item.FormatOutput() + "\n";
+                        message += "\n" + item.Name;
+                    }
+                    ItemPool.AddRange(MC.DropItems(target));
+
+                    Debug.WriteLine(message);
+
+                    TurnOrder.Remove(target);
+                    CurrMonsters.Dataset.Remove(target);
+                    GameBoardRemove(target);
+                    Creature tempMonster = originalMonsters.Where(a => a.Id == target.Id).FirstOrDefault();
+                    score.TotalMonstersKilled += tempMonster.FormatOutput(tempMonster) + "\n";
+
+                    message = "Monster Removed :" + target.Name;
+                    Debug.WriteLine(message);
+
+                }
+            }
+        }
+
+        public void MonsterAutoTurn(Creature monster, Creature target, Score score)
+        {
+            string message = string.Empty;
+            GetNewLoc(monster);
+            Move(monster);
+            if (!CanHit(monster, target))
+            {
+                return;
+            }
+            bool hit = turn.Attack(monster, target);
+            if (hit)
+            {
+                message = "Monster " + monster.Name + " attacks " + target.Name;
+                Debug.WriteLine(message);
+
+                int damageToDo = turn.DamageToDo(monster);
+                bool characterAlive = CC.TakeDamage(target, damageToDo);
+                if (!characterAlive)
+                {
+                    message = string.Empty;
+                    Debug.WriteLine("Character is dead");
+
+
+                    // Drop Items to item Pool
+                    var myItemList = CC.DropItems(target);
+                    //Add Items to the Score List
+                    message = "Dropped Items";
+                    foreach (var item in myItemList)
+                    {
+                        score.TotalItemsDropped += item.FormatOutput() + "\n";
+                        message += "\n" + item.Name;
+                    }
+                    ItemPool.AddRange(myItemList);
+                    Debug.WriteLine(message);
+
+                    TurnOrder.Remove(target);
+
+                    team.Dataset.Remove(target);
+                    GameBoardRemove(target);
+                    //Add dead characters to the score list
+                    score.TotalCharactersKilled += target.FormatOutput(target) + "\n";
+
+                    message = "Character Removed :" + target.Name;
+                    Debug.WriteLine(message);
+
+                }
+            }
         }
 
         public Creature AutoTarget(Creature self)
@@ -263,7 +272,7 @@ namespace GameOfChallengers.Controllers
         {
             int dist = GetDistance(creature1, creature2);
             List<string> itemIds = creature1.GetHandIDs();
-            int range = 0;
+            int range = 1;
             for (int i = 0; i < itemIds.Count; i++)
             {
                 var items = ItemsViewModel.Instance.Dataset;
@@ -312,8 +321,13 @@ namespace GameOfChallengers.Controllers
 
         public void GetItemFromPoolIfBetter(Creature character, ItemLocationEnum setLocation)
         {
-            var myList = ItemPool.Where(a => a.Location == setLocation)
-                .OrderByDescending(a => a.Value)
+            //account for items only being assigned finger, but creatures having left and right fingers
+            ItemLocationEnum tempLoc = setLocation;
+            if(setLocation == ItemLocationEnum.LeftFinger || setLocation == ItemLocationEnum.RightFinger)
+            {
+                tempLoc = ItemLocationEnum.Finger;
+            }
+            var myList = ItemPool.Where(a => a.Location == tempLoc)
                 .ToList();
 
             // If no items in the list, return...
@@ -326,7 +340,9 @@ namespace GameOfChallengers.Controllers
             if (currentItem == null)
             {
                 // If no item in the slot then put on the first in the list
-                character.AddItem(setLocation, myList.FirstOrDefault().Id);
+                Item item = myList.FirstOrDefault();
+                character.AddItem(setLocation, item.Id);
+                ItemPool.Remove(item);
                 return;
             }
 

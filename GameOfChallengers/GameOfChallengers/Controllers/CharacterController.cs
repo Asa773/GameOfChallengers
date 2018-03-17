@@ -70,17 +70,18 @@ namespace GameOfChallengers.Controllers
 
         public int GetBaseDamage(Creature character)
         {
-            List<string> itemIds = character.GetHandIDs();
             int baseDamage = 0;//this will be based on the weapon stats
-            for (int i = 0; i < itemIds.Count; i++)
+            Item citem = character.GetItemByLocation(ItemLocationEnum.PrimaryHand);
+            if(citem == null)
             {
-                var items = ItemsViewModel.Instance.Dataset;
-                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                if (item.Attribute == AttributeEnum.Attack)
-                {
-                    baseDamage += item.Value;
-                }
+                return baseDamage;
             }
+            var items = ItemsViewModel.Instance.Dataset;
+            var item = items.Where(a => a.Id == citem.Id).FirstOrDefault();
+            int dateSeed = DateTime.Now.Millisecond;
+            Random roll = new Random(dateSeed);
+            baseDamage += roll.Next(1, item.Damage + 1);
+
             return baseDamage;
         }
 
@@ -165,30 +166,11 @@ namespace GameOfChallengers.Controllers
             if (character.CurrHealth <= 0)
             {
                 character.Alive = false;
+                character.CurrHealth = 0;
             }
             return character.Alive;
         }
-        public string FormatOutput(Creature creature)
-        {
-            var myReturn = string.Empty;
-
-
-            Creature c = new Creature();
-            
-            myReturn += creature.Name;
-            myReturn += " , " + creature.Type;
-            myReturn += " , Level : " + creature.Level;
-            myReturn += " , Total Experience : " + creature.XP;
-            //myReturn += " , Items : " + ItemSlotsFormatOutput();
-
-            myReturn += " Damage : " + GetBaseDamage(creature);
-            myReturn += "Speed : " + creature.Speed;
-            myReturn += " , Defense : " + creature.Defense;
-            myReturn += " , Attack : " + creature.Attack;
-            myReturn += " , CurrentHealth : " + creature.CurrHealth;
-            myReturn += " , MaxHealth : " + creature.MaxHealth;
-            return myReturn;
-        }
+        
 
     }
 }

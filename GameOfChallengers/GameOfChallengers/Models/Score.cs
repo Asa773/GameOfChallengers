@@ -66,7 +66,7 @@ namespace GameOfChallengers.Models
                 return false;
             }
 
-            TotalCharactersKilled += character.FormatOutputc(character) + "\n";
+            TotalCharactersKilled += character.FormatOutput(character) + "\n";
             return true;
         }
 
@@ -78,7 +78,7 @@ namespace GameOfChallengers.Models
                 return false;
             }
 
-            TotalMonstersKilled += monster.FormatOutputm(monster) + "\n";
+            TotalMonstersKilled += monster.FormatOutput(monster) + "\n";
             return true;
         }
 
