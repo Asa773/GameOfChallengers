@@ -17,83 +17,75 @@ namespace GameOfChallengers.Views.Character
     public partial class BuildTeamPage : ContentPage
     {
         public CharactersViewModel viewModel;
-        public CreatureDetailViewModel _viewModel;
-        public ObservableCollection<Creature> Dataset { get; set; }
         public Creature Data { get; set; }
+        public List<Creature> newTeam = new List<Creature>();
 
         public BuildTeamPage()
         {
             InitializeComponent();
-            Data = new Creature
+
+            //make sure that the CharactersViewModel has its data loaded
+            if (CharactersViewModel.Instance.Dataset.Count == 0)
             {
-                Name = "Character name",
-                Id = Guid.NewGuid().ToString(),
-                Type = 0,
-                Level = 1,
-                XP = 0,
-                MaxHealth = 10,
-                CurrHealth = 10,
-                Alive = true,
+                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
+            else if (CharactersViewModel.Instance.NeedsRefresh())
+            {
+                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
+            }
 
-            };
-
-            _viewModel = new CreatureDetailViewModel(Data);
             BindingContext = viewModel = CharactersViewModel.Instance;
-            //CharacterPicker1.SelectedIndex = 0;
         }
-
-        public class LabelGridCode : ContentPage
-        {
-            //public LabelGridCode()
-
-            //{
-            //    var grid = new Xamarin.Forms.Grid();
-            //    var topLeft = new Xamarin.Forms.Image { Source = "icon.png" };
-            //    var topRight = new Xamarin.Forms.Image { Source = "icon.png" };
-            //    var bottomLeft = new Xamarin.Forms.Image { Source = "icon.png" };
-            //    var bottomRight = new Xamarin.Forms.Image { Source = "icon.png" };
-            //    //var topLeft = new Label { Text = "Top Left" };
-            //    //var topRight = new Label { Text = "Top Right" };
-            //    //var bottomLeft = new Label { Text = "Bottom Left" };
-            //    //var bottomRight = new Label { Text = "Bottom Right" };
-
-            //    grid.RowDefinitions.Add(new Xamarin.Forms.RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            //    grid.RowDefinitions.Add(new Xamarin.Forms.RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-            //    grid.ColumnDefinitions.Add(new Xamarin.Forms.ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-            //    grid.ColumnDefinitions.Add(new Xamarin.Forms.ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
-
-            //    Content = grid;
-
-
-            //}
-        }
-
-    
 
         private async void SaveTeam_Clicked(object sender, EventArgs e)
         {
-            // await Navigation.PopAsync();
+            Creature c1 = (Creature)CharacterPicker1.SelectedItem;
+            if (c1 != null)
+            {
+                newTeam.Add(c1);
+            }
+            Creature c2 = (Creature)CharacterPicker2.SelectedItem;
+            if (c2 != null)
+            {
+                newTeam.Add(c2);
+            }
+            Creature c3 = (Creature)CharacterPicker3.SelectedItem;
+            if (c3 != null)
+            {
+                newTeam.Add(c3);
+            }
+            Creature c4 = (Creature)CharacterPicker4.SelectedItem;
+            if (c4 != null)
+            {
+                newTeam.Add(c4);
+            }
+            Creature c5 = (Creature)CharacterPicker5.SelectedItem;
+            if (c5 != null)
+            {
+                newTeam.Add(c5);
+            }
+            Creature c6 = (Creature)CharacterPicker6.SelectedItem;
+            if (c6 != null)
+            {
+                newTeam.Add(c6);
+            }
+            
+            for (int i=0; i<viewModel.Dataset.Count; i++)
+            {
+                viewModel.Dataset[i].OnTeam = false;
+            }
+            foreach(Creature c in newTeam)
+            {
+                c.OnTeam = true;
+            }
             await Navigation.PushAsync(new BattleScreen());
         }
-
-
 
         private async void AutoSelect_Clicked(object sender, EventArgs e)
         {
-            //var myTest = CharacterPicker1.SelectedItem;
-            //var myTest1 = CharacterPicker2.SelectedItem;
-            //var myTest2 = CharacterPicker3.SelectedItem;
-            //var myTest3 = CharacterPicker4.SelectedItem;
-            //var myTest4 = CharacterPicker5.SelectedItem;
-            //var myTest5 = CharacterPicker6.SelectedItem;
-
             await Navigation.PushAsync(new BattleScreen());
         }
-
-
     }
-
-
 }
  
 

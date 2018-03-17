@@ -6,9 +6,9 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="Character Team" HorizontalOptions="CenterAndExpand"></Label>
-
-                <Picker Title="Select 6 Characters" 
-                        ItemsSource="{Binding Dataset}"
+                <Label Text="Select 6 characters" HorizontalOptions="StartAndExpand"></Label>
+                <Label Text="If the same character is selected more than once that character will only be added to the team once" HorizontalOptions="StartAndExpand"></Label>
+                <Picker ItemsSource="{Binding Dataset}"
                         x:Name="CharacterPicker1"
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
@@ -44,88 +44,4 @@
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
-
-    <!--<ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Label Text="Character Team" HorizontalOptions="CenterAndExpand"></Label>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-
-               
-                   
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Image Source="icon.png"  />
-
-                    </StackLayout>
-
-
-   
-                    
-
-                    <StackLayout  Grid.Row="0" Grid.Column="1">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="0" Grid.Column="2">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="0" Grid.Column="3">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="1" Grid.Column="0">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="1" Grid.Column="1">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="1" Grid.Column="2">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="1" Grid.Column="3">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="2" Grid.Column="0">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="2" Grid.Column="1">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="2" Grid.Column="2">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="2" Grid.Column="3">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="3" Grid.Column="0">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="3" Grid.Column="1">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="3" Grid.Column="2">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    <StackLayout  Grid.Row="3" Grid.Column="3">
-                        <Image Source="icon.png"/>
-                    </StackLayout>
-                    
-
-
-
-                    <Image Source="icon.png"  Grid.Row="0" Grid.Column="1" />
-                    <Image Source="icon.png" Grid.Row="1" Grid.Column="0" />
-                    <Image Source="icon.png" Grid.Row="1" Grid.Column="1" />
-                </Grid>
-                <Button Text="Save Selected Characters as the Team" Clicked="SaveTeam_Clicked" />
-                <Button Text="Auto Select" Clicked="AutoSelect_Clicked" />
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>-->
 </ContentPage>
