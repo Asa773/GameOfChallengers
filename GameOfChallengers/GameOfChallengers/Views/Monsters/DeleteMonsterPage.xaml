@@ -8,7 +8,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
 
-                <Label Text="Delete Monster?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Delete Monster?" FontSize="Small"  HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
 
 

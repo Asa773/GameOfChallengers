@@ -10,9 +10,9 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Score Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Score Details" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <ScrollView VerticalOptions="StartAndExpand">
-                    <StackLayout Orientation="Horizontal">
+                    <StackLayout>
                         <Label Text="Name" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.Name}" FontSize="Small" />
                         <Label Text="Final Score" FontAttributes="Bold" FontSize="Small" />

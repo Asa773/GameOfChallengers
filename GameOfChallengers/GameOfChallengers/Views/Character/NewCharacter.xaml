@@ -3,12 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.NewCharacter">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
+                <Label Text="New Character" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
                 <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
@@ -28,6 +29,20 @@
                     <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.Speed}" FontSize="Small" />
                 </StackLayout>
+                <Button  
+                    Text="Assign Items" 
+                    Clicked="AddItems_Clicked" 
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="DarkTurquoise"
+                    FontAttributes="Bold"
+                    TextColor="Black" />
+                <Button  
+                    Text="Create" 
+                    Clicked="Save_Clicked" 
+                    HorizontalOptions="CenterAndExpand"
+                    BackgroundColor="DarkTurquoise"
+                    FontAttributes="Bold"
+                    TextColor="Black" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

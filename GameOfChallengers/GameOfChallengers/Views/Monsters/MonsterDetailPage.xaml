@@ -11,8 +11,9 @@
     <ContentPage.Content>
         
         <ScrollView>
-            <StackLayout Spacing="20" Padding="15"  Orientation="Horizontal">
-                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+            <StackLayout Spacing="20" Padding="15" >
+                <Label Text="Monster details" FontSize="Medium" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                <Image Source="{Binding Data.ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
 
                 <StackLayout
                 Orientation="Horizontal"

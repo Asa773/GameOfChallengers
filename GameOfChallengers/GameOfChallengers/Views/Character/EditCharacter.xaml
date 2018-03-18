@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  />
                 <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 <Button Text="Add Inventory Items" 
@@ -20,10 +20,7 @@
                         Clicked="AddItems_Clicked"
                         TextColor="Black"
                     BackgroundColor="DarkTurquoise"
-                    HeightRequest="40"
-                         WidthRequest="100"></Button>
-            </StackLayout>
-            <StackLayout>
+                    ></Button>
                 <Button Text="Save" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"

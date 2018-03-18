@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Create Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Create Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />

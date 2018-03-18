@@ -21,7 +21,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Item Create Page" FontSize="Small" />
+                <Label Text="Item Create Page" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
 
                 <Grid
                     RowSpacing="1"
@@ -146,7 +146,7 @@
                     <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Image" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -161,14 +161,14 @@
                     <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Damage" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Damage}" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             x:Name="DamageValue"
                             VerticalOptions="Center"/>
@@ -190,8 +190,7 @@
                         Clicked="Save_Clicked"
                         TextColor="Black"
                     BackgroundColor="DarkTurquoise"
-                    HeightRequest="40"
-                         WidthRequest="100"></Button>
+                       ></Button>
                     </StackLayout>
 
                 </Grid>

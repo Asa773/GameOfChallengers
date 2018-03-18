@@ -9,7 +9,7 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Edit Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Edit Monster" FontSize="Small"   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
             <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
             <Entry Text="{Binding Data.Name}" FontSize="Small" />
             <StackLayout>

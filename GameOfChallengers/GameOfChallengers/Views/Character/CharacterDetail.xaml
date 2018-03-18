@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Character Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Character Details" FontSize="Small" FontAttributes="Bold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
                 <ScrollView VerticalOptions="StartAndExpand">
                     <StackLayout>
                         <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>

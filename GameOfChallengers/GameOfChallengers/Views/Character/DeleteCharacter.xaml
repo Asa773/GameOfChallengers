@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
-                <Label Text="Delete Character?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
+                <Label Text="Delete Character?" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  />
                 <ScrollView VerticalOptions="StartAndExpand">
                     <StackLayout>
                         <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>

@@ -21,7 +21,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Item Edit Page" FontSize="Small" />
+                <Label Text="Item Edit Page" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
 
                 <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="75"
@@ -44,7 +44,7 @@
                     <StackLayout Grid.Row="0" Grid.Column="0">
                         <Label 
                             Text="Name" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -59,7 +59,7 @@
                     <StackLayout Grid.Row="1" Grid.Column="0">
                         <Label 
                             Text="Description" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -74,14 +74,14 @@
                     <StackLayout Grid.Row="2" Grid.Column="0">
                         <Label 
                             Text="Range" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Range}" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             x:Name="RangeValue"
                             VerticalOptions="Center"/>
@@ -99,14 +99,14 @@
                     <StackLayout Grid.Row="3" Grid.Column="0">
                         <Label 
                             Text="Value"
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
                     <StackLayout Grid.Row="3" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Value}" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             x:Name="ValueValue"
                             VerticalOptions="Center"/>
@@ -123,7 +123,7 @@
                     <StackLayout Grid.Row="4" Grid.Column="0">
                         <Label 
                             Text="Location" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -138,7 +138,7 @@
                     <StackLayout Grid.Row="5" Grid.Column="0">
                         <Label 
                             Text="Attribute" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -153,7 +153,7 @@
                     <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Image" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -173,14 +173,14 @@
                     <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Damage" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Damage}" 
-                            FontSize="Medium" 
+                            FontSize="Medium"  FontAttributes="Bold"
                             HorizontalOptions="Start"
                             x:Name="DamageValue"
                             VerticalOptions="Center"/>

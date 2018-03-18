@@ -5,9 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Characters"
-                   FontAttributes="Bold"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+               VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  />
             <StackLayout Orientation="Horizontal">
                 <Button Text="Build Team" 
                         FontAttributes="Bold" 

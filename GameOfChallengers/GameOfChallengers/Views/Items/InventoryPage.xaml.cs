@@ -3,6 +3,9 @@ using Xamarin.Forms.Xaml;
 
 using GameOfChallengers.Models;
 using GameOfChallengers.ViewModels;
+using System.Collections.Generic;
+using GameOfChallengers.Views.Character;
+using System;
 
 
 namespace GameOfChallengers.Views.Items
@@ -10,27 +13,57 @@ namespace GameOfChallengers.Views.Items
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InventoryPage : ContentPage
     {
-
+        private Creature character;
         private ItemsViewModel _viewModel;
+        public List<Item> ItemsSelected = new List<Item>();
+        NewCharacter newcPage;
         public InventoryPage()
+        {
+            //InitializeComponent();
+            //BindingContext = _viewModel = ItemsViewModel.Instance;
+        }
+
+        public InventoryPage(NewCharacter page)//(Creature Data)
         {
             InitializeComponent();
             BindingContext = _viewModel = ItemsViewModel.Instance;
+            newcPage = page;
+            character = page.Data;
         }
 
 
-
-        private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
+        private void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
             var data = args.SelectedItem as Item;
             if (data == null)
                 return;
-            await Navigation.PopAsync();
-           // await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(data)));
+
+            //  character.AddItem(data.Location, data.Id);
+            ItemsSelected.Add(data);
+
+            // await Navigation.PopAsync();
+            // await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(data)));
 
             // Manually deselect item.
-            ItemsListView.SelectedItem = null;
+            // ItemsListView.SelectedItem = null;
         }
+
+
+        private async void SaveItems_Clicked(object sender, EventArgs e)
+        {
+            if (ItemsSelected == null)
+            {
+                await Navigation.PopAsync();
+            }
+            else
+            {
+
+                newcPage.SaveItem(ItemsSelected);
+                await Navigation.PopAsync();
+            }
+
+        }
+
 
         protected override void OnAppearing()
         {

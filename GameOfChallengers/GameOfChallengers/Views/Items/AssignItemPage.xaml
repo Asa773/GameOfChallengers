@@ -8,8 +8,7 @@
             <ScrollView>
 
              <Label Text="Assign Item"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center" />
+                 VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
 
                 <StackLayout>
                
