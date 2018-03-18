@@ -30,7 +30,7 @@ namespace GameOfChallengers.Views.Monsters
         }
 
        
-        async void Yes_CLicked(object sender,EventArgs e)
+        async void Delete_Clicked(object sender,EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
 
@@ -39,7 +39,7 @@ namespace GameOfChallengers.Views.Monsters
 
             await Navigation.PopAsync();
         }
-        async void No_Clicked(object sender, EventArgs e)
+        async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopToRootAsync();
         }

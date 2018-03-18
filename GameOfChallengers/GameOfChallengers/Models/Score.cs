@@ -20,6 +20,7 @@ namespace GameOfChallengers.Models
         public string TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
         public string TotalCharactersKilled { get; set; }//this is so the score can show the characters' final stats
         public string TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
+        public int MonsterSlainNumber { get; set; }// The count of monsters slain during battle
 
         public Score()
         {
@@ -32,6 +33,7 @@ namespace GameOfChallengers.Models
 
             TotalMonstersKilled = null;
             TotalItemsDropped = null;
+            MonsterSlainNumber = 0;
         }
 
         public void Update(Score newData)
@@ -51,6 +53,7 @@ namespace GameOfChallengers.Models
             TotalCharactersKilled = newData.TotalCharactersKilled;
             TotalMonstersKilled = newData.TotalMonstersKilled;
             TotalItemsDropped = newData.TotalItemsDropped;
+            MonsterSlainNumber = newData.MonsterSlainNumber;
         }
 
 

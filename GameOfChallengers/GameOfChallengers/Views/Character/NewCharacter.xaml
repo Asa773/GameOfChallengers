@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.NewCharacter">
     <ContentPage.ToolbarItems>
-        
+        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -12,48 +12,22 @@
                 <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.Name}" FontSize="Small"  />
+                    <Entry Text="{Binding Data.Name}" FontSize="Small"  />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                    <Entry Text="{Binding Data.Attack}" FontSize="Small" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                    <Entry Text="{Binding Data.Defense}" FontSize="Small" />
                 </StackLayout>
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                    <Entry Text="{Binding Data.Speed}" FontSize="Small" />
                 </StackLayout>
-
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.Level}" FontSize="Small" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.XP}" FontSize="Small" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
-                </StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
-                    <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
-                </StackLayout>
-                <Button Text="Create" 
-                        FontAttributes="Bold" 
-                        HorizontalOptions="CenterAndExpand"
-                        VerticalOptions="Center"
-                        Clicked="AddItems_Clicked"
-                        TextColor="Black"
-                    BackgroundColor="DarkTurquoise"
-                    HeightRequest="40"
-                         WidthRequest="100"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
