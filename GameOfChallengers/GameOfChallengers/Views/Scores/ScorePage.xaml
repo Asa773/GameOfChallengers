@@ -8,7 +8,18 @@
             <Label Text="High Scores"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Button Text="Add" Clicked="AddScore_Clicked"></Button>
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Add" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="AddScore_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+
+            </StackLayout>
             <ListView x:Name="ScoresListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"

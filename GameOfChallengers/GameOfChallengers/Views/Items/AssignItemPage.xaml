@@ -33,6 +33,7 @@
                                <Picker Title="Assign Items to Character" 
                                        ItemsSource="{Binding Dataset}"
                                        x:Name="TeamPicker"
+                                       BackgroundColor="Black"
                                        ItemDisplayBinding="{Binding Name}"
                                        SelectedItem="{Binding Name, Mode=TwoWay}" />
                            </StackLayout>

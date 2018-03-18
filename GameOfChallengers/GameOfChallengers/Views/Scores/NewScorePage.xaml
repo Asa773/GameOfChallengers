@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Scores.NewScorePage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -24,8 +24,17 @@
                 <Entry Text="{Binding Data.Auto}" FontSize="Small" />
                 <Label Text="TotalXP" FontSize="Small" />
                 <Entry Text="{Binding Data.TotalXP}" FontSize="Small" />
-
-                <Button Text="Create" Clicked="Save_Clicked" />
+                <StackLayout>
+                    <Button Text="Create" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Save_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

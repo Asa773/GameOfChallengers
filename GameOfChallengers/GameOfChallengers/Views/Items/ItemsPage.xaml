@@ -4,14 +4,21 @@
              x:Class="GameOfChallengers.Views.Items.ItemsPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Add" Clicked="AddItem_Clicked" />
-    </ContentPage.ToolbarItems>
+    
     <ContentPage.Content>
         <StackLayout>
 
             <Label Text="Items List Page" FontSize="Small" />
-
+            <Button Text="Add" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="AddItem_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+            
             <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Dataset}"
                 VerticalOptions="FillAndExpand"

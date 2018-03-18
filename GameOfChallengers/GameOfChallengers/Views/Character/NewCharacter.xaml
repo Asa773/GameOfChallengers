@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.NewCharacter">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+        
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -45,6 +45,15 @@
                     <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
                     <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
                 </StackLayout>
+                <Button Text="Create" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="AddItems_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -9,7 +9,9 @@
             <StackLayout Spacing="20" Padding="15" Orientation="Vertical">
 
                 <Label Text="Delete Monster?" FontSize="Small" HorizontalOptions="CenterAndExpand" />
-                
+                <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+
+
                 <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
@@ -55,18 +57,27 @@
                     HorizontalOptions="Center"/>
             </StackLayout>
 
-            <StackLayout
-                Orientation="Horizontal"
-                HorizontalOptions="Start">
-                <Button Text="Yes"
-                       HorizontalOptions="Center"
-                       VerticalOptions="Center"
-                       Clicked="Yes_CLicked"/>
-                <Button Text="No"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Clicked="No_Clicked"/>
-              </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Yes" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Delete_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+                    <Button Text="No" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Cancel_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+
+                </StackLayout>
 
             </StackLayout>
         </ScrollView>

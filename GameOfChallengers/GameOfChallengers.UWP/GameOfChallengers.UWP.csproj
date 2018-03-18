@@ -113,6 +113,7 @@
     <Content Include="Bow.jpg" />
     <Content Include="Captain-America.jpeg" />
     <Content Include="goldenfighter.jpg" />
+    <AndroidResource Include="newfighter.jpg" />
     <Content Include="reddragon.jpeg" />
     <Content Include="knight.jpeg" />
     <Content Include="runner.jpg" />

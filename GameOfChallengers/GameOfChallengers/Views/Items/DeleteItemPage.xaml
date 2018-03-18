@@ -3,10 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     x:Class="GameOfChallengers.Views.Items.DeleteItemPage">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete" Clicked="Delete_Clicked" />
-        <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
-    </ContentPage.ToolbarItems>
+   
 
 
     <ScrollView>
@@ -100,6 +97,27 @@
                    FontSize="Medium" 
                    HorizontalOptions="Center"/>
             </StackLayout>
+            <StackLayout Orientation="Horizontal">
+            <Button Text="Yes" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Delete_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+            <Button Text="No" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Cancel_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+
+        </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

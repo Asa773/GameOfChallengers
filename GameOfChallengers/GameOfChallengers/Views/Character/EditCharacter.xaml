@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.EditCharacter">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+     
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
@@ -17,6 +17,17 @@
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
                         Clicked="AddItems_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Save" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Save_Clicked"
                         TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"

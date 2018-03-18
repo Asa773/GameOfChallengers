@@ -6,7 +6,7 @@
              xmlns:local="using:GameOfChallengers.Models">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Clicked="Save_Clicked" />
+      
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
 
@@ -181,6 +181,17 @@
                             ValueChanged="Damage_OnStepperValueChanged"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
+                    </StackLayout>
+                    <StackLayout>
+                        <Button Text="Create" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Save_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
                     </StackLayout>
 
                 </Grid>

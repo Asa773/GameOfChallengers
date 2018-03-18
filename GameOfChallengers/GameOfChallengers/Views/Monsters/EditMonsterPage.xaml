@@ -12,12 +12,17 @@
             <Label Text="Edit Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" />
             <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
             <Entry Text="{Binding Data.Name}" FontSize="Small" />
-
-            <Button Text="Save"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Clicked="Save_Clicked"/>
-
+            <StackLayout>
+                <Button Text="Save" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Save_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

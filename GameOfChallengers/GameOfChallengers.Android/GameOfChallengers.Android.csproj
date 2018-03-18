@@ -159,6 +159,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\drawable\kingsmen.jpeg" />
+    <AndroidResource Include="Resources\drawable\newfighter.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\warrior.jpeg" />

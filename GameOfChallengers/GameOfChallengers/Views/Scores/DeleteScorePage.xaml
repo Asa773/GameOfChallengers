@@ -23,8 +23,25 @@
                 <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
 
                 <StackLayout Orientation="Horizontal">
-                    <Button Text="Yes" Clicked="Delete_Clicked" />
-                    <Button Text="No" Clicked="Cancel_Clicked" />
+                    <Button Text="Yes" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Delete_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+                    <Button Text="No" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="Cancel_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+
                 </StackLayout>
             </StackLayout>
         </ScrollView>
