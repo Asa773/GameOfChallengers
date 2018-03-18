@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.NewCharacter">
@@ -28,6 +28,11 @@
                     <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.Speed}" FontSize="Small" />
                 </StackLayout>
+                 <Button  
+                    Text="Assign Items" 
+                    Clicked="AddItems_Clicked" 
+                    HorizontalOptions="CenterAndExpand"
+                    TextColor="Black" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

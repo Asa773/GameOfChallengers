@@ -5,7 +5,7 @@
 	<ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-             <Label Text="Inventory Page" FontSize="Small" />
+             <Label Text="Select Item" FontSize="Small" />
                 
             <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Dataset}"
@@ -29,6 +29,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>   
+                <Button Text="Save" Clicked="SaveItems_Clicked" />
             </StackLayout>
         </ScrollView>
 	</ContentPage.Content>

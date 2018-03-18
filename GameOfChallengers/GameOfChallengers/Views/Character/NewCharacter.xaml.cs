@@ -46,15 +46,15 @@ namespace GameOfChallengers.Views.Character
             await Navigation.PopAsync();
         }
 
+
+        public void SaveItem(List<Item> ItemsList)         {             foreach (var item in ItemsList)             {                  Data.AddItem(item.Location, item.Id);             }          } 
+
         // Cancel and go back a page in the navigation stack
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
         }
 
-        private async void AddItems_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new InventoryPage());
-        }
+        private async void AddItems_Clicked(object sender, EventArgs e)         {             await Navigation.PushAsync(new InventoryPage(this));         }
     }
 }
