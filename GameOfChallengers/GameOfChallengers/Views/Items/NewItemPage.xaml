@@ -21,7 +21,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Item Create Page" FontSize="Small" />
+                <Label Text="Item Create Page" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
 
                 <Grid
                     RowSpacing="1"

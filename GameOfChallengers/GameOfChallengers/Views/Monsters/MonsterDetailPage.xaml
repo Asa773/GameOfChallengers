@@ -11,15 +11,16 @@
     <ContentPage.Content>
         
         <ScrollView>
-            <StackLayout Spacing="20" Padding="15"  Orientation="Horizontal">
-                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Monster Details" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                <Image Source="{Binding Data.ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
 
                 <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                     <Label Text="Name : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start" FontAttributes="Bold" />
+                   FontSize="Medium" FontAttributes="Bold"
+                   HorizontalOptions="Start" />
                     <Label Text="{Binding Data.Name}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>
@@ -29,8 +30,8 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
                     <Label Text="Attack : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start" FontAttributes="Bold" />
+                   FontSize="Medium" FontAttributes="Bold"
+                   HorizontalOptions="Start" />
                     <Label Text="{Binding Data.Attack}" 
                    FontSize="Medium" 
                    HorizontalOptions="Center"/>
@@ -40,10 +41,10 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                     <Label Text="Defense : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start" FontAttributes="Bold" />
+                   FontSize="Medium"  FontAttributes="Bold"
+                   HorizontalOptions="Start" />
                     <Label Text="{Binding Data.Defense}" 
-                    FontSize="Medium" 
+                    FontSize="Medium"
                     HorizontalOptions="Center"/>
                 </StackLayout>
 
@@ -51,8 +52,8 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                     <Label Text="Speed : " 
-                   FontSize="Medium" 
-                   HorizontalOptions="Start" FontAttributes="Bold" />
+                   FontSize="Medium" FontAttributes="Bold"
+                   HorizontalOptions="Start" />
                     <Label Text="{Binding Data.Speed}" 
                     FontSize="Medium" 
                     HorizontalOptions="Center"/>

@@ -13,7 +13,7 @@
             Spacing="20"
             Padding="15">
 
-            <Label Text="Items Delete Page" FontSize="Medium" />
+            <Label Text="Items Delete Page" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
 
             <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="150"
@@ -21,11 +21,12 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
 
+
             <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Name : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Name}" 
                     FontSize="Medium" 
@@ -35,8 +36,8 @@
             <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-                <Label Text="Description : " 
-                   FontSize="Medium" 
+                <Label Text="Description :" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Description}" 
                     FontSize="Medium" 
@@ -47,7 +48,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Range : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Range}" 
                     FontSize="Medium" 
@@ -58,7 +59,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Damage : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Damage}" 
                     FontSize="Medium" 
@@ -69,7 +70,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Value : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Value}" 
                     FontSize="Medium" 
@@ -80,7 +81,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Location : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Location}" 
                     FontSize="Medium" 
@@ -91,12 +92,13 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
                 <Label Text="Attribute : " 
-                   FontSize="Medium" 
+                   FontSize="Medium" FontAttributes="Bold"
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Attribute}" 
                    FontSize="Medium" 
                    HorizontalOptions="Center"/>
             </StackLayout>
+
             <StackLayout Orientation="Horizontal">
             <Button Text="Yes" 
                         FontAttributes="Bold" 
