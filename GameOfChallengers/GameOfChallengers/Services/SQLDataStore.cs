@@ -78,19 +78,19 @@ namespace GameOfChallengers.Services
 
             
             //characters
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 1", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "fighter1.jpg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "fighter2.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", OnTeam = true, Attack = 30, Defense = 30, Speed = 3, MaxHealth = 35, CurrHealth = 30, Alive = true, ImageURI = "fighter3.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "fighter4.jpg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 5", OnTeam = false, Attack = 50, Defense = 50, Speed = 2, MaxHealth = 55, CurrHealth = 50, Alive = true, ImageURI = "fighter5.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Golden Fighter ", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "goldenfighter.jpg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Red Dragon", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "reddragon.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Knight", OnTeam = true, Attack = 30, Defense = 30, Speed = 3, MaxHealth = 35, CurrHealth = 30, Alive = true, ImageURI = "knight.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Kingsmen", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "kingsmen.jpg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Warrior", OnTeam = false, Attack = 50, Defense = 50, Speed = 2, MaxHealth = 55, CurrHealth = 50, Alive = true, ImageURI = "warrior.jpeg" });
 
             //monsters
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "first Monster", Alive = true, ImageURI = "Monster1.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "second Monster", Alive = true, ImageURI = "monster2.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "third Monster", Alive = true, ImageURI = "monster3.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "fourth Monster", Alive = true, ImageURI = "monster4.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "fifth Monster", Alive = true, ImageURI = "monster5.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "sixth Monster", Alive = true, ImageURI = "monster6.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Ugle Face", Alive = true, ImageURI = "uglyface.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Mask Man", Alive = true, ImageURI = "maskman.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Skeleton", Alive = true, ImageURI = "skeleton.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Hitler", Alive = true, ImageURI = "hitler.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Zombie", Alive = true, ImageURI = "zombie.jpeg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Blue Monster", Alive = true, ImageURI = "bluemonster.jpeg" });
 
 
 

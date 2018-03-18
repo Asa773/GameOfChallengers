@@ -175,43 +175,64 @@
     <BundleResource Include="Resources\imgthing.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter2.jpeg" />
+    <BundleResource Include="Resources\reddragon.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter3.jpeg" />
+    <BundleResource Include="Resources\knight.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter4.jpg" />
+    <Content Include="Resources\kingsmen.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter5.jpeg" />
+    <BundleResource Include="Resources\warrior.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter6.jpeg" />
+    <BundleResource Include="Resources\heman.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Monster1.jpeg" />
+    <BundleResource Include="Resources\uglyface.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster2.jpeg" />
+    <BundleResource Include="Resources\maskman.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster3.jpeg" />
+    <BundleResource Include="Resources\skeleton.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster4.jpeg" />
+    <BundleResource Include="Resources\hitler.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster5.jpeg" />
+    <BundleResource Include="Resources\zombie.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\monster6.jpeg" />
+    <BundleResource Include="Resources\bluemonster.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\WarOfAges.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\fighter1.jpg" />
+    <BundleResource Include="Resources\goldenfighter.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sword.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\trident.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\boots.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Bow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\gun.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\helmet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sheild.jpg" />
   </ItemGroup>
   <Import Project="..\GameOfChallengers\GameOfChallengers.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

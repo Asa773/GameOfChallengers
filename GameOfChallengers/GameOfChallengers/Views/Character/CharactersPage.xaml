@@ -5,11 +5,28 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Characters"
+                   FontAttributes="Bold"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
             <StackLayout Orientation="Horizontal">
-                <Button Text="Build Team" Clicked="BuildTeam_Clicked"></Button>
-                <Button Text="Add" Clicked="AddCharacter_Clicked"></Button>
+                <Button Text="Build Team" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="BuildTeam_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
+                <Button Text="Add"
+                        FontAttributes="Bold"
+                        HorizontalOptions="CenterAndExpand" 
+                        VerticalOptions="Center"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"
+                        Clicked="AddCharacter_Clicked"></Button>
             </StackLayout>
             <ListView x:Name="CharactersListView" 
                 ItemsSource="{Binding Dataset}"
@@ -24,11 +41,11 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="10">
-                                <Image Source="{Binding ImageURI}" WidthRequest="100" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Center"></Image>
                                 <Label Text="{Binding Name}" 
                                     LineBreakMode="NoWrap" 
                                     Style="{DynamicResource ListItemTextStyle}" 
                                     FontSize="16" />
+                                <Image Source="{Binding ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Start" VerticalOptions="Start"></Image>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

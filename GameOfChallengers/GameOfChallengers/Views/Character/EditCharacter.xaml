@@ -12,8 +12,15 @@
                 <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" />
                 <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
-                <Button Text="Add Inventory Items" Clicked="AddItems_Clicked" />
-                <Button Text="Save" Clicked="Save_Clicked" />
+                <Button Text="Add Inventory Items" 
+                        FontAttributes="Bold" 
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="Center"
+                        Clicked="AddItems_Clicked"
+                        TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"></Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

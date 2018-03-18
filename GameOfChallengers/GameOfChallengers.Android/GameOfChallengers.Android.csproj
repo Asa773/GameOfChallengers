@@ -101,9 +101,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\imgthing.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\imgthing.jpeg" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\imgthing.jpeg" />
   </ItemGroup>
   <ItemGroup>
@@ -119,22 +116,22 @@
     <AndroidResource Include="Resources\drawable\logo.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster1.jpeg" />
+    <AndroidResource Include="Resources\drawable\uglyface.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster2.jpeg" />
+    <AndroidResource Include="Resources\drawable\maskman.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster3.jpeg" />
+    <AndroidResource Include="Resources\drawable\skeleton.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster4.jpeg" />
+    <AndroidResource Include="Resources\drawable\hitler.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster5.jpeg" />
+    <AndroidResource Include="Resources\drawable\zombie.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\monster6.jpeg" />
+    <AndroidResource Include="Resources\drawable\bluemonster.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\spiderman.jpeg" />
@@ -152,22 +149,43 @@
     <AndroidResource Include="Resources\drawable\WarOfAges.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter1.jpg" />
+    <AndroidResource Include="Resources\drawable\goldenfighter.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter2.jpeg" />
+    <AndroidResource Include="Resources\drawable\reddragon.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter3.jpeg" />
+    <AndroidResource Include="Resources\drawable\knight.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter4.jpg" />
+    <Content Include="Resources\drawable\kingsmen.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter5.jpeg" />
+    <AndroidResource Include="Resources\drawable\warrior.jpeg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fighter6.jpeg" />
+    <AndroidResource Include="Resources\drawable\heman.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\trident.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\boots.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\Bow.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\gun.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\helmet.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sheild.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sword.jpeg" />
   </ItemGroup>
   <Import Project="..\GameOfChallengers\GameOfChallengers.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

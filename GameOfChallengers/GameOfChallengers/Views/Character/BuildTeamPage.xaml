@@ -8,7 +8,8 @@
                 <Label Text="Character Team" HorizontalOptions="CenterAndExpand"></Label>
                 <Label Text="Select 6 characters" HorizontalOptions="StartAndExpand"></Label>
                 <Label Text="If the same character is selected more than once that character will only be added to the team once" HorizontalOptions="StartAndExpand"></Label>
-                <Picker ItemsSource="{Binding Dataset}"
+                <Picker
+                        ItemsSource="{Binding Dataset}"
                         x:Name="CharacterPicker1"
                         ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
@@ -37,10 +38,25 @@
                         x:Name="CharacterPicker6"
                     ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
-
-
-                <Button Text="Save Selected Characters as the Team" Clicked="SaveTeam_Clicked" />
-                <Button Text="Auto Select" Clicked="AutoSelect_Clicked" />
+                <Button  
+                    Text="Save Selected Characters as the Team" 
+                    FontAttributes="Bold"
+                   Clicked="SaveTeam_Clicked" 
+                    HorizontalOptions="Center"
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
+                <Button  
+                    Text="Auto Select" 
+                    FontAttributes="Bold"
+                    Clicked="AutoSelect_Clicked" 
+                    HorizontalOptions="Center"
+                    TextColor="Black"
+                    BackgroundColor="DarkTurquoise"
+                    HeightRequest="40"
+                         WidthRequest="100"/>
+                
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

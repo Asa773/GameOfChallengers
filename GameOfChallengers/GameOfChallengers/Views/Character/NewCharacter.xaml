@@ -8,18 +8,43 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="20" Padding="15">
-                <Label Text="Create Character" FontSize="Small" HorizontalOptions="CenterAndExpand" />
-                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Name}" FontSize="Small" />
-                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Attack}" FontSize="Small" />
-                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Defense}" FontSize="Small" />
-                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Speed}" FontSize="Small" />
-                <Button Text="Add Inventory Items" Clicked="AddItems_Clicked" />
-                <Button Text="Create" Clicked="Save_Clicked" />
+            <StackLayout>
+                <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Name}" FontSize="Small"  />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Attack}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Defense}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Speed}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Level}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.XP}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

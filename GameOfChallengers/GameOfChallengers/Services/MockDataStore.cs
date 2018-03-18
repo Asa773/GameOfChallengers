@@ -37,13 +37,13 @@ namespace GameOfChallengers.Services
         
             var mockItems = new List<Item>
             {
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Longbow", Description = "A long bow", Damage = 3, Value = 3, Range = 3, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="bow.jpeg"},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Steel Helmet", Description = "helmet made of steel", Value = 3, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Running Boots", Description = "boots for running", Value = 1, Range = 0, Attribute = AttributeEnum.Speed, Location = ItemLocationEnum.Feet},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Description = "gun, what more do you need to know", Damage = 5, Value = 5, Range = 5, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="gun.jpeg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Longbow", Description = "A long bow", Damage = 3, Value = 3, Range = 3, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="Bow.jpg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Steel Helmet", Description = "helmet made of steel", Value = 3, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.Head, ImageURI="helmet.jpg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Running Boots", Description = "boots for running", Value = 1, Range = 0, Attribute = AttributeEnum.Speed, Location = ItemLocationEnum.Feet, ImageURI="boots.jpg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Gun", Description = "gun, what more do you need to know", Damage = 5, Value = 5, Range = 5, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="gun.jpg"},
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Sword", Description = "sharp and pointy", Value = 2, Range = 0, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.OffHand, ImageURI="sword.jpeg"},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Description = "sharp and pointy X3", Damage = 3, Value = 3, Range = 0, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="trident.jpeg"},
-                new Item { Id = Guid.NewGuid().ToString(), Name = "Shield", Description = "to block things", Value = 5, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.OffHand},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Description = "sharp and pointy X3", Damage = 3, Value = 3, Range = 0, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="trident.jpg"},
+                new Item { Id = Guid.NewGuid().ToString(), Name = "Shield", Description = "to block things", Value = 5, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.OffHand, ImageURI="sheild.jpg"},
 
             };
 
@@ -56,19 +56,19 @@ namespace GameOfChallengers.Services
             var mockCreature = new List<Creature>
             {
                 //characters
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 1", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "fighter1.jpg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 2", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "fighter2.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 3", OnTeam = true, Attack = 30, Defense = 30, Speed = 3, MaxHealth = 35, CurrHealth = 30, Alive = true, ImageURI = "fighter3.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 4", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "fighter4.jpg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Fighter 5", OnTeam = false, Attack = 50, Defense = 50, Speed = 2, MaxHealth = 55, CurrHealth = 50,  Alive = true, ImageURI = "fighter5.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Golden Fighter ", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "goldenfighter.jpg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Red Dragon", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "reddragon.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Knight", OnTeam = true, Attack = 30, Defense = 30, Speed = 3, MaxHealth = 35, CurrHealth = 30, Alive = true, ImageURI = "knight.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Kingsmen", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "kingsmen.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Warrior", OnTeam = false, Attack = 50, Defense = 50, Speed = 2, MaxHealth = 55, CurrHealth = 50,  Alive = true, ImageURI = "warrior.jpeg" },
                 
                 //monsters
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "first Monster", Alive = true, ImageURI = "Monster1.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "second Monster", Alive = true, ImageURI = "monster2.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "third Monster", Alive = true, ImageURI = "monster3.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "fourth Monster", Alive = true, ImageURI = "monster4.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "fifth Monster", Alive = true, ImageURI = "monster5.jpeg" },
-                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "sixth Monster", Alive = true, ImageURI = "monster6.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Ugly Face", Alive = true, ImageURI = "uglyface.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Mask man", Alive = true, ImageURI = "maskman.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Skeleton", Alive = true, ImageURI = "skeleton.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Hitler", Alive = true, ImageURI = "hitler.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Zombie", Alive = true, ImageURI = "zombie.jpeg" },
+                new Creature { Id = Guid.NewGuid().ToString(), Type = 1, Name = "Blue Monster", Alive = true, ImageURI = "bluemonster.jpeg" },
 
 
             };
