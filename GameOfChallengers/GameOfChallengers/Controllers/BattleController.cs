@@ -183,6 +183,7 @@ namespace GameOfChallengers.Controllers
                 {
                     message = string.Empty;
                     Debug.WriteLine("Monster is dead");
+                    score.MonsterSlainNumber++;
 
                     // Drop Items to item Pool
                     var myItemList = MC.DropItems(target);

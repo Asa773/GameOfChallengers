@@ -12,7 +12,7 @@
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Score Details" FontSize="Small" HorizontalOptions="CenterAndExpand" />
                 <ScrollView VerticalOptions="StartAndExpand">
-                    <StackLayout>
+                    <StackLayout Orientation="Horizontal">
                         <Label Text="Name" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.Name}" FontSize="Small" />
                         <Label Text="Final Score" FontAttributes="Bold" FontSize="Small" />
@@ -34,6 +34,8 @@
                         <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small" />
                         <Label Text="Items Dropped" FontAttributes="Bold" FontSize="Small"/>
                         <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small" />
+                        <Label Text="Monster Slain number" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="{Binding Data.MonsterSlainNumber}" FontSize="Small" />
                         </StackLayout>
 
                         <!--<Label Text="Text" FontAttributes="Bold" FontSize="Small" />
