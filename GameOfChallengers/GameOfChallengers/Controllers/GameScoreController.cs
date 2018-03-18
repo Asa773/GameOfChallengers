@@ -6,27 +6,29 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using GameOfChallengers.Views.Battle;
 
 namespace GameOfChallengers.Controllers
 {
     public class GameScoreController
     {
         int round = 0;
-        Score GameScore;//this is the Score for this game
+        public Score GameScore;//this is the Score for this game
         TeamViewModel Team;//this is the team of six characters for this game
-
+        public BattleController battle = new BattleController();//this is the current running battle(round)
+        
         public GameScoreController()
         {
             GameScore = new Score();
-           
+            
             TeamViewModel.Instance.LoadTeam();
-            TeamViewModel Team = TeamViewModel.Instance;
+            Team = TeamViewModel.Instance;
         }
 
         public Score Start(bool auto)
         {
-            TeamViewModel Team = TeamViewModel.Instance;
-            BattleController battle = new BattleController();
+            Team = TeamViewModel.Instance;
+
             while (Team.Dataset.Count > 0)
             {
                 round++;
@@ -38,8 +40,10 @@ namespace GameOfChallengers.Controllers
                 }
                 else
                 {
+                    battle.SetBattleController(round);
+                    //battleScreen.RefreshBattleScreen();
+                    GameScore = battle.Battle(GameScore);
                     GameScore.Auto = false;
-                    battle.Battle();
                 }
             }
             return ReportScore();

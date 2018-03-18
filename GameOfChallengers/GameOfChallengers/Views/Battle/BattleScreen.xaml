@@ -27,15 +27,7 @@
                               HorizontalTextAlignment="Center"
                               VerticalOptions="CenterAndExpand"/>
                 
-                    <Button Text="Start"
-                              VerticalOptions="Center" 
-                              HorizontalOptions="Center"
-                    Clicked="Start_clicked"/>
-                    <Button Text="End"
-                             VerticalOptions="Center" 
-                              HorizontalOptions="Center"
-                    Clicked="End_clicked"/>
-               
+                    
           
                     <Frame OutlineColor="Black" >
                      

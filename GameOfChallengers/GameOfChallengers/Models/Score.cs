@@ -20,9 +20,6 @@ namespace GameOfChallengers.Models
         public string TotalMonstersKilled { get; set; }//this is so the score can show how many monster were killed
         public string TotalCharactersKilled { get; set; }//this is so the score can show the characters' final stats
         public string TotalItemsDropped { get; set; }//this is so the score can show all of the items that were dropped
-        
-        public string AttributeString { get; set; }
-        //The lists were causing problems with the database and may need to be refactord or moved out of the model
 
         public Score()
         {
@@ -52,8 +49,6 @@ namespace GameOfChallengers.Models
             Auto = newData.Auto;
             TotalXP = newData.TotalXP;
             TotalCharactersKilled = newData.TotalCharactersKilled;
-
-            AttributeString = newData.AttributeString;
             TotalMonstersKilled = newData.TotalMonstersKilled;
             TotalItemsDropped = newData.TotalItemsDropped;
         }

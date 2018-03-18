@@ -70,10 +70,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\Battle\AutoBattleScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -207,9 +203,6 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Views\Character\NewCharacter.xaml.cs">
       <DependentUpon>NewCharacter.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Battle\AutoBattleScreen.xaml.cs">
-      <DependentUpon>AutoBattleScreen.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\LevelingUp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DroppedItemViewModel.cs" />

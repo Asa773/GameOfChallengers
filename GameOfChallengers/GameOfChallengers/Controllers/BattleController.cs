@@ -78,14 +78,12 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        public void Battle()
+        public Score Battle(Score gameScore)
         {
             //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
 
 
-
-
-
+            return gameScore;
         }
 
         public Score AutoBattle(Score gameScore)

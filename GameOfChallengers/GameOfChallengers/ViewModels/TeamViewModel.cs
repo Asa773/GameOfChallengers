@@ -27,7 +27,6 @@ namespace GameOfChallengers.ViewModels
         }
 
         public ObservableCollection<Creature> Dataset { get; set; }
-        public Command LoadDataCommand { get; set; }
 
         private bool _needsRefresh;
 
@@ -40,7 +39,6 @@ namespace GameOfChallengers.ViewModels
 
             Title = "Current Team";
             Dataset = new ObservableCollection<Creature>();
-            //LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
         }
 
 
@@ -123,83 +121,6 @@ namespace GameOfChallengers.ViewModels
                     Dataset.Add(character);
                     MessagingCenter.Send(this, "AddData", character);
                 }
-            }
-        }
-        async Task ExecuteLoadDataCommand()
-        {
-            if (IsBusy)
-                return;
-
-            IsBusy = true;
-
-            try
-            {
-                Dataset.Clear();
-                //var dataset = await SQLDataStore.GetAllAsync_Creature(true);
-                if (CharactersViewModel.Instance.Dataset.Count == 0)
-                {
-                    CharactersViewModel.Instance.LoadDataCommand.Execute(null);
-                }
-                else if (CharactersViewModel.Instance.NeedsRefresh())
-                {
-                    CharactersViewModel.Instance.LoadDataCommand.Execute(null);
-                }
-                var dataset = CharactersViewModel.Instance.GetAllCreatures();
-                int teamCount = 0;
-                foreach (var data in dataset)
-                {
-                    if ((data.Type == 0) && (teamCount < 6) && data.OnTeam)//the creature is a character, the team is not full, and it is on the current team
-                    {
-                        teamCount++;
-                        Dataset.Add(data);
-                    }
-                }
-                if (teamCount < 6)
-                {
-                    foreach (var data in dataset)//if the team is not full more characters must be added
-                    {
-                        if ((data.Type == 0) && (teamCount < 6) && !Dataset.Contains(data))//the creature is a character, the team is not full, and the character is not in the team
-                        {
-                            teamCount++;
-                            data.OnTeam = true;
-                            Dataset.Add(data);
-                        }
-                    }
-                }
-                if (teamCount < 6)//if you didn't make enough characters you get some sucky ones
-                {
-                    int numOfSuckyCharacters = 0;
-                    for (int i=teamCount; i<6; i++)
-                    {
-                        numOfSuckyCharacters++;
-                        Creature character = new Creature();
-                        character.Type = 0;
-                        character.OnTeam = true;
-                        character.Name = "Sucky Character " + numOfSuckyCharacters.ToString();
-                        character.Attack = 1;
-                        character.Defense = 1;
-                        character.Speed = 1;
-                        character.MaxHealth = 1;
-                        character.CurrHealth = character.MaxHealth;
-                        Dataset.Add(character);
-                        await DataStore.AddAsync_Creature(character);
-                    }
-                }
-                //                      ***temp for demo***
-                foreach (var data in Dataset)
-                {
-                    data.PrimaryHand = "bow";
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex);
-            }
-
-            finally
-            {
-                IsBusy = false;
             }
         }
     }

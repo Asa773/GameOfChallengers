@@ -20,6 +20,7 @@ namespace GameOfChallengers.ViewModels
         //should probably refactor into a model or something because it is used in more than one place
         List<LevelingUp> lp = new List<LevelingUp>
         {
+            new LevelingUp{XP = 0,     Level = 0, Attack = 0,Defense = 0, Speed = 0},
             new LevelingUp{XP = 0,     Level = 1, Attack = 1,Defense = 1, Speed = 1},
             new LevelingUp{XP = 300,   Level = 2, Attack = 1,Defense = 2, Speed = 1},
             new LevelingUp{XP = 900,   Level = 3, Attack = 2,Defense = 3, Speed = 1},
@@ -58,6 +59,8 @@ namespace GameOfChallengers.ViewModels
 
         public ObservableCollection<Creature> Dataset { get; set; }
 
+        private MonstersViewModel viewModel;
+
         private bool _needsRefresh;
 
         public MonstersListViewModel()
@@ -65,6 +68,7 @@ namespace GameOfChallengers.ViewModels
             
             Title = "Current Monsters";
             Dataset = new ObservableCollection<Creature>();
+            viewModel = MonstersViewModel.Instance;
         }
 
         public void setRound(int roundNum)
@@ -75,14 +79,23 @@ namespace GameOfChallengers.ViewModels
         public void setMonsters()
         {
             Dataset.Clear();
-            if (MonstersViewModel.Instance.Dataset.Count == 0)
-            {
-                MonstersViewModel.Instance.LoadDataCommand.Execute(null);
-            }
-            else if (MonstersViewModel.Instance.NeedsRefresh())
-            {
-                MonstersViewModel.Instance.LoadDataCommand.Execute(null);
-            }
+            //if (MonstersViewModel.Instance.Dataset.Count == 0)
+            //{
+            //    MonstersViewModel.Instance.LoadDataCommand.Execute(null);
+            //}
+            //else if (MonstersViewModel.Instance.NeedsRefresh())
+            //{
+            //    MonstersViewModel.Instance.LoadDataCommand.Execute(null);
+            //}
+            //if (viewModel.Dataset.Count == 0)
+            //{
+            //    viewModel.LoadDataCommand.Execute(null);
+            //}
+            //else if (viewModel.NeedsRefresh())
+            //{
+            //    viewModel.LoadDataCommand.Execute(null);
+            //}
+            MonstersViewModel.Instance.LoadDataCommand.Execute(null);
             var dataset = MonstersViewModel.Instance.GetAllCreatures();
             var tempDataset = new List<Creature>();
             int dateSeed = DateTime.Now.Millisecond;
@@ -100,20 +113,26 @@ namespace GameOfChallengers.ViewModels
             }
             for (int i = 0; i < 6; i++)
             {
+                int Round = round;
+                if (round > 20)
+                {
+                    Round = 20;
+                }
                 int index = rand.Next(tempDataset.Count);
                 Creature monster = new Creature();
                 monster.Update(tempDataset[index]);//get a random monster type
                 monster.Id = "monster" + i.ToString();//Guid.NewGuid().ToString();
                 monster.Alive = true;
-                monster.Level = round;
-                monster.XP = lp[round].XP;
-                monster.Attack = lp[round].Attack;
-                monster.Defense = lp[round].Defense;
-                monster.Speed = lp[round].Speed;
-                monster.MaxHealth = rand.Next(1, 11) * round;
+                monster.Level = Round;
+                monster.XP = lp[Round].XP;
+                monster.Attack = lp[Round].Attack;
+                monster.Defense = lp[Round].Defense;
+                monster.Speed = lp[Round].Speed;
+                monster.MaxHealth = rand.Next(1, 11) * Round;
                 if(round == 1)
                 {
                     monster.MaxHealth = 1;
+                    monster.XP = 100;
                 }
                 monster.CurrHealth = monster.MaxHealth;
 

@@ -16,41 +16,38 @@ namespace GameOfChallengers.Views.Battle
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class BattleScreen : ContentPage
 	{
-        BattleController bc = new BattleController();
+        GameScoreController game = new GameScoreController();
         public Creature Data { get; set; }
 		public BattleScreen ()
 		{
-           
 			InitializeComponent ();
+            //game.Start(false);
             RefreshBattleScreen();
-
 		}
-
 
         public void RefreshBattleScreen()
         {
-            TurnImage.Source = bc.GetCreatureTurnImage();
-            cell00.Image = GetImage(bc.GameBoard[0, 0]);
-            cell01.Image = GetImage(bc.GameBoard[0, 1]);
-            cell02.Image = GetImage(bc.GameBoard[0, 2]);
-            cell03.Image = GetImage(bc.GameBoard[0, 3]);
-            cell04.Image = GetImage(bc.GameBoard[0, 4]);
-            cell05.Image = GetImage(bc.GameBoard[0, 5]);
-            cell10.Image = GetImage(bc.GameBoard[1, 0]);
-            cell11.Image = GetImage(bc.GameBoard[1, 1]);
-            cell12.Image = GetImage(bc.GameBoard[1, 2]);
-            cell13.Image = GetImage(bc.GameBoard[1, 3]);
-            cell14.Image = GetImage(bc.GameBoard[1, 4]);
-            cell15.Image = GetImage(bc.GameBoard[1, 5]);
-            cell20.Image = GetImage(bc.GameBoard[2, 0]);
-            cell21.Image = GetImage(bc.GameBoard[2, 1]);
-            cell22.Image = GetImage(bc.GameBoard[2, 2]);
-            cell23.Image = GetImage(bc.GameBoard[2, 3]);
-            cell24.Image = GetImage(bc.GameBoard[2, 4]);
-            cell25.Image = GetImage(bc.GameBoard[2, 5]);
+            TurnImage.Source = game.battle.GetCreatureTurnImage();
+            cell00.Image = GetImage(game.battle.GameBoard[0, 0]);
+            cell01.Image = GetImage(game.battle.GameBoard[0, 1]);
+            cell02.Image = GetImage(game.battle.GameBoard[0, 2]);
+            cell03.Image = GetImage(game.battle.GameBoard[0, 3]);
+            cell04.Image = GetImage(game.battle.GameBoard[0, 4]);
+            cell05.Image = GetImage(game.battle.GameBoard[0, 5]);
+            cell10.Image = GetImage(game.battle.GameBoard[1, 0]);
+            cell11.Image = GetImage(game.battle.GameBoard[1, 1]);
+            cell12.Image = GetImage(game.battle.GameBoard[1, 2]);
+            cell13.Image = GetImage(game.battle.GameBoard[1, 3]);
+            cell14.Image = GetImage(game.battle.GameBoard[1, 4]);
+            cell15.Image = GetImage(game.battle.GameBoard[1, 5]);
+            cell20.Image = GetImage(game.battle.GameBoard[2, 0]);
+            cell21.Image = GetImage(game.battle.GameBoard[2, 1]);
+            cell22.Image = GetImage(game.battle.GameBoard[2, 2]);
+            cell23.Image = GetImage(game.battle.GameBoard[2, 3]);
+            cell24.Image = GetImage(game.battle.GameBoard[2, 4]);
+            cell25.Image = GetImage(game.battle.GameBoard[2, 5]);
 
         }
-
 
         private FileImageSource GetImage(Creature creature)
         {
@@ -71,22 +68,19 @@ namespace GameOfChallengers.Views.Battle
 
         public void MoveAndAttack(int i, int j)
         {
-            bc.SelectedGridCellI = i;
-            bc.SelectedGridCellJ = j;
+            game.battle.SelectedGridCellI = i;
+            game.battle.SelectedGridCellJ = j;
             RefreshBattleScreen();
         }
 
 
         private void Clicked00(object sender, EventArgs e)
         {
-            BattleOver();
             MoveAndAttack(0, 0);
-           
         }
 
         private void Clicked01(object sender, EventArgs e)
         {
-            GameOver();
             MoveAndAttack(0,1);
         }
         private void Clicked02(object sender, EventArgs e)
@@ -159,7 +153,7 @@ namespace GameOfChallengers.Views.Battle
         {
             GameScoreController game = new GameScoreController();
 
-            var outputString = "Battle Over! Score ";// + bc.gameScore.TotalXP;
+            var outputString = "Battle Over! Score " + game.GameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,
                 "Cancel",
                 null,
@@ -180,7 +174,7 @@ namespace GameOfChallengers.Views.Battle
         {
             GameScoreController game = new GameScoreController();
 
-            var outputString = "Game Over! Score ";// + bc.gameScore.TotalXP;
+            var outputString = "Game Over! Score " + game.GameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,
                 "Cancel",
                 null,
@@ -189,17 +183,6 @@ namespace GameOfChallengers.Views.Battle
             {
                 await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(false))));
             }
-        }
-
-        private void Start_clicked(object sender, EventArgs e)
-        {
-            L1.Text = "C1 hit M1\n M1 is dead \n C1 get XP of 100";
-        }
-
-        private async void End_clicked(object sender, EventArgs e)
-        {
-           // L1.Text = "End the Game";
-            //await Navigation.PushAsync(new BattleOver());
         }
 	}
 }
