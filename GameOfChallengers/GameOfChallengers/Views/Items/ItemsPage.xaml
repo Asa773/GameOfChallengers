@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Items List Page" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+            <Label Text="Items List Page" FontSize="Small" />
             <Button Text="Add" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"

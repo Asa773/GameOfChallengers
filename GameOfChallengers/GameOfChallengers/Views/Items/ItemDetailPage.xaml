@@ -18,7 +18,7 @@
             Spacing="20"
             Padding="15">
 
-            <Label Text="Items Detail Page" FontSize="Medium"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Label Text="Items Detail Page" FontSize="Medium" />
 
             <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="150"
@@ -30,7 +30,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Name : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Name}" 
                     FontSize="Medium" 
@@ -40,8 +40,8 @@
             <StackLayout
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
-                <Label Text="Description :" 
-                   FontSize="Medium" FontAttributes="Bold"
+                <Label Text="Description : " 
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Description}" 
                     FontSize="Medium" 
@@ -52,7 +52,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Range : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Range}" 
                     FontSize="Medium" 
@@ -63,7 +63,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Damage : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Damage}" 
                     FontSize="Medium" 
@@ -74,7 +74,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Value : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Value}" 
                     FontSize="Medium" 
@@ -85,7 +85,7 @@
                 Orientation="Horizontal"
                 HorizontalOptions="Start">
                 <Label Text="Location : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Location}" 
                     FontSize="Medium" 
@@ -96,7 +96,7 @@
                 Orientation="Horizontal" 
                 HorizontalOptions="Start">
                 <Label Text="Attribute : " 
-                   FontSize="Medium" FontAttributes="Bold"
+                   FontSize="Medium" 
                    HorizontalOptions="Start"/>
                 <Label Text="{Binding Data.Attribute}" 
                    FontSize="Medium" 

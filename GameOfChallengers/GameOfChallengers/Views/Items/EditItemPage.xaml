@@ -21,7 +21,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Item Edit Page" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                <Label Text="Item Edit Page" FontSize="Small" />
 
                 <Image Source="{Binding Data.ImageURI}"
                 WidthRequest="75"

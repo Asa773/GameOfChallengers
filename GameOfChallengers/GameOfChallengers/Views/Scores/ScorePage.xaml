@@ -6,7 +6,8 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="High Scores"
-                VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
             <StackLayout Orientation="Horizontal">
                 <Button Text="Add" 
                         FontAttributes="Bold" 

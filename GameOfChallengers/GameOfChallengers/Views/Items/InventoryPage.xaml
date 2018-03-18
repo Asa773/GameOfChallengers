@@ -5,7 +5,7 @@
 	<ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label Text="Inventory Page" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+             <Label Text="Inventory Page" FontSize="Small" />
                 
             <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Dataset}"
