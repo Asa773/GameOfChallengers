@@ -149,29 +149,15 @@
                             VerticalOptions="Center"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="6" Grid.Column="0">
-                        <Label 
-                            Text="Image" 
-                            FontSize="Medium"
-                            HorizontalOptions="Start"
-                            VerticalOptions="Center"/>
-                    </StackLayout>
-                    <StackLayout Grid.Row="6" Grid.Column="1">
-                        <Entry 
-                            Text="{Binding Data.ImageURI}" 
-                            FontSize="Small" 
-                            HorizontalOptions="FillAndExpand"
-                            VerticalOptions="Center"/>
-                    </StackLayout>
 
-                    <StackLayout Grid.Row="7" Grid.Column="0">
+                    <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Damage" 
                             FontSize="Medium"
                             HorizontalOptions="Start"/>
                     </StackLayout>
 
-                    <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
+                    <StackLayout Grid.Row="6" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Damage}" 
                             FontSize="Medium"

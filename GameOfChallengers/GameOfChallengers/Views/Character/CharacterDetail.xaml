@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.CharacterDetail">
@@ -41,6 +41,7 @@
                        <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
                        <Label Text="{Binding Data.XP}" FontSize="Small" />
                         </StackLayout>
+                        
                        <StackLayout Orientation="Horizontal">
                         <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
                         <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />

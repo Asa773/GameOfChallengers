@@ -37,6 +37,18 @@
                     <Entry Text="{Binding Data.Speed}" FontSize="Small" />
                 </StackLayout>
 
+
+                 <StackLayout Orientation="Horizontal">
+                         <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                        <Entry Text="{Binding Data.Level}" FontSize="Small" />
+                  </StackLayout>
+                
+                  <StackLayout Orientation="Horizontal">
+                       <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                       <Entry Text="{Binding Data.XP}" FontSize="Small" />
+                  </StackLayout>
+                
+
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.CurrHealth}" FontSize="Small" />

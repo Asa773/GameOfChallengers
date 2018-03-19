@@ -16,6 +16,8 @@ namespace GameOfChallengers.Views.Monsters
 	public partial class CreateMonster : ContentPage
 	{
         public Creature Data{ get; set; }
+        String selectedImg = "BlankImage.jpeg";
+
 		public CreateMonster ()
 		{
 			InitializeComponent ();
@@ -29,11 +31,22 @@ namespace GameOfChallengers.Views.Monsters
                 MaxHealth = 10,
                 CurrHealth = 10,
                 Alive = true,
-
+                ImageURI = "BlankImage.jpeg",
             };
 
             BindingContext = this;
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
+
         }
+
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
+        }
+
 
         async void Save_Clicked(object sender, EventArgs e)
         {

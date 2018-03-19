@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Monsters.CreateMonster"
+             xmlns:local="using:GameOfChallengers.ViewModels"
              Title="Add New Monster">
     <ContentPage.ToolbarItems>
    
@@ -11,14 +12,58 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Create Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-                <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Name}" FontSize="Small" />
-                <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Attack}" FontSize="Small" />
-                <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Defense}" FontSize="Small" />
-                <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
-                <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                 <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static local:MonsterImagesList.GetListMonsterImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
+
+
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Attack}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Defense}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                </StackLayout>
+
+
+                 <StackLayout Orientation="Horizontal">
+                         <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                        <Entry Text="{Binding Data.Level}" FontSize="Small" />
+                  </StackLayout>
+                
+                  <StackLayout Orientation="Horizontal">
+                       <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                       <Entry Text="{Binding Data.XP}" FontSize="Small" />
+                  </StackLayout>
+                
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                </StackLayout>
+
+
+                
                 <StackLayout>
                     <Button Text="Create" 
                         FontAttributes="Bold" 
