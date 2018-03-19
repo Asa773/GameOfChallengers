@@ -8,7 +8,7 @@ namespace GameOfChallengers.Services
 {
     public sealed class MockDataStore : IDataStore
     {
-
+        // Make this a singleton so it only exist one time because holds all the data records in memory
         private static MockDataStore _instance;
 
         public static MockDataStore Instance
@@ -23,7 +23,8 @@ namespace GameOfChallengers.Services
             }
         }
 
-        private List<Item> _itemDataset = new List<Item>();
+        //Creating list of items,creatures,score
+        private List<Item> _itemDataset = new List<Item>(); 
         private List<Creature> _creatureDataset = new List<Creature>();
         private List<Score> _scoreDataset = new List<Score>();
         private MockDataStore()
@@ -34,7 +35,7 @@ namespace GameOfChallengers.Services
         public void InitilizeSeedData()
         {
          
-        
+            //Data into the Item list
             var mockItems = new List<Item>
             {
                 new Item { Id = Guid.NewGuid().ToString(), Name = "Longbow", Description = "A long bow", Damage = 3, Value = 3, Range = 3, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI="Bow.jpg"},
@@ -53,6 +54,7 @@ namespace GameOfChallengers.Services
                 _itemDataset.Add(data);
             }
 
+            //Data into the Character and Monster list
             var mockCreature = new List<Creature>
             {
                 //characters
@@ -93,7 +95,7 @@ namespace GameOfChallengers.Services
 
         }
 
-        // Creature
+        // Creature CRUDi
         public async Task<bool> AddAsync_Creature(Creature data)
         {
             _creatureDataset.Add(data);

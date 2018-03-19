@@ -46,12 +46,14 @@ namespace GameOfChallengers.Services
             }
         }
 
+    
         public HttpClient SetHttpClient(HttpClient httpClient)
         {
-            _httpClient = httpClient;
+            _httpClient = httpClient; 
             return _httpClient;
         }
 
+        //Parse the result
         public async Task<string> JsonParseResult(HttpResponseMessage response)
         {
             if (response == null)
