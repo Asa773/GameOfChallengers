@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using GameOfChallengers.Models;
 using GameOfChallengers.Views.Items;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace GameOfChallengers.ViewModels
 {
@@ -60,6 +61,17 @@ namespace GameOfChallengers.ViewModels
             });
 
             #endregion Messages
+        }
+
+        public List<Item> GetAllItems()
+        {
+            var myReturn = new List<Item>();
+            foreach (var item in Dataset)
+            {
+                myReturn.Add(item);
+            }
+
+            return myReturn;
         }
 
         #region Refresh
