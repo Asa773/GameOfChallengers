@@ -18,16 +18,26 @@ namespace GameOfChallengers.Views.Monsters
         private CreatureDetailViewModel _viewModel;
 
         public Creature Data { get; set; }
-       
+        String selectedImg;
         public EditMonsterPage(CreatureDetailViewModel viewModel)
         {
             Data = viewModel.Data;
             viewModel.Title = "Edit" + viewModel.Title;
-
+            selectedImg = Data.ImageURI;
             InitializeComponent();
 
             BindingContext = _viewModel = viewModel;
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
         }
+
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
+        }
+
 
         private async void Save_Clicked(object sender, EventArgs e)
         {

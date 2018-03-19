@@ -57,6 +57,9 @@
                     <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
                 </StackLayout>
+
+                
+                
                 <Button  
                     Text="Assign Items" 
                     Clicked="AddItems_Clicked" 

@@ -2,18 +2,70 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Monsters.EditMonsterPage"
+              xmlns:local="using:GameOfChallengers.ViewModels"
              Title="{Binding Title}">
     <ContentPage.ToolbarItems>
         
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Edit Monster" FontSize="Small"   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-            <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-            <Entry Text="{Binding Data.Name}" FontSize="Small" />
-            <StackLayout>
-                <Button Text="Save" 
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Edit Monster" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static local:MonsterImagesList.GetListMonsterImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
+
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Attack}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Defense}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Level" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Level}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="XP" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.XP}" FontSize="Small" />
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                </StackLayout>
+
+
+
+                <StackLayout>
+                    <Button Text="Save" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
@@ -22,7 +74,8 @@
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
                          WidthRequest="100"></Button>
+                </StackLayout>
             </StackLayout>
-        </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

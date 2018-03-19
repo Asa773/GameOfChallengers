@@ -228,9 +228,9 @@ namespace GameOfChallengers.ViewModels
                               "bow.jpg",
                               "gun.jpg",
                               "helmet.jpg",
-                               "shield.jpg",
-                                 "sword.jpeg",
-                                "trident.jpg",
+                               "sheild.jpg",
+                               "sword.jpeg",
+                               "trident.jpg",
                              };
                 return ItemImages;
             }

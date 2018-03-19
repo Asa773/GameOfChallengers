@@ -74,9 +74,11 @@ namespace GameOfChallengers.Services
         {
 
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Description = "sharp and pointy X3", Damage = 3, Value = 3, Range = 0, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI = "trident.jpeg" });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Shield", Description = "to block things", Value = 5, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.OffHand, ImageURI = "sheild.jpg" });
+            await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Running Boots", Description = "boots for running", Value = 1, Range = 0, Attribute = AttributeEnum.Speed, Location = ItemLocationEnum.Feet, ImageURI = "boots.jpg" });
 
 
-            
+
             //characters
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Golden Fighter ", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "goldenfighter.jpg" });
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Red Dragon", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "reddragon.jpeg" });

@@ -149,17 +149,13 @@ namespace GameOfChallengers.ViewModels
                 List<String> characterImages = new List<String>
                             {
                              
-                              "Fighter7.jpeg",
-                              "Fighter8.jpeg",
-                              "Fighter9.jpeg",
-                              "Fighter10.jpeg",
                               "batman.jpeg",
                               "Captain-America.jpeg",
-                              "goldenfighter.jpeg",
+                              "goldenfighter.jpg",
+                              "Hulk.jpeg",
                                "ironman.jpeg",
                                 "kingsmen.jpeg",
                                 "knight.jpeg",
-                                "newfighter.jpeg",
                                 "spiderman.jpeg",
                                  "superman.jpeg",
                                  "warrior.jpeg",

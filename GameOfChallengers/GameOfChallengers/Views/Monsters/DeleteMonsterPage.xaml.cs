@@ -41,7 +41,7 @@ namespace GameOfChallengers.Views.Monsters
         }
         async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            await Navigation.PopAsync();
         }
 
 

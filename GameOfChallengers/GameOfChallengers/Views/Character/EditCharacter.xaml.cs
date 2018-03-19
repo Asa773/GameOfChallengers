@@ -56,16 +56,25 @@ namespace GameOfChallengers.Views.Character
         }
 
 
-        public void SaveItem(List<Item> ItemsList)
+        public void SaveItemAsync(List<Item> ItemsList)
         {
             foreach (var item in ItemsList)
             {
                 if (item.Location == ItemLocationEnum.Finger)
                 {
-                    item.Location = ItemLocationEnum.RightFinger;
+                    if (Data.RightFinger == null)
+                    {
+                        item.Location = ItemLocationEnum.RightFinger;
+                    }
+                    else
+                    {
+                        item.Location = ItemLocationEnum.LeftFinger;
+                    }
+                    
                 }
                 Data.AddItem(item.Location, item.Id);
             }
+            
         }
 
 

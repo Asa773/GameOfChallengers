@@ -5,11 +5,14 @@
 	<ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label Text="Select Item"  FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                
+                <Label Text="Select Items"  FontSize="Small"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                <Label  x:Name="AddedItem" Text="{Binding message}" 
+                  FontSize="15" />
+                <Button Text="Save" Clicked="SaveItems_Clicked" 
+                        BackgroundColor="DarkTurquoise" HeightRequest="40" WidthRequest="100"/>
             <ListView x:Name="ItemsListView" 
                 ItemsSource="{Binding Dataset}"
-                VerticalOptions="FillAndExpand"
+                VerticalOptions="Fill"
                  HasUnevenRows="true"
                  RefreshCommand="{Binding LoadItemsCommand}"
                  IsPullToRefreshEnabled="true"
@@ -55,10 +58,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-                 <Label  x:Name="AddedItem" Text="{Binding message}" 
-                  FontSize="15" />
-                <Button Text="Save" Clicked="SaveItems_Clicked" 
-                        BackgroundColor="DarkTurquoise" HeightRequest="40" WidthRequest="100"/>
+                 
             </StackLayout>
         </ScrollView>
 	</ContentPage.Content>

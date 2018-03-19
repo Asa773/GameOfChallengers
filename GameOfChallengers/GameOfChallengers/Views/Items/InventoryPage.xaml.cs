@@ -66,11 +66,15 @@ namespace GameOfChallengers.Views.Items
             else
             {
                 if (newcPage == null)
-                    editPage.SaveItem(ItemsSelected);
+                {
+                    editPage.SaveItemAsync(ItemsSelected);
+                }
                 else
-                   newcPage.SaveItem(ItemsSelected);
-                
-                await Navigation.PopAsync();
+                {
+                    newcPage.SaveItem(ItemsSelected);
+                }
+
+                Navigation.RemovePage(this);
             }
 
         }

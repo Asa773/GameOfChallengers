@@ -97,7 +97,7 @@ namespace GameOfChallengers.ViewModels
             //}
             //MonstersViewModel.Instance.LoadDataCommand.Execute(null);
 
-            var myData = new MonstersViewModel();
+            var myData = MonstersViewModel.Instance;
 
             // Load data 
             var canExecute = myData.LoadDataCommand.CanExecute(null);
@@ -145,12 +145,12 @@ namespace GameOfChallengers.ViewModels
                 }
                 monster.CurrHealth = monster.MaxHealth;
 
-                var itemsData = new ItemsViewModel();
+                var itemsData = ItemsViewModel.Instance;
                 // Load data 
                 var canExecuteItems = itemsData.LoadDataCommand.CanExecute(null);
                 itemsData.LoadDataCommand.Execute(null);
-                //var items = itemsData.Dataset;
-                var items = ItemsViewModel.Instance.Dataset;
+                var items = itemsData.Dataset;
+                //var items = ItemsViewModel.Instance.Dataset;
                 int itemCount = 0;
                 while(itemCount < 3)
                 {

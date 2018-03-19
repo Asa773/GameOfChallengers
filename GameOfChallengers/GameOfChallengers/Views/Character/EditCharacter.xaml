@@ -58,6 +58,35 @@
                     <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
                 </StackLayout>
+                <Label Text="Old Items" FontSize="Small"></Label>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Head" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Head}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Necklace" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Necklass}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Feet" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.Feet}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Primary Hand" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.PrimaryHand}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Off Hand" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.OffHand}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Left Finger" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.LeftFinger}" FontSize="Small" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Right Finger" FontSize="Small" FontAttributes="Bold" />
+                    <Label Text="{Binding Data.RightFinger}" FontSize="Small" />
+                </StackLayout>
                 <Button Text="Add Items" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"

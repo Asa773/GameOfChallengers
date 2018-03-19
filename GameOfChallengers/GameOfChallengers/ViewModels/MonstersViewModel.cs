@@ -140,10 +140,6 @@ namespace GameOfChallengers.ViewModels
                 List<String> monsterImages = new List<String>
                             {
 
-                              "monster7.jpeg",
-                              "monster8.jpeg",
-                              "monster9.jpeg",
-                              "monster10.jpeg",
                                "uglyface.jpeg",
                                  "maskman.jpeg",
                                 "skeleton.jpeg",
