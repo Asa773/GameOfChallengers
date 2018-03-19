@@ -155,7 +155,7 @@ namespace GameOfChallengers.ViewModels
                               "Fighter9.jpeg",
                               "Fighter10.jpeg",
                              };
-                return String;
+                return characterImages;
             }
         }
     }
