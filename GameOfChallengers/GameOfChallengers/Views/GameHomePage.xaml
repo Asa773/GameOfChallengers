@@ -19,7 +19,7 @@
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
 
                 <Button  
                     Text="Auto Battle"
@@ -29,7 +29,7 @@
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
 
                 <Button  
                     Text="Characters" 
@@ -39,7 +39,7 @@
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
 
                 <Button  
                     Text="Monsters" 
@@ -49,7 +49,7 @@
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
 
                 <Button  
                     Text="Items" 
@@ -59,7 +59,7 @@
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
 
                 <Button  
                     Text="Scores" 
@@ -69,7 +69,7 @@
                     TextColor="Black" 
                     BackgroundColor="DarkTurquoise"
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
                 <Button  
                     Text="About" 
                     FontAttributes="Bold"
@@ -78,7 +78,7 @@
                     BackgroundColor="DarkTurquoise"
                     TextColor="Black" 
                     HeightRequest="40"
-                         WidthRequest="100"/>
+                         WidthRequest="120"/>
             </StackLayout>
             </ScrollView>
 	</ContentPage.Content>

@@ -16,11 +16,12 @@ namespace GameOfChallengers.Views.Items
         private Creature character;
         private ItemsViewModel _viewModel;
         public List<Item> ItemsSelected = new List<Item>();
+        String message;
         NewCharacter newcPage;
+
         public InventoryPage()
         {
-            //InitializeComponent();
-            //BindingContext = _viewModel = ItemsViewModel.Instance;
+            
         }
 
         public InventoryPage(NewCharacter page)//(Creature Data)
@@ -29,6 +30,8 @@ namespace GameOfChallengers.Views.Items
             BindingContext = _viewModel = ItemsViewModel.Instance;
             newcPage = page;
             character = page.Data;
+           
+
         }
 
 
@@ -40,12 +43,8 @@ namespace GameOfChallengers.Views.Items
 
             //  character.AddItem(data.Location, data.Id);
             ItemsSelected.Add(data);
-
-            // await Navigation.PopAsync();
-            // await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(data)));
-
-            // Manually deselect item.
-            // ItemsListView.SelectedItem = null;
+            message = message + data.Name + "  added" + "\n";
+            AddedItem.Text = message;
         }
 
 

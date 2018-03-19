@@ -151,8 +151,7 @@ namespace GameOfChallengers.Views.Battle
 
         private async void BattleOver()
         {
-            GameScoreController game = new GameScoreController();
-
+           
             var outputString = "Battle Over! Score " + game.GameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,
                 "Cancel",
@@ -172,7 +171,7 @@ namespace GameOfChallengers.Views.Battle
 
         private async void GameOver()
         {
-            GameScoreController game = new GameScoreController();
+           
 
             var outputString = "Game Over! Score " + game.GameScore.TotalXP;
             var action = await DisplayActionSheet(outputString,

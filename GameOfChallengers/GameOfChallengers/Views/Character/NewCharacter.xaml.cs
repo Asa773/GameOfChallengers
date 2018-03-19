@@ -49,6 +49,10 @@ namespace GameOfChallengers.Views.Character
         {
             foreach(var item in ItemsList)
             {
+                if(item.Location == ItemLocationEnum.Finger)
+                {
+                    item.Location = ItemLocationEnum.RightFinger; 
+                }
                 Data.AddItem(item.Location, item.Id);
             }
         }
