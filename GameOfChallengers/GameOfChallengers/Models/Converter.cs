@@ -12,7 +12,7 @@ namespace GameOfChallengers.Models
     // Converts from an Int to an Enum value
     public class IntEnumConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)//Convert if its enum
         {
             if (value is Enum)
             {
@@ -22,7 +22,7 @@ namespace GameOfChallengers.Models
             return 0;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)//Convert if its int
         {
             if (value is int)
             {
@@ -37,7 +37,7 @@ namespace GameOfChallengers.Models
     // Converts from a String to the enum value.  Head = 5, would return 5 for the string "Head", and for "Head" will return 5
     public class StringEnumConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)//Convert if its enum
         {
             if (value is Enum)
             {
@@ -54,7 +54,7 @@ namespace GameOfChallengers.Models
             return 0;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)//Convert if its string
         {
             if (value is int)
             {

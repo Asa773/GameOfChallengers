@@ -28,16 +28,16 @@ namespace GameOfChallengers.Models
         public string UniqueItem { get; set; }// unique item for monsters
         public int Damage { get; set; }
 
-        public string Head { get; set; }
-        public string Necklass { get; set; }
-        public string Feet { get; set; }
-        public string OffHand { get; set; }
-        public string PrimaryHand { get; set; }
-        public string LeftFinger { get; set; }
-        public string RightFinger { get; set; }
+        public string Head { get; set; }  //Head item
+        public string Necklass { get; set; }//Necklass item
+        public string Feet { get; set; }//Feet item
+        public string OffHand { get; set; }//OffHand item
+        public string PrimaryHand { get; set; }//PrimaryHand item
+        public string LeftFinger { get; set; }//LeftFinger item
+        public string RightFinger { get; set; }//RightFinger item
 
 
-        public Creature()
+        public Creature() //Instantiated
         {
             Alive = true;
             Level = 1;
@@ -71,6 +71,8 @@ namespace GameOfChallengers.Models
             MaxHealth = newData.MaxHealth;
             CurrHealth = newData.CurrHealth;
             Alive = newData.Alive;
+
+            // Set the strings for the items
             Head = newData.Head;
             Necklass = newData.Necklass;
             Feet = newData.Feet;
@@ -81,6 +83,7 @@ namespace GameOfChallengers.Models
             ImageURI = newData.ImageURI;
         }
 
+        //Assign ItemIDs
         public List<string> GetItemIDs()
         {
             List<string> itemIds = new List<string>();
@@ -115,6 +118,7 @@ namespace GameOfChallengers.Models
             return itemIds;
         }
 
+        //Assign HandItems
         public List<string> GetHandIDs()
         {
             List<string> itemIds = new List<string>();
@@ -156,7 +160,7 @@ namespace GameOfChallengers.Models
 
         #endregion Items
 
-        public string FormatOutput(Creature creature)
+        public string FormatOutput(Creature creature) //Prints out the output for the creature
         {
             var myReturn = string.Empty;
 
@@ -180,13 +184,14 @@ namespace GameOfChallengers.Models
             return myReturn;
         }
 
-        public Item AddItem(ItemLocationEnum itemlocation, string itemID)
+        public Item AddItem(ItemLocationEnum itemlocation, string itemID) //Item will added depending upon the location of the character
         {
             Item myReturn;
 
             switch (itemlocation)
             {
-                case ItemLocationEnum.Feet:
+                //If it's feet the item will be assigned there and similarly for others
+                case ItemLocationEnum.Feet: 
                     myReturn = GetItem(Feet);
                     Feet = itemID;
                     break;
@@ -233,11 +238,12 @@ namespace GameOfChallengers.Models
         {
             return ItemsViewModel.Instance.GetItem(itemString);
         }
-
+        //we Get the items depending upon the location of the character
         public Item GetItemByLocation(ItemLocationEnum itemLocation)
         {
             switch (itemLocation)
             {
+                //If it's feet then we get it and it is done similarly for others
                 case ItemLocationEnum.Head:
                     return GetItem(Head);
 

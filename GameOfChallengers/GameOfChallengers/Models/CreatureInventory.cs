@@ -59,8 +59,8 @@ namespace GameOfChallengers.Models
 
             return myReturn;
         }
-
-        public string ItemSlotsFormatOutput()
+         //prints out the items and location
+        public string ItemSlotsFormatOutput() 
         {
             var myReturn = "";
 

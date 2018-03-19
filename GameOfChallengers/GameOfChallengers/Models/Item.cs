@@ -62,6 +62,7 @@ namespace GameOfChallengers.Models
             return myReturn.Trim();
         }
 
+        //calls the update method for the item 
         public Item(Item data)
         {
             Update(data);

@@ -56,7 +56,7 @@ namespace GameOfChallengers.Models
             MonsterSlainNumber = newData.MonsterSlainNumber;
         }
 
-
+       //List for the Characters killed
         public bool AddCharacterToList(Creature character)
         {
             if (character == null)
