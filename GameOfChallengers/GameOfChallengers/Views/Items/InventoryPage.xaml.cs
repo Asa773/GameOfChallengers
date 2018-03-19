@@ -18,6 +18,7 @@ namespace GameOfChallengers.Views.Items
         public List<Item> ItemsSelected = new List<Item>();
         String message;
         NewCharacter newcPage;
+        EditCharacter editPage;
 
         public InventoryPage()
         {
@@ -26,12 +27,20 @@ namespace GameOfChallengers.Views.Items
 
         public InventoryPage(NewCharacter page)//(Creature Data)
         {
+           
             InitializeComponent();
             BindingContext = _viewModel = ItemsViewModel.Instance;
             newcPage = page;
-            character = page.Data;
-           
+            character = page.Data; 
+        }
 
+
+        public InventoryPage(EditCharacter page)//(Creature Data)
+        {
+            InitializeComponent();
+            BindingContext = _viewModel = ItemsViewModel.Instance;
+            editPage = page;
+            character = page.Data;
         }
 
 
@@ -56,8 +65,11 @@ namespace GameOfChallengers.Views.Items
             }
             else
             {
-
-                newcPage.SaveItem(ItemsSelected);
+                if (newcPage == null)
+                    editPage.SaveItem(ItemsSelected);
+                else
+                   newcPage.SaveItem(ItemsSelected);
+                
                 await Navigation.PopAsync();
             }
 

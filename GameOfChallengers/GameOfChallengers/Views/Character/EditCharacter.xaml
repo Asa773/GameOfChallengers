@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Character.EditCharacter"
+             xmlns:local="using:GameOfChallengers.ViewModels"
              Title="Edit Character">
     <ContentPage.ToolbarItems>
      
@@ -11,6 +12,14 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
                 <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  />
+                 <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static local:CharacterImagesList.GetListCharacterImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
+
+                
                 <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 <StackLayout Orientation="Horizontal">
@@ -37,7 +46,7 @@
                     <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
                 </StackLayout>
-                <Button Text="Add Inventory Items" 
+                <Button Text="Add Items" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"

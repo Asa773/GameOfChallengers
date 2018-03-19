@@ -19,16 +19,27 @@ namespace GameOfChallengers.Views.Character
         private CreatureDetailViewModel _viewModel;
 
         public Creature Data { get; set; }
-
+        String selectedImg;
         public EditCharacter(CreatureDetailViewModel viewModel)
         {
             // Save off the item
             Data = viewModel.Data;
-
+            selectedImg = Data.ImageURI ; 
             InitializeComponent();
 
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
+
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
+
+        }
+
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
         }
 
         private async void Save_Clicked(object sender, EventArgs e)
@@ -45,6 +56,20 @@ namespace GameOfChallengers.Views.Character
             Navigation.RemovePage(this);
         }
 
+
+        public void SaveItem(List<Item> ItemsList)
+        {
+            foreach (var item in ItemsList)
+            {
+                if (item.Location == ItemLocationEnum.Finger)
+                {
+                    item.Location = ItemLocationEnum.RightFinger;
+                }
+                Data.AddItem(item.Location, item.Id);
+            }
+        }
+
+
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();
@@ -52,7 +77,7 @@ namespace GameOfChallengers.Views.Character
 
         private async void AddItems_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new AssignItemPage());
+            await Navigation.PushAsync(new InventoryPage(this));
         }
     }
 }
