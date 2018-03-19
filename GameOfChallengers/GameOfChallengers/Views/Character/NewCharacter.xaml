@@ -1,7 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="GameOfChallengers.Views.Character.NewCharacter">
+             x:Class="GameOfChallengers.Views.Character.NewCharacter"
+             xmlns:local="using:GameOfChallengers.ViewModels">
     <ContentPage.ToolbarItems>
         
         <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
@@ -10,10 +11,15 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="New Character" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="CenterAndExpand" />
-                <Image Source="{Binding Data.ImageURI}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static local:CharacterImagesList.GetListCharacterImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
+
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
-                    <Entry Text="{Binding Data.Name}" FontSize="Small"  />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />

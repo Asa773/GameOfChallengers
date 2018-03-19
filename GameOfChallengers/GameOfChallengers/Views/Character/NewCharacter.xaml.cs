@@ -16,6 +16,7 @@ namespace GameOfChallengers.Views.Character
     public partial class NewCharacter : ContentPage
     {
         public Creature Data { get; set; }
+        String selectedImg = "BlankImage.jpeg" ; 
 
         // Constructor for the page, will create a new blank character
         public NewCharacter()
@@ -32,10 +33,21 @@ namespace GameOfChallengers.Views.Character
                 MaxHealth = 10,
                 CurrHealth = 10,
                 Alive = true,
+                ImageURI ="BlankImage.jpeg",
 
             };
-
+           
             BindingContext = this;
+           
+             selectedImg = ImagePicker.SelectedItem.ToString();
+           // ChangeImg.Source = selectedImg;
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
+        }
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
         }
 
         // Respond to the Save click
@@ -45,6 +57,7 @@ namespace GameOfChallengers.Views.Character
             MessagingCenter.Send(this, "AddData", Data);
             await Navigation.PopAsync();
         }
+
         public void SaveItem(List<Item> ItemsList)
         {
             foreach(var item in ItemsList)

@@ -113,6 +113,14 @@
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <BundleResource Include="Resources\BlankImage.jpeg" />
+    <BundleResource Include="Resources\monster10.jpeg" />
+    <BundleResource Include="Resources\monster9.jpeg" />
+    <BundleResource Include="Resources\monster8.jpeg" />
+    <BundleResource Include="Resources\monster7.png" />
+    <BundleResource Include="Resources\Fighter10.png" />
+    <BundleResource Include="Resources\Fighter9.jpg" />
+    <BundleResource Include="Resources\Fighter7.jpeg" />
+    <BundleResource Include="Resources\Fighter8.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

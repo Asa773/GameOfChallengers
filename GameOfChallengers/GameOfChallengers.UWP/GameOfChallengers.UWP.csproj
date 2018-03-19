@@ -104,6 +104,14 @@
     </AppxManifest>
     <None Include="GameOfChallengers.UWP_TemporaryKey.pfx" />
     <None Include="BlankImage.jpeg" />
+    <None Include="monster10.jpeg" />
+    <None Include="monster9.jpeg" />
+    <None Include="monster8.jpeg" />
+    <None Include="monster7.png" />
+    <None Include="Fighter10.png" />
+    <None Include="Fighter9.jpg" />
+    <None Include="Fighter7.jpeg" />
+    <None Include="Fighter8.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="imgthing.jpeg" />

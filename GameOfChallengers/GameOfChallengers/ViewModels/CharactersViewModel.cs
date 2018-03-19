@@ -74,6 +74,9 @@ namespace GameOfChallengers.ViewModels
             });
         }
 
+
+
+
         public List<Creature> GetAllCreatures()
         {
             var myReturn = new List<Creature>();
@@ -134,4 +137,27 @@ namespace GameOfChallengers.ViewModels
             }
         }
     }
+
+    public static class CharacterImagesList
+    {
+
+        public static List<String> GetListCharacterImages
+        {
+            get
+            {
+               
+                List<String> characterImages = new List<String>
+                            {
+                              "batman.jpeg",
+                              "Captain-America.jpeg",
+                              "Fighter7.jpeg",
+                              "Fighter8.jpeg",
+                              "Fighter9.jpeg",
+                              "Fighter10.jpeg",
+                             };
+                return String;
+            }
+        }
+    }
+
 }
