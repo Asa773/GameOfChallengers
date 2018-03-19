@@ -11,7 +11,7 @@ namespace GameOfChallengers.Views.Items
     public partial class NewItemPage : ContentPage
     {
         public Item Data { get; set; }
-
+        String selectedImg = "BlankImage.jpeg" ; 
         // Constructor for the page, will create a new black item that can tehn get updated
         public NewItemPage()
         {
@@ -28,10 +28,24 @@ namespace GameOfChallengers.Views.Items
             };
 
             BindingContext = this;
+
+
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
+
             //Need to make the SelectedItem a string, so it can select the correct item.
             LocationPicker.SelectedItem = Data.Location.ToString();
             AttributePicker.SelectedItem = Data.Attribute.ToString();
         }
+
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
+        }
+
+
 
         // Respond to the Save click
         // Send the add message to so it gets added...

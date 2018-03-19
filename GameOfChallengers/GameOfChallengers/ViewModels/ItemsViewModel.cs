@@ -212,4 +212,30 @@ namespace GameOfChallengers.ViewModels
             return null;
         }
     }
+
+    public static class ItemImagesList
+    {
+
+        public static List<String> GetListItemImages
+        {
+            get
+            {
+
+                List<String> ItemImages = new List<String>
+                            {
+
+                              "boots.jpg",
+                              "bow.jpg",
+                              "gun.jpg",
+                              "helmet.jpg",
+                               "shield.jpg",
+                                 "sword.jpeg",
+                                "trident.jpg",
+                             };
+                return ItemImages;
+            }
+        }
+    }
+
+
 }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Items.NewItemPage"
 		     Title="Add New Item"
-             xmlns:local="using:GameOfChallengers.Models">
+             xmlns:local="using:GameOfChallengers.Models"
+             xmlns:locals="using:GameOfChallengers.ViewModels">
 
     <ContentPage.ToolbarItems>
       
@@ -22,7 +23,12 @@
             <StackLayout Spacing="20" Padding="15">
 
                 <Label Text="Item Create Page" FontSize="Small"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-
+                 <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static locals:ItemImagesList.GetListItemImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
                 <Grid
                     RowSpacing="1"
                     ColumnSpacing="2"

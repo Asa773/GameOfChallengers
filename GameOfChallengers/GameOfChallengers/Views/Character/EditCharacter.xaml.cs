@@ -29,7 +29,6 @@ namespace GameOfChallengers.Views.Character
 
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
-
             selectedImg = ImagePicker.SelectedItem.ToString();
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
 

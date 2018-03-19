@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="GameOfChallengers.Views.Items.EditItemPage"		     
              xmlns:local="using:GameOfChallengers.Models"
+             xmlns:locals="using:GameOfChallengers.ViewModels"
              Title="{Binding Title}">
 
     <ContentPage.ToolbarItems>
@@ -23,11 +24,12 @@
 
                 <Label Text="Item Edit Page" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
 
-                <Image Source="{Binding Data.ImageURI}"
-                WidthRequest="75"
-                HeightRequest="75" 
-                HorizontalOptions="Center"
-                VerticalOptions="Center"/>
+                <Image x:Name="ChangeImg" Source="{Binding selectedImg}" WidthRequest="150" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"></Image>
+                <Picker SelectedIndexChanged="setImage"
+                        ItemsSource="{x:Static locals:ItemImagesList.GetListItemImages}"
+                        x:Name="ImagePicker"
+                        Title="Select Image"
+                        SelectedItem="{Binding Data.ImageURI, Mode=TwoWay}" />
 
                 <Grid
                     RowSpacing="1"

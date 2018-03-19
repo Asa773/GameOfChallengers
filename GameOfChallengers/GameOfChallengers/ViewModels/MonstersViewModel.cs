@@ -127,4 +127,34 @@ namespace GameOfChallengers.ViewModels
             }
         }
     }
+
+
+    public static class MonsterImagesList
+    {
+
+        public static List<String> GetListMonsterImages
+        {
+            get
+            {
+
+                List<String> monsterImages = new List<String>
+                            {
+
+                              "monster7.jpeg",
+                              "monster8.jpeg",
+                              "monster9.jpeg",
+                              "monster10.jpeg",
+                               "uglyface.jpeg",
+                                 "maskman.jpeg",
+                                "skeleton.jpeg",
+                                  "hitler.jpeg",
+                                  "zombie.jpeg",
+                                 "bluemonster.jpeg",
+                             };
+                return monsterImages;
+            }
+        }
+    }
+
+
 }

@@ -14,7 +14,7 @@ namespace GameOfChallengers.Views.Items
 
         // The data returned from the edit.
         public Item Data { get; set; }
-
+        String selectedImg;
         // The constructor takes a View Model
         // It needs to set the Picker values after doing the bindings.
         public EditItemPage(ItemDetailViewModel viewModel)
@@ -23,7 +23,7 @@ namespace GameOfChallengers.Views.Items
             Data = viewModel.Data;
 
             viewModel.Title = "Edit " + viewModel.Title;
-
+            selectedImg = Data.ImageURI ; 
             InitializeComponent();
 
             // Set the data binding for the page
@@ -33,7 +33,17 @@ namespace GameOfChallengers.Views.Items
             LocationPicker.SelectedItem = Data.Location.ToString();
             AttributePicker.SelectedItem = Data.Attribute.ToString();
 
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            Data.ImageURI = ImagePicker.SelectedItem.ToString();
+
         }
+
+        private void setImage(object sender, EventArgs e)
+        {
+            selectedImg = ImagePicker.SelectedItem.ToString();
+            ChangeImg.Source = selectedImg;
+        }
+
 
         // Save on the Tool bar
         private async void Save_Clicked(object sender, EventArgs e)
