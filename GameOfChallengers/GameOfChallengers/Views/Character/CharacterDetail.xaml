@@ -42,11 +42,11 @@
                        <Label Text="{Binding Data.XP}" FontSize="Small" />
                         </StackLayout>
                        <StackLayout Orientation="Horizontal">
-                        <Label Text="MaxHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
                         <Label Text="{Binding Data.MaxHealth}" FontSize="Small" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                        <Label Text="CurrHealth" FontSize="Small" FontAttributes="Bold" />
+                        <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
                         <Label Text="{Binding Data.CurrHealth}" FontSize="Small" />
                         </StackLayout>
                     </StackLayout>

@@ -20,6 +20,7 @@
 
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 </StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
@@ -34,6 +35,16 @@
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
                     <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                </StackLayout>
+                
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
                 </StackLayout>
                 <Button  
                     Text="Assign Items" 

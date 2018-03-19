@@ -21,7 +21,7 @@
         <ScrollView>
             <StackLayout Spacing="20" Padding="15">
 
-                <Label Text="Item Create Page" FontSize="Small"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+                <Label Text="Item Create Page" FontSize="Small"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
 
                 <Grid
                     RowSpacing="1"
@@ -146,7 +146,7 @@
                     <StackLayout Grid.Row="6" Grid.Column="0">
                         <Label 
                             Text="Image" 
-                            FontSize="Medium"  FontAttributes="Bold"
+                            FontSize="Medium"
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
@@ -161,14 +161,14 @@
                     <StackLayout Grid.Row="7" Grid.Column="0">
                         <Label 
                             Text="Damage" 
-                            FontSize="Medium"  FontAttributes="Bold"
+                            FontSize="Medium"
                             HorizontalOptions="Start"/>
                     </StackLayout>
 
                     <StackLayout Grid.Row="7" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center">
                         <Label 
                             Text="{Binding Data.Damage}" 
-                            FontSize="Medium"  FontAttributes="Bold"
+                            FontSize="Medium"
                             HorizontalOptions="Start"
                             x:Name="DamageValue"
                             VerticalOptions="Center"/>
@@ -182,18 +182,17 @@
                             HorizontalOptions="Start"
                             VerticalOptions="Center"/>
                     </StackLayout>
-                    <StackLayout>
-                        <Button Text="Create" 
+                    
+
+                </Grid>
+                <Button Text="Create" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"
                         VerticalOptions="Center"
                         Clicked="Save_Clicked"
                         TextColor="Black"
-                    BackgroundColor="DarkTurquoise"
-                       ></Button>
-                    </StackLayout>
-
-                </Grid>
+                        BackgroundColor="DarkTurquoise">
+                </Button>
 
             </StackLayout>
         </ScrollView>

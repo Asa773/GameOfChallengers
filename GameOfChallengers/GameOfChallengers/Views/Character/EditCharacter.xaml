@@ -13,6 +13,30 @@
                 <Label Text="Edit Character" FontSize="Small" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"  />
                 <Label Text="Name" FontSize="Small" FontAttributes="Bold" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Attack" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Attack}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Defense" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Defense}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Speed" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.Speed}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Current Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.CurrHealth}" FontSize="Small" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Max Health" FontSize="Small" FontAttributes="Bold" />
+                    <Entry Text="{Binding Data.MaxHealth}" FontSize="Small" />
+                </StackLayout>
                 <Button Text="Add Inventory Items" 
                         FontAttributes="Bold" 
                         HorizontalOptions="CenterAndExpand"

@@ -8,8 +8,8 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Spacing="20" Padding="15" Orientation="Horizontal">
-                <Label Text="Edit Score" FontSize="Small" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Edit Score" FontSize="Small" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Label Text="Name" FontSize="Small" />
                 <Entry Text="{Binding Data.Name}" FontSize="Small" />
                 <StackLayout>

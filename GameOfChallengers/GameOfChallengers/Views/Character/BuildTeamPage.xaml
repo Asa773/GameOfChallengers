@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="Character Team"  VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" ></Label>
+                <Label Text="Character Team"  VerticalOptions="Center" HorizontalOptions="CenterAndExpand" FontAttributes="Bold" ></Label>
                 <Label Text="Select 6 characters" HorizontalOptions="StartAndExpand"></Label>
                 <Label Text="If the same character is selected more than once that character will only be added to the team once" HorizontalOptions="StartAndExpand"></Label>
                 <Picker

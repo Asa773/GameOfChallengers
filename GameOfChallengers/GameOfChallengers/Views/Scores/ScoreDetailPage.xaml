@@ -28,19 +28,18 @@
                         <Label Text="TotalXP" FontAttributes="Bold" FontSize="Small" />
                         <Label Text="{Binding Data.TotalXP}" FontSize="Small" />
                         <StackLayout>
-                        <Label Text="Characters Killed" FontAttributes="Bold" FontSize="Small"/>
-                        <Label Text="{Binding Data.TotalCharactersKilled}" FontSize="Small" />
-                        <Label Text="Monsters Killed" FontAttributes="Bold" FontSize="Small"/>
-                        <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small" />
-                        <Label Text="Items Dropped" FontAttributes="Bold" FontSize="Small"/>
-                        <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small" />
-                        <Label Text="Monster Slain number" FontAttributes="Bold" FontSize="Small"/>
-                        <Label Text="{Binding Data.MonsterSlainNumber}" FontSize="Small" />
+                            <Label Text="Characters" FontAttributes="Bold" FontSize="Small"/>
+                            <Label Text="{Binding Data.TotalCharactersKilled}" FontSize="Small" />
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Monsters Killed" FontAttributes="Bold" FontSize="Small"/>
+                                <Label Text="{Binding Data.MonsterSlainNumber}" FontSize="Small" />
+                            </StackLayout>
+                            <Label Text="{Binding Data.TotalMonstersKilled}" FontSize="Small" />
+                            <Label Text="Items Dropped" FontAttributes="Bold" FontSize="Small"/>
+                            <Label Text="{Binding Data.TotalItemsDropped}" FontSize="Small" />
+                            <!--<Label Text="Monster Slain number" FontAttributes="Bold" FontSize="Small"/>
+                        <Label Text="{Binding Data.MonsterSlainNumber}" FontSize="Small" />-->
                         </StackLayout>
-
-                        <!--<Label Text="Text" FontAttributes="Bold" FontSize="Small" />
-                        <Label Text="{Binding Data.Text}" FontSize="Small" />-->
-                        
                     </StackLayout>
                 </ScrollView>
                 <Button Text="Edit" Clicked="Edit_Clicked" />
