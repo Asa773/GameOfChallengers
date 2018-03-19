@@ -22,9 +22,9 @@ namespace GameOfChallengers.Controllers
             for (int i=0; i<numOfItems; i++)
             {
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                Dropped.Add(item);
+                Dropped.Add(item);//Monsters will dropped items will be added to the list
             }
-            int chance = rand.Next(10);
+            int chance = rand.Next(10); //Checks for dropping the Unique Item
             if(chance == 1)
             {
                 var item = items.Where(a => a.Id == monster.UniqueItem).FirstOrDefault();
@@ -40,11 +40,11 @@ namespace GameOfChallengers.Controllers
             baseAttack += monster.Attack;
             for(int i=0; i<itemIds.Count; i++)
             {
-                var items = ItemsViewModel.Instance.Dataset;
+                var items = ItemsViewModel.Instance.Dataset; //gets the Items
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Attack)
                 {
-                    baseAttack += item.Value;
+                    baseAttack += item.Value;//Item's value will be increased depending upon the attack
                 }
             }
             return baseAttack;
@@ -58,11 +58,11 @@ namespace GameOfChallengers.Controllers
             {
                 return baseDamage;
             }
-            var items = ItemsViewModel.Instance.Dataset;
+            var items = ItemsViewModel.Instance.Dataset;//Gets the Items
             var item = items.Where(a => a.Id == mitem.Id).FirstOrDefault();
             int dateSeed = DateTime.Now.Millisecond;
             Random roll = new Random(dateSeed);
-            baseDamage += roll.Next(1, item.Damage + 1);
+            baseDamage += roll.Next(1, item.Damage + 1);//Item's value will be calculated depending upon the damage
 
             return baseDamage;
         }
@@ -74,11 +74,11 @@ namespace GameOfChallengers.Controllers
             baseSpeed += monster.Speed;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                var items = ItemsViewModel.Instance.Dataset;
+                var items = ItemsViewModel.Instance.Dataset;//gets the Items
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Speed)
                 {
-                    baseSpeed += item.Value;
+                    baseSpeed += item.Value;//Item's value will be increased depending upon the speed
                 }
             }
             return baseSpeed;
@@ -91,11 +91,11 @@ namespace GameOfChallengers.Controllers
             baseDefense += monster.Defense;
             for (int i = 0; i < itemIds.Count; i++)
             {
-                var items = ItemsViewModel.Instance.Dataset;
+                var items = ItemsViewModel.Instance.Dataset;//Gets the Items
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Defense)
                 {
-                    baseDefense += item.Value;
+                    baseDefense += item.Value;//Item's value will be increased depending upon the defense
                 }
             }
             return baseDefense;
@@ -104,13 +104,13 @@ namespace GameOfChallengers.Controllers
         public int GiveXP(Creature monster, int damageGiven)
         {
             //this will calculate and return the amount of XP to be transferred on a hit and -= that much from the monster
-            double percentToGive = ((double)damageGiven / (double)monster.CurrHealth);
+            double percentToGive = ((double)damageGiven / (double)monster.CurrHealth); //Xp is calculated depending ont he damage and current health
             if(percentToGive > 1.0)
             {
                 percentToGive = 1.0;
             }
-            int XPToGive = (int)(monster.XP * percentToGive);
-            monster.XP -= XPToGive;
+            int XPToGive = (int)(monster.XP * percentToGive);//XP is calculated
+            monster.XP -= XPToGive; 
             return XPToGive;
         }
 
@@ -118,10 +118,10 @@ namespace GameOfChallengers.Controllers
         {
             //monster takes damage and checks for death
             monster.CurrHealth -= amount;
-            if(monster.CurrHealth <= 0)
+            if(monster.CurrHealth <= 0)//declares monster's dead when the current health is less than or equal to zero
             {
                 monster.Alive = false;
-                monster.CurrHealth = 0;
+                monster.CurrHealth = 0;//sets the current health to zero when the monster is declared dead inorder to avoid negative values
             }
             return monster.Alive;
         }

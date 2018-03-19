@@ -20,7 +20,7 @@ namespace GameOfChallengers.Controllers
             {
                 if (_instance == null)
                 {
-                    _instance = new ItemsController();
+                    _instance = new ItemsController();//set instance for the itemsController
                 }
                 return _instance;
             }
@@ -87,7 +87,7 @@ namespace GameOfChallengers.Controllers
 
             var URLComponent = "GetItemListPost/";
 
-
+            
             var dict = new Dictionary<string, string>
             {
                 { "Number", number.ToString()},
@@ -165,7 +165,7 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        private Item ConvertFromJson(JObject json)
+        private Item ConvertFromJson(JObject json) //Convert the data from Json
         {
             var myData = new Item();
 

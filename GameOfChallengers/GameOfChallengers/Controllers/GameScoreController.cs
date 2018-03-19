@@ -19,28 +19,28 @@ namespace GameOfChallengers.Controllers
         
         public GameScoreController()
         {
-            GameScore = new Score();
+            GameScore = new Score(); //calls the score
             
             TeamViewModel.Instance.LoadTeam();
-            Team = TeamViewModel.Instance;
+            Team = TeamViewModel.Instance;//team will be assigned
         }
 
-        public Score Start(bool auto)
+        public Score Start(bool auto)//starts when auto is given
         {
             Team = TeamViewModel.Instance;
 
-            while (Team.Dataset.Count > 0)
+            while (Team.Dataset.Count > 0)//checks if the character's team is not zero
             {
-                round++;
-                if (auto)
+                round++;//round value will increase
+                if (auto)//when its true the auto battle starts
                 {
-                    battle.SetBattleController(round);
-                    GameScore = battle.AutoBattle(GameScore);
+                    battle.SetBattleController(round);//Batllecontroller will start to work
+                    GameScore = battle.AutoBattle(GameScore);//GameScore will be assigned
                     GameScore.Auto = true;
                 }
                 else
                 {
-                    battle.SetBattleController(round);
+                    battle.SetBattleController(round);//Maunal battle will start when its not auot
                     //battleScreen.RefreshBattleScreen();
                     GameScore = battle.Battle(GameScore);
                     GameScore.Auto = false;

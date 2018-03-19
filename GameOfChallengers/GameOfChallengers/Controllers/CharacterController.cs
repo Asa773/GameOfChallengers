@@ -38,7 +38,7 @@ namespace GameOfChallengers.Controllers
         
         public List<Item> DropItems(Creature character)
         {
-            //drop all items when dead
+            //drop all items when dead and adds it to a list
             List<Item> Dropped = new List<Item>();
             List<string> itemIds = character.GetItemIDs();
             var items = ItemsViewModel.Instance.Dataset;
@@ -51,7 +51,7 @@ namespace GameOfChallengers.Controllers
             return Dropped;
         }
 
-        public int GetBaseAttack(Creature character)
+        public int GetBaseAttack(Creature character)//Calculates the attack done by the character
         {
             List<string> itemIds = character.GetItemIDs();
             int baseAttack = 0;//this will be based on the character stats + any item boosts
@@ -62,13 +62,13 @@ namespace GameOfChallengers.Controllers
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Attack)
                 {
-                    baseAttack += item.Value;
+                    baseAttack += item.Value;//the item value is increased depending on the attack
                 }
             }
             return baseAttack;
         }
 
-        public int GetBaseDamage(Creature character)
+        public int GetBaseDamage(Creature character)//Damage done will be calculated
         {
             int baseDamage = 0;//this will be based on the weapon stats
             Item citem = character.GetItemByLocation(ItemLocationEnum.PrimaryHand);
@@ -80,7 +80,7 @@ namespace GameOfChallengers.Controllers
             var item = items.Where(a => a.Id == citem.Id).FirstOrDefault();
             int dateSeed = DateTime.Now.Millisecond;
             Random roll = new Random(dateSeed);
-            baseDamage += roll.Next(1, item.Damage + 1);
+            baseDamage += roll.Next(1, item.Damage + 1);//item value will be changed depending on the damage 
 
             return baseDamage;
         }
@@ -96,13 +96,13 @@ namespace GameOfChallengers.Controllers
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Speed)
                 {
-                    baseSpeed += item.Value;
+                    baseSpeed += item.Value;//the item value is increased
                 }
             }
             return baseSpeed;
         }
 
-        public int GetBaseDefense(Creature character)
+        public int GetBaseDefense(Creature character)//Defense is calculated 
         {
             List<string> itemIds = character.GetItemIDs();
             int baseDefense = 0;//this will be based on the character stats including item boosts
@@ -113,7 +113,7 @@ namespace GameOfChallengers.Controllers
                 var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
                 if (item.Attribute == AttributeEnum.Defense)
                 {
-                    baseDefense += item.Value;
+                    baseDefense += item.Value;//the item value will be increased
                 }
             }
             return baseDefense;
@@ -130,12 +130,12 @@ namespace GameOfChallengers.Controllers
             {
                 if(character.XP >= lp[i].XP )
                 {
-                    NewLevel = lp[i].Level;
+                    NewLevel = lp[i].Level;//Level assigned based on XP
                 }
             }
             if (character.Level < NewLevel)
             {
-                LevelUp(character, NewLevel);
+                LevelUp(character, NewLevel);//Increase Level if characters level is less than new level
                 DidLevelUp = true;
             }
             return DidLevelUp;
@@ -149,10 +149,10 @@ namespace GameOfChallengers.Controllers
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
             int rolld = rand.Next(11);
-            character.Level = newLevel;
-            character.Attack = lp[newLevel - 1].Attack;
-            character.Defense = lp[newLevel - 1].Defense;
-            character.Speed = lp[newLevel - 1].Speed;
+            character.Level = newLevel; //gets new level
+            character.Attack = lp[newLevel - 1].Attack; //gets attack based on the new level
+            character.Defense = lp[newLevel - 1].Defense;//gets defense based on the new level
+            character.Speed = lp[newLevel - 1].Speed;//gets speed dependong on the new level
             int offset = character.MaxHealth - character.CurrHealth;
             character.MaxHealth = rolld * newLevel;
             character.CurrHealth = character.MaxHealth - offset;
@@ -165,8 +165,8 @@ namespace GameOfChallengers.Controllers
             character.CurrHealth -= amount;
             if (character.CurrHealth <= 0)
             {
-                character.Alive = false;
-                character.CurrHealth = 0;
+                character.Alive = false;//when current health is less than or equa to zero it is said to be dead
+                character.CurrHealth = 0;//to avoid negative values we set the current health to zero once set to dead
             }
             return character.Alive;
         }
