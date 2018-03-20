@@ -26,19 +26,22 @@ namespace GameOfChallengers.Views.Monsters
 
             InitializeComponent();
 
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
-       
+       //deletes the monster and sents back to the Monsters page
         async void Delete_Clicked(object sender,EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
 
-            
+            // Remove MonsterDetailPage manualy
             Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
             await Navigation.PopAsync();
         }
+
+        // Cancel and go back a page in the navigation stack
         async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

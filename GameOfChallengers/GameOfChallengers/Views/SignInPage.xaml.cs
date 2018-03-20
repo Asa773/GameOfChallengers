@@ -24,13 +24,13 @@ namespace GameOfChallengers.Views
 
         private async void StartGame_Command(object sender, EventArgs e)
         {
-            GameGlobals.PlayerName = name.Text;
-            await Navigation.PushAsync(new GameHomePage());
-            CharactersViewModel.Instance.LoadDataCommand.Execute(null);
-            MonstersViewModel.Instance.LoadDataCommand.Execute(null);
-            ScoresViewModel.Instance.LoadDataCommand.Execute(null);
-            ItemsViewModel.Instance.LoadDataCommand.Execute(null);
-            
+            GameGlobals.PlayerName = name.Text;//Saving the player name 
+            await Navigation.PushAsync(new GameHomePage());//Goes to the game home page
+            CharactersViewModel.Instance.LoadDataCommand.Execute(null);//Loads the characters
+            MonstersViewModel.Instance.LoadDataCommand.Execute(null);//Loads the monsters
+            ScoresViewModel.Instance.LoadDataCommand.Execute(null);//Loads the scores
+            ItemsViewModel.Instance.LoadDataCommand.Execute(null);//Loads the items
+
         }
 
 

@@ -29,16 +29,17 @@ namespace GameOfChallengers.Views.Character
 
             // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
-            selectedImg = ImagePicker.SelectedItem.ToString();
+            //Need to make the SelectedItem a string, so it can select the correct character image.
+            selectedImg = ImagePicker.SelectedItem.ToString(); 
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
 
         }
 
-
+        //Sets the image as per the selected image by the player
         private void setImage(object sender, EventArgs e)
         {
-            selectedImg = ImagePicker.SelectedItem.ToString();
-            ChangeImg.Source = selectedImg;
+            selectedImg = ImagePicker.SelectedItem.ToString(); 
+            ChangeImg.Source = selectedImg; //Image is set 
         }
 
         private async void Save_Clicked(object sender, EventArgs e)
@@ -55,12 +56,12 @@ namespace GameOfChallengers.Views.Character
             Navigation.RemovePage(this);
         }
 
-
+        //Save the selected assigned items to the character
         public void SaveItemAsync(List<Item> ItemsList)
         {
             foreach (var item in ItemsList)
             {
-                if (item.Location == ItemLocationEnum.Finger)
+                if (item.Location == ItemLocationEnum.Finger) //Check if the finger item should be assigned to right or left finger 
                 {
                     if (Data.RightFinger == null)
                     {
@@ -72,7 +73,7 @@ namespace GameOfChallengers.Views.Character
                     }
                     
                 }
-                Data.AddItem(item.Location, item.Id);
+                Data.AddItem(item.Location, item.Id);//Add that item to the character depending on the location of the item selected
             }
             
         }
@@ -80,12 +81,12 @@ namespace GameOfChallengers.Views.Character
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync();//goes back to the characters page
         }
 
         private async void AddItems_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new InventoryPage(this));
+            await Navigation.PushAsync(new InventoryPage(this)); //takes to the inventory page when add items is clicked
         }
     }
 }

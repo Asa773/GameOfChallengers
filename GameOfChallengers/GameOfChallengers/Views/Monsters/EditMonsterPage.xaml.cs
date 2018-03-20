@@ -26,6 +26,7 @@ namespace GameOfChallengers.Views.Monsters
             selectedImg = Data.ImageURI;
             InitializeComponent();
 
+
             BindingContext = _viewModel = viewModel;
             selectedImg = ImagePicker.SelectedItem.ToString();
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
@@ -38,7 +39,7 @@ namespace GameOfChallengers.Views.Monsters
             ChangeImg.Source = selectedImg;
         }
 
-
+        //Saves the edited monster after creating it and goes back to the monsters page
         private async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "EditData", Data);

@@ -31,6 +31,7 @@ namespace GameOfChallengers.Views.Scores
 
         }
 
+        //deletes the score and sents back to the scores page
         private async void Delete_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "DeleteData", Data);
@@ -42,6 +43,7 @@ namespace GameOfChallengers.Views.Scores
 
         }
 
+        //Goes back to the Score detail page
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

@@ -31,7 +31,7 @@ namespace GameOfChallengers.Views
         {
             if(aboutPageinstance == null)
             {
-                aboutPageinstance = new AboutPage();
+                aboutPageinstance = new AboutPage(); //Opens up the about page
             }
             await Navigation.PushAsync(aboutPageinstance);
         }
@@ -39,33 +39,33 @@ namespace GameOfChallengers.Views
         private async void Play_Command(object sender, EventArgs e)
         {            
 
-            await Navigation.PushAsync(new BuildTeamPage());
+            await Navigation.PushAsync(new BuildTeamPage());//Opens up the buildteam page after clicking play
         }
 
         private async void AutoBattle_Command(object sender, EventArgs e)
         {
             GameScoreController game = new GameScoreController();
-            await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(true))));
+            await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(true))));//goes to score page after running the auto battle
         }
 
         private async void Characters_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new CharactersPage());
+            await Navigation.PushAsync(new CharactersPage());//Opens up the characters page
         }
 
         private async void Monsters_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MonsterPage());
+            await Navigation.PushAsync(new MonsterPage());//Opens up the monsters page
         }
 
         private async void Items_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ItemsPage());
+            await Navigation.PushAsync(new ItemsPage());//Opens up the items page
         }
 
         private async void Scores_Command(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new ScorePage());
+            await Navigation.PushAsync(new ScorePage());//Opens up the scores page
         }
 
     }

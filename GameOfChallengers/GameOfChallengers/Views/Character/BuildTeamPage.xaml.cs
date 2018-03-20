@@ -34,9 +34,11 @@ namespace GameOfChallengers.Views.Character
                 CharactersViewModel.Instance.LoadDataCommand.Execute(null);
             }
 
+            // Set the data binding for the page
             BindingContext = viewModel = CharactersViewModel.Instance;
         }
 
+        //used for picking the 6 chracters for the character team by the player.
         private async void SaveTeam_Clicked(object sender, EventArgs e)
         {
             Creature c1 = (Creature)CharacterPicker1.SelectedItem;
@@ -72,18 +74,18 @@ namespace GameOfChallengers.Views.Character
             
             for (int i=0; i<viewModel.Dataset.Count; i++)
             {
-                viewModel.Dataset[i].OnTeam = false;
+                viewModel.Dataset[i].OnTeam = false;  
             }
-            foreach(Creature c in newTeam)
+            foreach(Creature c in newTeam) 
             {
-                c.OnTeam = true;
+                c.OnTeam = true;//checking the characters on team
             }
-            await Navigation.PushAsync(new BattleScreen());
+            await Navigation.PushAsync(new BattleScreen()); //proceeds to battle screen after selection
         }
-
+        //when player chooses the auto elect button then the characters for the character team will be selected automatically.
         private async void AutoSelect_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BattleScreen());
+            await Navigation.PushAsync(new BattleScreen());//proceeds to battle screen after selection
         }
     }
 }

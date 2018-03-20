@@ -33,10 +33,14 @@ namespace GameOfChallengers.Views.Items
             LocationPicker.SelectedItem = Data.Location.ToString();
             AttributePicker.SelectedItem = Data.Attribute.ToString();
 
+            //Need to make the SelectedItem a string, so it can select the correct item image.
+
             selectedImg = ImagePicker.SelectedItem.ToString();
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
 
         }
+
+        //Sets the image as per the selected image by the player
 
         private void setImage(object sender, EventArgs e)
         {
@@ -75,19 +79,19 @@ namespace GameOfChallengers.Views.Items
         // The stepper function for Range
         void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            RangeValue.Text = String.Format("{0}", e.NewValue);//new value will be set
         }
 
         // The stepper function for Value
         void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueValue.Text = String.Format("{0}", e.NewValue);
+            ValueValue.Text = String.Format("{0}", e.NewValue);//new value will be set
         }
 
         // The stepper function for Damage
         void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageValue.Text = String.Format("{0}", e.NewValue);
+            DamageValue.Text = String.Format("{0}", e.NewValue);//new value will be set
         }
     }
 }

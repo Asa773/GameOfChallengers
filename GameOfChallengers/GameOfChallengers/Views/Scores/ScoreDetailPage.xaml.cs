@@ -23,6 +23,7 @@ namespace GameOfChallengers.Views.Scores
         {
             InitializeComponent();
 
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
@@ -32,6 +33,7 @@ namespace GameOfChallengers.Views.Scores
             
             Data = new Score
             {
+                //set default attributes
                 Name = "Player name",
                 Id = Guid.NewGuid().ToString(),
                 FinalScore = 0,
@@ -49,19 +51,19 @@ namespace GameOfChallengers.Views.Scores
 
         private async void Edit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditScorePage(_viewModel));
+            await Navigation.PushAsync(new EditScorePage(_viewModel));//Editing the monster page
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new DeleteScorePage(_viewModel));
+            await Navigation.PushAsync(new DeleteScorePage(_viewModel));//deleting the monster page
 
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync();//goes back to the previous page
         }
     }
 }

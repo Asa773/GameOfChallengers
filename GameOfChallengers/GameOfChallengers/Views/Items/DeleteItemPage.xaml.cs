@@ -34,12 +34,12 @@ namespace GameOfChallengers.Views.Items
                 // Remove Item Details Page manualy
                 Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
 
-                await Navigation.PopAsync();
+                await Navigation.PopAsync(); //once deleted it will sent back to Items details page
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(); // goes back to Items details page
         }
     }
 }

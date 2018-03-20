@@ -23,6 +23,7 @@ namespace GameOfChallengers.Views.Scores
 
             Data = new Score
             {
+                //Set the default attributes
                 Name = "Player name",
                 Id = Guid.NewGuid().ToString(),
                 FinalScore = 0,

@@ -42,6 +42,7 @@ namespace GameOfChallengers.Views.Character
 
         }
 
+        // Cancel and go back a page in the navigation stack
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

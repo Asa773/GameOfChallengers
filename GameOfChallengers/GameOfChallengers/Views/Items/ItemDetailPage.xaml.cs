@@ -17,6 +17,7 @@ namespace GameOfChallengers.Views.Items
         {
             InitializeComponent();
 
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
@@ -33,17 +34,17 @@ namespace GameOfChallengers.Views.Items
 
         private async void Edit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditItemPage(_viewModel));
+            await Navigation.PushAsync(new EditItemPage(_viewModel)); //Edit item page will be opened when clicked
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new DeleteItemPage(_viewModel));
+            await Navigation.PushAsync(new DeleteItemPage(_viewModel));//delete item page will be opened when clicked
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync();//goes back to the items detail page
         }
     }
 }

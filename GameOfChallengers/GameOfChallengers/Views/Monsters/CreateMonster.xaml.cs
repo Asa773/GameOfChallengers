@@ -23,6 +23,7 @@ namespace GameOfChallengers.Views.Monsters
 			InitializeComponent ();
             Data = new Creature
             {
+               // set the default attributes
                 Name = "Monster name",
                 Id = Guid.NewGuid().ToString(),
                 Type = 1,
@@ -35,25 +36,27 @@ namespace GameOfChallengers.Views.Monsters
             };
 
             BindingContext = this;
+            //Need to make the SelectedItem a string, so it can select the correct Monster image.
             selectedImg = ImagePicker.SelectedItem.ToString();
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
 
         }
 
-
+        //Sets the image as per the selected image by the player
         private void setImage(object sender, EventArgs e)
         {
             selectedImg = ImagePicker.SelectedItem.ToString();
             ChangeImg.Source = selectedImg;
         }
 
-
+        //Saves the new monster after creating it and goes back to the monsters page
         async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "AddData", Data);
             await Navigation.PopAsync();
         }
 
+        //cancels creating the new monster after creating it and goes back to the monsters page
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
             await Navigation.PopAsync();

@@ -17,6 +17,8 @@ namespace GameOfChallengers.Views.Items
         public ItemsPage()
         {
             InitializeComponent();
+
+            // Set the data binding for the page
             BindingContext = _viewModel = ItemsViewModel.Instance;
         }
 
@@ -26,7 +28,7 @@ namespace GameOfChallengers.Views.Items
             if (data == null)
                 return;
 
-            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(data)));
+            await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(data)));//Goes to the Item Details page
 
             // Manually deselect item.
             ItemsListView.SelectedItem = null;
@@ -34,7 +36,7 @@ namespace GameOfChallengers.Views.Items
 
         private async void AddItem_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewItemPage());
+            await Navigation.PushAsync(new NewItemPage());//New Item page will be opened when add is clicked
         }
 
         protected override void OnAppearing()

@@ -15,7 +15,7 @@ namespace GameOfChallengers.Views
 		public AboutPage ()
 		{
 			InitializeComponent ();
-            SettingDataSource.IsToggled = true;
+            SettingDataSource.IsToggled = true;//Switch to set Data source
 		}
 
 
@@ -25,6 +25,7 @@ namespace GameOfChallengers.Views
 
             if (e.Value == true)
             {
+                //Data from MockDataStore
                 ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
                 MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
                 CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Mock);
@@ -32,6 +33,7 @@ namespace GameOfChallengers.Views
             }
             else
             {
+                //Data from SQLDataStore
                 ItemsViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
                 MonstersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);
                 CharactersViewModel.Instance.SetDataStore(BaseViewModel.DataStoreEnum.Sql);

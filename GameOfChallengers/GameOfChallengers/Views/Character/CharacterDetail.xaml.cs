@@ -22,12 +22,15 @@ namespace GameOfChallengers.Views.Character
         {
             InitializeComponent();
 
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
         public CharacterDetail()
         {
             InitializeComponent();
+
+            //Setting the attributes
             Data = new Creature
             {
                 Name = "Character name",
@@ -49,19 +52,19 @@ namespace GameOfChallengers.Views.Character
 
         private async void Edit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditCharacter(_viewModel));
+            await Navigation.PushAsync(new EditCharacter(_viewModel)); //Editing the character page
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new DeleteCharacter(_viewModel));
+            await Navigation.PushAsync(new DeleteCharacter(_viewModel)); //goes to the delete character page
 
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync(); //goes back to the previous page
         }
     }
 }

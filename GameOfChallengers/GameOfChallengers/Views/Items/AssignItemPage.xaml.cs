@@ -12,14 +12,15 @@ namespace GameOfChallengers.Views.Items
     {
         private TeamViewModel _viewModel;
         private DroppedItemViewModel _viewModel1;
-        public ObservableCollection<Item> _Dataset { get; set; }
+        public ObservableCollection<Item> _Dataset { get; set; }//Items collection
         public Creature Data { get; set; }
-        public ObservableCollection<Creature> Dataset { get; set; }
+        public ObservableCollection<Creature> Dataset { get; set; }//Items will be assigned to this list of character
 
         public AssignItemPage()
         {
             Data = new Creature
             {
+                //default attributes
                 Name = "Character name",
                 Id = Guid.NewGuid().ToString(),
                 Type = 0,
@@ -30,7 +31,8 @@ namespace GameOfChallengers.Views.Items
                 Alive = true,
 
             };
-                       
+
+            // Set the data binding for the page         
             BindingContext = _viewModel = TeamViewModel.Instance;
 
         }

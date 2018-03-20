@@ -30,6 +30,7 @@ namespace GameOfChallengers.Views.Scores
             BindingContext = _viewModel = viewModel;
         }
 
+        //Saves the new score after creating it and goes back to the scores page
         private async void Save_Clicked(object sender, EventArgs e)
         {
             MessagingCenter.Send(this, "EditData", Data);

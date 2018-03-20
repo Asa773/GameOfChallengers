@@ -14,16 +14,17 @@ namespace GameOfChallengers.Views.Character
         public CharactersPage()
         {
             InitializeComponent();
+            // Set the data binding for the page
             BindingContext = _viewModel = CharactersViewModel.Instance;
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var data = args.SelectedItem as Creature;
+            var data = args.SelectedItem as Creature;//action to select the item
             if (data == null)
                 return;
 
-            await Navigation.PushAsync(new CharacterDetail(new CreatureDetailViewModel(data)));
+            await Navigation.PushAsync(new CharacterDetail(new CreatureDetailViewModel(data)));//Goes to the character Details page
 
             // Manually deselect item.
             CharactersListView.SelectedItem = null;
@@ -31,12 +32,12 @@ namespace GameOfChallengers.Views.Character
 
         private async void BuildTeam_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new BuildTeamPage());
+            await Navigation.PushAsync(new BuildTeamPage());//pushes to the build team page
         }
 
         private async void AddCharacter_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new NewCharacter());
+            await Navigation.PushAsync(new NewCharacter()); //Pushes to the new character page
         }
 
         protected override void OnAppearing()

@@ -16,12 +16,13 @@ namespace GameOfChallengers.Views.Scores
         public ScorePage()
         {
             InitializeComponent();
+            // Set the data binding for the page
             BindingContext = _viewModel = ScoresViewModel.Instance;
         }
 
         private async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
-            var data = args.SelectedItem as Score;
+            var data = args.SelectedItem as Score;//action to select the score
             if (data == null)
                 return;
 
@@ -31,6 +32,7 @@ namespace GameOfChallengers.Views.Scores
             ScoresListView.SelectedItem = null;
         }
 
+        //New score page will be opened when add is clicked
         private async void AddScore_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new NewScorePage());

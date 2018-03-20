@@ -17,6 +17,7 @@ namespace GameOfChallengers.Views.Items
         {
             InitializeComponent();
 
+            //Setting the default attributes
             Data = new Item
             {
                 Name = "Item name",
@@ -30,6 +31,7 @@ namespace GameOfChallengers.Views.Items
             BindingContext = this;
 
 
+            //To the select the images in the picker while editing the character, change it to string
             selectedImg = ImagePicker.SelectedItem.ToString();
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
 
@@ -38,7 +40,7 @@ namespace GameOfChallengers.Views.Items
             AttributePicker.SelectedItem = Data.Attribute.ToString();
         }
 
-
+        //Sets the image as per the selected image by the player
         private void setImage(object sender, EventArgs e)
         {
             selectedImg = ImagePicker.SelectedItem.ToString();
@@ -70,19 +72,19 @@ namespace GameOfChallengers.Views.Items
         // The stepper function for Range
         void Range_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            RangeValue.Text = String.Format("{0}", e.NewValue);
+            RangeValue.Text = String.Format("{0}", e.NewValue); //sets the new value
         }
 
         // The stepper function for Value
         void Value_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            ValueValue.Text = String.Format("{0}", e.NewValue);
+            ValueValue.Text = String.Format("{0}", e.NewValue);//sets the new value
         }
 
         // The stepper function for Damage
         void Damage_OnStepperValueChanged(object sender, ValueChangedEventArgs e)
         {
-            DamageValue.Text = String.Format("{0}", e.NewValue);
+            DamageValue.Text = String.Format("{0}", e.NewValue);//sets the new value
         }
 
     }

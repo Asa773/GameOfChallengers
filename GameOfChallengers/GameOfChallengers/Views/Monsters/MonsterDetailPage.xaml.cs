@@ -22,6 +22,7 @@ namespace GameOfChallengers.Views.Monsters
         {
             InitializeComponent();
 
+            // Set the data binding for the page
             BindingContext = _viewModel = viewModel;
         }
 
@@ -31,6 +32,7 @@ namespace GameOfChallengers.Views.Monsters
 
             Data = new Creature
             {
+                //Setting default attributes
                 Name = "Monster name",
                 Id = Guid.NewGuid().ToString(),
                 Type = 0,
@@ -46,22 +48,22 @@ namespace GameOfChallengers.Views.Monsters
             BindingContext = _viewModel;
         }
 
-
+        
         private async void Edit_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new EditMonsterPage(_viewModel));
+            await Navigation.PushAsync(new EditMonsterPage(_viewModel));//Editing the character page
         }
 
         private async void Delete_Clicked(object sender, EventArgs e)
         {
 
-            await Navigation.PushAsync(new DeleteMonsterPage(_viewModel));
+            await Navigation.PushAsync(new DeleteMonsterPage(_viewModel));//deleting the character page
 
         }
 
         private async void Cancel_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PopAsync();
+            await Navigation.PopAsync();//goes back to the previous page
         }
 
     }

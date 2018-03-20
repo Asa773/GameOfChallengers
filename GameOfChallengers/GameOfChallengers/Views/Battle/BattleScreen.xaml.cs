@@ -21,10 +21,11 @@ namespace GameOfChallengers.Views.Battle
 		public BattleScreen ()
 		{
 			InitializeComponent ();
-            game.Start(false);
+            game.Start(false); //check to start the game
             RefreshBattleScreen();
 		}
 
+        //refresh the battle screen to add the images to the gameboard
         public void RefreshBattleScreen()
         {
             TurnImage.Source = game.battle.GetCreatureTurnImage();
@@ -49,6 +50,7 @@ namespace GameOfChallengers.Views.Battle
 
         }
 
+        //gets the image for the creatures
         private FileImageSource GetImage(Creature creature)
         {
 
@@ -67,24 +69,25 @@ namespace GameOfChallengers.Views.Battle
         }
 
        
-
+        //Move is done depending on the gridcell the player wanted to move the creature
         public void MoveAndAttack(int i, int j)
         {
             game.battle.SelectedGridCellI = i;
             game.battle.SelectedGridCellJ = j;
-            int result = game.NextTarget();
+            int result = game.NextTarget(); //checks for the result from the game
             if(result == 0)
             {
-                GameOver();
+                GameOver(); //when 0 then the game is over which means game has ended
                 return;
             }else if(result == 1)
             {
-                BattleOver();
+                BattleOver();//when 1 then the battle is over which means only round  is done
                 return;
             }
             RefreshBattleScreen();
         }
 
+        //responses when battle has over asks to continue to proceed to the next battle
         private async void BattleOver()
         {
 
@@ -102,6 +105,7 @@ namespace GameOfChallengers.Views.Battle
         }
 
 
+        //reponses to the game over and gives the score for that game
         private async void GameOver()
         {
 
@@ -117,79 +121,79 @@ namespace GameOfChallengers.Views.Battle
                 Navigation.RemovePage(this);
             }
         }
-
+        //Movement for the creature and attacks the target
         private void Clicked00(object sender, EventArgs e)
         {
-            MoveAndAttack(0, 0);
+            MoveAndAttack(0, 0); //MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
 
         private void Clicked01(object sender, EventArgs e)
         {
-            MoveAndAttack(0,1);
+            MoveAndAttack(0,1);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked02(object sender, EventArgs e)
         {
-            MoveAndAttack(0,2);
+            MoveAndAttack(0,2);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked03(object sender, EventArgs e)
         {
-            MoveAndAttack(0,3);
+            MoveAndAttack(0,3);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked04(object sender, EventArgs e)
         {
-            MoveAndAttack(0,4);
+            MoveAndAttack(0,4);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked05(object sender, EventArgs e)
         {
-            MoveAndAttack(0,5);
+            MoveAndAttack(0,5);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked10(object sender, EventArgs e)
         {
-            MoveAndAttack(1,0);
+            MoveAndAttack(1,0);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked11(object sender, EventArgs e)
         {
-            MoveAndAttack(1,1);
+            MoveAndAttack(1,1);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked12(object sender, EventArgs e)
         {
-            MoveAndAttack(1,2);
+            MoveAndAttack(1,2);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked13(object sender, EventArgs e)
         {
-            MoveAndAttack(1,3);
+            MoveAndAttack(1,3);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked14(object sender, EventArgs e)
         {
-            MoveAndAttack(1,4);
+            MoveAndAttack(1,4);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked15(object sender, EventArgs e)
         {
-            MoveAndAttack(1,5);
+            MoveAndAttack(1,5);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked20(object sender, EventArgs e)
         {
-            MoveAndAttack(2,0);
+            MoveAndAttack(2,0);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked21(object sender, EventArgs e)
         {
-            MoveAndAttack(2,1);
+            MoveAndAttack(2,1);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked22(object sender, EventArgs e)
         {
-            MoveAndAttack(2,2);
+            MoveAndAttack(2,2);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked23(object sender, EventArgs e)
         {
-            MoveAndAttack(2,3);
+            MoveAndAttack(2,3);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked24(object sender, EventArgs e)
         {
-            MoveAndAttack(2,4);
+            MoveAndAttack(2,4);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
         private void Clicked25(object sender, EventArgs e)
         {
-            MoveAndAttack(2,5);
+            MoveAndAttack(2,5);//MoveAndAttack(row,column) where the creature can be moved depending on the row and column position
         }
 
 

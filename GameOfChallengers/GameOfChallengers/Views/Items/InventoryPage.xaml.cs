@@ -29,8 +29,9 @@ namespace GameOfChallengers.Views.Items
         {
            
             InitializeComponent();
+            // Set the data binding for the page
             BindingContext = _viewModel = ItemsViewModel.Instance;
-            newcPage = page;
+            newcPage = page; //page to assign items in new character page
             character = page.Data; 
         }
 
@@ -38,8 +39,9 @@ namespace GameOfChallengers.Views.Items
         public InventoryPage(EditCharacter page)//(Creature Data)
         {
             InitializeComponent();
+            // Set the data binding for the page
             BindingContext = _viewModel = ItemsViewModel.Instance;
-            editPage = page;
+            editPage = page;//page to assign items in edit character page
             character = page.Data;
         }
 
@@ -51,9 +53,9 @@ namespace GameOfChallengers.Views.Items
                 return;
 
             //  character.AddItem(data.Location, data.Id);
-            ItemsSelected.Add(data);
+            ItemsSelected.Add(data); //when items are selected they are added
             message = message + data.Name + "  added" + "\n";
-            AddedItem.Text = message;
+            AddedItem.Text = message; 
         }
 
 
@@ -61,17 +63,17 @@ namespace GameOfChallengers.Views.Items
         {
             if (ItemsSelected == null)
             {
-                await Navigation.PopAsync();
+                await Navigation.PopAsync();//If no items are selected then sent back to the edit/new character page
             }
             else
             {
                 if (newcPage == null)
                 {
-                    editPage.SaveItemAsync(ItemsSelected);
+                    editPage.SaveItemAsync(ItemsSelected);// the items will be saved to the edit character page 
                 }
                 else
                 {
-                    newcPage.SaveItem(ItemsSelected);
+                    newcPage.SaveItem(ItemsSelected);// the items will be saved to the new character page 
                 }
 
                 Navigation.RemovePage(this);

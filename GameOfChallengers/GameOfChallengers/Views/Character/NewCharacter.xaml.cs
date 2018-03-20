@@ -16,7 +16,7 @@ namespace GameOfChallengers.Views.Character
     public partial class NewCharacter : ContentPage
     {
         public Creature Data { get; set; }
-        String selectedImg = "BlankImage.jpeg" ; 
+        String selectedImg = "BlankImage.jpeg" ; //set to the blank before setting a new one
 
         // Constructor for the page, will create a new blank character
         public NewCharacter()
@@ -38,12 +38,13 @@ namespace GameOfChallengers.Views.Character
             };
            
             BindingContext = this;
-           
-             selectedImg = ImagePicker.SelectedItem.ToString();
+            //To the select the images while editing the character
+            selectedImg = ImagePicker.SelectedItem.ToString();
            // ChangeImg.Source = selectedImg;
             Data.ImageURI = ImagePicker.SelectedItem.ToString();
         }
 
+        //Sets the image as per the selected image by the player
         private void setImage(object sender, EventArgs e)
         {
             selectedImg = ImagePicker.SelectedItem.ToString();
@@ -58,11 +59,12 @@ namespace GameOfChallengers.Views.Character
             await Navigation.PopAsync();
         }
 
+        //Save the selected assigned items to the character
         public void SaveItem(List<Item> ItemsList)
         {
             foreach (var item in ItemsList)
             {
-                if (item.Location == ItemLocationEnum.Finger)
+                if (item.Location == ItemLocationEnum.Finger)//Check if the finger item should be assigned to right or left finger 
                 {
                     if (Data.RightFinger == null)
                     {
@@ -74,7 +76,7 @@ namespace GameOfChallengers.Views.Character
                     }
 
                 }
-                Data.AddItem(item.Location, item.Id);
+                Data.AddItem(item.Location, item.Id);//Add that item to the character depending on the location of the item selected
             }
         }
 
@@ -86,7 +88,7 @@ namespace GameOfChallengers.Views.Character
 
         private async void AddItems_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new InventoryPage(this));
+            await Navigation.PushAsync(new InventoryPage(this));//takes to the inventory page when add items is clicked
         }
     }
 }
