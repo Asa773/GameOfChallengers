@@ -84,6 +84,7 @@ namespace GameOfChallengers.Services
 
             var mockScore = new List<Score>
             {
+                //Default Score
                new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false,  Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ },
 
             };
@@ -98,7 +99,7 @@ namespace GameOfChallengers.Services
         // Creature CRUDi
         public async Task<bool> AddAsync_Creature(Creature data)
         {
-            _creatureDataset.Add(data);
+            _creatureDataset.Add(data);//Add the creature
 
             return await Task.FromResult(true);
         }
@@ -111,7 +112,7 @@ namespace GameOfChallengers.Services
                 return false;
             }
 
-            myData.Update(data);
+            myData.Update(data);//Update the creature 
 
             return await Task.FromResult(true);
         }
@@ -121,12 +122,12 @@ namespace GameOfChallengers.Services
             var myData = _creatureDataset.FirstOrDefault(arg => arg.Id == data.Id);
             _creatureDataset.Remove(myData);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(true);//Delete the creature
         }
 
         public async Task<Creature> GetAsync_Creature(string id)
         {
-            return await Task.FromResult(_creatureDataset.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(_creatureDataset.FirstOrDefault(s => s.Id == id));//Read Data
         }
 
         public async Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false)
@@ -135,7 +136,7 @@ namespace GameOfChallengers.Services
         }
 
 
-        // Item
+        // Item CRUDi
         public async Task<bool> InsertUpdateAsync_Item(Item data)
         {
 
@@ -159,7 +160,7 @@ namespace GameOfChallengers.Services
         }
         public async Task<bool> AddAsync_Item(Item data)
         {
-            _itemDataset.Add(data);
+            _itemDataset.Add(data); //Add the item
 
             return await Task.FromResult(true);
         }
@@ -172,7 +173,7 @@ namespace GameOfChallengers.Services
                 return false;
             }
 
-            myData.Update(data);
+            myData.Update(data); //Update the item 
 
             return await Task.FromResult(true);
         }
@@ -182,12 +183,12 @@ namespace GameOfChallengers.Services
             var myData = _itemDataset.FirstOrDefault(arg => arg.Id == data.Id);
             _itemDataset.Remove(myData);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(true);//Delete the item
         }
 
         public async Task<Item> GetAsync_Item(string id)
         {
-            return await Task.FromResult(_itemDataset.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(_itemDataset.FirstOrDefault(s => s.Id == id));//Read Data
         }
 
         public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
@@ -196,10 +197,10 @@ namespace GameOfChallengers.Services
         }
 
 
-        // Score
+        // Score CRUDi
         public async Task<bool> AddAsync_Score(Score data)
         {
-            _scoreDataset.Add(data);
+            _scoreDataset.Add(data);//Add the score
 
             return await Task.FromResult(true);
         }
@@ -212,7 +213,7 @@ namespace GameOfChallengers.Services
                 return false;
             }
 
-            myData.Update(data);
+            myData.Update(data);//Update the score 
 
             return await Task.FromResult(true);
         }
@@ -222,12 +223,12 @@ namespace GameOfChallengers.Services
             var myData = _scoreDataset.FirstOrDefault(arg => arg.Id == data.Id);
             _scoreDataset.Remove(myData);
 
-            return await Task.FromResult(true);
+            return await Task.FromResult(true);//Delete the score
         }
 
         public async Task<Score> GetAsync_Score(string id)
         {
-            return await Task.FromResult(_scoreDataset.FirstOrDefault(s => s.Id == id));
+            return await Task.FromResult(_scoreDataset.FirstOrDefault(s => s.Id == id));//Read Data
         }
 
         public async Task<IEnumerable<Score>> GetAllAsync_Score(bool forceRefresh = false)

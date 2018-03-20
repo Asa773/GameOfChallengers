@@ -72,7 +72,7 @@ namespace GameOfChallengers.Services
         }
         private async void InitilizeSeedData()
         {
-
+            //Items
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Trident", Description = "sharp and pointy X3", Damage = 3, Value = 3, Range = 0, Attribute = AttributeEnum.Attack, Location = ItemLocationEnum.PrimaryHand, ImageURI = "trident.jpeg" });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Shield", Description = "to block things", Value = 5, Range = 0, Attribute = AttributeEnum.Defense, Location = ItemLocationEnum.OffHand, ImageURI = "sheild.jpg" });
             await AddAsync_Item(new Item { Id = Guid.NewGuid().ToString(), Name = "Running Boots", Description = "boots for running", Value = 1, Range = 0, Attribute = AttributeEnum.Speed, Location = ItemLocationEnum.Feet, ImageURI = "boots.jpg" });
@@ -98,8 +98,8 @@ namespace GameOfChallengers.Services
 
         }
 
-        // Item
-        public async Task<bool> InsertUpdateAsync_Item(Item data)
+        // Item CRUDi
+        public async Task<bool> InsertUpdateAsync_Item(Item data) //Items from JSON
         {
 
             // Check to see if the item exist
@@ -127,7 +127,7 @@ namespace GameOfChallengers.Services
         }
         public async Task<bool> AddAsync_Item(Item data)
         {
-            var result = await App.Database.InsertAsync(data);
+            var result = await App.Database.InsertAsync(data); //Add the item
             if (result == 1)
             {
                 return true;
@@ -138,7 +138,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> UpdateAsync_Item(Item data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            var result = await App.Database.UpdateAsync(data);//Update the item 
             if (result == 1)
             {
                 return true;
@@ -149,7 +149,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> DeleteAsync_Item(Item data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            var result = await App.Database.DeleteAsync(data);//Delete the Item
             if (result == 1)
             {
                 return true;
@@ -160,7 +160,7 @@ namespace GameOfChallengers.Services
 
         public async Task<Item> GetAsync_Item(string id)
         {
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(id))//Read Data
             {
                 return null;
             }
@@ -168,7 +168,7 @@ namespace GameOfChallengers.Services
             // Need to add a try catch here, to catch when looking for something that does not exist in the db...
             try
             {
-                var result = await App.Database.GetAsync<Item>(id);
+                var result = await App.Database.GetAsync<Item>(id); 
                 return result;
             }
             catch (Exception)
@@ -191,10 +191,10 @@ namespace GameOfChallengers.Services
             }
         }
 
-        // Creature
+        // Creature CRUDi
         public async Task<bool> AddAsync_Creature(Creature data)
         {
-            var result = await App.Database.InsertAsync(data);
+            var result = await App.Database.InsertAsync(data);//Add the creature
             if (result == 1)
             {
                 return true;
@@ -205,7 +205,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> UpdateAsync_Creature(Creature data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            var result = await App.Database.UpdateAsync(data);//Update the creature 
             if (result == 1)
             {
                 return true;
@@ -216,7 +216,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> DeleteAsync_Creature(Creature data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            var result = await App.Database.DeleteAsync(data);//Delete the creature
             if (result == 1)
             {
                 return true;
@@ -227,7 +227,7 @@ namespace GameOfChallengers.Services
 
         public async Task<Creature> GetAsync_Creature(string id)
         {
-            var result = await App.Database.GetAsync<Creature>(id);
+            var result = await App.Database.GetAsync<Creature>(id);//Read Data
             return result;
         }
 
@@ -245,10 +245,10 @@ namespace GameOfChallengers.Services
             }
         }
 
-        // Score
+        // Score CRUDi
         public async Task<bool> AddAsync_Score(Score data)
         {
-            var result = await App.Database.InsertAsync(data);
+            var result = await App.Database.InsertAsync(data);//Add the score 
             if (result == 1)
             {
                 return true;
@@ -259,7 +259,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> UpdateAsync_Score(Score data)
         {
-            var result = await App.Database.UpdateAsync(data);
+            var result = await App.Database.UpdateAsync(data);//Update the score 
             if (result == 1)
             {
                 return true;
@@ -270,7 +270,7 @@ namespace GameOfChallengers.Services
 
         public async Task<bool> DeleteAsync_Score(Score data)
         {
-            var result = await App.Database.DeleteAsync(data);
+            var result = await App.Database.DeleteAsync(data);//Delete the score
             if (result == 1)
             {
                 return true;
@@ -281,7 +281,7 @@ namespace GameOfChallengers.Services
 
         public async Task<Score> GetAsync_Score(string id)
         {
-            var result = await App.Database.GetAsync<Score>(id);
+            var result = await App.Database.GetAsync<Score>(id);//Read Data
             return result;
         }
 
