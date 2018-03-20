@@ -78,34 +78,9 @@ namespace GameOfChallengers.ViewModels
 
         public void setMonsters()
         {
-            Dataset.Clear();
-            //if (MonstersViewModel.Instance.Dataset.Count == 0)
-            //{
-            //    MonstersViewModel.Instance.LoadDataCommand.Execute(null);
-            //}
-            //else if (MonstersViewModel.Instance.NeedsRefresh())
-            //{
-            //    MonstersViewModel.Instance.LoadDataCommand.Execute(null);
-            //}
-            //if (viewModel.Dataset.Count == 0)
-            //{
-            //    viewModel.LoadDataCommand.Execute(null);
-            //}
-            //else if (viewModel.NeedsRefresh())
-            //{
-            //    viewModel.LoadDataCommand.Execute(null);
-            //}
-            //MonstersViewModel.Instance.LoadDataCommand.Execute(null);
 
-            var myData = MonstersViewModel.Instance;
+            var dataset = MonstersViewModel.Instance.Dataset;
 
-            // Load data 
-            var canExecute = myData.LoadDataCommand.CanExecute(null);
-            myData.LoadDataCommand.Execute(null);
-            var dataset = myData.GetAllCreatures();
-
-            // MonstersViewModel.Instance.LoadDataCommand.Execute(null); 
-            //var dataset = MonstersViewModel.Instance.GetAllCreatures();
             var tempDataset = new List<Creature>();
             int dateSeed = DateTime.Now.Millisecond;
             Random rand = new Random(dateSeed);
@@ -145,27 +120,28 @@ namespace GameOfChallengers.ViewModels
                 }
                 monster.CurrHealth = monster.MaxHealth;
 
-                var itemsData = ItemsViewModel.Instance;
-                // Load data 
-                var canExecuteItems = itemsData.LoadDataCommand.CanExecute(null);
-                itemsData.LoadDataCommand.Execute(null);
-                var items = itemsData.Dataset;
-                //var items = ItemsViewModel.Instance.Dataset;
-                int itemCount = 0;
-                while(itemCount < 3)
-                {
-                    var item = items[rand.Next(items.Count)];
-                    var itemLocation = item.Location;
-                    if (item.Location == ItemLocationEnum.Finger)
-                    {
-                        itemLocation = ItemLocationEnum.RightFinger;
-                    }
-                    if(monster.GetItemByLocation(itemLocation) == null)
-                    {
-                        monster.AddItem(itemLocation, item.Id);
-                        itemCount++;
-                    }
-                }
+                // Load data
+                var myItemViewModel = ItemsViewModel.Instance;
+                var items = myItemViewModel.Dataset;
+
+
+                // Mike, commenting this out for now...
+
+                //int itemCount = 0;
+                //while(itemCount < 3)
+                //{
+                //    var item = items[rand.Next(items.Count)];
+                //    var itemLocation = item.Location;
+                //    if (item.Location == ItemLocationEnum.Finger)
+                //    {
+                //        itemLocation = ItemLocationEnum.RightFinger;
+                //    }
+                //    if(monster.GetItemByLocation(itemLocation) == null)
+                //    {
+                //        monster.AddItem(itemLocation, item.Id);
+                //        itemCount++;
+                //    }
+                //}
                 //load unique drop
                 var uItem = items[rand.Next(items.Count)];
                 monster.UniqueItem = uItem.Id;

@@ -19,28 +19,48 @@ namespace GameOfChallengers.Controllers
         
         public GameScoreController()
         {
-            GameScore = new Score(); //calls the score
+            GameScore = new Score();
             
             TeamViewModel.Instance.LoadTeam();
-            Team = TeamViewModel.Instance;//team will be assigned
+            Team = TeamViewModel.Instance;
         }
 
-        public Score Start(bool auto)//starts when auto is given
+        // Mike, I made this at the start of the game, rather than lower.  
+        // That way it is only called once.
+
+
+        public void LoadDataSets()
         {
+
+            var myData = MonstersViewModel.Instance;
+            var canExecute = myData.LoadDataCommand.CanExecute(null);
+            myData.LoadDataCommand.Execute(null);
+
+            var myItemViewModel = ItemsViewModel.Instance;
+            canExecute = myItemViewModel.LoadDataCommand.CanExecute(null);
+            myItemViewModel.LoadDataCommand.Execute(null);
+
+        }
+
+
+        public Score Start(bool auto)
+        {
+            LoadDataSets();
+
             Team = TeamViewModel.Instance;
 
-            while (Team.Dataset.Count > 0)//checks if the character's team is not zero
+            while (Team.Dataset.Count > 0)
             {
-                round++;//round value will increase
-                if (auto)//when its true the auto battle starts
+                round++;
+                if (auto)
                 {
-                    battle.SetBattleController(round);//Batllecontroller will start to work
-                    GameScore = battle.AutoBattle(GameScore);//GameScore will be assigned
+                    battle.SetBattleController(round);
+                    GameScore = battle.AutoBattle(GameScore);
                     GameScore.Auto = true;
                 }
                 else
                 {
-                    battle.SetBattleController(round);//Maunal battle will start when its not auot
+                    battle.SetBattleController(round);
                     //battleScreen.RefreshBattleScreen();
                     GameScore = battle.Battle(GameScore);
                     GameScore.Auto = false;
