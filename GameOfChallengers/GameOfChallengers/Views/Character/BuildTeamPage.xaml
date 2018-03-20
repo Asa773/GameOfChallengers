@@ -39,7 +39,7 @@
                     ItemDisplayBinding="{Binding Name}"
                         SelectedItem="{Binding Data.Name, Mode=TwoWay}" />
                 <Button  
-                    Text="Save Selected Characters as the Team" 
+                    Text="Save Selected Characters as the Team and Go Back" 
                     FontAttributes="Bold"
                    Clicked="SaveTeam_Clicked" 
                     HorizontalOptions="Center"
@@ -47,14 +47,13 @@
                     BackgroundColor="DarkTurquoise"
                    />
                 <Button  
-                    Text="Auto Select" 
+                    Text="Start the Game" 
                     FontAttributes="Bold"
                     Clicked="AutoSelect_Clicked" 
                     HorizontalOptions="Center"
                     TextColor="Black"
                     BackgroundColor="DarkTurquoise"
-                    HeightRequest="40"
-                         WidthRequest="100"/>
+                    HeightRequest="40"/>
                 
             </StackLayout>
         </ScrollView>

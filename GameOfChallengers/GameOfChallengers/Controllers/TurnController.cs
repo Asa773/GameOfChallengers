@@ -18,26 +18,26 @@ namespace GameOfChallengers.Controllers
             bool succeeded = false;
             int dateSeed = DateTime.Now.Millisecond;
             Random roll = new Random(dateSeed);
-            int rollValue = roll.Next(1, 21);//Dice roll between 1 and 21
+            int rollValue = roll.Next(1, 21);//Dice roll between 1 and 20
             if (rollValue == 1)
             {
-                return false;//returns false when its 1 which means it a miss
+                return false;//returns false when its 1 which means it is a miss
             }
             if (rollValue == 20)
             {
-                return true;//returns true when its 20 which means it a hit
+                return true;//returns true when its 20 which means it is a hit
             }
             //run the attack of creature1 on creature2, return if it succeeded or not
             //attack is successful(true) if creature1 score > creature2 score
-            if (creature1.Type == 0) //checks if creature type is character or monster 
+            if (creature1.Type == 0) //checks if creature1 is a character
             {
-                score1 = rollValue + creature1.Level + cc.GetBaseAttack(creature1); //score1 will be given to the character when creature1 is 0
-                score2 = mc.GetBaseDefense(creature2) + creature2.Level;//score2 will be given to the monster when creature1 is 0
+                score1 = rollValue + creature1.Level + cc.GetBaseAttack(creature1); //score1 will be given to the character
+                score2 = mc.GetBaseDefense(creature2) + creature2.Level;//score2 will be given to the monster
             }
             else
             {
-                score1 = rollValue + creature2.Level + mc.GetBaseAttack(creature2);//score1 will be given to the monster when creature1 is not 0
-                score2 = cc.GetBaseDefense(creature1) + creature1.Level;//score2 will be given to the character when creature1 is not 0
+                score1 = rollValue + creature1.Level + mc.GetBaseAttack(creature1);//score1 will be given to the monster
+                score2 = cc.GetBaseDefense(creature2) + creature2.Level;//score2 will be given to the character
             }
 
             if (score1 > score2)
@@ -55,11 +55,11 @@ namespace GameOfChallengers.Controllers
             int finalDamage = 0;
             if (creature.Type == 0)
             {
-                finalDamage = cc.GetBaseDamage(creature) + (int)Math.Ceiling((double)creature.Level / 4); //damage calculate for the character if the creature is 0
+                finalDamage = cc.GetBaseDamage(creature) + (int)Math.Ceiling((double)creature.Level / 4); //damage calculate for a character
             }
             else
             {
-                finalDamage = mc.GetBaseDamage(creature) + (int)Math.Ceiling((double)creature.Level / 4);//damage calculate for the character if the creature is not 0
+                finalDamage = mc.GetBaseDamage(creature) + (int)Math.Ceiling((double)creature.Level / 4);//damage calculate for a monster
             }
             return finalDamage;
         }

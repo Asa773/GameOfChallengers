@@ -7,22 +7,23 @@
         <ScrollView>
             <StackLayout Orientation="Vertical">
   
-                        <Frame BackgroundColor="LightBlue">
+                        <Frame BackgroundColor="LightBlue" VerticalOptions="StartAndExpand">
                            <ScrollView > 
-                            <Label x:Name = "L1" Text="messages displayed here"
+                            <Label x:Name = "L1" Text="messages are displayed from Debug"
                                    TextColor="Black"
                               HorizontalTextAlignment="Center"
                               VerticalOptions="CenterAndExpand"/>
+                        <Label Text="If we had time we were going to make an ObservableCollection of messages(strings) and the do the same list as items, monsters, etc. to display them here"></Label>
                              </ScrollView>
                         </Frame>
                           
                          <Image 
                             x:Name ="TurnImage"
                             VerticalOptions="Center" 
-                            HeightRequest="150"
+                            HeightRequest="100"
                             HorizontalOptions="Fill"/>
                 
-                            <Label x:Name = "L2" Text="Creature Turn"
+                            <Label x:Name = "L2" Text="It is the character show above's turn.  Sellect a monster to attack!"
                                    TextColor="Black"
                               HorizontalTextAlignment="Center"
                               VerticalOptions="CenterAndExpand"/>

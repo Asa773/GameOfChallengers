@@ -18,7 +18,7 @@ namespace GameOfChallengers.ViewModels
 
         public static CharactersViewModel Instance
         {
-            //created an instance of charactersViewModel
+            //create an instance of charactersViewModel if needed
             get
             {
                 if (_instance == null)

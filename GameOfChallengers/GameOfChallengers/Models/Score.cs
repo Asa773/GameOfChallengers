@@ -12,7 +12,7 @@ namespace GameOfChallengers.Models
         public string Id { get; set; }// unique id for each score
         public string Name { get; set; }// name of player
         public int FinalScore { get; set; }//final score of game
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; }//date that the score was made/earned
         public int Round { get; set; }//this will be used for scoring and to determine the level of the 6 monsters
         public int Turns { get; set; }//this will count the # of turns for the end game score
         public bool Auto { get; set; }//this is so that the score can show if the game was turn based or on auto mode

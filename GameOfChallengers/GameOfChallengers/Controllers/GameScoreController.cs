@@ -40,6 +40,10 @@ namespace GameOfChallengers.Controllers
             canExecute = myItemViewModel.LoadDataCommand.CanExecute(null);
             myItemViewModel.LoadDataCommand.Execute(null);
 
+            var myCharacterViewModel = CharactersViewModel.Instance;
+            canExecute = myCharacterViewModel.LoadDataCommand.CanExecute(null);
+            myCharacterViewModel.LoadDataCommand.Execute(null);
+
         }
 
 
@@ -69,6 +73,7 @@ namespace GameOfChallengers.Controllers
                 int result = battle.MonstersFight(GameScore);//get to a character's turn or the game is over
                 if (result == 0)//game is over
                 {
+                    GameScore = battle.BattleEnd(GameScore);
                     ReportScore();
                 }
             }
@@ -84,10 +89,12 @@ namespace GameOfChallengers.Controllers
             int result = battle.MonstersFight(GameScore);//have the monsters take their turns and report the state of the game
             if(result == 0)//game is over
             {
+                //build the final score
+                GameScore = battle.BattleEnd(GameScore);
                 ReportScore();
             }else if (result == 1)//battle is over
             {
-                GameScore = battle.BattleEnd(GameScore);
+                GameScore = battle.BattleEnd(GameScore);//get current score
                 round++;//round value will increase
                 battle.SetBattleController(round);//new battle
             }

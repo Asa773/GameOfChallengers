@@ -34,11 +34,9 @@ namespace GameOfChallengers.ViewModels
 
         public TeamViewModel()
         {
-            //a list of the characters on the team
-            //a list of actuall characters to use in the current game
-            //the second list will reload from the first at the start of each game
-            //the first list will be reset by the build team actions
-
+            //a list of the characters on the team, the actuall characters to use in the current game
+            //the list will reload at the start of each game
+            
             Title = "Current Team";
             Dataset = new ObservableCollection<Creature>();
         }
@@ -68,15 +66,8 @@ namespace GameOfChallengers.ViewModels
         public void LoadTeam()
         {
             Dataset.Clear();
-            if (CharactersViewModel.Instance.Dataset.Count == 0)
-            {
-                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
-            }
-            else if (CharactersViewModel.Instance.NeedsRefresh())
-            {
-                CharactersViewModel.Instance.LoadDataCommand.Execute(null);
-            }
-            var dataset = CharactersViewModel.Instance.GetAllCreatures();
+            var dataset = CharactersViewModel.Instance.Dataset;
+
             int teamCount = 0;
             foreach (var data in dataset)
             {

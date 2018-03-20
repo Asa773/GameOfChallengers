@@ -11,7 +11,6 @@ namespace GameOfChallengers.Views.Items
     public partial class AssignItemPage : ContentPage
     {
         private TeamViewModel _viewModel;
-        private DroppedItemViewModel _viewModel1;
         public ObservableCollection<Item> _Dataset { get; set; }//Items collection
         public Creature Data { get; set; }
         public ObservableCollection<Creature> Dataset { get; set; }//Items will be assigned to this list of character

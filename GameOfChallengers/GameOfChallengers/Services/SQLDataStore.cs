@@ -83,7 +83,7 @@ namespace GameOfChallengers.Services
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Golden Fighter ", OnTeam = true, Attack = 10, Defense = 10, Speed = 1, MaxHealth = 15, CurrHealth = 10, Alive = true, ImageURI = "goldenfighter.jpg" });
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Red Dragon", OnTeam = true, Attack = 20, Defense = 20, Speed = 2, MaxHealth = 25, CurrHealth = 20, Alive = true, ImageURI = "reddragon.jpeg" });
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Knight", OnTeam = true, Attack = 30, Defense = 30, Speed = 3, MaxHealth = 35, CurrHealth = 30, Alive = true, ImageURI = "knight.jpeg" });
-            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Kingsmen", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "kingsmen.jpg" });
+            await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Kingsmen", OnTeam = false, Attack = 40, Defense = 40, Speed = 1, MaxHealth = 45, CurrHealth = 40, Alive = true, ImageURI = "kingsmen.jpeg" });
             await AddAsync_Creature(new Creature { Id = Guid.NewGuid().ToString(), Type = 0, Name = "Warrior", OnTeam = false, Attack = 50, Defense = 50, Speed = 2, MaxHealth = 55, CurrHealth = 50, Alive = true, ImageURI = "warrior.jpeg" });
 
             //monsters

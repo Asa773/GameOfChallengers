@@ -5,7 +5,6 @@ namespace GameOfChallengers.Models
 {
     public class LevelingUp
     {
-
         public int XP { get; set; }// 0-355000
         public int Level { get; set; }// 1-20
         public int Attack { get; set; }// creature's base attack stat
@@ -14,7 +13,6 @@ namespace GameOfChallengers.Models
 
         public LevelingUp()
         {
-           // Id = null;
             XP = 0;
             Level = 1;
             Attack = 1;

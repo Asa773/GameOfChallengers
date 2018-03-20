@@ -39,7 +39,7 @@ namespace GameOfChallengers.Views.Character
         }
 
         //used for picking the 6 chracters for the character team by the player.
-        private async void SaveTeam_Clicked(object sender, EventArgs e)
+        private void SaveTeam_Clicked(object sender, EventArgs e)
         {
             Creature c1 = (Creature)CharacterPicker1.SelectedItem;
             if (c1 != null)
@@ -78,13 +78,52 @@ namespace GameOfChallengers.Views.Character
             }
             foreach(Creature c in newTeam) 
             {
-                c.OnTeam = true;//checking the characters on team
+                c.OnTeam = true;//making the characters on the team
             }
-            await Navigation.PushAsync(new BattleScreen()); //proceeds to battle screen after selection
+            Navigation.RemovePage(this);
         }
         //when player chooses the auto elect button then the characters for the character team will be selected automatically.
         private async void AutoSelect_Clicked(object sender, EventArgs e)
         {
+            Creature c1 = (Creature)CharacterPicker1.SelectedItem;
+            if (c1 != null)
+            {
+                newTeam.Add(c1);
+            }
+            Creature c2 = (Creature)CharacterPicker2.SelectedItem;
+            if (c2 != null)
+            {
+                newTeam.Add(c2);
+            }
+            Creature c3 = (Creature)CharacterPicker3.SelectedItem;
+            if (c3 != null)
+            {
+                newTeam.Add(c3);
+            }
+            Creature c4 = (Creature)CharacterPicker4.SelectedItem;
+            if (c4 != null)
+            {
+                newTeam.Add(c4);
+            }
+            Creature c5 = (Creature)CharacterPicker5.SelectedItem;
+            if (c5 != null)
+            {
+                newTeam.Add(c5);
+            }
+            Creature c6 = (Creature)CharacterPicker6.SelectedItem;
+            if (c6 != null)
+            {
+                newTeam.Add(c6);
+            }
+
+            for (int i = 0; i < viewModel.Dataset.Count; i++)
+            {
+                viewModel.Dataset[i].OnTeam = false;
+            }
+            foreach (Creature c in newTeam)
+            {
+                c.OnTeam = true;//making the characters on the team
+            }
             await Navigation.PushAsync(new BattleScreen());//proceeds to battle screen after selection
         }
     }

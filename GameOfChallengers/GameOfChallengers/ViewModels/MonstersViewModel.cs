@@ -20,7 +20,7 @@ namespace GameOfChallengers.ViewModels
         // Make this a singleton so it only exist one time because holds all the data records in memory
         public static MonstersViewModel Instance
         {
-            //created an instance of monsterViewModel
+            //create an instance of monsterViewModel if needed
             get
             {
                 if (_instance == null)

@@ -84,7 +84,7 @@ namespace GameOfChallengers.Services
 
             var mockScore = new List<Score>
             {
-                //Default Score
+               //Default Score
                new Score { Id = Guid.NewGuid().ToString(), Name = "Player 1", Date = DateTime.Now, FinalScore = 100, Auto = false,  Round = 0, TotalXP = 0, Turns = 0/*, TotalMonstersKilled = null, TotalItemsDropped = null*/ },
 
             };

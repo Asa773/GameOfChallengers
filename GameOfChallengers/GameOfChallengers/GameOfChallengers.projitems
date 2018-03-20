@@ -89,7 +89,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\IFileHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Attributes.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Creature.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\CreatureInventory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Item.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Locations.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\IDataStore.cs" />
@@ -205,7 +204,6 @@
       <DependentUpon>NewCharacter.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\LevelingUp.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DroppedItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Views\MainPage.xaml">

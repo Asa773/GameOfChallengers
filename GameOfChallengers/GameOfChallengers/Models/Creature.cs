@@ -26,7 +26,7 @@ namespace GameOfChallengers.Models
         public bool Alive { get; set; }// 1 is alive, 0 is dead
         public string ImageURI { get; set; }// image to be inserted
         public string UniqueItem { get; set; }// unique item for monsters
-        public int Damage { get; set; }
+        public int Damage { get; set; }// damage value for a creature
 
         public string Head { get; set; }  //Head item
         public string Necklass { get; set; }//Necklass item
@@ -37,7 +37,7 @@ namespace GameOfChallengers.Models
         public string RightFinger { get; set; }//RightFinger item
 
 
-        public Creature() //Instantiated
+        public Creature() //Instantiated, some values that must be defaulted
         {
             Alive = true;
             Level = 1;
@@ -83,7 +83,7 @@ namespace GameOfChallengers.Models
             ImageURI = newData.ImageURI;
         }
 
-        //Assign ItemIDs
+        //return all item ids
         public List<string> GetItemIDs()
         {
             List<string> itemIds = new List<string>();
@@ -118,7 +118,7 @@ namespace GameOfChallengers.Models
             return itemIds;
         }
 
-        //Assign HandItems
+        //return item ids from hand items only
         public List<string> GetHandIDs()
         {
             List<string> itemIds = new List<string>();

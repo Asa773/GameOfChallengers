@@ -24,7 +24,7 @@ namespace GameOfChallengers.Models
 
         public ItemLocationEnum Location { get; set; }// enum for what creature location the item is attached to
 
-        public string ImageURI { get; set; }// image to be inserted
+        public string ImageURI { get; set; }// image to be used
 
         public Item()
         {

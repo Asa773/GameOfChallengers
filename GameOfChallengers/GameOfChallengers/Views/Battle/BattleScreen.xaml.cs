@@ -77,11 +77,11 @@ namespace GameOfChallengers.Views.Battle
             int result = game.NextTarget(); //checks for the result from the game
             if(result == 0)
             {
-                GameOver(); //when 0 then the game is over which means game has ended
+                GameOver(); //when 0 then the game is over
                 return;
             }else if(result == 1)
             {
-                BattleOver();//when 1 then the battle is over which means only round  is done
+                BattleOver();//when 1 then the battle is over which means only round is done
                 return;
             }
             RefreshBattleScreen();

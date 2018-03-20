@@ -79,7 +79,7 @@ namespace GameOfChallengers.ViewModels
             round = roundNum;
         }
 
-        //creating new set of monster on every round 
+        //creates a new set of monsters on every round 
         public void setMonsters()
         {
             Dataset.Clear();
@@ -92,13 +92,14 @@ namespace GameOfChallengers.ViewModels
             {
                 if (data.Type == 1)// just Monsters
                 {
-                    Creature newOne = new Creature();
+                    Creature newOne = new Creature();//makes sure that the actual data is not changed
                     newOne.Update(data);
                     
                     tempDataset.Add(newOne);
 
                 }
             }
+            //create the monsters for the current round
             for (int i = 0; i < 6; i++)
             {
                 int Round = round;
@@ -108,8 +109,8 @@ namespace GameOfChallengers.ViewModels
                 }
                 int index = rand.Next(tempDataset.Count);
                 Creature monster = new Creature();
-                monster.Update(tempDataset[index]);//get a random monster type
-                monster.Id = "monster" + i.ToString();//Guid.NewGuid().ToString();
+                monster.Update(tempDataset[index]);//get a random monster type then update the data for the current round
+                monster.Id = Guid.NewGuid().ToString();
                 monster.Alive = true;
                 monster.Level = Round;
                 monster.XP = lp[Round].XP;
@@ -119,12 +120,12 @@ namespace GameOfChallengers.ViewModels
                 monster.MaxHealth = rand.Next(1, 11) * Round;
                 if(round == 1)
                 {
-                    monster.MaxHealth = 1;
+                    monster.MaxHealth = 1;//round 1 monsters are freebies
                     monster.XP = 100;
                 }
                 monster.CurrHealth = monster.MaxHealth;
 
-                // Load data
+                // Load items
                 var myItemViewModel = ItemsViewModel.Instance;
                 var items = myItemViewModel.Dataset;
 
@@ -135,10 +136,11 @@ namespace GameOfChallengers.ViewModels
                 {
                     var item = items[rand.Next(items.Count)];
                     var itemLocation = item.Location;
-                    if (item.Location == ItemLocationEnum.Finger)
+                    if (item.Location == ItemLocationEnum.Finger)//watch out for the finger
                     {
                         itemLocation = ItemLocationEnum.RightFinger;
                     }
+                    //if that location is available fill it, otherwise try again
                     if (monster.GetItemByLocation(itemLocation) == null)
                     {
                         monster.AddItem(itemLocation, item.Id);

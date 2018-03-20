@@ -47,7 +47,7 @@ namespace GameOfChallengers.Controllers
                 Creature tempMonster = new Creature();
                 tempMonster.Update(monster);
                 tempMonster.Id = monster.Id;
-                originalMonsters.Add(tempMonster);
+                originalMonsters.Add(tempMonster);//save the monster set before the battle for the score
             }
             TurnOrder = GetTurnOrder();
             InitializeGameBoard();//GameBoard will be initialized
@@ -55,7 +55,7 @@ namespace GameOfChallengers.Controllers
 
         internal ImageSource GetCreatureTurnImage()
         {
-            return img;
+            return TurnOrder[turnCounter].ImageURI;
         }
 
         public List<Creature> GetTurnOrder()
@@ -89,6 +89,11 @@ namespace GameOfChallengers.Controllers
             Debug.WriteLine(message);
             Creature character = TurnOrder[turnCounter];//It's character's turn
             turnCounter++;
+            //reset the turn counter when it has gone through the whole list
+            if (turnCounter == TurnOrder.Count - 1)
+            {
+                turnCounter = 0;
+            }
             Creature target = GameBoard[SelectedGridCellI, SelectedGridCellJ];//get a monster target for the character
             if (target == null)
             {
@@ -128,7 +133,12 @@ namespace GameOfChallengers.Controllers
                     MonsterAutoTurn(monster, target, gameScore);//the attack of the monster on the target(character) method is called here
                 }
             }
-            turnCounter = 0;
+            //reset the turn counter when it has gone through the whole list
+            if(turnCounter == TurnOrder.Count - 1)
+            {
+                turnCounter = 0;
+            }
+            
             if (team.Dataset.Count <= 0)//the game is over
             {
                 return 0;
@@ -211,10 +221,10 @@ namespace GameOfChallengers.Controllers
             }
             gameScore = BattleEnd(gameScore);
 
-            return gameScore;//finally the score will be displayed
+            return gameScore;//the final score will be returned
         }
 
-        //this method will be called by when It's character's turn
+        //this method will be called by when it's character's turn
         public void CharacterAutoTurn(Creature character, Creature target, Score score)
         {
             string message = string.Empty;
@@ -253,11 +263,11 @@ namespace GameOfChallengers.Controllers
                         score.TotalItemsDropped += item.FormatOutput() + "\n";
                         message += "\n" + item.Name;
                     }
-                    ItemPool.AddRange(MC.DropItems(target));
+                    ItemPool.AddRange(myItemList);//Dropped items will added to the ItemPool
 
                     Debug.WriteLine(message);
 
-                    //the dead monster will be removed from the turnorder,monster's dataset and the GameBoard as well
+                    //the dead monster will be removed from the turn order, monster's dataset, and the GameBoard
                     TurnOrder.Remove(target);
                     CurrMonsters.Dataset.Remove(target);
                     GameBoardRemove(target);
@@ -271,7 +281,7 @@ namespace GameOfChallengers.Controllers
             }
         }
 
-        //this method will be called by when It's monster's turn
+        //this method will be called by when it's monster's turn
         public void MonsterAutoTurn(Creature monster, Creature target, Score score)
         {
             string message = string.Empty;
@@ -307,7 +317,7 @@ namespace GameOfChallengers.Controllers
                     ItemPool.AddRange(myItemList);//Dropped items will added to the ItemPool
                     Debug.WriteLine(message);
 
-                    //the dead character will be removed from the turnorder,character's team and the GameBoard as well
+                    //the dead character will be removed from the turn order, character's team, and the GameBoard
                     TurnOrder.Remove(target);
 
                     team.Dataset.Remove(target);
@@ -324,15 +334,13 @@ namespace GameOfChallengers.Controllers
 
         public Creature AutoTarget(Creature self)
         {
-           
             return GetClosestEnemy(self);
-            //return c;//return a creature with c.Type == targetType
         }
 
         public bool CanHit(Creature creature1, Creature creature2)
         {
-            int dist = GetDistance(creature1, creature2);//Checks the distance for the target1 o hit the target2
-            List<string> itemIds = creature1.GetHandIDs();//Adds the items to the creature1
+            int dist = GetDistance(creature1, creature2);//Checks the distance for the creature1 o hit the creature2
+            List<string> itemIds = creature1.GetHandIDs();//Adds the items' values to the creature1's
             int range = 1;
             for (int i = 0; i < itemIds.Count; i++)
             {
@@ -343,6 +351,7 @@ namespace GameOfChallengers.Controllers
                     range = item.Range;
                 }
             }
+            //check if creature2 is in range of creature1
             if (range >= dist)
             {
                 return true;
@@ -435,11 +444,11 @@ namespace GameOfChallengers.Controllers
                     GameBoard[i, j] = null;
                 }
             }
-            for (int i = 0; i < CurrMonsters.Dataset.Count(); i++)//assign the monsters their positions in the gameboard
+            for (int i = 0; i < CurrMonsters.Dataset.Count(); i++)//assign the monsters their initial positions in the gameboard
             {
                 GameBoard[0, i] = CurrMonsters.Dataset[i];
             }
-            for(int i=0; i<team.Dataset.Count(); i++)//assign the characters their positions in the gameboard
+            for(int i=0; i<team.Dataset.Count(); i++)//assign the characters their initial positions in the gameboard
             {
                 GameBoard[2, i] = team.Dataset[i];
             }

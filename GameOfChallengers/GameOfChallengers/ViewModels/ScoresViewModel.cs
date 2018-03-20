@@ -15,7 +15,7 @@ namespace GameOfChallengers.ViewModels
     public class ScoresViewModel : BaseViewModel
     {
         private static ScoresViewModel _instance;
-        //created an instance of ScoresViewModel
+        //create an instance of ScoresViewModel if needed
         public static ScoresViewModel Instance
         {
             get
@@ -28,7 +28,7 @@ namespace GameOfChallengers.ViewModels
             }
         }
 
-        //creating dataset of scores
+        //creates a dataset of scores
         public ObservableCollection<Score> Dataset { get; set; }
         public Command LoadDataCommand { get; set; }
 
