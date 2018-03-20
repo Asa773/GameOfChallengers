@@ -225,7 +225,7 @@ namespace GameOfChallengers.ViewModels
                             {
 
                               "boots.jpg",
-                              "bow.jpg",
+                              "Bow.jpg",
                               "gun.jpg",
                               "helmet.jpg",
                                "sheild.jpg",
