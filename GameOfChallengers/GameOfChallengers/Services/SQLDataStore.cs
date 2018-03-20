@@ -179,8 +179,16 @@ namespace GameOfChallengers.Services
 
         public async Task<IEnumerable<Item>> GetAllAsync_Item(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Item>().ToListAsync();
-            return result;
+            try
+            {
+                var result = App.Database.Table<Item>().ToListAsync().GetAwaiter().GetResult();
+                return result;
+            }
+            catch (Exception)
+            {
+                var a = 1;
+                return null;
+            }
         }
 
         // Creature
@@ -225,8 +233,16 @@ namespace GameOfChallengers.Services
 
         public async Task<IEnumerable<Creature>> GetAllAsync_Creature(bool forceRefresh = false)
         {
-            var result = await App.Database.Table<Creature>().ToListAsync();
-            return result;
+            try
+            {
+                var result = App.Database.Table<Creature>().ToListAsync().GetAwaiter().GetResult();
+                return result;
+            }
+            catch (Exception)
+            {
+                var a = 1;
+                return null;
+            }
         }
 
         // Score

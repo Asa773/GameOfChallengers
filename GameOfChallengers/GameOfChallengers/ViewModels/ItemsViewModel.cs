@@ -196,11 +196,13 @@ namespace GameOfChallengers.ViewModels
                 return null;
             }
 
-            Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
-            if (myData == null)
-            {
-                return null;
-            }
+            var myData = Dataset.Where(a => a.Id == ItemID).First();
+
+            //Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
+            //if (myData == null)
+            //{
+            //    return null;
+            //}
 
             return myData;
         }
