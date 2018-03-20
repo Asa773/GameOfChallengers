@@ -199,10 +199,10 @@ namespace GameOfChallengers.ViewModels
             var myData = Dataset.Where(a => a.Id == ItemID).First();
 
             //Item myData = DataStore.GetAsync_Item(ItemID).GetAwaiter().GetResult();
-            //if (myData == null)
-            //{
-            //    return null;
-            //}
+            if (myData == null)
+            {
+                return null;
+            }
 
             return myData;
         }

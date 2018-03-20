@@ -26,8 +26,8 @@ namespace GameOfChallengers.Controllers
 
                 // Mike, commented out this because if the items are not assigned, then it crashes, because you are not checking if the item exists or not.  so do a check, then access...
 
-                //var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                //Dropped.Add(item);//Monsters will dropped items will be added to the list
+                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                Dropped.Add(item);//Monsters will dropped items will be added to the list
             }
 
             int chance = rand.Next(10);//Checks for dropping the Unique Item

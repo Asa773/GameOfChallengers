@@ -78,7 +78,7 @@ namespace GameOfChallengers.ViewModels
 
         public void setMonsters()
         {
-
+            Dataset.Clear();
             var dataset = MonstersViewModel.Instance.Dataset;
 
             var tempDataset = new List<Creature>();
@@ -125,23 +125,23 @@ namespace GameOfChallengers.ViewModels
                 var items = myItemViewModel.Dataset;
 
 
-                // Mike, commenting this out for now...
+                // Mike, commenting this out for now... asa, check before using so no exception
 
-                //int itemCount = 0;
-                //while(itemCount < 3)
-                //{
-                //    var item = items[rand.Next(items.Count)];
-                //    var itemLocation = item.Location;
-                //    if (item.Location == ItemLocationEnum.Finger)
-                //    {
-                //        itemLocation = ItemLocationEnum.RightFinger;
-                //    }
-                //    if(monster.GetItemByLocation(itemLocation) == null)
-                //    {
-                //        monster.AddItem(itemLocation, item.Id);
-                //        itemCount++;
-                //    }
-                //}
+                int itemCount = 0;
+                while (itemCount < 3)
+                {
+                    var item = items[rand.Next(items.Count)];
+                    var itemLocation = item.Location;
+                    if (item.Location == ItemLocationEnum.Finger)
+                    {
+                        itemLocation = ItemLocationEnum.RightFinger;
+                    }
+                    if (monster.GetItemByLocation(itemLocation) == null)
+                    {
+                        monster.AddItem(itemLocation, item.Id);
+                        itemCount++;
+                    }
+                }
                 //load unique drop
                 var uItem = items[rand.Next(items.Count)];
                 monster.UniqueItem = uItem.Id;
