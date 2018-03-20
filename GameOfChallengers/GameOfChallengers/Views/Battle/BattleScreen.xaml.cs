@@ -72,7 +72,7 @@ namespace GameOfChallengers.Views.Battle
         {
             game.battle.SelectedGridCellI = i;
             game.battle.SelectedGridCellJ = j;
-
+            game.NextTarget();
             RefreshBattleScreen();
         }
 

@@ -28,6 +28,8 @@ namespace GameOfChallengers.Controllers
         int totalXP = 0;
         public int SelectedGridCellI;
         public int SelectedGridCellJ;
+        int turnCounter = 0;//for regular battle to keep track of the turn
+
         public BattleController()
         {
             CurrMonsters = MonstersListViewModel.Instance;//Monsters team for the Battle
@@ -78,11 +80,35 @@ namespace GameOfChallengers.Controllers
 
         }
 
-        public Score Battle(Score gameScore)
+        public void OneCharacterFights(Score gameScore)
         {
-            //this will run the turns (using the turn controller) in a loop until either all the team is dead or all the monsters are
+            Creature character = TurnOrder[turnCounter];//It's character's turn
+            Creature target = GameBoard[SelectedGridCellI, SelectedGridCellJ];//get a monster target for the character
+            if (target == null)
+            {
+                return;
+            }
 
+            CharacterAutoTurn(character, target, gameScore);//the attack of the character on the target(monster) method is called here
+        }
 
+        public int MonstersFight(Score gameScore)
+        {
+            return 0;
+        }
+
+        public Score BattleEnd(Score gameScore)
+        {
+            //this will finish the battle by assigning items as well as loading and returning the score
+            AssignItems();//after the battle is finished items are assigned to the characters
+            gameScore.Turns += turns;
+            gameScore.TotalXP += totalXP;
+            string message =
+                "Battle Ended" +
+                " Total Experience :" + totalXP +
+                 " Turns :" + turns
+                 ;
+            Debug.WriteLine(message);
             return gameScore;
         }
 

@@ -59,18 +59,37 @@ namespace GameOfChallengers.Controllers
                     GameScore.Auto = true;
                     
                 }
+                ReportScore();
             }
             else
             {
                 round++;//round value will increase
-                battle.SetBattleController(round);//Maunal battle will start when its not auot
-                //GameScore = battle.Battle(GameScore);
+                battle.SetBattleController(round);//Maunal battle will start when its not auto
                 GameScore.Auto = false;
+                
             }
-            return ReportScore();
+            return GameScore;
+        }
+
+        public void NextTarget()
+        {
+            //get next creature
+            //if monster  call autotarget then automonsterturn
+            //else  call autotarget then autocharacterturn
+            battle.OneCharacterFights(GameScore);
+            int result = battle.MonstersFight(GameScore);//have the monsters take their turns and report the state of the game
+            if(result == 0)//game is over
+            {
+                ReportScore();
+            }else if (result == 1)//battle is over
+            {
+                GameScore = battle.BattleEnd(GameScore);
+                round++;//round value will increase
+                battle.SetBattleController(round);//new battle
+            }
         }
         
-        public Score ReportScore()
+        public void ReportScore()
         {
             //the final score will be total XP + # of turns + # of monsters killed
             //this method will report the final score as well as the "Battle History" metadata
@@ -83,7 +102,6 @@ namespace GameOfChallengers.Controllers
             //GameScore.Team.AddRange(Team);
             GameScore.FinalScore = GameScore.TotalXP;
             MessagingCenter.Send(this, "AddData", GameScore);
-            return GameScore;
         }
     }
 }
