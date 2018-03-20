@@ -29,6 +29,7 @@ namespace GameOfChallengers.Controllers
         public int SelectedGridCellI;
         public int SelectedGridCellJ;
         int turnCounter = 0;//for regular battle to keep track of the turn
+        bool auto = true;//this will keep track of if it is auto battle or not
 
         public BattleController()
         {
@@ -82,7 +83,12 @@ namespace GameOfChallengers.Controllers
 
         public void OneCharacterFights(Score gameScore)
         {
+            auto = false;
+            turns++;//turns increase for every round
+            string message = "New Turn :" + turns;
+            Debug.WriteLine(message);
             Creature character = TurnOrder[turnCounter];//It's character's turn
+            turnCounter++;
             Creature target = GameBoard[SelectedGridCellI, SelectedGridCellJ];//get a monster target for the character
             if (target == null)
             {
@@ -94,7 +100,40 @@ namespace GameOfChallengers.Controllers
 
         public int MonstersFight(Score gameScore)
         {
-            return 0;
+            auto = false;
+            if(CurrMonsters.Dataset.Count <= 0)//the battle(round) is over
+            {
+                return 1;
+            }
+            for (int i = turnCounter; i < TurnOrder.Count; i++)
+            {
+                turns++;//turns increase for every round
+                string message = "New Turn :" + turns;
+                Debug.WriteLine(message);
+
+                if (TurnOrder[i].Type == 0)//checks if the creature is character or monster
+                {
+                    turnCounter = i;
+                    break;
+                }
+                else
+                {
+                    Creature monster = TurnOrder[i];//monster's turn
+                    Creature target = AutoTarget(monster);//get a character target for the monster
+                    if (target == null)
+                    {
+                        break;
+                    }
+
+                    MonsterAutoTurn(monster, target, gameScore);//the attack of the monster on the target(character) method is called here
+                }
+            }
+            turnCounter = 0;
+            if (team.Dataset.Count <= 0)//the game is over
+            {
+                return 0;
+            }
+            return 2;//it is a character's turn
         }
 
         public Score BattleEnd(Score gameScore)
@@ -114,6 +153,7 @@ namespace GameOfChallengers.Controllers
 
         public Score AutoBattle(Score gameScore)
         {
+            auto = true;
             //this will run the turns in a loop until either all the team is dead or all the monsters are
            //Characters and Monsters list will be displayed when the battle starts
             string message = "Battle Start" + " Characters :\n";
@@ -169,15 +209,7 @@ namespace GameOfChallengers.Controllers
                     }
                 }
             }
-            AssignItems();//after the battle is finished items are assigned to the characters
-            gameScore.Turns += turns;
-            gameScore.TotalXP += totalXP;
-            message =
-                "Battle Ended" +
-                " Total Experience :" + totalXP + 
-                 " Turns :" + turns 
-                 ;
-            Debug.WriteLine(message);
+            gameScore = BattleEnd(gameScore);
 
             return gameScore;//finally the score will be displayed
         }
@@ -186,7 +218,7 @@ namespace GameOfChallengers.Controllers
         public void CharacterAutoTurn(Creature character, Creature target, Score score)
         {
             string message = string.Empty;
-            GetNewLoc(character);//will get the character's location
+            GetNewLoc(character, target);//will get the character's new location
             Move(character);
             if (!CanHit(character, target))//check if the character can hit the target
             {
@@ -243,7 +275,7 @@ namespace GameOfChallengers.Controllers
         public void MonsterAutoTurn(Creature monster, Creature target, Score score)
         {
             string message = string.Empty;
-            GetNewLoc(monster);
+            GetNewLoc(monster, target);
             Move(monster);
             if (!CanHit(monster, target))//will get the monster's location
             {
@@ -413,10 +445,18 @@ namespace GameOfChallengers.Controllers
             }
         }
 
-        public void GetNewLoc(Creature creature)//When the player wants the creature to move and attack this helps in moving the creature
+        public void GetNewLoc(Creature creature, Creature target)//When the player wants the creature to move and attack this helps in moving the creature
         {
-            //find the creature move it one place(or more) closer to the first monster/character found
-            Creature enemy = GetClosestEnemy(creature);
+            //find the creature move it one place(or more) closer to the first monster/character found or the user's chosen target
+            Creature enemy;
+            if (auto)
+            {
+                enemy = GetClosestEnemy(creature);
+            }
+            else
+            {
+                enemy = target;
+            }
             CreatureLocInfo creatureInfo = GetLocInfo(creature);
             CreatureLocInfo enemyInfo = GetLocInfo(enemy);
             SelectedGridCellI = creatureInfo.row;

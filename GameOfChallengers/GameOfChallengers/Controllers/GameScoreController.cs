@@ -66,12 +66,16 @@ namespace GameOfChallengers.Controllers
                 round++;//round value will increase
                 battle.SetBattleController(round);//Maunal battle will start when its not auto
                 GameScore.Auto = false;
-                
+                int result = battle.MonstersFight(GameScore);//get to a character's turn or the game is over
+                if (result == 0)//game is over
+                {
+                    ReportScore();
+                }
             }
             return GameScore;
         }
 
-        public void NextTarget()
+        public int NextTarget()
         {
             //get next creature
             //if monster  call autotarget then automonsterturn
@@ -87,6 +91,7 @@ namespace GameOfChallengers.Controllers
                 round++;//round value will increase
                 battle.SetBattleController(round);//new battle
             }
+            return result;
         }
         
         public void ReportScore()
@@ -98,8 +103,7 @@ namespace GameOfChallengers.Controllers
             //load GameScore
             GameScore.Name = GameGlobals.PlayerName;
             GameScore.Date = DateTime.Now;//to set the time to when the game was finished
-            GameScore.Round = round;
-            //GameScore.Team.AddRange(Team);
+            GameScore.Round = round - 1;//minus 1 because they could not possibly win the last round
             GameScore.FinalScore = GameScore.TotalXP;
             MessagingCenter.Send(this, "AddData", GameScore);
         }

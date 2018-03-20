@@ -72,10 +72,51 @@ namespace GameOfChallengers.Views.Battle
         {
             game.battle.SelectedGridCellI = i;
             game.battle.SelectedGridCellJ = j;
-            game.NextTarget();
+            int result = game.NextTarget();
+            if(result == 0)
+            {
+                GameOver();
+                return;
+            }else if(result == 1)
+            {
+                BattleOver();
+                return;
+            }
             RefreshBattleScreen();
         }
 
+        private async void BattleOver()
+        {
+
+            var outputString = "Battle Over! Current Score " + game.GameScore.TotalXP;
+            var action = await DisplayActionSheet(outputString,
+                "Cancel",
+                null,
+                "Continue");
+            if (action == "Continue")
+            {
+                //await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.GameScore)));
+                RefreshBattleScreen();
+            }
+
+        }
+
+
+        private async void GameOver()
+        {
+
+
+            var outputString = "Game Over! Score " + game.GameScore.TotalXP;
+            var action = await DisplayActionSheet(outputString,
+                "Cancel",
+                null,
+                "View Score");
+            if (action == "View Score")
+            {
+                await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.GameScore)));
+                Navigation.RemovePage(this);
+            }
+        }
 
         private void Clicked00(object sender, EventArgs e)
         {
@@ -152,39 +193,6 @@ namespace GameOfChallengers.Views.Battle
         }
 
 
-        private async void BattleOver()
-        {
-           
-            var outputString = "Battle Over! Score " + game.GameScore.TotalXP;
-            var action = await DisplayActionSheet(outputString,
-                "Cancel",
-                null,
-                "View Score","Assign Dropped Items");
-            if (action == "View Score")
-            {
-                await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(false))));
-            }
-            if (action == "Assign Dropped Items")
-            {
-                await Navigation.PushAsync(new AssignItemPage());
-            }
-
-        }
-
-
-        private async void GameOver()
-        {
-           
-
-            var outputString = "Game Over! Score " + game.GameScore.TotalXP;
-            var action = await DisplayActionSheet(outputString,
-                "Cancel",
-                null,
-                "View Score");
-            if (action == "View Score")
-            {
-                await Navigation.PushAsync(new ScoreDetailPage(new ScoreDetailViewModel(game.Start(false))));
-            }
-        }
+        
 	}
 }
