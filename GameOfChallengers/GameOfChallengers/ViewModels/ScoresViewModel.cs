@@ -15,7 +15,7 @@ namespace GameOfChallengers.ViewModels
     public class ScoresViewModel : BaseViewModel
     {
         private static ScoresViewModel _instance;
-
+        //created an instance of ScoresViewModel
         public static ScoresViewModel Instance
         {
             get
@@ -28,6 +28,7 @@ namespace GameOfChallengers.ViewModels
             }
         }
 
+        //creating dataset of scores
         public ObservableCollection<Score> Dataset { get; set; }
         public Command LoadDataCommand { get; set; }
 
@@ -39,24 +40,30 @@ namespace GameOfChallengers.ViewModels
             Dataset = new ObservableCollection<Score>();
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<DeleteScorePage, Score>(this, "DeleteData", async (obj, data) =>
             {
                 Dataset.Remove(data);
                 await DataStore.DeleteAsync_Score(data);
             });
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<NewScorePage, Score>(this, "AddData", async (obj, data) =>
             {
+                //adding data to dataset
                 Dataset.Add(data);
                 await DataStore.AddAsync_Score(data);
             });
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<GameScoreController, Score>(this, "AddData", async (obj, data) =>
             {
+               
                 Dataset.Add(data);
                 await DataStore.AddAsync_Score(data);
             });
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<EditScorePage, Score>(this, "EditData", async (obj, data) =>
             {
                 // Find the Item, then update it

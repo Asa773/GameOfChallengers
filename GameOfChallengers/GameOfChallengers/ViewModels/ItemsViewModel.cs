@@ -42,19 +42,24 @@ namespace GameOfChallengers.ViewModels
 
             Title = "Item List";
             Dataset = new ObservableCollection<Item>();
+            //Items observable collection is declared
             LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
 
             #region Messages
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<DeleteItemPage, Item>(this, "DeleteData", async (obj, data) =>
             {
+                //deleting data 
                 await DeleteAsync(data);
             });
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddData", async (obj, data) =>
             {
                 await AddAsync(data);
             });
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<EditItemPage, Item>(this, "EditData", async (obj, data) =>
             {
                 await UpdateAsync(data);
@@ -63,6 +68,7 @@ namespace GameOfChallengers.ViewModels
             #endregion Messages
         }
 
+        //getting the list of all items from dataset
         public List<Item> GetAllItems()
         {
             var myReturn = new List<Item>();
@@ -106,7 +112,6 @@ namespace GameOfChallengers.ViewModels
                 Dataset.Clear();
                 var dataset = await DataStore.GetAllAsync_Item(true);
 
-                // Example of how to sort the database output using a linq query.
                 //Sort the list
                 dataset = dataset
                     .OrderBy(a => a.Name)
@@ -208,13 +213,15 @@ namespace GameOfChallengers.ViewModels
         }
 
         #endregion ItemConversion
-
+        //select random Item 
         public string ChooseRandomItemString(ItemLocationEnum location, AttributeEnum attribute)
         {
             return null;
         }
     }
 
+
+    //used for loading images in items picker view
     public static class ItemImagesList
     {
 

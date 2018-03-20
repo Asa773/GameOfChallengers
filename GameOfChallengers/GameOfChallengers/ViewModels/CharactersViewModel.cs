@@ -18,6 +18,7 @@ namespace GameOfChallengers.ViewModels
 
         public static CharactersViewModel Instance
         {
+            //created an instance of charactersViewModel
             get
             {
                 if (_instance == null)
@@ -27,7 +28,7 @@ namespace GameOfChallengers.ViewModels
                 return _instance;
             }
         }
-
+        //character observable collection is declared
         public ObservableCollection<Creature> Dataset { get; set; }
         public Command LoadDataCommand { get; set; }
 
@@ -37,26 +38,31 @@ namespace GameOfChallengers.ViewModels
         {
             Title = "Characters List";
             Dataset = new ObservableCollection<Creature>();
-            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand());
+            LoadDataCommand = new Command(async () => await ExecuteLoadDataCommand()); //loading the characters
 
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<DeleteCharacter, Creature>(this, "DeleteData", async (obj, data) =>
             {
+                //deleting data from the dataset
                 Dataset.Remove(data);
                 await DataStore.DeleteAsync_Creature(data);
             });
-
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<NewCharacter, Creature>(this, "AddData", async (obj, data) =>
             {
+                //adding the data to dataset
                 Dataset.Add(data);
                 await DataStore.AddAsync_Creature(data);
             });
+            //subsribing to methods which are called from views
 
             MessagingCenter.Subscribe<TeamViewModel, Creature>(this, "AddData", async (obj, data) =>
             {
+                //adding the data in team dataset
                 Dataset.Add(data);
                 await DataStore.AddAsync_Creature(data);
             });
-
+            //subsribing to methods which are called from views
             MessagingCenter.Subscribe<EditCharacter, Creature>(this, "EditData", async (obj, data) =>
             {
                 // Find the Item, then update it
@@ -76,7 +82,7 @@ namespace GameOfChallengers.ViewModels
 
 
 
-
+        //getting the list of all characters from the dataset
         public List<Creature> GetAllCreatures()
         {
             var myReturn = new List<Creature>();
@@ -138,6 +144,7 @@ namespace GameOfChallengers.ViewModels
         }
     }
 
+    //used for loading images in character picker view
     public static class CharacterImagesList
     {
 

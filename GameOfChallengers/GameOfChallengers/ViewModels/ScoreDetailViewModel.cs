@@ -10,6 +10,7 @@ namespace GameOfChallengers.ViewModels
         public Score Data { get; set; }
         public ScoreDetailViewModel(Score data = null)
         {
+            //setting the title
             Title = data?.Name;
             Data = data;
         }

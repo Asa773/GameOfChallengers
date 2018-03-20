@@ -14,6 +14,7 @@ namespace GameOfChallengers.ViewModels
     {
         private static TeamViewModel _instance;
 
+        // Make this a singleton so it only exist one time because holds all the data records in memory
         public static TeamViewModel Instance
         {
             get
@@ -26,6 +27,7 @@ namespace GameOfChallengers.ViewModels
             }
         }
 
+        //setting the dataset for Team
         public ObservableCollection<Creature> Dataset { get; set; }
 
         private bool _needsRefresh;
@@ -61,7 +63,8 @@ namespace GameOfChallengers.ViewModels
         {
             _needsRefresh = value;
         }
-        
+
+        //loading the characters in the team
         public void LoadTeam()
         {
             Dataset.Clear();

@@ -17,7 +17,8 @@ namespace GameOfChallengers.ViewModels
     {
         private static int round = 0;
 
-        //should probably refactor into a model or something because it is used in more than one place
+        //leveling up table is declared 
+       
         List<LevelingUp> lp = new List<LevelingUp>
         {
             new LevelingUp{XP = 0,     Level = 0, Attack = 0,Defense = 0, Speed = 0},
@@ -45,6 +46,7 @@ namespace GameOfChallengers.ViewModels
 
         private static MonstersListViewModel _instance;
 
+        // Make this a singleton so it only exist one time because holds all the data records in memory
         public static MonstersListViewModel Instance
         {
             get
@@ -56,7 +58,7 @@ namespace GameOfChallengers.ViewModels
                 return _instance;
             }
         }
-
+       
         public ObservableCollection<Creature> Dataset { get; set; }
 
         private MonstersViewModel viewModel;
@@ -71,11 +73,13 @@ namespace GameOfChallengers.ViewModels
             viewModel = MonstersViewModel.Instance;
         }
 
+        //setting the round
         public void setRound(int roundNum)
         {
             round = roundNum;
         }
 
+        //creating new set of monster on every round 
         public void setMonsters()
         {
             Dataset.Clear();
@@ -125,8 +129,7 @@ namespace GameOfChallengers.ViewModels
                 var items = myItemViewModel.Dataset;
 
 
-                // Mike, commenting this out for now... asa, check before using so no exception
-
+               //check itemcount and assign random items to monster
                 int itemCount = 0;
                 while (itemCount < 3)
                 {

@@ -11,11 +11,13 @@ namespace GameOfChallengers.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        //created the datastore object which will store either mock data or sql data
         private IDataStore DataStoreMock => DependencyService.Get<IDataStore>() ?? MockDataStore.Instance;
         private IDataStore DataStoreSql => DependencyService.Get<IDataStore>() ?? SQLDataStore.Instance;
 
         public IDataStore DataStore;
 
+        //default datastore is selected as mock
         public BaseViewModel()
         {
             SetDataStore(DataStoreEnum.Mock);
@@ -23,18 +25,19 @@ namespace GameOfChallengers.ViewModels
 
         public enum DataStoreEnum { Unknown = 0, Sql = 1, Mock = 2 }
 
+        //switch case for selecting datastore as per the switch toggled on about page
         public void SetDataStore(DataStoreEnum data)
         {
             switch (data)
             {
                 case DataStoreEnum.Mock:
-                    DataStore = DataStoreMock;
+                    DataStore = DataStoreMock;//this will select the mockdatastore
                     break;
 
-                case DataStoreEnum.Sql:
-                case DataStoreEnum.Unknown:
+                case DataStoreEnum.Sql: 
+                case DataStoreEnum.Unknown:  //this will select sql
                 default:
-                    DataStore = DataStoreSql;
+                    DataStore = DataStoreSql; 
                     break;
             }
         }
@@ -47,12 +50,13 @@ namespace GameOfChallengers.ViewModels
         }
 
         string title = string.Empty;
+        //setting title
         public string Title
         {
             get { return title; }
             set { SetProperty(ref title, value); }
         }
-
+        //setting the property
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)
@@ -67,6 +71,7 @@ namespace GameOfChallengers.ViewModels
         }
 
         #region INotifyPropertyChanged
+        //event occurs when the property is changed
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
         {

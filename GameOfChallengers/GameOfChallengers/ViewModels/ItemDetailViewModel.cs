@@ -12,6 +12,7 @@ namespace GameOfChallengers.ViewModels
         public Item Data { get; set; }
         public ItemDetailViewModel(Item item = null)
         {
+            //setting the title
             Title = item?.Name;
             Data = item;
         }

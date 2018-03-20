@@ -10,6 +10,7 @@ namespace GameOfChallengers.ViewModels
         public Creature Data { get; set; }
         public CreatureDetailViewModel(Creature data = null)
         {
+            //setting the title
             Title = data?.Name;
             Data = data;
         }
