@@ -18,24 +18,25 @@ namespace GameOfChallengers.Controllers
             Random rand = new Random(dateSeed);
             int numOfItems = rand.Next(4);//drop 0, 1, 2, or 3(all) of its items
             List<string> itemIds = monster.GetItemIDs();
-
-
             var items = ItemsViewModel.Instance.Dataset;
-            for (int i=0; i<numOfItems; i++)
+            //checking if items are not assigned it should return null value
+            if (itemIds != null)
             {
-
-                // Mike, commented out this because if the items are not assigned, then it crashes, because you are not checking if the item exists or not.  so do a check, then access...
-
-                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                Dropped.Add(item);//Monsters will dropped items will be added to the list
+               
+                for (int i = 0; i < numOfItems; i++)
+                {
+                    
+                    var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                    Dropped.Add(item);//Monsters will dropped items will be added to the list
+                }
             }
-
-            int chance = rand.Next(10);//Checks for dropping the Unique Item
-            if (chance == 1)
-            {
-                var item = items.Where(a => a.Id == monster.UniqueItem).FirstOrDefault();
-                Dropped.Add(item);
-            }
+                int chance = rand.Next(10);//Checks for dropping the Unique Item
+                if (chance == 1)
+                {
+                    var item = items.Where(a => a.Id == monster.UniqueItem).FirstOrDefault();
+                    Dropped.Add(item);
+                }
+            
             return Dropped;
         }
 

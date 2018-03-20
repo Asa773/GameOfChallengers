@@ -10,7 +10,7 @@ namespace GameOfChallengers.Controllers
 {
     class CharacterController
     {
-        //should probably refactor into a model or something because it is used in more than one place
+       //used level up table as list for checking leveling up
         List<LevelingUp> lp = new List<LevelingUp>
         {
             new LevelingUp{XP = 0,     Level = 1,Attack = 1,Defense = 1, Speed = 1},
@@ -40,13 +40,16 @@ namespace GameOfChallengers.Controllers
         {
             //drop all items when dead and adds it to a list
             List<Item> Dropped = new List<Item>();
-            List<string> itemIds = character.GetItemIDs();
+            List<string> itemIds = character.GetItemIDs();//getting all the items on character
             var items = ItemsViewModel.Instance.Dataset;
-            for (int i = 0; i < itemIds.Count; i++)
+            if (itemIds != null)//checking if there are any items
             {
-                var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
-                Dropped.Add(item);
+                for (int i = 0; i < itemIds.Count; i++)
+                {
+                    var item = items.Where(a => a.Id == itemIds[i]).FirstOrDefault();
+                    Dropped.Add(item);//adding dropped item to list
 
+                }
             }
             return Dropped;
         }
@@ -155,7 +158,7 @@ namespace GameOfChallengers.Controllers
             character.Speed = lp[newLevel - 1].Speed;//gets speed dependong on the new level
             int offset = character.MaxHealth - character.CurrHealth;
             character.MaxHealth = rolld * newLevel;
-            character.CurrHealth = character.MaxHealth - offset;
+            character.CurrHealth = character.MaxHealth - offset;//calculating the current health
             
         }
 
