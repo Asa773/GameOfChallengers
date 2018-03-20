@@ -117,7 +117,7 @@ namespace GameOfChallengers.ViewModels
                     character.Speed = 1;
                     character.MaxHealth = 1;
                     character.CurrHealth = character.MaxHealth;
-                    //character.ImageURI = "newfighter.jpeg";
+                    character.ImageURI = "superman.jpeg";
                     Dataset.Add(character);
                     MessagingCenter.Send(this, "AddData", character);
                 }

@@ -21,7 +21,7 @@ namespace GameOfChallengers.Views.Battle
 		public BattleScreen ()
 		{
 			InitializeComponent ();
-            //game.Start(false);
+            game.Start(false);
             RefreshBattleScreen();
 		}
 
@@ -51,11 +51,13 @@ namespace GameOfChallengers.Views.Battle
 
         private FileImageSource GetImage(Creature creature)
         {
-           
+
             if (creature == null)
                 return "BlankImage.jpeg";
+            else if (creature.ImageURI == "icon.png")
+                return "BlankImage.jpeg";
             else
-                 return creature.ImageURI;
+                return creature.ImageURI;
         }
 
         public void BattleMessages(string message)
@@ -70,6 +72,7 @@ namespace GameOfChallengers.Views.Battle
         {
             game.battle.SelectedGridCellI = i;
             game.battle.SelectedGridCellJ = j;
+
             RefreshBattleScreen();
         }
 

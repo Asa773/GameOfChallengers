@@ -45,7 +45,7 @@
 
                     <StackLayout Grid.Row="0" Grid.Column="0"  >
                         <Button 
-                            Text="M1"
+                            
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -56,7 +56,6 @@
                     </StackLayout>
                     <StackLayout Grid.Row="0" Grid.Column="1" >
                          <Button 
-                               Text="M2"
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -67,7 +66,6 @@
 
                         <StackLayout Grid.Row="0" Grid.Column="2"  >
                          <Button 
-                            Text="M3"
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -76,7 +74,7 @@
                             Clicked="Clicked02"/>
                     </StackLayout>
                         <StackLayout Grid.Row="0" Grid.Column="3" >
-                         <Button Text="M4"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -85,7 +83,7 @@
                                  Clicked="Clicked03"/>
                     </StackLayout>
                         <StackLayout Grid.Row="0" Grid.Column="4">
-                         <Button Text="M5"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -95,7 +93,7 @@
                     </StackLayout>
 
                         <StackLayout Grid.Row="0" Grid.Column="5" >
-                         <Button Text="M6"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -163,7 +161,7 @@
 
 
                         <StackLayout Grid.Row="2" Grid.Column="0" >
-                        <Button Text="C1"
+                        <Button 
                               WidthRequest="60" 
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -172,7 +170,7 @@
                                  Clicked="Clicked20"/>
                     </StackLayout>
                     <StackLayout Grid.Row="2" Grid.Column="1" >
-                         <Button Text="C2"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -182,7 +180,7 @@
                     </StackLayout>
 
                         <StackLayout Grid.Row="2" Grid.Column="2" >
-                         <Button Text="C3"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -191,8 +189,7 @@
                                  Clicked="Clicked22"/>
                     </StackLayout>
                         <StackLayout Grid.Row="2" Grid.Column="3" >
-                         <Button Text="C4"
-                                 
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -201,7 +198,7 @@
                                  Clicked="Clicked23"/>
                     </StackLayout>
                         <StackLayout Grid.Row="2" Grid.Column="4" >
-                         <Button Text="C5"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
@@ -211,7 +208,7 @@
                     </StackLayout>
 
                         <StackLayout Grid.Row="2" Grid.Column="5" >
-                         <Button Text="C6"
+                         <Button 
                               WidthRequest="60"
                               HeightRequest="60"
                               VerticalOptions="Center" 
